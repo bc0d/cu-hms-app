@@ -13,6 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
+});
+
+Route::get('user-login', function () {
+    return view('users.login');
+});
+
+Route::get('user-signup', function () {
+    return view('users.signup_basic');
+});
+
+Route::get('user-signup-dtls', function () {
+    return view('users.signup_details');
+});
+
+Route::get('user-mail-confirm', function() {
+    return view('users.mailconfirm');
 });
