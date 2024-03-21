@@ -33,3 +33,11 @@ Route::get('user-signup-dtls', function () {
 Route::get('user-mail-confirm', function() {
     return view('users.mailconfirm');
 });
+
+
+
+
+
+Route::get('admin-login', function() {
+    return view('login');
+});
