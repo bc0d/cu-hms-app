@@ -41,3 +41,33 @@ Route::get('user-mail-confirm', function() {
 Route::get('admin-login', function() {
     return view('login');
 });
+
+
+
+Route::get('hod-index', function() {
+    return view('admins.hod.dashboard');
+});
+
+Route::get('hod-request-allocation', function() {
+    return view('admins.hod.allocation_req');
+});
+
+Route::get('hod-allocation-action', function() {
+    return view('admins.hod.allocation_req_action');
+});
+
+Route::get('hod-request-vacating', function() {
+    return view('admins.hod.vacate_req');
+});
+
+Route::get('hod-vacating-action', function() {
+    return view('admins.hod.vacate_req_action');
+});
+
+Route::get('hod-students-list', function() {
+    return view('admins.hod.students_list');
+});
+
+Route::get('hod-student-detail', function() {
+    return view('admins.hod.student_detail');
+});
