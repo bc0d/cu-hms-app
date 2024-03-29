@@ -234,11 +234,13 @@ h6 {
 
 .card-title {
   padding: 20px 0 15px 0;
-  font-size: 18px;
+  font-size: 1.7rem;
   font-weight: 500;
   color: #012970;
   font-family: "Poppins", sans-serif;
 }
+
+
 
 .card-title span {
   color: #899bbd;
@@ -823,6 +825,21 @@ h6 {
 .dashboard .sales-card .card-icon {
   color: #4154f1;
   background: #f6f6fe;
+}
+
+.dashboard .req-view-card .card-icon {
+  color: #4154f1;
+  background: #f6f6fe;
+}
+
+.dashboard .req-add-card .card-icon {
+  color: #ff771d;
+  background: #ffecdf;
+}
+
+.dashboard .req-rmv-card .card-icon {
+  color: #2eca6a;
+  background: #e0f8e9;
 }
 
 .dashboard .revenue-card .card-icon {
