@@ -33,3 +33,10 @@ Route::get('user-signup-dtls', function () {
 Route::get('user-mail-confirm', function() {
     return view('users.mailconfirm');
 });
+Route::get('user-home', function() {
+    return view('users.homePage');
+});
+Route::get('user-profile', function() {
+    return view('users.profile');
+});
+

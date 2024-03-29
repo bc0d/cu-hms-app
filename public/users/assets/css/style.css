@@ -856,7 +856,7 @@ section {
 # Portfolio Details
 --------------------------------------------------------------*/
 .portfolio-details {
-  padding-top: 40px;
+  padding-top: 45px;
 }
 
 .portfolio-details .portfolio-details-slider img {
@@ -2204,4 +2204,45 @@ fieldset {
 }
 
 
+/* profile  */
+.profile-bg{
+  background-color:rgb(165, 70, 70);
+  color: white;
+}
+.profileall-bg{
+  background-color:rgb(143, 101, 92);
+  
+}
+@media (min-width: 576px) {
+  .text-16px-dynamic {
+    font-size: calc(1rem + 0.25vw);
+  }
+}
 
+@media (min-width: 768px) {
+  .text-16px-dynamic {
+    font-size: calc(1rem + 0.5vw);
+  }
+}
+
+@media (min-width: 992px) {
+  .text-16px-dynamic {
+    font-size: calc(1rem + 0.75vw);
+  }
+}
+
+@media (min-width: 1200px) {
+  .text-16px-dynamic {
+    font-size: calc(1rem + 1vw);
+  }
+}
+
+.card-body {
+  padding: 0 20px 20px 20px;
+}
+.card {
+  margin-bottom: 30px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+}
