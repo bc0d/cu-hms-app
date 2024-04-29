@@ -15,7 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('index');
+    return view('users.index');
+});
+
+Route::get('home', function () {
+    return view('users.homePage');
 });
 
 Route::get('user-login', function () {
@@ -39,4 +43,29 @@ Route::get('user-home', function() {
 Route::get('user-profile', function() {
     return view('users.profile');
 });
+Route::get('user-profile-detials',function(){
+    return view('users.profiledetialed');
+});
+Route::get('testing',function(){
+    return view('users.testing');
+});
+Route::get('feedback',function(){
+    return view('users.feedback');
+})->name('feedback');
+Route::get('payment-link',function(){
+    return view('users.paymentlink');
+})->name('paymentlink');
+Route::get('complaint',function(){
+    return view('users.complaint');
+})->name('complaint');
+Route::get('messbill',function(){
+    return view('users.messbill');
+})->name('messbillfp');
+Route::get('notificationfull',function(){
+    return view('users.notificationfull');
+});
+Route::get('attendance',function(){
+    return view('users.attendance');
+});
+
 

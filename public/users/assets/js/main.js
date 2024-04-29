@@ -205,3 +205,4 @@ function passValidation() {
     document.getElementById("pass_right").style.display = "none";
   }
 }
+

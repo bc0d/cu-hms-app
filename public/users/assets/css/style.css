@@ -73,12 +73,12 @@ h6 {
   background: white;
   transition: all 0.5s;
   z-index: 997;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 #header.header-scrolled {
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-  padding: 12px 0;
+  /*padding: 12px 0;*/
 }
 
 #header.header-inner-pages {
@@ -252,6 +252,7 @@ h6 {
 @media (max-width: 991px) {
   .mobile-nav-toggle {
     display: block;
+    font-size: 14px !important;
   }
 
   .navbar ul {
@@ -502,9 +503,23 @@ h6 {
 
 @media (max-width: 768px) {
   #hero h2 {
-    font-size: 28px;
+    font-size: 28px !important;
+    
   }
 }
+@media (max-width: 339px) {
+  #hero h2 {
+    font-size: 28px !important;
+    
+  }
+}
+@media (max-width: 264px) {
+  #text-size {
+    font-size: 28px !important;
+  }
+}
+
+
 
 @media (min-width: 1024px) {
 
@@ -524,7 +539,7 @@ h6 {
 # Sections General
 --------------------------------------------------------------*/
 section {
-  padding: 60px 0;
+  /*padding: 60px 0;*/
   overflow: hidden;
 }
 
@@ -631,7 +646,7 @@ section {
 --------------------------------------------------------------*/
 .about .content h2 {
   font-weight: 700;
-  font-size: 48px;
+  font-size: 45px;
   line-height: 60px;
   margin-bottom: 20px;
   text-transform: uppercase;
@@ -711,6 +726,7 @@ section {
   margin-left: 70px;
   font-weight: 700;
   margin-bottom: 15px;
+  margin-top: 20px;
   font-size: 18px;
 }
 
@@ -934,13 +950,7 @@ section {
   border-radius: 4px;
 }
 
-.team .member .pic img {
-  transition: ease-in-out 0.3s;
-}
 
-.team .member:hover img {
-  transform: scale(1.1);
-}
 
 .team .member .member-info {
   padding-left: 30px;
@@ -1315,6 +1325,7 @@ section {
 .contact .info {
   width: 100%;
   background: #fff;
+  
 }
 
 .contact .info i {
@@ -2193,7 +2204,7 @@ fieldset {
   }
 
   .center-sign {
-    padding: 10;
+    padding: 10px;
     
   }
   .sign-sec {
@@ -2246,3 +2257,42 @@ fieldset {
   border-radius: 5px;
   box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
 }
+/*profile detialed*/
+.prof{
+  width:250px;
+  height: 200px;
+  
+}
+.hie{
+  height: 50px;
+  width: 250px;
+}
+/*end*/
+/*testing*/
+#div1{
+  padding: 1rem;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius:25px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius:0px;
+}
+#div2{
+  padding: 5px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius:25px;
+  
+}
+/*end*/
+.btn-primary{
+  background-color:black ;
+}
+.btn-secondary{
+  background-color:#dc3545;;
+}
+/*feedback*/
+.plain-border {
+        border-top: 5px solid #423a3a; /* Adjust color as needed */
+        width: 100%; /* Ensures it spans the full width of its container */
+        margin: 10px 0; /* Adjust margin as needed */
+    }
+    
