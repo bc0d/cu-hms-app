@@ -2,6 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Office\StudentDetailsController;
+use App\Http\Controllers\Office\HostelAdmissionOfficeController;
+use App\Http\Controllers\Office\HostelVacateOfficeController;
+use App\Http\Controllers\Office\RoomAllocationController;
+use App\Http\Controllers\Office\RoomChangeController;
+use App\Http\Controllers\Office\RoomDetailsController;
+use App\Http\Controllers\Office\ComplaintsController;
+use App\Http\Controllers\Office\FeeAndPaymentController;
+use App\Http\Controllers\Office\RuleAndNoticeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -71,3 +81,99 @@ Route::get('hod-students-list', function() {
 Route::get('hod-student-detail', function() {
     return view('admins.hod.student_detail');
 });
+
+/* 
+----------------Office staff-----------------------
+*/
+
+Route::prefix('office')->group(function () {
+
+    //index
+    Route::get('index', function() {
+        return view('admins.office.dashboard');
+    });
+
+    //student card
+    Route::prefix('student')->group(function () {
+        
+        Route::get('card', [StudentDetailsController::class, 'showCard']);
+        Route::get('list', [StudentDetailsController::class, 'showList']);
+        Route::get('detail', [StudentDetailsController::class, 'showDetails']);
+    });
+
+    //rooms details card
+    Route::prefix('room-details')->group(function () {
+
+        Route::get('card', [RoomDetailsController::class, 'showCard']);
+        Route::get('list', [RoomDetailsController::class, 'roomDetails']);
+
+    });
+    
+
+    //Complaints
+    Route::get('complaints', [ComplaintsController::class, 'showComplaints']);
+
+    //admission card
+    Route::prefix('admission')->group(function () {
+
+        Route::get('request', [HostelAdmissionOfficeController::class, 'showRequests']);
+        Route::get('action', [HostelAdmissionOfficeController::class, 'admissionAction']);
+        
+    });
+
+
+    //room allocation
+    Route::prefix('room')->group(function () {
+
+        Route::get('allocation-list', [RoomAllocationController::class, 'showRoomAllocList']);
+        Route::get('allocation', [RoomAllocationController::class, 'roomAllocAction']);
+
+    });
+    
+
+    //room channge card
+    Route::prefix('room-change')->group(function () {
+
+
+        Route::get('request', [RoomChangeController::class, 'showRoomChangeReq']);
+        Route::get('action', [RoomChangeController::class, 'roomChangeAction']);
+
+    });
+    
+
+    //vacating card
+    Route::prefix('vacate')->group(function () {
+        
+        Route::get('request', [HostelVacateOfficeController::class, 'showRequests']);
+        Route::get('action', [HostelVacateOfficeController::class, 'vacateAction']);
+
+    });
+    
+
+    //fee card
+    Route::prefix('fee')->group(function () {
+
+        Route::get('card', [FeeAndPaymentController::class, 'showCard']);
+        Route::get('room-rent', [FeeAndPaymentController::class, 'roomRentDetails']);
+
+        //fee maintanance
+        Route::get('maintanance', [FeeAndPaymentController::class, 'feeMaintanance']);
+        Route::get('updation', [FeeAndPaymentController::class, 'feeUpdate']);
+
+    });
+
+    //rules and notice card
+    Route::prefix('rules')->group(function () {
+
+        Route::get('card', [RuleAndNoticeController::class, 'showCard']);
+        Route::get('rule-list', [RuleAndNoticeController::class, 'viewRules']);
+        Route::get('rule-add', [RuleAndNoticeController::class, 'addRule']);
+    });
+    
+
+});
+
+
+
+
+
