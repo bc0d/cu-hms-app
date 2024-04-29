@@ -2,6 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Office\StudentDetailsController;
+use App\Http\Controllers\Office\HostelAdmissionOfficeController;
+use App\Http\Controllers\Office\HostelVacateOfficeController;
+use App\Http\Controllers\Office\RoomAllocationController;
+use App\Http\Controllers\Office\RoomChangeController;
+use App\Http\Controllers\Office\RoomDetailsController;
+use App\Http\Controllers\Office\ComplaintsController;
+use App\Http\Controllers\Office\FeeAndPaymentController;
+use App\Http\Controllers\Office\RuleAndNoticeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,35 +47,3 @@ Route::get('user-signup-dtls', function () {
 Route::get('user-mail-confirm', function() {
     return view('users.mailconfirm');
 });
-Route::get('user-home', function() {
-    return view('users.homePage');
-});
-Route::get('user-profile', function() {
-    return view('users.profile');
-});
-Route::get('user-profile-detials',function(){
-    return view('users.profiledetialed');
-});
-Route::get('testing',function(){
-    return view('users.testing');
-});
-Route::get('feedback',function(){
-    return view('users.feedback');
-})->name('feedback');
-Route::get('payment-link',function(){
-    return view('users.paymentlink');
-})->name('paymentlink');
-Route::get('complaint',function(){
-    return view('users.complaint');
-})->name('complaint');
-Route::get('messbill',function(){
-    return view('users.messbill');
-})->name('messbillfp');
-Route::get('notificationfull',function(){
-    return view('users.notificationfull');
-});
-Route::get('attendance',function(){
-    return view('users.attendance');
-});
-
-
