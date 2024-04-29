@@ -832,14 +832,19 @@ h6 {
   background: #f6f6fe;
 }
 
-.dashboard .req-add-card .card-icon {
+.dashboard .req-rmv-card .card-icon {
   color: #ff771d;
   background: #ffecdf;
 }
 
-.dashboard .req-rmv-card .card-icon {
+.dashboard .req-add-card .card-icon {
   color: #2eca6a;
   background: #e0f8e9;
+}
+
+.dashboard .req-warn-card .card-icon {
+  color: #ca2e2e;
+  background: #f6f6fe;
 }
 
 .dashboard .revenue-card .card-icon {
