@@ -47,10 +47,11 @@
               <h2>Login</h2>
             </center>
           </div>
-          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+          <form action="{{ route('login') }}" method="POST" role="form" class="php-email-form">
+            @csrf
             <div class="row">
               <div class="col-md-6 form-group">
-                <input type="text" name="name" class="form-control" id="name" placeholder="User Name" required>
+                <input type="email" name="email" class="form-control" id="email" placeholder="email" required>
               </div>
             
               <div class="col-md-6 form-group">
@@ -80,7 +81,7 @@
   <script src="{{ asset('users/assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
   <script src="{{ asset('users/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
   <script src="{{ asset('users/assets/vendor/waypoints/noframework.waypoints.js') }}"></script>
-  <script src="{{ asset('users/assets/vendor/php-email-form/validate.js') }}"></script>
+ 
 
   <!-- Template Main JS File -->
   <script src="{{ asset('users/assets/js/main.js') }}"></script>

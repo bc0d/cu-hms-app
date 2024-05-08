@@ -48,7 +48,8 @@
               <h2>Sign up</h2>
             </center>
           </div>
-          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+          <form action="{{ route('signupstep1') }}" method="POST" role="form" class="php-email-form">
+            @csrf
             <div class="row">
               <div class="col-md-4 form-group">
                 <label for="first_name">First Name<span aria-hidden="true" class="required-fields"> *</span></label>
@@ -98,10 +99,10 @@
             </div>
             <div class="row">
               <div class="col-md-4 form-group">
-                <label for="admsn_no">Admission Number<span aria-hidden="true" class="required-fields"> *</span></label>
+                <label for="adm_no">Admission Number<span aria-hidden="true" class="required-fields"> *</span></label>
               </div>
               <div class="col-md-8 form-group">
-                <input type="text" name="admsn_no" class="form-control" id="admsn_no" placeholder="" required>
+                <input type="text" name="adm_no" class="form-control" id="adm_no" placeholder="" required>
               </div>
             </div>
             <div class="row">
@@ -114,18 +115,18 @@
             </div>
             <div class="row">
               <div class="col-md-4 form-group">
-                <label for="first_name">Phone Number<span aria-hidden="true" class="required-fields"> *</span></label>
+                <label for="phone">Phone Number<span aria-hidden="true" class="required-fields"> *</span></label>
               </div>
               <div class="col-md-8 form-group">
-                <input type="tel" name="phone" class="form-control" id="phone" placeholder="" pattern="[0-9] {10}" required>
+                <input type="text" name="phone" class="form-control" id="phone" placeholder="" required>
               </div>
             </div>
             <div class="row">
               <div class="col-md-4 form-group">
-                <label for="first_name">Email<span aria-hidden="true" class="required-fields"> *</span></label>
+                <label for="email">Email<span aria-hidden="true" class="required-fields"> *</span></label>
               </div>
               <div class="col-md-8 form-group">
-                <input type="tel" name="mail" class="form-control" id="mail" placeholder="mymail@example.com" required>
+                <input type="mail" name="email" class="form-control" id="mail" placeholder="mymail@example.com" required>
               </div>
             </div>
             <div class="row">
@@ -139,10 +140,10 @@
             </div>
             <div class="row">
               <div class="col-md-4 form-group">
-                <label for="conf_pass">Confirm Password<span aria-hidden="true" class="required-fields"> *</span></label>
+                <label for="password">Confirm Password<span aria-hidden="true" class="required-fields"> *</span></label>
               </div>
               <div class="col-md-8 form-group">
-                <input type="password" name="conf_pass" class="form-control" id="conf_pass" oninput="passValidation()" required>
+                <input type="password" name="password" class="form-control" id="conf_pass" oninput="passValidation()" required>
                 <span aria-hidden="true" id="pass_right">&check;</span>
                 <span aria-hidden="true" id="pass_wrong">&#x2718;</span>
               </div>
@@ -169,7 +170,6 @@
   <script src="{{ asset('users/assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
   <script src="{{ asset('users/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
   <script src="{{ asset('users/assets/vendor/waypoints/noframework.waypoints.js') }}"></script>
-  <script src="{{ asset('users/assets/vendor/php-email-form/validate.js') }}"></script>
 
   <!-- Template Main JS File -->
   <script src="{{ asset('users/assets/js/main.js') }}"></script>
