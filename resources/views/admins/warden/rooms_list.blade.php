@@ -3,11 +3,11 @@
 @section('content')
     
     <div class="pagetitle">
-      <h1>Students List</h1>
+      <h1>Rooms List</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href={{ url('office/index') }}>Home</a></li>
-          <li class="breadcrumb-item">Students List</li>
+          <li class="breadcrumb-item"><a href={{ url('warden/index') }}>Home</a></li>
+          <li class="breadcrumb-item">Rooms List</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -18,19 +18,17 @@
   
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Students</h5>
+              <h5 class="card-title">Rooms</h5>
   
               <!-- Table with stripped rows -->
               <table class="table datatable table-hover">
                 <thead>
                   <tr>
-                    <th>
-                      <b>N</b>ame
-                    </th>
-                    <th>Admission No</th>
-                    <th>City</th>
-                    <th>Year</th>
-                    <th>Hostel</th>
+                    <th>Block</th>
+                    <th>Room No</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>Student</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -41,7 +39,7 @@
                     <td>Curicó</td>
                     <td>2005/02/11</td>
                     <td>MH</td>
-                    <td><a href={{ url('office/student/detail') }} class="btn btn-primary btn-sm">view</a></td>
+                    <td><a href={{ url('warden/student/detail') }} class="btn btn-primary btn-sm">view</a></td>
                   </tr>
                   <tr>
                     <td>Theodore Duran</td>
@@ -49,7 +47,7 @@
                     <td>Dhanbad</td>
                     <td>1999/04/07</td>
                     <td>MH</td>
-                    <td><a href={{ url('office/student/detail') }} class="btn btn-primary btn-sm">view</a></td>
+                    <td><a href={{ url('warden/student/detail') }} class="btn btn-primary btn-sm">view</a></td>
                   </tr>
                   <tr>
                     <td>Kylie Bishop</td>
@@ -57,7 +55,7 @@
                     <td>Norman</td>
                     <td>2005/09/08</td>
                     <td>MH</td>
-                    <td><a href={{ url('office/student/detail') }} class="btn btn-primary btn-sm">view</a></td>
+                    <td><a href={{ url('warden/student/detail') }} class="btn btn-primary btn-sm">view</a></td>
                   </tr>
                   <tr>
                     <td>Willow Gilliam</td>
@@ -65,7 +63,7 @@
                     <td>Amqui</td>
                     <td>2009/29/11</td>
                     <td>MH</td>
-                    <td><a href={{ url('office/student/detail') }} class="btn btn-primary btn-sm">view</a></td>
+                    <td><a href={{ url('warden/student/detail') }} class="btn btn-primary btn-sm">view</a></td>
                   </tr>
                   <tr>
                     <td>Blossom Dickerson</td>
@@ -73,7 +71,7 @@
                     <td>Kempten</td>
                     <td>2006/11/09</td>
                     <td>MH</td>
-                    <td><a href={{ url('office/student/detail') }} class="btn btn-primary btn-sm">view</a></td>
+                    <td><a href={{ url('warden/student/detail') }} class="btn btn-primary btn-sm">view</a></td>
                   </tr>
                 </tbody>
               </table>
