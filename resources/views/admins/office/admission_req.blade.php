@@ -27,9 +27,10 @@
                   <th>
                     <b>N</b>ame
                   </th>
-                  <th>Adnission No</th>
-                  <th>City</th>
+                  <th>Admission No</th>
+                  <th>Department</th>
                   <th data-type="date" data-format="YYYY/DD/MM">Date</th>
+                  <th>Room Id</th>
                   <th></th>
                 </tr>
               </thead>
@@ -37,22 +38,26 @@
                 <tr>
                   <td>Unity Pugh</td>
                   <td>9958</td>
-                  <td>Curicó</td>
+                  <td>Computer Science</td>
                   <td>2005/02/11</td>
+                  <td>001</td>
                   <td><a href={{ url('office/admission/action') }} class="btn btn-primary btn-sm">view</a></td>
+
                 </tr>
                 <tr>
                   <td>Theodore Duran</td>
                   <td>8971</td>
-                  <td>Dhanbad</td>
+                  <td>Statistics</td>
                   <td>1999/04/07</td>
+                  <td>002</td>
                   <td><a href={{ url('office/admission/action') }} class="btn btn-primary btn-sm">view</a></td>
                 </tr>
                 <tr>
                   <td>Kylie Bishop</td>
                   <td>3147</td>
-                  <td>Norman</td>
+                  <td>Maths</td>
                   <td>2005/09/08</td>
+                  <td>003</td>
                   <td><a href={{ url('office/admission/action') }} class="btn btn-primary btn-sm">view</a></td>
                 </tr>
                 <tr>
@@ -60,6 +65,7 @@
                   <td>3497</td>
                   <td>Amqui</td>
                   <td>2009/29/11</td>
+                  <td>004</td>
                   <td><a href={{ url('office/admission/action') }} class="btn btn-primary btn-sm">view</a></td>
                 </tr>
                 <tr>
@@ -67,6 +73,7 @@
                   <td>5018</td>
                   <td>Kempten</td>
                   <td>2006/11/09</td>
+                  <td>005</td>
                   <td><a href={{ url('office/admission/action') }} class="btn btn-primary btn-sm">view</a></td>
                 </tr>
               </tbody>
