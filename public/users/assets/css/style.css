@@ -55,6 +55,9 @@ h6 {
   color: #fff;
   line-height: 0;
 }
+.hi{
+  height: 100vh;
+}
 
 .back-to-top:hover {
   background: #e1444d;
@@ -73,12 +76,12 @@ h6 {
   background: white;
   transition: all 0.5s;
   z-index: 997;
-  padding: 10px 0;
+  padding: 10px 0;/*padding: 15px 0;*/
 }
 
 #header.header-scrolled {
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-  /*padding: 12px 0;*/
+  padding: 12px 0;
 }
 
 #header.header-inner-pages {
@@ -252,7 +255,6 @@ h6 {
 @media (max-width: 991px) {
   .mobile-nav-toggle {
     display: block;
-    font-size: 14px !important;
   }
 
   .navbar ul {
@@ -342,6 +344,7 @@ h6 {
 .navbar-mobile .dropdown>.dropdown-active {
   display: block;
 }
+
 
 /*--------------------------------------------------------------
 # Hero Section
@@ -656,6 +659,7 @@ section {
   font-weight: 500;
   line-height: 32px;
   font-size: 24px;
+  padding-top: 10px;
 }
 
 .about .content ul {
@@ -2197,6 +2201,9 @@ form
 fieldset {
   margin-bottom: 10px;
 }
+/*added*/
+
+/**/
 
 @media (max-width: 900px) {
   .center-log {
@@ -2296,3 +2303,60 @@ fieldset {
         margin: 10px 0; /* Adjust margin as needed */
     }
     
+/*qr*/
+.qr-container {
+  background-color: hsl(0, 0%, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  border-radius: 0.75rem;
+  width: 50%;
+  height: auto;
+}
+.image {
+  max-width: 100%;
+  height: auto;
+
+  border-radius: 0.75rem;
+}
+/*complaint-index*/
+.width-com{
+  height: 100%;
+  padding-top: 20px;
+}
+.border-rad{
+  border-radius: 10px;
+}
+.text-white {
+  color: #ffffff !important;
+}
+/*my complaint*/
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table, .table th, .table td {
+  border: 1px solid #ffffff; /* Border color */
+}
+
+.table th, .table td {
+  /*padding: 8px; /* Adjust padding as needed */
+  text-align: left; /* Adjust alignment as needed */
+}
+.underline{
+  text-decoration: underline;
+}
+/**/
+/*qr*/
+.card-image {
+  width: 100%;
+  height: 100%;  
+  max-width: 90px;
+  max-height: 90px;
+  border: 1px solid black;
+  object-fit:fill; /* try fill,cover,contain for different results*/
+}
+/*qr-end*/
+/*card boder*/

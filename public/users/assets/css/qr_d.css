@@ -1,0 +1,26 @@
+img {
+    width: 100%;
+    align-self: center; /* Add this line */
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+
+@media (orientation: landscape) {
+    img {
+        height: 100%;
+        
+    }
+}
+
+@media (orientation: portrait) {
+    img {
+        width: 100%;
+    }
+}

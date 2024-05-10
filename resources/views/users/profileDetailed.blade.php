@@ -1,4 +1,152 @@
-@charset "UTF-8";
+ 
+ @extends('layout.public_master')
+
+@section('content')
+<!-- Profile 1 - Bootstrap Brain Component -->
+<section class="pt-5 pb-3 py-md-5 py-xl-8 contact sign-sec" id="contact">
+  
+  <div class="container pt-4">
+    <div class="row gy-4 gy-lg-0">
+      <div class="col-12 col-lg-4 col-xl-3 ">
+        <div class="row gy-4">
+          <div class="col-12">
+            <div class="card widget-card border-light shadow-sm">
+              
+              <div class="card-body">
+              
+                <div class="text-center mb-1 pt-2">
+                <h4 class="text-center">Ethan Leo</h4>
+                  <img src="{{ asset('users/assets/img/team/team-3.jpg') }}" class="img-fluid " alt="Luna John">
+                </div>
+                
+                
+                
+               
+              </div>
+            </div>
+          </div>
+          
+          
+          
+        </div>
+      </div>
+      <!--<div class="col-12 col-lg-8 col-xl-9">-->
+      <div class="col-12 col-lg-5 col-xl-9 b-4">
+        <div class="card widget-card border-light shadow-sm">
+          <div class="card-body p-4">
+          
+            <div class="tab-content pt-1" id="profileTabContent">
+              <div class="tab-pane fade show active" id="overview-tab-pane" role="tabpanel" aria-labelledby="overview-tab" tabindex="0">
+                
+                <h5 class="mb-2">Profile Detailes</h5><hr>
+                <div class="row g-0">
+                  <div class="col-5 col-md-4 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Hostel Id</div>
+                  </div>
+                  <div class="col-7 col-md-8 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">MH123</div>
+                  </div>
+                  <div class="col-5 col-md-4 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Admission No</div>
+                  </div>
+                  <div class="col-7 col-md-8 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">THUC10248</div>
+                  </div>
+                  <div class="col-5 col-md-4 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Hostel Name</div>
+                  </div>
+                  <div class="col-7 col-md-8 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">Devatharam</div>
+                  </div>
+                  <div class="col-5 col-md-4 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Room No</div>
+                  </div>
+                  <div class="col-7 col-md-8 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">104</div>
+                  </div>
+                  <div class="col-5 col-md-4 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Bed No</div>
+                  </div>
+                  <div class="col-7 col-md-8 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">2</div>
+                  </div>
+                  <div class="col-5 col-md-4 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Date of Birth</div>
+                  </div>
+                  <div class="col-7 col-md-8 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">01/04/2001</div>
+                  </div>
+                  <div class="col-5 col-md-4 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Course Name</div>
+                  </div>
+                  <div class="col-7 col-md-8 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">M.Sc Computer Science</div>
+                  </div>
+                  <div class="col-5 col-md-4 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Course Duration</div>
+                  </div>
+                  <div class="col-7 col-md-8 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">2nd year</div>
+                  </div>
+                  <div class="col-5 col-md-4 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Mobile No</div>
+                  </div>
+                  <div class="col-7 col-md-8 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">123456789</div>
+                  </div>
+                  <div class="col-5 col-md-4 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Email Id</div>
+                  </div>
+                  <div class="col-7 col-md-8 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">abc123@gmail.com</div>
+                  </div>
+                  <div class="col-5 col-md-4 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Distance from home town to University (kms) </div>
+                  </div>
+                  <div class="col-7 col-md-8 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">58km</div>
+                  </div>
+                  <div class="col-5 col-md-4 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Home Address</div>
+                  </div>
+                  <div class="col-7 col-md-8 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">101 street,palarivattam,thrissur pin code:123456</div>
+                  </div>
+                  <div class="col-5 col-md-4 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Guardian Name</div>
+                  </div>
+                  <div class="col-7 col-md-8 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">Roshan</div>
+                  </div>
+                  
+                  <div class="col-5 col-md-4 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Guardian Mobile No: </div>
+                  </div>
+                  
+                  <div class="col-7 col-md-8 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2 d-flex">995464520</div>
+                  </div>
+                  <div class="col-5 col-md-4 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Guardian Address</div>
+                  </div>
+                  <div class="col-7 col-md-8 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">101 street,palarivattam,thrissur pin code:123456</div>
+                  </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+@push('styles')
+<style>
+ @charset "UTF-8";
 /*!
  * Bootstrap  v5.3.2 (https://getbootstrap.com/)
  * Copyright 2011-2023 The Bootstrap Authors
@@ -350,7 +498,7 @@ sup {
 
 a {
   color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
-  text-decoration: underline;
+  text-decoration: none;
 }
 a:hover {
   --bs-link-color-rgb: var(--bs-link-hover-color-rgb);
@@ -3052,11 +3200,11 @@ textarea.form-control-lg {
 
 .btn-primary {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #0d6efd;
-  --bs-btn-border-color: #0d6efd;
+  --bs-btn-bg: #bd0707;
+  --bs-btn-border-color: #9e0000;
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #0b5ed7;
-  --bs-btn-hover-border-color: #0a58ca;
+  --bs-btn-hover-bg: #da0000;
+  --bs-btn-hover-border-color: #da0000;
   --bs-btn-focus-shadow-rgb: 49, 132, 253;
   --bs-btn-active-color: #fff;
   --bs-btn-active-bg: #0a58ca;
@@ -12066,3 +12214,5 @@ textarea.form-control-lg {
 }
 
 /*# sourceMappingURL=bootstrap.css.map */
+</style>
+@endpush

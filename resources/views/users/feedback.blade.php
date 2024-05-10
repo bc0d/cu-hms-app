@@ -1,161 +1,80 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Notification Page" />
+    <meta name="keywords" content="Frontend Mentor, Notification Page , nehal, Responsive Designs" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+    <title>Notification Page</title>
+    <!-- Linking Stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+        integrity="sha512-CpVOKHzlH5rYo3obHdbT5U5lcv+W4Hkof8K7wOUuk9eQD9HPqG61onA5X0WfwL1cnqYVVo4XgWuSxVR4OlwGtg=="
+        crossorigin="anonymous" />
+    <style>
+        /* Your custom styles here */
+        .notification-container {
+            margin-top: 20px;
+        }
 
-  <title>feedback</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+        .notification {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            background-color: #e7f3ff;
+        }
 
-  <!-- Favicons -->
-  <link href="{{ asset('users/assets/img/favicon.png') }}" rel="icon">
-  <link href="{{ asset('users/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+        .notification-icon img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
 
-  <!-- Vendor CSS Files -->
-  <link href="{{ asset('users/assets/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('users/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('users/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-  <link href="{{ asset('users/assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('users/assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('users/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-  <link href="{{ asset('users/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+        .notification-message {
+            flex: 1;
+        }
 
-  <!-- Template Main CSS File -->
-  <link href="{{ asset('users/assets/css/style.css') }}" rel="stylesheet">
+        .info-message {
+            background-color: #e7f3ff;
+        }
 
-  <!-- =======================================================
-  * Template Name: Sailor
-  * Updated: Jan 29 2024 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/sailor-free-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+        .success-message {
+            background-color: #d4edda;
+        }
+
+        .error-message {
+            background-color: #f8d7da;
+        }
+
+        .warning-message {
+            background-color: #fff3cd;
+        }
+    </style>
 </head>
 
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center">
-    <div class="container d-flex align-items-center">
-
-      <h1 class="logo me-auto"><a href="index.html">Sailor</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-
-          <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="about.html">About</a></li>
-              <li><a href="team.html">Team</a></li>
-              <li><a href="testimonials.html">Testimonials</a></li>
-
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
-          <li><a href="blog.html">Blog</a></li>
-
-          <li><a href="contact.html" class="active">Contact</a></li>
-          <li><a href="index.html" class="getstarted">Get Started</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-    </div>
-  </header><!-- End Header -->
-
-  <main id="main">
-
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact sign-sec">
-      <div class="container plain-border">
-
-        
-        <div class="row mt-2  justify-content-center">
-
-          <div class="col-lg-8 mt-2 mt-lg-0">
-            <h2 class="sign-sec  text-center">Give Your Feedback</h2><hr>
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row ">
-                <div class="form-floating mt-2">
-                  <div class="col mb-3">
-                    <label class="form-label">Rate your hostel experience to help us improve!</label>
+<body class="mx-auto min-h-screen bg-light">
+    <div class="container">
+        <div class="notification-container">
+            <div class="notification">
+                <div class="notification-icon">
                     
-                  </div>
-                  <div class="col-6">
-                    <label class="form-label">Feedback Type</label>
-                  </div>
-                  <div class="col-6">
-                    <select id="select1" class="form-select">
-                      <option value="" selected disabled>Select</option>
-                      <option>hostel facilities</option>
-                      <option>mess facilities</option>
-                      <option>internet facilities</option>
-                      <option>staff and management</option>
-                      <option>suggestion</option>
-                      <option>other</option>
-                    </select>
-                  </div>
-                </div>
-                
-                <div class="form-group mt-3">
-                  <div class="col-6">
-                    <label class="form-label">Your Feedback</label>
-                  </div>
-                    <div class="col">
-                      <textarea class="form-control" name="message" rows="3" placeholder=""></textarea>
-                    </div>
-                  </div>
-                </div>
-              
-              
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Submit</button></div>
-            </form>
-
-          </div>
-
+                    <img src="{{ asset('users/assets/img/team/team-3.jpg') }}" class="rounded-circle" alt="User Image">
+                </div><strong>Gamora</strong>
+                <div class="notification-message info-message text-left">This is an informational notification.</div>
+            </div>
+            <!-- Add more notifications as needed -->
         </div>
+    </div>
 
-      </div>
-    </section><!-- End Contact Section -->
-
-  </main><!-- End #main -->
-  
- 
-  <!-- Vendor JS Files -->
-  <script src="{{ asset('users/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ asset('users/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
-  <script src="{{ asset('users/assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-  <script src="{{ asset('users/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
-  <script src="{{ asset('users/assets/vendor/waypoints/noframework.waypoints.js') }}"></script>
-  <script src="{{ asset('users/assets/vendor/php-email-form/validate.js') }}"></script>
-
-  <!-- Template Main JS File -->
-  <script src="{{ asset('users/assets/js/main.js') }}"></script>
-
-
+    <!-- Linking Bootstrap JS Bundle -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"
+        integrity="sha512-q88hZ9s00PW3E/Wczd/Fo+xD3e8fMVi2HjwCsfzNUKjUMNp/pu4+ts5PtTZ2cNPIHGwKK6ZpqU8md5XOXU4Rqw=="
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
