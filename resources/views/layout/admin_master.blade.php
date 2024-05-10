@@ -28,7 +28,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{{ asset('admins/assets/css/style.css') }}" rel="stylesheet">
-
+  
   
 </head>
 

@@ -1,0 +1,181 @@
+@extends('layout.public_master')
+
+@section('hero')
+
+<section id="hero">
+  <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+    <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+    <div class="carousel-inner" role="listbox">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active" style="background-image: url('{{ asset('users/assets/img/slide/slide-1.jpg') }}')">
+
+
+
+        <div class="carousel-container">
+          <div class="container">
+            <h2 class="animate__animated animate__fadeInDown">CALICUT UNIVERSITY HOSTEL</h2>
+            <p class="animate__animated animate__fadeInUp">In the heart of Calicut University's sprawling campus lies a haven of comfort, camaraderie, and academic excellence. Welcome to our hostels, where memories are made and friendships flourish.</p>Lorem Ipsum
+            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item active" style="background-image: url('{{ asset('users/assets/img/slide/slide-2.jpg') }}')">
+
+
+        <div class="carousel-container">
+          <div class="container">
+            <h2 class="animate__animated animate__fadeInDown">CALICUT UNIVERSITY HOSTEL</h2>
+            <p class="animate__animated animate__fadeInUp">Where every room tells a story, and every corridor echoes with laughter. Welcome to the heart of university life at Calicut University Hostels.</p>
+            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item active" style="background-image: url('{{ asset('users/assets/img/slide/slide-3.jpg') }}')">
+
+        <div class="carousel-container">
+          <div class="container">
+            <h2 class="animate__animated animate__fadeInDown">CALICUT UNIVERSITY HOSTEL</h2>
+            <p class="animate__animated animate__fadeInUp">Welcome to Calicut University Hostels, where diversity is celebrated, friendships are forged, and dreams are nurtured.</p>
+            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+    </a>
+
+    <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+    </a>
+
+  </div>
+</section><!-- End Hero -->
+
+
+@endsection
+
+
+@section('content')
+<!-- ======= About Section ======= -->
+<section id="about" class="about">
+  <div class="container">
+
+    <div class="row content">
+      <div class="col-lg-6">
+        <h2 id="text-size">Calicut University Hostel</h2>
+        <h5>The Calicut University Men's and Women's Hostels are vital parts of the campus, meeting diverse student accommodation needs. They provide safe, conducive living environments, evolving alongside the university. With modern amenities, vibrant atmospheres, and a focus on community, they foster academic focus, personal growth, and friendships, enriching campus life.</h5>
+      </div>
+      <div class="col-lg-6 pt-4 pt-lg-0">
+        <h3 class="text-size pt-3"><strong>Latest Notification</strong></h3>
+        <hr>
+        <ul style="overflow-y: hidden; ">
+          <li style="overflow: hidden; padding-bottom:0px; margin-bottom:0px;">
+            <a href="j.pdf"><span class="greater-than" style="margin-right: 8px;">&gt;</span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+              culpa qui officia deserunt mollit anim id est laborum</a>
+            <p>20/02/2023</p>
+          </li>
+        </ul>
+
+
+      </div>
+      <div class="d-grid m-0 mr-2 mt-1">
+        <!--<button class="btn btn-outline-primary" type="button">more profie</button>-->
+        <a href="{{ url('user/moreprofile') }}" class=" d-flex justify-content-end"><span class="arrow  ">&#8594;</span>More</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+<hr class="pt-1"><!-- End About Section -->
+
+
+<!-- ======= Services Section ======= -->
+<section id="services" class="services">
+  <div class="container">
+
+    <div class="row d-flex ">
+      <div class="col-md-4">
+        <div class="icon-box">
+          <i class="bi bi-calendar4-week"></i>
+          <h4><a href="{{url('user/mess/attendance') }}">attendance viewer</a></h4>
+
+        </div>
+      </div>
+      <div class="col-md-4 mt-4 mt-md-0 ml-2">
+        <div class="icon-box">
+          <i class="bi bi-box-arrow-right"></i>
+          <h4><a href="{{url('user/mess') }}">mess</a></h4>
+
+        </div>
+      </div>
+      <div class="col-md-4 mt-4 mt-md-0">
+        <div class="icon-box">
+          <i class="bi bi-bank"></i>
+          <h4><a href="{{ url('user/room') }}">room</a></h4>
+
+        </div>
+      </div>
+
+      <div class="col-md-4 mt-4 mt-md-0">
+        <div class="icon-box">
+          <i class="bi bi-arrow-repeat"></i>
+          <h4><a href="{{ url('user/room-change') }}">room change</a></h4>
+
+        </div>
+      </div>
+      <div class="col-md-4 mt-4 mt-md-0">
+        <div class="icon-box">
+          <i class="bi bi-exclamation-triangle"></i>
+          <h4><a href="{{ url('user/notice') }}">notice</a></h4>
+
+        </div>
+      </div>
+
+      <div class="col-md-4 mt-4 mt-md-0">
+        <div class="icon-box">
+          <i class="bi bi-info-circle"></i>
+          <h4><a href="{{ url('user/fee-pending-status') }}">fee pending status</a></h4>
+
+        </div>
+      </div>
+      <div class="col-md-4 mt-4 mt-md-0">
+        <div class="icon-box">
+          <i class="bi bi-exclamation-octagon"></i>
+          <h4><a href="{{ url('user/complaints') }}">complaints</a></h4>
+
+        </div>
+      </div>
+      <div class="col-md-4 mt-4 mt-md-0">
+        <div class="icon-box">
+          <i class="bi bi-chat-dots"></i>
+          <h4><a href="{{ url('user/feedback') }}">feedback</a></h4>
+
+        </div>
+      </div>
+
+      <!--
+          <div class="col-md-4 mt-4 mt-md-0">
+            <div class="icon-box">
+              <i class="bi bi-calendar4-week"></i>
+              <h4><a href="">feedback</a></h4>
+              
+            </div>
+          </div>
+-->
+    </div>
+
+  </div>
+</section><!-- End Services Section -->
+
+@endsection
