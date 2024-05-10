@@ -17,6 +17,16 @@ use App\Http\Controllers\Office\RuleAndNoticeController;
 /*mess controllers */
 
 
+
+use App\Http\Controllers\Warden\WardenComplaintsController;
+use App\Http\Controllers\Warden\WardenStudentDetailsController;
+use App\Http\Controllers\warden\HostelAdmissionWardenController;
+use App\Http\Controllers\warden\HostelVacateWardenController;
+use App\Http\Controllers\warden\WardenFeeAndPaymentController;
+use App\Http\Controllers\warden\WardenRoomDetailsController;
+use App\Http\Controllers\warden\WardenRuleAndNoticeController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -277,9 +287,9 @@ Route::prefix('office')->group(function () {
     //student card
     Route::prefix('student')->group(function () {
         
-        Route::get('card', [StudentDetailsController::class, 'showCard']);
-        Route::get('list', [StudentDetailsController::class, 'showList']);
-        Route::get('detail', [StudentDetailsController::class, 'showDetails']);
+        Route::get('card', [WardenStudentDetailsController::class, 'showCard']);
+        Route::get('list', [WardenStudentDetailsController::class, 'showList']);
+        Route::get('detail', [WardenStudentDetailsController::class, 'showDetails']);
     });
 
     //rooms details card
@@ -356,8 +366,71 @@ Route::prefix('office')->group(function () {
 
 
 
+/*
+---------------------warden-----------------------
+*/
 
+Route::prefix('warden')->group(function() {
+    //dashboard
+    Route::get('index', function() {
+        return view('admins.warden.dashboard');
+    });
 
+    //student card
+    Route::prefix('student')->group(function () {
+        
+        Route::get('card', [WardenStudentDetailsController::class, 'showCard']);
+        Route::get('list', [WardenStudentDetailsController::class, 'showList']);
+        Route::get('detail', [WardenStudentDetailsController::class, 'showDetails']);
+    });
+    
+    //admission card
+    Route::prefix('admission')->group(function () {
 
+        Route::get('request', [HostelAdmissionWardenController::class, 'showRequests']);
+        Route::get('action', [HostelAdmissionWardenController::class, 'admissionAction']);
+        
+    });
 
+    //vacating card
+    Route::prefix('vacate')->group(function () {
+        
+        Route::get('request', [HostelVacateWardenController::class, 'showRequests']);
+        Route::get('action', [HostelVacateWardenController::class, 'vacateAction']);
 
+    });
+
+    //rooms details card
+    Route::prefix('room-details')->group(function () {
+
+        Route::get('card', [WardenRoomDetailsController::class, 'showCard']);
+        Route::get('list', [WardenRoomDetailsController::class, 'roomDetails']);
+
+    });
+
+    //fee card
+    Route::prefix('fee')->group(function () {
+
+        Route::get('card', [WardenFeeAndPaymentController::class, 'showCard']);
+        Route::get('room-rent', [WardenFeeAndPaymentController::class, 'roomRentDetails']);
+
+        //fee maintanance
+        Route::get('maintanance', [WardenFeeAndPaymentController::class, 'feeMaintanance']);
+        Route::get('updation', [WardenFeeAndPaymentController::class, 'feeUpdate']);
+
+    });
+
+    //rules and notice card
+    Route::prefix('rules')->group(function () {
+
+        Route::get('card', [WardenRuleAndNoticeController::class, 'showCard']);
+        Route::get('rule-list', [WardenRuleAndNoticeController::class, 'viewRules']);
+        Route::get('rule-add', [WardenRuleAndNoticeController::class, 'addRule']);
+        Route::get('notice-list',[WardenRuleAndNoticeController::class, 'viewNotices']);
+        Route::get('notice-add',[WardenRuleAndNoticeController::class, 'addNotice']);
+    });
+
+    //Complaints registry
+    Route::get('complaints', [WardenComplaintsController::class, 'showComplaints']);
+
+});
