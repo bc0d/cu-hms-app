@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+
+use App\Http\Controllers\Users\UserController;
+
 use App\Http\Controllers\Office\StudentDetailsController;
 use App\Http\Controllers\Office\HostelAdmissionOfficeController;
 use App\Http\Controllers\Office\HostelVacateOfficeController;
@@ -11,6 +14,18 @@ use App\Http\Controllers\Office\RoomDetailsController;
 use App\Http\Controllers\Office\ComplaintsController;
 use App\Http\Controllers\Office\FeeAndPaymentController;
 use App\Http\Controllers\Office\RuleAndNoticeController;
+/*mess controllers */
+
+
+
+use App\Http\Controllers\Warden\WardenComplaintsController;
+use App\Http\Controllers\Warden\WardenStudentDetailsController;
+use App\Http\Controllers\warden\HostelAdmissionWardenController;
+use App\Http\Controllers\warden\HostelVacateWardenController;
+use App\Http\Controllers\warden\WardenFeeAndPaymentController;
+use App\Http\Controllers\warden\WardenRoomDetailsController;
+use App\Http\Controllers\warden\WardenRuleAndNoticeController;
+
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
@@ -54,11 +69,187 @@ Route::middleware(['auth:students'])->prefix('user')->group(function() {
 
 
 
+Route::prefix('user')->group(function () {
+    //index
+    Route::get('index', function () {
+        return view('users.index');
+    });
+    //profile
+    Route::get('profile', function() {
+        return view('users.profile');
+    });
+    //Detailed profile
+    Route::get('moreprofile',function(){
+        return view('users.profileDetailed');
+    });
+    //password rest
+    Route::get('password-reset',function(){
+        return view('users.password_reset');
+    });
+
+    //qr
+    Route::get('my-qr',function(){
+        return view('users.qr');
+    });
+
+    //complaint
+    Route::prefix('complaints')->group(function () {
+        //complaint-index
+        Route::get('/',function(){
+            return view('users.complaints_index');
+        });
+        
+
+        //complaint register
+        Route::get('register',function(){
+            return view('users.complaint_register');
+        });
+
+        //my-complaint
+        Route::get('my-complaints',function(){
+            return view('users.complaints_my');
+        });
+         
+    //end of complaint
+    });
+
+    //notice board
+
+    //mess
+    Route::prefix('mess')->group(function () {
+        //complaint-index
+        Route::get('/',function(){
+            return view('users.mess_index');
+        });
+
+        //mess attendance
+        Route::get('attendance',function(){
+            return view('users.attendance');
+        });
+        
+
+        //mess-in-out
+        Route::get('in-out',function(){
+            return view('users.mess_in_out');
+        });
+
+        //messbill
+        Route::get('bill',function(){
+            return view('users.mess_bill');
+        });
+
+        //mess-payment
+        Route::get('payment',function(){
+            return view('users.mess_payment');
+        });
+
+        
+    //end of mess   
+    
+    });
+    //start of room
+    Route::prefix('room')->group(function () {
+        //complaint-index
+        Route::get('/',function(){
+            return view('users.room_index');
+        });
+    
+        //room rent
+        Route::prefix('room-rent')->group(function () {
+            Route::get('/',function(){
+                return view('users.room_rent');
+            });
+            Route::get('payment',function(){
+                return view('users.room_rent_payment');
+            });
+            Route::get('status',function(){
+                return view('users.room_rent_status');
+            });
+        });
+        
+        
+        //other-bill-room
+        Route::get('other-bill',function(){
+            return view('users.room_other_bill');
+        }); 
+        
+    });//end of room
+
+    //room change
+    Route::get('room-change',function(){
+        return view('users.room_change');
+    }); 
+    //notice
+    Route::get('notice',function(){
+        return view('users.notice');
+    });
+    //fee-pending-status
+    Route::get('fee-pending-status',function(){
+        return view('users.fee_pending_status');
+    });
+    //feedback
+    Route::prefix('feedback')->group(function () {
+        
+        Route::get('/',function(){
+            return view('users.feedback_index');
+        });
+        //give feedback
+        Route::get('give-feedback',function(){
+            return view('users.feedback_give');
+        });
+    });
+       
+    //notification
+    Route::get('notification',function(){
+        return view('users.notification');
+    }); 
+    Route::get('test',function(){
+        return view('users.feeed');
+    }); 
+//end of user
+}); 
+
+
+/*
+
+//mess bill and roomrent payment
+Route::prefix('user/payment')->group(function () {
+    Route::get('',function(){
+        return view('users.paymentlink');
+    })->name('paymentlink');
+    Route::get('paymentlink',function(){
+        return view('users.paymentlink');
+    })->name('paymentlink');
+    
+    
+    //mess bill calculate and pay
+  
+});
+*/
+
+
+
+
+ 
+
+
+Route::get('feedback',function(){
+    return view('users.feedback');
+});
+
+
+
+
+
+
+
+
 
 
 
 Route::get('admin-login', function() {
     return view('login');
+
 });
 
 
@@ -184,5 +375,71 @@ Route::prefix('office')->group(function () {
 
 
 
+/*
+---------------------warden-----------------------
+*/
 
+Route::prefix('warden')->group(function() {
+    //dashboard
+    Route::get('index', function() {
+        return view('admins.warden.dashboard');
+    });
 
+    //student card
+    Route::prefix('student')->group(function () {
+        
+        Route::get('card', [WardenStudentDetailsController::class, 'showCard']);
+        Route::get('list', [WardenStudentDetailsController::class, 'showList']);
+        Route::get('detail', [WardenStudentDetailsController::class, 'showDetails']);
+    });
+    
+    //admission card
+    Route::prefix('admission')->group(function () {
+
+        Route::get('request', [HostelAdmissionWardenController::class, 'showRequests']);
+        Route::get('action', [HostelAdmissionWardenController::class, 'admissionAction']);
+        
+    });
+
+    //vacating card
+    Route::prefix('vacate')->group(function () {
+        
+        Route::get('request', [HostelVacateWardenController::class, 'showRequests']);
+        Route::get('action', [HostelVacateWardenController::class, 'vacateAction']);
+
+    });
+
+    //rooms details card
+    Route::prefix('room-details')->group(function () {
+
+        Route::get('card', [WardenRoomDetailsController::class, 'showCard']);
+        Route::get('list', [WardenRoomDetailsController::class, 'roomDetails']);
+
+    });
+
+    //fee card
+    Route::prefix('fee')->group(function () {
+
+        Route::get('card', [WardenFeeAndPaymentController::class, 'showCard']);
+        Route::get('room-rent', [WardenFeeAndPaymentController::class, 'roomRentDetails']);
+
+        //fee maintanance
+        Route::get('maintanance', [WardenFeeAndPaymentController::class, 'feeMaintanance']);
+        Route::get('updation', [WardenFeeAndPaymentController::class, 'feeUpdate']);
+
+    });
+
+    //rules and notice card
+    Route::prefix('rules')->group(function () {
+
+        Route::get('card', [WardenRuleAndNoticeController::class, 'showCard']);
+        Route::get('rule-list', [WardenRuleAndNoticeController::class, 'viewRules']);
+        Route::get('rule-add', [WardenRuleAndNoticeController::class, 'addRule']);
+        Route::get('notice-list',[WardenRuleAndNoticeController::class, 'viewNotices']);
+        Route::get('notice-add',[WardenRuleAndNoticeController::class, 'addNotice']);
+    });
+
+    //Complaints registry
+    Route::get('complaints', [WardenComplaintsController::class, 'showComplaints']);
+
+});

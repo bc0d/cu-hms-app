@@ -55,6 +55,9 @@ h6 {
   color: #fff;
   line-height: 0;
 }
+.hi{
+  height: 100vh;
+}
 
 .back-to-top:hover {
   background: #e1444d;
@@ -73,7 +76,7 @@ h6 {
   background: white;
   transition: all 0.5s;
   z-index: 997;
-  padding: 20px 0;
+  padding: 10px 0;/*padding: 15px 0;*/
 }
 
 #header.header-scrolled {
@@ -342,6 +345,7 @@ h6 {
   display: block;
 }
 
+
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
@@ -502,9 +506,23 @@ h6 {
 
 @media (max-width: 768px) {
   #hero h2 {
-    font-size: 28px;
+    font-size: 28px !important;
+    
   }
 }
+@media (max-width: 339px) {
+  #hero h2 {
+    font-size: 28px !important;
+    
+  }
+}
+@media (max-width: 264px) {
+  #text-size {
+    font-size: 28px !important;
+  }
+}
+
+
 
 @media (min-width: 1024px) {
 
@@ -524,7 +542,7 @@ h6 {
 # Sections General
 --------------------------------------------------------------*/
 section {
-  padding: 60px 0;
+  /*padding: 60px 0;*/
   overflow: hidden;
 }
 
@@ -631,7 +649,7 @@ section {
 --------------------------------------------------------------*/
 .about .content h2 {
   font-weight: 700;
-  font-size: 48px;
+  font-size: 45px;
   line-height: 60px;
   margin-bottom: 20px;
   text-transform: uppercase;
@@ -641,6 +659,7 @@ section {
   font-weight: 500;
   line-height: 32px;
   font-size: 24px;
+  padding-top: 10px;
 }
 
 .about .content ul {
@@ -711,6 +730,7 @@ section {
   margin-left: 70px;
   font-weight: 700;
   margin-bottom: 15px;
+  margin-top: 20px;
   font-size: 18px;
 }
 
@@ -856,7 +876,7 @@ section {
 # Portfolio Details
 --------------------------------------------------------------*/
 .portfolio-details {
-  padding-top: 40px;
+  padding-top: 45px;
 }
 
 .portfolio-details .portfolio-details-slider img {
@@ -934,13 +954,7 @@ section {
   border-radius: 4px;
 }
 
-.team .member .pic img {
-  transition: ease-in-out 0.3s;
-}
 
-.team .member:hover img {
-  transform: scale(1.1);
-}
 
 .team .member .member-info {
   padding-left: 30px;
@@ -1315,6 +1329,7 @@ section {
 .contact .info {
   width: 100%;
   background: #fff;
+  
 }
 
 .contact .info i {
@@ -2186,6 +2201,9 @@ form
 fieldset {
   margin-bottom: 10px;
 }
+/*added*/
+
+/**/
 
 @media (max-width: 900px) {
   .center-log {
@@ -2193,7 +2211,7 @@ fieldset {
   }
 
   .center-sign {
-    padding: 10;
+    padding: 10px;
     
   }
   .sign-sec {
@@ -2204,4 +2222,141 @@ fieldset {
 }
 
 
+/* profile  */
+.profile-bg{
+  background-color:rgb(165, 70, 70);
+  color: white;
+}
+.profileall-bg{
+  background-color:rgb(143, 101, 92);
+  
+}
+@media (min-width: 576px) {
+  .text-16px-dynamic {
+    font-size: calc(1rem + 0.25vw);
+  }
+}
 
+@media (min-width: 768px) {
+  .text-16px-dynamic {
+    font-size: calc(1rem + 0.5vw);
+  }
+}
+
+@media (min-width: 992px) {
+  .text-16px-dynamic {
+    font-size: calc(1rem + 0.75vw);
+  }
+}
+
+@media (min-width: 1200px) {
+  .text-16px-dynamic {
+    font-size: calc(1rem + 1vw);
+  }
+}
+
+.card-body {
+  padding: 0 20px 20px 20px;
+}
+.card {
+  margin-bottom: 30px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+}
+/*profile detialed*/
+.prof{
+  width:250px;
+  height: 200px;
+  
+}
+.hie{
+  height: 50px;
+  width: 250px;
+}
+/*end*/
+/*testing*/
+#div1{
+  padding: 1rem;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius:25px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius:0px;
+}
+#div2{
+  padding: 5px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius:25px;
+  
+}
+/*end*/
+.btn-primary{
+  background-color:black ;
+}
+.btn-secondary{
+  background-color:#dc3545;;
+}
+/*feedback*/
+.plain-border {
+        border-top: 5px solid #423a3a; /* Adjust color as needed */
+        width: 100%; /* Ensures it spans the full width of its container */
+        margin: 10px 0; /* Adjust margin as needed */
+    }
+    
+/*qr*/
+.qr-container {
+  background-color: hsl(0, 0%, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  border-radius: 0.75rem;
+  width: 50%;
+  height: auto;
+}
+.image {
+  max-width: 100%;
+  height: auto;
+
+  border-radius: 0.75rem;
+}
+/*complaint-index*/
+.width-com{
+  height: 100%;
+  padding-top: 20px;
+}
+.border-rad{
+  border-radius: 10px;
+}
+.text-white {
+  color: #ffffff !important;
+}
+/*my complaint*/
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table, .table th, .table td {
+  border: 1px solid #ffffff; /* Border color */
+}
+
+.table th, .table td {
+  /*padding: 8px; /* Adjust padding as needed */
+  text-align: left; /* Adjust alignment as needed */
+}
+.underline{
+  text-decoration: underline;
+}
+/**/
+/*qr*/
+.card-image {
+  width: 100%;
+  height: 100%;  
+  max-width: 90px;
+  max-height: 90px;
+  border: 1px solid black;
+  object-fit:fill; /* try fill,cover,contain for different results*/
+}
+/*qr-end*/
+/*card boder*/
