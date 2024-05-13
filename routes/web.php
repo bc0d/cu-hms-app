@@ -287,9 +287,9 @@ Route::prefix('office')->group(function () {
     //student card
     Route::prefix('student')->group(function () {
         
-        Route::get('card', [WardenStudentDetailsController::class, 'showCard']);
-        Route::get('list', [WardenStudentDetailsController::class, 'showList']);
-        Route::get('detail', [WardenStudentDetailsController::class, 'showDetails']);
+        Route::get('card', [StudentDetailsController::class, 'showCard']);
+        Route::get('list', [StudentDetailsController::class, 'showList']);
+        Route::get('detail', [StudentDetailsController::class, 'showDetails']);
     });
 
     //rooms details card
