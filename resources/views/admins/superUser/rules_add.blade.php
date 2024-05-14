@@ -6,7 +6,7 @@
       <h1>Rule Add</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href={{ url('office/index') }}>Home</a></li>
+          <li class="breadcrumb-item"><a href={{ url('super-user/index') }}>Home</a></li>
           <li class="breadcrumb-item">Rules&amp;Notice</li>
           <li class="breadcrumb-item">Rules</li>
           <li class="breadcrumb-item active">Rules Add</li>

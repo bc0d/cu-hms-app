@@ -3,7 +3,17 @@
 use Illuminate\Support\Facades\Route;
 
 
-use App\Http\Controllers\Users\UserController;
+
+
+use App\Http\Controllers\SuperUser\StudentDetailsAdminController;
+use App\Http\Controllers\SuperUser\HostelAdmissionAdminController;
+use App\Http\Controllers\SuperUser\HostelVacateAdminController;
+use App\Http\Controllers\SuperUser\RoomAllocationAdminController;
+use App\Http\Controllers\SuperUser\RoomChangeAdminController;
+use App\Http\Controllers\SuperUser\RoomDetailsAdminController;
+use App\Http\Controllers\SuperUser\ComplaintsAdminController;
+use App\Http\Controllers\SuperUser\FeeAndPaymentAdminController;
+use App\Http\Controllers\SuperUser\RuleAndNoticeAdminController;
 
 use App\Http\Controllers\Office\StudentDetailsController;
 use App\Http\Controllers\Office\HostelAdmissionOfficeController;
@@ -451,28 +461,28 @@ Route::prefix('super-user')->group(function () {
     //student card
     Route::prefix('student')->group(function () {
         
-        Route::get('card', [WardenStudentDetailsController::class, 'showCard']);
-        Route::get('list', [WardenStudentDetailsController::class, 'showList']);
-        Route::get('detail', [WardenStudentDetailsController::class, 'showDetails']);
+        Route::get('card', [StudentDetailsAdminController::class, 'showCard']);
+        Route::get('list', [StudentDetailsAdminController::class, 'showList']);
+        Route::get('detail', [StudentDetailsAdminController::class, 'showDetails']);
     });
 
     //rooms details card
     Route::prefix('room-details')->group(function () {
 
-        Route::get('card', [RoomDetailsController::class, 'showCard']);
-        Route::get('list', [RoomDetailsController::class, 'roomDetails']);
+        Route::get('card', [RoomDetailsAdminController::class, 'showCard']);
+        Route::get('list', [RoomDetailsAdminController::class, 'roomDetails']);
 
     });
     
 
     //Complaints
-    Route::get('complaints', [ComplaintsController::class, 'showComplaints']);
+    Route::get('complaints', [ComplaintsAdminController::class, 'showComplaints']);
 
     //admission card
     Route::prefix('admission')->group(function () {
 
-        Route::get('request', [HostelAdmissionOfficeController::class, 'showRequests']);
-        Route::get('action', [HostelAdmissionOfficeController::class, 'admissionAction']);
+        Route::get('request', [HostelAdmissionAdminController::class, 'showRequests']);
+        Route::get('action', [HostelAdmissionAdminController::class, 'admissionAction']);
         
     });
 
@@ -480,8 +490,8 @@ Route::prefix('super-user')->group(function () {
     //room allocation
     Route::prefix('room')->group(function () {
 
-        Route::get('allocation-list', [RoomAllocationController::class, 'showRoomAllocList']);
-        Route::get('allocation', [RoomAllocationController::class, 'roomAllocAction']);
+        Route::get('allocation-list', [RoomAllocationAdminController::class, 'showRoomAllocList']);
+        Route::get('allocation', [RoomAllocationAdminController::class, 'roomAllocAction']);
 
     });
     
@@ -490,8 +500,8 @@ Route::prefix('super-user')->group(function () {
     Route::prefix('room-change')->group(function () {
 
 
-        Route::get('request', [RoomChangeController::class, 'showRoomChangeReq']);
-        Route::get('action', [RoomChangeController::class, 'roomChangeAction']);
+        Route::get('request', [RoomChangeAdminController::class, 'showRoomChangeReq']);
+        Route::get('action', [RoomChangeAdminController::class, 'roomChangeAction']);
 
     });
     
@@ -499,8 +509,8 @@ Route::prefix('super-user')->group(function () {
     //vacating card
     Route::prefix('vacate')->group(function () {
         
-        Route::get('request', [HostelVacateOfficeController::class, 'showRequests']);
-        Route::get('action', [HostelVacateOfficeController::class, 'vacateAction']);
+        Route::get('request', [HostelVacateAdminController::class, 'showRequests']);
+        Route::get('action', [HostelVacateAdminController::class, 'vacateAction']);
 
     });
     
@@ -508,21 +518,21 @@ Route::prefix('super-user')->group(function () {
     //fee card
     Route::prefix('fee')->group(function () {
 
-        Route::get('card', [FeeAndPaymentController::class, 'showCard']);
-        Route::get('room-rent', [FeeAndPaymentController::class, 'roomRentDetails']);
+        Route::get('card', [FeeAndPaymentAdminController::class, 'showCard']);
+        Route::get('room-rent', [FeeAndPaymentAdminController::class, 'roomRentDetails']);
 
         //fee maintanance
-        Route::get('maintanance', [FeeAndPaymentController::class, 'feeMaintanance']);
-        Route::get('updation', [FeeAndPaymentController::class, 'feeUpdate']);
+        Route::get('maintanance', [FeeAndPaymentAdminController::class, 'feeMaintanance']);
+        Route::get('updation', [FeeAndPaymentAdminController::class, 'feeUpdate']);
 
     });
 
     //rules and notice card
     Route::prefix('rules')->group(function () {
 
-        Route::get('card', [RuleAndNoticeController::class, 'showCard']);
-        Route::get('rule-list', [RuleAndNoticeController::class, 'viewRules']);
-        Route::get('rule-add', [RuleAndNoticeController::class, 'addRule']);
+        Route::get('card', [RuleAndNoticeAdminController::class, 'showCard']);
+        Route::get('rule-list', [RuleAndNoticeAdminController::class, 'viewRules']);
+        Route::get('rule-add', [RuleAndNoticeAdminController::class, 'addRule']);
     });
     
 

@@ -6,7 +6,7 @@
     <h1>Admission Requests</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href={{ url('office/index')}}>Home</a></li>
+        <li class="breadcrumb-item"><a href={{ url('super-user/index')}}>Home</a></li>
         <li class="breadcrumb-item active">Admission Requests</li>
       </ol>
     </nav>
@@ -41,7 +41,7 @@
                   <td>Computer Science</td>
                   <td>2005/02/11</td>
                   <td>001</td>
-                  <td><a href={{ url('office/admission/action') }} class="btn btn-primary btn-sm">view</a></td>
+                  <td><a href={{ url('super-user/admission/action') }} class="btn btn-primary btn-sm">view</a></td>
 
                 </tr>
                 <tr>
@@ -50,7 +50,7 @@
                   <td>Statistics</td>
                   <td>1999/04/07</td>
                   <td>002</td>
-                  <td><a href={{ url('office/admission/action') }} class="btn btn-primary btn-sm">view</a></td>
+                  <td><a href={{ url('super-user/admission/action') }} class="btn btn-primary btn-sm">view</a></td>
                 </tr>
                 <tr>
                   <td>Kylie Bishop</td>
@@ -58,7 +58,7 @@
                   <td>Maths</td>
                   <td>2005/09/08</td>
                   <td>003</td>
-                  <td><a href={{ url('office/admission/action') }} class="btn btn-primary btn-sm">view</a></td>
+                  <td><a href={{ url('super-user/admission/action') }} class="btn btn-primary btn-sm">view</a></td>
                 </tr>
                 <tr>
                   <td>Willow Gilliam</td>
@@ -66,7 +66,7 @@
                   <td>Amqui</td>
                   <td>2009/29/11</td>
                   <td>004</td>
-                  <td><a href={{ url('office/admission/action') }} class="btn btn-primary btn-sm">view</a></td>
+                  <td><a href={{ url('super-user/admission/action') }} class="btn btn-primary btn-sm">view</a></td>
                 </tr>
                 <tr>
                   <td>Blossom Dickerson</td>
@@ -74,7 +74,7 @@
                   <td>Kempten</td>
                   <td>2006/11/09</td>
                   <td>005</td>
-                  <td><a href={{ url('office/admission/action') }} class="btn btn-primary btn-sm">view</a></td>
+                  <td><a href={{ url('super-user/admission/action') }} class="btn btn-primary btn-sm">view</a></td>
                 </tr>
               </tbody>
             </table>

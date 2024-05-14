@@ -6,7 +6,7 @@
         <h1>Rules</h1>
         <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href={{ url('office/index')}}>Home</a></li>
+            <li class="breadcrumb-item"><a href={{ url('super-user/index')}}>Home</a></li>
             <li class="breadcrumb-item">Rules&amp;Notice</li>
             <li class="breadcrumb-item active">Rules</li>
         </ol>
@@ -19,7 +19,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Rules</h5>
-                    <a href={{ url('office/rules/rule-add') }} class="btn btn-success btn-sm mb-3">Add New</a>
+                    <a href={{ url('super-user/rules/rule-add') }} class="btn btn-success btn-sm mb-3">Add New</a>
                     <!-- List group with Advanced Contents -->
                     <div class="list-group">
                         <div class="list-group-item list-group-item-action " aria-current="true">

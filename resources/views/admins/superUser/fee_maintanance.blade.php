@@ -6,7 +6,7 @@
     <h1>Fee Maintanance</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href={{ url('office/index')}}>Home</a></li>
+        <li class="breadcrumb-item"><a href={{ url('super-user/index')}}>Home</a></li>
         <li class="breadcrumb-item active"> Fee Maintanance</li>
       </ol>
     </nav>
@@ -37,7 +37,7 @@
                     <td>Brandon Jacob</td>
                     <td>Designer</td>
                     <td>2009/29/11</td>
-                    <td><a href={{ url('office/fee/updation') }} class="btn btn-primary btn-sm">Update</a></td>
+                    <td><a href={{ url('super-user/fee/updation') }} class="btn btn-primary btn-sm">Update</a></td>
                     
                   </tr>
                   <tr>
@@ -45,7 +45,7 @@
                     <td>Bridie Kessler</td>
                     <td>Developer</td>
                     <td>2009/29/11</td>
-                    <td><a href={{ url('office/fee/updation') }} class="btn btn-primary btn-sm">Update</a></td>
+                    <td><a href={{ url('super-user/fee/updation') }} class="btn btn-primary btn-sm">Update</a></td>
                     
                   </tr>
                   <tr>
@@ -53,7 +53,7 @@
                     <td>Ashleigh Langosh</td>
                     <td>Finance</td>
                     <td>2009/29/11</td>
-                    <td><a href={{ url('office/fee/updation') }} class="btn btn-primary btn-sm">Update</a></td>
+                    <td><a href={{ url('super-user/fee/updation') }} class="btn btn-primary btn-sm">Update</a></td>
                     
                   </tr>
                   <tr>
@@ -61,15 +61,15 @@
                     <td>Angus Grady</td>
                     <td>HR</td>
                     <td>2009/29/11</td>
-                    <td><a href={{ url('office/fee/updation') }} class="btn btn-primary btn-sm">Update</a></td>
+                    <td><a href={{ url('super-user/fee/updation') }} class="btn btn-primary btn-sm">Update</a></td>
                     
                   </tr>
                   <tr>
                     <th scope="row">5</th>
                     <td>Raheem Lehner</td>
-                    <td>Dynamic Division Officer</td>
+                    <td>Dynamic Division super-userr</td>
                     <td>2009/29/11</td>
-                    <td><a href={{ url('office/fee/updation') }} class="btn btn-primary btn-sm">Update</a></td>
+                    <td><a href={{ url('super-user/fee/updation') }} class="btn btn-primary btn-sm">Update</a></td>
                     
                   </tr>
                 </tbody>
