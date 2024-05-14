@@ -27,6 +27,11 @@ use App\Http\Controllers\warden\WardenRoomDetailsController;
 use App\Http\Controllers\warden\WardenRuleAndNoticeController;
 
 
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,25 +44,29 @@ use App\Http\Controllers\warden\WardenRuleAndNoticeController;
 */
 
 
-Route::get('/', function () {
-    return view('index');
-});
 
-Route::get('user-login', function () {
-    return view('users.login');
-});
 
-Route::get('user-signup', function () {
-    return view('users.signup_basic');
-});
+Route::get('user-login', [LoginController::class, 'showStudentLogin']);
+Route::post('user-login', [LoginController::class, 'studentLogin'])->name('login');
 
-Route::get('user-signup-dtls', function () {
-    return view('users.signup_details');
-});
+Route::get('user-signup', [RegisterController::class, 'signupPageFirst']);
+
+Route::post('signup/step1', [RegisterController::class, 'signupStep1'])->name('signupstep1');
+
+Route::get('user-signup-dtls', [RegisterController::class, 'signupPageFinal']);
+
+Route::post('signup/step2', [RegisterController::class, 'signupStep2'])->name('signupstep2');
 
 Route::get('user-mail-confirm', function() {
     return view('users.mailconfirm');
 });
+
+Route::middleware(['auth:students'])->prefix('user')->group(function() {
+    Route::get('dashboard', function() {
+        return view('index');
+    })->name('dashboard');
+});
+
 
 
 Route::prefix('user')->group(function () {
