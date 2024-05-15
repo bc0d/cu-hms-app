@@ -3,7 +3,17 @@
 use Illuminate\Support\Facades\Route;
 
 
-use App\Http\Controllers\Users\UserController;
+
+
+use App\Http\Controllers\SuperUser\StudentDetailsAdminController;
+use App\Http\Controllers\SuperUser\HostelAdmissionAdminController;
+use App\Http\Controllers\SuperUser\HostelVacateAdminController;
+use App\Http\Controllers\SuperUser\RoomAllocationAdminController;
+use App\Http\Controllers\SuperUser\RoomChangeAdminController;
+use App\Http\Controllers\SuperUser\RoomDetailsAdminController;
+use App\Http\Controllers\SuperUser\ComplaintsAdminController;
+use App\Http\Controllers\SuperUser\FeeAndPaymentAdminController;
+use App\Http\Controllers\SuperUser\RuleAndNoticeAdminController;
 
 use App\Http\Controllers\Office\StudentDetailsController;
 use App\Http\Controllers\Office\HostelAdmissionOfficeController;
@@ -441,5 +451,98 @@ Route::prefix('warden')->group(function() {
 
     //Complaints registry
     Route::get('complaints', [WardenComplaintsController::class, 'showComplaints']);
+
+});
+
+
+
+/* 
+----------------Superuser staff-----------------------
+*/
+
+Route::prefix('super-user')->group(function () {
+
+    //index
+    Route::get('index', function() {
+        return view('admins.superUser.dashboard');
+    });
+
+    //student card
+    Route::prefix('student')->group(function () {
+        
+        Route::get('card', [StudentDetailsAdminController::class, 'showCard']);
+        Route::get('list', [StudentDetailsAdminController::class, 'showList']);
+        Route::get('detail', [StudentDetailsAdminController::class, 'showDetails']);
+    });
+
+    //rooms details card
+    Route::prefix('room-details')->group(function () {
+
+        Route::get('card', [RoomDetailsAdminController::class, 'showCard']);
+        Route::get('list', [RoomDetailsAdminController::class, 'roomDetails']);
+
+    });
+    
+
+    //Complaints
+    Route::get('complaints', [ComplaintsAdminController::class, 'showComplaints']);
+
+    //admission card
+    Route::prefix('admission')->group(function () {
+
+        Route::get('request', [HostelAdmissionAdminController::class, 'showRequests']);
+        Route::get('action', [HostelAdmissionAdminController::class, 'admissionAction']);
+        
+    });
+
+
+    //room allocation
+    Route::prefix('room')->group(function () {
+
+        Route::get('allocation-list', [RoomAllocationAdminController::class, 'showRoomAllocList']);
+        Route::get('allocation', [RoomAllocationAdminController::class, 'roomAllocAction']);
+
+    });
+    
+
+    //room channge card
+    Route::prefix('room-change')->group(function () {
+
+
+        Route::get('request', [RoomChangeAdminController::class, 'showRoomChangeReq']);
+        Route::get('action', [RoomChangeAdminController::class, 'roomChangeAction']);
+
+    });
+    
+
+    //vacating card
+    Route::prefix('vacate')->group(function () {
+        
+        Route::get('request', [HostelVacateAdminController::class, 'showRequests']);
+        Route::get('action', [HostelVacateAdminController::class, 'vacateAction']);
+
+    });
+    
+
+    //fee card
+    Route::prefix('fee')->group(function () {
+
+        Route::get('card', [FeeAndPaymentAdminController::class, 'showCard']);
+        Route::get('room-rent', [FeeAndPaymentAdminController::class, 'roomRentDetails']);
+
+        //fee maintanance
+        Route::get('maintanance', [FeeAndPaymentAdminController::class, 'feeMaintanance']);
+        Route::get('updation', [FeeAndPaymentAdminController::class, 'feeUpdate']);
+
+    });
+
+    //rules and notice card
+    Route::prefix('rules')->group(function () {
+
+        Route::get('card', [RuleAndNoticeAdminController::class, 'showCard']);
+        Route::get('rule-list', [RuleAndNoticeAdminController::class, 'viewRules']);
+        Route::get('rule-add', [RuleAndNoticeAdminController::class, 'addRule']);
+    });
+    
 
 });
