@@ -81,7 +81,7 @@
   <script src="{{ asset('users/assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
   <script src="{{ asset('users/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
   <script src="{{ asset('users/assets/vendor/waypoints/noframework.waypoints.js') }}"></script>
-  <script src="{{ asset('users/assets/vendor/php-email-form/validate.js') }}"></script>
+  
 
   <!-- Template Main JS File -->
   <script src="{{ asset('users/assets/js/main.js') }}"></script>
