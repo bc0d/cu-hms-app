@@ -69,13 +69,17 @@ class LoginController extends Controller
         $admin = Auth::guard('admins')->user();
        
         //redirect
-        switch ($admin->department) {
+        switch ($admin->designation) {
 
-            case 'mess' : 
+            case 'admin' : 
+                return redirect()->intended('super-user/index');
+            case 'hod' :
                 return redirect()->intended('hod-index');
-            case 'office' :
+            case 'mess_admin' :
+                return redirect()->intended('admin-login');
+            case 'staff' :
                 return redirect()->intended('office/index');
-            case 'admin' :
+            case 'warden' :
                 return redirect()->intended('warden/index');
         }
     }
