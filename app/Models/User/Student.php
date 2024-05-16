@@ -39,38 +39,42 @@ class Student extends Model implements Authenticatable
         'image'
     ];
 
+    protected $hidden = [
+        'password',
+    ];
 
+    
+    //optional to add abstract methods definitions
+    // /**
+    //  * Get the name of the unique identifier for the user.
+    //  *
+    //  * @return string
+    //  */
+    // public function getAuthIdentifierName()
+    // {
+    //     return 'email';
+    // }
 
-    /**
-     * Get the name of the unique identifier for the user.
-     *
-     * @return string
-     */
-    public function getAuthIdentifierName()
-    {
-        return 'email';
-    }
+    // /**
+    //  * Get the unique identifier for the user.
+    //  *
+    //  * @return mixed
+    //  */
+    // public function getAuthIdentifier()
+    // {
+    //     return $this->getAttribute('email');
+    // }
 
-    /**
-     * Get the unique identifier for the user.
-     *
-     * @return mixed
-     */
-    public function getAuthIdentifier()
-    {
-        return $this->getAttribute('email');
-    }
+    // /**
+    //  * Get the password for the user.
+    //  *
+    //  * @return string
+    //  */
+    // public function getAuthPassword()
+    // {
+    //     return $this->getAttribute('password');
+    // }
 
-    /**
-     * Get the password for the user.
-     *
-     * @return string
-     */
-    public function getAuthPassword()
-    {
-        return $this->getAttribute('password');
-    }
-
-    // You may need to implement other methods if required by your application
+    // // You may need to implement other methods if required by your application
 
 }
