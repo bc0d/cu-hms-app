@@ -537,3 +537,51 @@ Route::prefix('super-user')->group(function () {
     
 
 });
+
+
+/*---------mess dashboard-----------
+*/ 
+Route::prefix('mess-index')->group(function () {
+
+    Route::get('/', function() {
+        return view('admins.mess.dashboard');
+    });
+    Route::prefix('take-attendance')->group(function () {
+        Route::get('/', function() {
+            return view('admins.mess.attendance_take');
+        });
+        Route::get('scan-qr', function() {
+            return view('admins.mess.scan_qr');
+        });
+        Route::get('profile', function() {
+            return view('admins.mess.attendance_profile');
+        });
+        
+    });
+    
+    Route::prefix('mess-menu')->group(function () {
+        Route::get('/', function() {
+        return view('admins.mess.menu');
+        });
+        Route::get('view', function() {
+            return view('admins.mess.menu_view');
+        });
+        Route::get('edit', function() {
+                return view('admins.mess.menu_edit');
+        });
+    });
+    
+    Route::get('purchase_bills', function() {
+        return view('admins.mess.bill_purchase');
+    });
+    Route::get('view_attendance', function() {
+        return view('admins.mess.attendance_view');
+    });
+    Route::get('notices', function() {
+        return view('admins.mess.notices');
+    });
+    Route::get('complaints', function() {
+        return view('admins.mess.complaints');
+    });
+
+});
