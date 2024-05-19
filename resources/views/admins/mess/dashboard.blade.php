@@ -3,7 +3,7 @@
 @section('content')
 
   <div class="pagetitle">
-    <h1>Dashboard</h1>
+  <h1>Mess</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href={{ url('mess/index')}}>Home</a></li>
@@ -40,7 +40,7 @@
               <h5 class="card-title">Mess Menu</h5>
               <a class="d-flex align-items-center" href={{ url('mess-index/mess-menu') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-clipboard-minus"></i>
+                  <i class="bi bi-basket"></i>
                 </div>
                 <div class="ps-3">
                   <h6>view</h6>
@@ -57,7 +57,7 @@
           <div class="card info-card req-add-card">
             <div class="card-body">
               <h5 class="card-title">Purchase & Bills</span></h5>
-              <a class="d-flex align-items-center" href={{ url('mess-index/purchase_bills') }}>
+              <a class="d-flex align-items-center" href={{ url('mess-index/purchase-and-bills') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-house-add"></i>
                 </div>
@@ -74,9 +74,9 @@
           <div class="card info-card req-view-card">
             <div class="card-body">
               <h5 class="card-title">View Attendance</span></h5>
-              <a class="d-flex align-items-center" href={{ url('mess-index/view_attendance') }}>
+              <a class="d-flex align-items-center" href={{ url('mess-index/view-attendance') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-house-gear"></i>
+                  <i class="bi bi-calendar3"></i>
                 </div>
                 <div class="ps-3">
                   <h6>view</h6>         
@@ -88,14 +88,14 @@
         <!-- End Room change Card -->
       </div>
       <div class="row">
-        <!-- Student Card -->
+        <!-- Rules Card -->
         <div class="col-xxl-6 col-md-6">
-          <div class="card info-card req-view-card">
+          <div class="card info-card req-warn-card">
             <div class="card-body">
-              <h5 class="card-title">Notices</span></h5>
-              <a class="d-flex align-items-center" href={{ url('mess-index/notices') }}>
+              <h5 class="card-title">Rules & Notices</span></h5>
+              <a class="d-flex align-items-center" href={{ url('mess-index/rules-and-notices') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-file-spreadsheet"></i>
+                  <i class="bi bi-pencil-square"></i>
                 </div>
                 <div class="ps-3">
                   <h6>view</h6>         
@@ -107,12 +107,12 @@
         <!-- End Student Card -->
         <!-- Room Card -->
         <div class="col-xxl-6 col-md-6">
-          <div class="card info-card req-view-card">
+          <div class="card info-card req-warn-card">
             <div class="card-body">
               <h5 class="card-title">Complaints</h5>
               <a class="d-flex align-items-center" href={{ url('mess-index/complaints') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-file-spreadsheet"></i>
+                  <i class="bi bi-person-exclamation"></i>
                 </div>
                 <div class="ps-3">
                   <h6>view</h6>

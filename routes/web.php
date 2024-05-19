@@ -571,17 +571,43 @@ Route::prefix('mess-index')->group(function () {
         });
     });
     
-    Route::get('purchase_bills', function() {
-        return view('admins.mess.bill_purchase');
+    Route::prefix('purchase-and-bills')->group(function () {
+        Route::get('/', function() {
+            return view('admins.mess.bill_and_purchase');
+        });
+        Route::get('purchase-bill', function() {
+            return view('admins.mess.bill_purchase');
+        });
+        Route::get('student-bill', function() {
+            return view('admins.mess.bill_student');
+        });
+        
     });
-    Route::get('view_attendance', function() {
+    
+    Route::get('view-attendance', function() {
         return view('admins.mess.attendance_view');
     });
-    Route::get('notices', function() {
-        return view('admins.mess.notices');
+    Route::prefix('rules-and-notices')->group(function () {
+        Route::get('/', function() {
+            return view('admins.mess.rules_notices_card');                                    
+        });
+        Route::get('rules-list', function() {
+            return view('admins.mess.rules_list');                                    
+        });
+        Route::get('rules-add', function() {
+            return view('admins.mess.rules_add');                                    
+        });
+        Route::get('notices-list', function() {
+            return view('admins.mess.notice_list');
+        });
+        Route::get('notices-add', function() {
+            return view('admins.mess.notice_add');
+        });
     });
+
     Route::get('complaints', function() {
         return view('admins.mess.complaints');
     });
+   
 
 });

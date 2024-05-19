@@ -3,11 +3,12 @@
 @section('content')
 
   <div class="pagetitle">
-    <h1>Menu</h1>
+    <h1>Mess</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href={{ url('mess/index')}}>Home</a></li>
-        <li class="breadcrumb-item active">Dashboard</li>
+        <li class="breadcrumb-item"><a href={{ url('mess-index')}}>Dashboard</a></li>
+        <li class="breadcrumb-item"><a href={{ url('mess-index/mess-menu') }}>Mess Menu</a></li>
+        <li class="breadcrumb-item active">View Menu</li>
       </ol>
     </nav>
   </div>
@@ -89,10 +90,10 @@
                 
                     <div class="row pt-3">
                         <div class="col text-center">
-                            <a href="javascript:history.back()" class="btn btn-secondary">Back</a>
+                        <a href={{ url('mess-index/mess-menu')}} class="btn btn-secondary">Back</a>
                         </div>
                         <div class="col text-center">
-                         <a href="edit" class="btn btn-primary">Edit</a>
+                        <a href={{ url('mess-index/mess-menu/edit')}} class="btn btn-primary">Edit</a>
                         </div>
                     </div>
 

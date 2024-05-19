@@ -3,11 +3,13 @@
 @section('content')
 
   <div class="pagetitle">
-    <h1>Dashboard</h1>
+  <h1>Mess</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href={{ url('mess/index')}}>Home</a></li>
-        <li class="breadcrumb-item active">Dashboard</li>
+        <li class="breadcrumb-item"><a href={{ url('mess-index')}}>Dashboard</a></li>
+        <li class="breadcrumb-item"><a href={{ url('mess-index/mess-menu') }}>Mess Menu</a></li>
+        <li class="breadcrumb-item"><a href={{ url('mess-index/mess-menu/view')}}>View Menuu</a></li>
+        <li class="breadcrumb-item active">Edit Menu</li>
       </ol>
     </nav>
   </div>
@@ -87,7 +89,7 @@
                 <div class="row">
                         
                         <div class="text-center d-flex justify-content-end pt-3">
-                         <a href="edit" class="btn btn-primary">Save</a>
+                         <a href={{ url('#')}} class="btn btn-primary">Save</a>
                         </div>
                     </div>
 
