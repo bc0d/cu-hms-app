@@ -1,15 +1,15 @@
 <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center">
 
-        <h1 class="logo me-auto"><a href="{{ url("index.html") }}">Hostel </a></h1>
-
-
+        
+        <h1 class="logo me-auto"><a href="{{ route('dashboard') }}">CU Hostel </a></h1>
+        
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="{{ url("index.html") }}" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a href="{{ url("index.html") }}" class="active">Home</a></li>
+                <li><a href="{{ route('dashboard') }}" class="active">Home</a></li>
 
                 <li class="dropdown"><a href="{{ url("#") }}"><span>About</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
@@ -34,7 +34,7 @@
                 <li><a href="{{ url("blog.html") }}">Blog</a></li>
 
                 <li><a href="{{ url("contact.html") }}">Contact</a></li>
-                <li><a href="{{ url("index.html") }}" class="getstarted">Get Started</a></li>
+                <li><a href="{{ url('user/profile') }}"><img class="nav-prof" src="{{ asset($student->image)}}" alt=""></a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->

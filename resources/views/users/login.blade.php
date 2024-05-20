@@ -42,6 +42,11 @@
 
       <div class="row justify-content-center center-log">
         <div class="col-lg-4 mt-5 mt-lg-0 login-sec">
+          @if(Session::has('success'))
+              <div class="alert alert-success">
+                  {{ Session::get('success') }}
+              </div>
+          @endif
           <div>
             <center>
               <h2>Login</h2>
@@ -62,6 +67,9 @@
             <div class="text-center">
               <button type="reset" class="btn btn-secondary">Clear</button>
               <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+            <div class="row ">
+              <span class="form-group">New user?<a href="{{ url('user-signup') }}">Register</a></span>
             </div>
           </form>
 

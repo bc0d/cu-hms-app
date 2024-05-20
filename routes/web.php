@@ -3,7 +3,11 @@
 use Illuminate\Support\Facades\Route;
 
 
-
+use App\Http\Controllers\User\UserDashboardController;
+use App\Http\Controllers\User\UserProfileController;
+use App\Http\Controllers\User\UserComplaintsController;
+use App\Http\Controllers\User\UserMessController;
+use App\Http\Controllers\User\UserRoomController;
 
 use App\Http\Controllers\SuperUser\StudentDetailsAdminController;
 use App\Http\Controllers\SuperUser\HostelAdmissionAdminController;
@@ -44,6 +48,8 @@ use App\Http\Controllers\Hod\StudentDetailsHodController;
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+
 
 
 
@@ -63,8 +69,9 @@ use App\Http\Controllers\Auth\LoginController;
 
 Route::get('user-login', [LoginController::class, 'showStudentLogin']);
 Route::post('user-login', [LoginController::class, 'studentLogin'])->name('login');
+Route::post('user-logout', [LoginController::class, 'studentLogout'])->name('logout');
 
-Route::get('user-signup', [RegisterController::class, 'signupPageFirst']);
+Route::get('user-signup', [RegisterController::class, 'signupPageFirst'])->name('signup');
 
 Route::post('signup/step1', [RegisterController::class, 'signupStep1'])->name('signupstep1');
 
@@ -72,35 +79,37 @@ Route::get('user-signup-dtls', [RegisterController::class, 'signupPageFinal']);
 
 Route::post('signup/step2', [RegisterController::class, 'signupStep2'])->name('signupstep2');
 
+
+
 Route::get('user-mail-confirm', function() {
     return view('users.mailconfirm');
 });
 
-Route::middleware(['auth:students'])->prefix('user')->group(function() {
-    Route::get('dashboard', function() {
-        return view('index');
-    })->name('dashboard');
+
+Route::get('/', function() {
+    return view('index');
 });
 
 
 
-Route::prefix('user')->group(function () {
+
+Route::middleware(['auth:students'])->prefix('user')->group(function () {
+
     //index
-    Route::get('index', function () {
-        return view('users.index');
+    Route::get('dashboard', [UserDashboardController::class, 'showDashboard'])->name('dashboard');
+    Route::prefix('profile')->group(function () {
+
+        //profile
+        Route::get('/', [UserProfileController::class, 'showStudentProfile']);
+        //Detailed profile
+        Route::get('detailed', [UserProfileController::class, 'showMoreDetails']);
+        //password reset
+        Route::get('password-reset', [ResetPasswordController::class, 'showPasswordReset']);
+        Route::post('reset', [ResetPasswordController::class, 'passwordReset'])->name('reset');
     });
-    //profile
-    Route::get('profile', function() {
-        return view('users.profile');
-    });
-    //Detailed profile
-    Route::get('moreprofile',function(){
-        return view('users.profileDetailed');
-    });
-    //password rest
-    Route::get('password-reset',function(){
-        return view('users.password_reset');
-    });
+
+    
+    
 
     //qr
     Route::get('my-qr',function(){
@@ -109,85 +118,49 @@ Route::prefix('user')->group(function () {
 
     //complaint
     Route::prefix('complaints')->group(function () {
+
         //complaint-index
-        Route::get('/',function(){
-            return view('users.complaints_index');
-        });
-        
-
+        Route::get('/', [UserComplaintsController::class, 'showComplaintSection']);
         //complaint register
-        Route::get('register',function(){
-            return view('users.complaint_register');
-        });
-
+        Route::get('register', [UserComplaintsController::class, 'showComplaintRegister']);
+        Route::post('register-complaint', [UserComplaintsController::class, 'registerComplaint'])->name('register-complaint');
         //my-complaint
-        Route::get('my-complaints',function(){
-            return view('users.complaints_my');
-        });
-         
-    //end of complaint
+        Route::get('my-complaints', [UserComplaintsController::class, 'showMyComplaints']);
     });
 
     //notice board
 
     //mess
     Route::prefix('mess')->group(function () {
+
         //complaint-index
-        Route::get('/',function(){
-            return view('users.mess_index');
-        });
-
+        Route::get('/', [UserMessController::class, 'showMessSection']);
         //mess attendance
-        Route::get('attendance',function(){
-            return view('users.attendance');
-        });
-        
-
+        Route::get('attendance', [UserMessController::class, 'showMessAttendance']);
         //mess-in-out
-        Route::get('in-out',function(){
-            return view('users.mess_in_out');
-        });
-
+        Route::get('in-out', [UserMessController::class, 'showMessStatus']);
         //messbill
-        Route::get('bill',function(){
-            return view('users.mess_bill');
-        });
-
+        Route::get('bill', [UserMessController::class, 'showMessBill']);
         //mess-payment
-        Route::get('payment',function(){
-            return view('users.mess_payment');
-        });
-
-        
-    //end of mess   
-    
+        Route::get('payment', [UserMessController::class, 'showMessPayment']);    
     });
+
+
     //start of room
     Route::prefix('room')->group(function () {
+
         //complaint-index
-        Route::get('/',function(){
-            return view('users.room_index');
-        });
-    
+        Route::get('/', [UserRoomController::class, 'showRoomSection']);
         //room rent
         Route::prefix('room-rent')->group(function () {
-            Route::get('/',function(){
-                return view('users.room_rent');
-            });
-            Route::get('payment',function(){
-                return view('users.room_rent_payment');
-            });
-            Route::get('status',function(){
-                return view('users.room_rent_status');
-            });
+
+            Route::get('/', [UserRoomController::class, 'showRoomRent']);
+            Route::get('payment', [UserRoomController::class, 'showRoomRentPayment']);
+            Route::get('status', [UserRoomController::class, 'showRoomRentStatus']);
         });
-        
-        
+
         //other-bill-room
-        Route::get('other-bill',function(){
-            return view('users.room_other_bill');
-        }); 
-        
+        Route::get('other-bill', [UserRoomController::class, 'showOtherBill']); 
     });//end of room
 
     //room change

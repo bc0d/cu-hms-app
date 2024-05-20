@@ -2,6 +2,7 @@
 
 @section('content')
 <section id="services" class="services">
+  <h2 class="sign-sec  text-center">Room</h2><hr>
   <div class="container col-lg-8 hi mt-5  align-items-center">
 
     <div class="row d-flex mt-5 justify-content-around py-5  ">
