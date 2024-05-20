@@ -1,8 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
 
-@extends('layout.public_master')
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-@section('content')
-<!-- ======= Contact Section ======= -->
+  <title>Sign up</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{{ asset('users/assets/img/favicon.png') }}" rel="icon">
+  <link href="{{ asset('users/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ asset('users/assets/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('users/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('users/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ asset('users/assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('users/assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('users/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+  <link href="{{ asset('users/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{{ asset('users/assets/css/style.css') }}" rel="stylesheet">
+  
+
+
+</head>
+
+<body>
+
+  
+  <main id="main">
+
+    <!-- ======= Contact Section ======= -->
   <section id="contact" class="contact">
   
 
@@ -13,7 +48,8 @@
               <h2>Sign up - Details</h2>
             </center>
           </div>
-          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+          <form action="{{ route('signupstep2') }}" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
+            @csrf
             <div class="row">
                 <div class="col-md-4 form-group">
                   <label for="distance">Distance Between Home And Institute<span aria-hidden="true" class="required-fields"> *</span></label>
@@ -30,7 +66,7 @@
                       <label for="house_addr">House address<span aria-hidden="true" class="required-fields"> *</span></label>
                     </div>
                     <div class="col-md-8 form-group">
-                      <input type="text" name="house_addr" class="form-control" id="house_addr" placeholder="" required>
+                      <input type="text" name="house" class="form-control" id="house_addr" placeholder="" required>
                     </div>
                 </div>
                 <div class="row">
@@ -89,7 +125,7 @@
                 <label for="guardian_phone">Guardian Phone<span aria-hidden="true" class="required-fields"> *</span></label>
               </div>
               <div class="col-md-8 form-group">
-                <input type="text" name="guardian_phone" class="form-control" id="guardian_phone" placeholder="" pattern="[0-9] {10}" required>
+                <input type="text" name="guardian_phone" class="form-control" id="guardian_phone" placeholder="" required>
               </div>
             </div>
             <div class="row">
@@ -114,18 +150,18 @@
             </div>
             <div class="row">
               <div class="col-md-4 form-group">
-                <label for="admsn_date">Admission Date<span aria-hidden="true" class="required-fields"> *</span></label>
+                <label for="adm_date">Admission Date<span aria-hidden="true" class="required-fields"> *</span></label>
               </div>
               <div class="col-md-8 form-group">
-                <input type="date" name="admsn_date" class="form-control" id="admsn_date" placeholder="" required>
+                <input type="date" name="adm_date" class="form-control" id="admsn_date" placeholder="" required>
               </div>
             </div>
             <div class="row">
               <div class="col-md-4 form-group">
-                <label for="admsn_type">Course Type<span aria-hidden="true" class="required-fields"> *</span></label>
+                <label for="course_type">Course Type<span aria-hidden="true" class="required-fields"> *</span></label>
               </div>
               <div class="col-md-8 form-group">
-                <select name="admsn_type" id="admsn_type" class="form-control">
+                <select name="course_type" id="admsn_type" class="form-control">
                   <option value="">--Select--</option>
                   <option value="intpg">Integrated PG</option>
                   <option value="pg">PG</option>
@@ -152,18 +188,10 @@
             </div>
             <div class="row">
               <div class="col-md-4 form-group">
-                <label for="usr_pic">Photo<span aria-hidden="true" class="required-fields"> *</span></label>
+                <label for="image">Photo<span aria-hidden="true" class="required-fields"> *</span></label>
               </div>
               <div class="col-md-8 form-group">
-                <input type="file" name="usr_pic" class="form-control" id="usr_pic" placeholder="" required>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4 form-group">
-                <label for="usr_sig">Signature<span aria-hidden="true" class="required-fields"> *</span></label>
-              </div>
-              <div class="col-md-8 form-group">
-                <input type="file" name="usr_sig" class="form-control" id="usr_sig" placeholder="" required>
+                <input type="file" name="image" class="form-control" id="usr_pic" placeholder="" required>
               </div>
             </div>
             <div class="text-center">
@@ -177,6 +205,22 @@
 
   
   </section><!-- End Contact Section -->
-  @endsection
+
+  </main><!-- End #main -->
 
   
+
+  <!-- Vendor JS Files -->
+  <script src="{{ asset('users/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('users/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+  <script src="{{ asset('users/assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ asset('users/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+  <script src="{{ asset('users/assets/vendor/waypoints/noframework.waypoints.js') }}"></script>
+  <script src="{{ asset('users/assets/vendor/php-email-form/validate.js') }}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{{ asset('users/assets/js/main.js') }}"></script>
+
+</body>
+
+</html>
