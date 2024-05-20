@@ -39,7 +39,7 @@
   <!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
-    @include('partials.mess_sidebar')
+    @include('partials.admin_sidebar')
   <!-- End Sidebar-->
 
   <main id="main" class="main">
