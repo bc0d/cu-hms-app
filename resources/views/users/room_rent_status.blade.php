@@ -3,7 +3,7 @@
 @section('content')
 <!-- ======= service Section ======= -->
 <section id="services" class="services">
-
+  <h2 class="sign-sec  text-center">Room Rent Status</h2><hr>
 <div class="container col-lg-8 hi mt-5  align-items-center py-5">
 <h1 class="heading">ROOM RENT PAYMENT STATUS</h1>
 <table class="table">

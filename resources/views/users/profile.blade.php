@@ -9,39 +9,28 @@
         <div class="row gy-4">
           <div class="col-12">
             <div class="card widget-card border-light shadow-sm">
-              
-              <div class="card-body pt-3">
-              
-                <div class="text-center mb-1 pt-4">
-                  <h5 class="text-center">Ethan Leo</h5>
-                  <img src="{{ asset('users/assets/img/team/team-3.jpg') }}" class="img-fluid " alt="Luna John">
+              <div class="card-body pt-3">  
+                <div class="text-center mb-1 pt-4">             
+                  <img src="{{ asset($student->image) }}" class="img-fluid " alt="profile image">
+                  <h4 class="text-center">{{$student->first_name." ".$student->second_name}}</h4>
                 </div>
-
-                
-
                 <ul class="list-group list-group-flush mb-1 mt-3">
-                 
                   <li class="list-group-item d-flex justify-content-start align-items-start">
-                  <a href="{{ url('user/my-qr') }}" class=" d-flex justify-content-end">My QR</a>
+                    <a href="{{ url('user/my-qr') }}" class=" d-flex justify-content-end">My QR</a>
                   </li>
                   <li class="list-group-item d-flex justify-content-start align-items-start">
-                  <a href="{{ url('user/password-reset') }}" class=" d-flex justify-content-end">Password Reset</a>
+                    <a href="{{ url('user/profile/password-reset') }}" class=" d-flex justify-content-end">Reset Password</a>
                   </li>
                   <li class="list-group-item d-flex justify-content-start align-items-start">
-                  <a href="{{ url('moreProfile') }}" class=" d-flex justify-content-end">Log out</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                      @csrf
+                      <button type="submit" class="btn btn-link btn-prof">Log out</button>
+                    </form>
                   </li>
-                  
                 </ul>
-                
-                
-                
-                
               </div>
             </div>
           </div>
-          
-          
-          
         </div>
       </div>
       <div class="col-12 col-lg-8 col-xl-9">
@@ -51,7 +40,7 @@
             <div class="tab-content pt-4" id="profileTabContent">
               <div class="tab-pane fade show active" id="overview-tab-pane" role="tabpanel" aria-labelledby="overview-tab" tabindex="0">
                 
-                <h5 class="mb-3">Profile</h5>
+                <h5 class="mb-3">Profile</h5><hr>
                 <div class="row g-0">
                   <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
                     <div class="p-2">Hostel Id</div>
@@ -105,7 +94,7 @@
                   
                   <div class="d-grid m-0 mr-2 mt-1 pb-1">
                   <!--<button class="btn btn-outline-primary" type="button">more profie</button>-->
-                  <a href="{{ url('user/moreprofile') }}" class=" d-flex justify-content-end"><span class="arrow  ">&#8594;</span>More</a>
+                  <a href="{{ url('user/profile/detailed') }}" class=" d-flex justify-content-end"><span class="arrow  ">&#8594;</span>More</a>
                 </div>
 
                 </div>

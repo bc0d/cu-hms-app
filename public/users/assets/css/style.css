@@ -56,7 +56,13 @@ h6 {
   line-height: 0;
 }
 .hi{
-  height: 100vh;
+  height: 50vh;
+  margin-bottom: 30px;
+}
+@media (max-width: 991px) {
+  .hi {
+    height: auto;
+  }
 }
 
 .back-to-top:hover {
@@ -104,6 +110,13 @@ h6 {
 #header .logo img {
   max-height: 40px;
 }
+
+@media (max-width: 991px) {
+  #header {
+    height: 90px;
+  }
+}
+
 
 /*--------------------------------------------------------------
 # Navigation Menu
@@ -549,6 +562,7 @@ section {
 .section-bg,
 .services .icon-box {
   background-color: #f8f9fa;
+  border: 1px solid #d9232d;
 }
 
 .section-title {
@@ -647,11 +661,17 @@ section {
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
+.about {
+  margin-top: 80px;
+  padding-top: 20px;
+}
+
 .about .content h2 {
   font-weight: 700;
   font-size: 45px;
   line-height: 60px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  padding-top: 20px;
   text-transform: uppercase;
 }
 
@@ -659,7 +679,7 @@ section {
   font-weight: 500;
   line-height: 32px;
   font-size: 24px;
-  padding-top: 10px;
+  padding-top: 20px;
 }
 
 .about .content ul {
@@ -681,7 +701,13 @@ section {
 }
 
 .about .content p:last-child {
-  margin-bottom: 0;
+  margin-bottom: 20px;
+  padding-top: 20px;
+}
+
+.about .content p {
+
+  padding-top: 20px;
 }
 
 /*--------------------------------------------------------------
@@ -1327,6 +1353,7 @@ section {
 # Contact
 --------------------------------------------------------------*/
 .contact .info {
+  
   width: 100%;
   background: #fff;
   
@@ -2198,6 +2225,10 @@ form
   display: none;
 }
 
+.err_msg {
+  color: red;
+}
+
 fieldset {
   margin-bottom: 10px;
 }
@@ -2360,3 +2391,28 @@ fieldset {
 }
 /*qr-end*/
 /*card boder*/
+
+
+/*Navigation bar profile*/
+
+.nav-prof {
+  height: 50px;
+  border-radius: 50%;
+}
+
+
+main {
+  margin-top: 80px;
+}
+
+.btn-prof {
+  text-decoration: none;
+  color: #d9232d;
+  border: 0;
+  padding: 0;
+}
+
+.btn-prof:hover {
+  color: #e24d55;
+  text-decoration: none;
+}
