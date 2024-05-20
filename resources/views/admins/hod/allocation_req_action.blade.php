@@ -3,10 +3,10 @@
 @section('content')
 
     <div class="pagetitle">
-      <h1>Student Aproval</h1>
+      <h1>HOD</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href={{ url('hod-index') }}>Home</a></li>
+          <li class="breadcrumb-item"><a href={{ url('hod/index') }}>Home</a></li>
           <li class="breadcrumb-item">Allocation Request</li>
           <li class="breadcrumb-item active">Student Aproval</li>
         </ol>

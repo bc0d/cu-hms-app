@@ -3,7 +3,7 @@
 @section('content')
     
     <div class="pagetitle">
-      <h1>Students List</h1>
+    <h1>Office</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href={{ url('office/index') }}>Home</a></li>

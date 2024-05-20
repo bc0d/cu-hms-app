@@ -3,10 +3,10 @@
 @section('content')
     
     <div class="pagetitle">
-      <h1>Students List</h1>
+      <h1>HOD</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href={{ url('hod-index') }}>Home</a></li>
+          <li class="breadcrumb-item"><a href={{ url('hod/index') }}>Home</a></li>
           <li class="breadcrumb-item">Students List</li>
         </ol>
       </nav>
@@ -41,7 +41,7 @@
                     <td>Curicó</td>
                     <td>2005/02/11</td>
                     <td>MH</td>
-                    <td><a href={{ url('hod-student-detail') }} class="btn btn-primary btn-sm">view</a></td>
+                    <td><a href={{ url('hod/students-details/profile-details') }} class="btn btn-primary btn-sm">view</a></td>
                   </tr>
                   <tr>
                     <td>Theodore Duran</td>
@@ -49,7 +49,7 @@
                     <td>Dhanbad</td>
                     <td>1999/04/07</td>
                     <td>MH</td>
-                    <td><a href={{ url('hod-student-detail') }} class="btn btn-primary btn-sm">view</a></td>
+                    <td><a href={{ url('hod/students-details/profile-details') }} class="btn btn-primary btn-sm">view</a></td>
                   </tr>
                   <tr>
                     <td>Kylie Bishop</td>
@@ -57,7 +57,7 @@
                     <td>Norman</td>
                     <td>2005/09/08</td>
                     <td>MH</td>
-                    <td><a href={{ url('hod-student-detail') }} class="btn btn-primary btn-sm">view</a></td>
+                    <td><a href={{ url('hod/students-details/profile-details') }} class="btn btn-primary btn-sm">view</a></td>
                   </tr>
                   <tr>
                     <td>Willow Gilliam</td>
@@ -65,7 +65,7 @@
                     <td>Amqui</td>
                     <td>2009/29/11</td>
                     <td>MH</td>
-                    <td><a href={{ url('hod-student-detail') }} class="btn btn-primary btn-sm">view</a></td>
+                    <td><a href={{ url('hod/students-details/profile-details') }} class="btn btn-primary btn-sm">view</a></td>
                   </tr>
                   <tr>
                     <td>Blossom Dickerson</td>
@@ -73,7 +73,7 @@
                     <td>Kempten</td>
                     <td>2006/11/09</td>
                     <td>MH</td>
-                    <td><a href={{ url('hod-student-detail') }} class="btn btn-primary btn-sm">view</a></td>
+                    <td><a href={{ url('hod/students-details/profile-details') }} class="btn btn-primary btn-sm">view</a></td>
                   </tr>
                 </tbody>
               </table>
