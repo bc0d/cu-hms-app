@@ -4,7 +4,7 @@
     <!-- ======= Contact Section ======= -->
   <section id="contact" class="contact">
   
-
+    <h2 class="sign-sec  text-center">Mess Join Status</h2><hr>
       <div class="row justify-content-center center-log align-items-center">
         <div class="col-lg-4 mt-5 mt-lg-0 login-sec">
           <div>

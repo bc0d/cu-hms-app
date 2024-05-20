@@ -2,11 +2,14 @@
 
 @section('content')
  <!-- ======= service Section ======= --> 
- <section id="services" class="services">
+<section id="services" class="services">
+
+
+  <h2 class="sign-sec text-center">My Complaints</h2><hr>
 
 <div class="container col-lg-8 hi mt-5 py-5 align-items-center">
  
-<h1 class="heading">My Complaints</h1>
+
 <table class="table">
     <thead>
       <tr>
@@ -54,20 +57,5 @@
 
   
 
-  <!-- Vendor JS Files -->
-  <script src="{{ asset('users/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ asset('users/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
-  <script src="{{ asset('users/assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-  <script src="{{ asset('users/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
-  <script src="{{ asset('users/assets/vendor/waypoints/noframework.waypoints.js') }}"></script>
-  <script src="{{ asset('users/assets/vendor/php-email-form/validate.js') }}"></script>
-
-  <!-- Template Main JS File -->
-  <script src="{{ asset('users/assets/js/main.js') }}"></script>
-  <script src="{{ asset('users/assets/js/paymentlink.js') }}"></script>
-  
-
-
-</body>
-
-</html>
+</section>
+@endsection
