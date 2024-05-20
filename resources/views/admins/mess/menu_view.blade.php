@@ -31,6 +31,7 @@
                     <th scope="col">Lunch</th>
                     <th scope="col">Snacks</th>
                     <th scope="col">Dinner</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -40,6 +41,8 @@
                     <td>Designer</td>
                     <td>28</td>
                     <td>2016-05-25</td>
+                    <td><a href={{ url('office/room/allocation') }} class="btn btn-primary btn-sm">edit</a></td>
+
                   </tr>
                   <tr>
                     <th scope="row">Mon</th>
@@ -47,6 +50,7 @@
                     <td>Developer</td>
                     <td>35</td>
                     <td>2014-12-05</td>
+                    <td><a href={{ url('office/room/allocation') }} class="btn btn-primary btn-sm">edit</a></td>
                   </tr>
                   <tr>
                     <th scope="row">Tue</th>
@@ -54,6 +58,7 @@
                     <td>Finance</td>
                     <td>45</td>
                     <td>2011-08-12</td>
+                    <td><a href={{ url('office/room/allocation') }} class="btn btn-primary btn-sm">edit</a></td>
                   </tr>
                   <tr>
                     <th scope="row">Wed</th>
@@ -61,6 +66,7 @@
                     <td>HR</td>
                     <td>34</td>
                     <td>2012-06-11</td>
+                    <td><a href={{ url('office/room/allocation') }} class="btn btn-primary btn-sm">edit</a></td>
                   </tr>
                   <tr>
                     <th scope="row">Thu</th>
@@ -68,6 +74,7 @@
                     <td>Dynamic Division Officer</td>
                     <td>47</td>
                     <td>2011-04-19</td>
+                    <td><a href={{ url('office/room/allocation') }} class="btn btn-primary btn-sm">edit</a></td>
                   </tr>
                   <tr>
                     <th scope="row">Fri</th>
@@ -75,6 +82,7 @@
                     <td>Dynamic Division Officer</td>
                     <td>47</td>
                     <td>2011-04-19</td>
+                    <td><a href={{ url('office/room/allocation') }} class="btn btn-primary btn-sm">edit</a></td>
                   </tr>
                   <tr>
                     <th scope="row">Sat</th>
@@ -82,20 +90,14 @@
                     <td>Dynamic Division Officer</td>
                     <td>47</td>
                     <td>2011-04-19</td>
+                    <td><a href={{ url('office/room/allocation') }} class="btn btn-primary btn-sm">edit</a></td>
                   </tr>
                 </tbody>
               </table>
               <!-- End Default Table Example -->
                 
                 
-                    <div class="row pt-3">
-                        <div class="col text-center">
-                        <a href={{ url('mess-index/mess-menu')}} class="btn btn-secondary">Back</a>
-                        </div>
-                        <div class="col text-center">
-                        <a href={{ url('mess-index/mess-menu/edit')}} class="btn btn-primary">Edit</a>
-                        </div>
-                    </div>
+                    
 
                 
                
