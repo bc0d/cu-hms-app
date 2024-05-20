@@ -15,6 +15,8 @@ use App\Http\Controllers\SuperUser\ComplaintsAdminController;
 use App\Http\Controllers\SuperUser\FeeAndPaymentAdminController;
 use App\Http\Controllers\SuperUser\RuleAndNoticeAdminController;
 
+
+
 use App\Http\Controllers\Office\StudentDetailsController;
 use App\Http\Controllers\Office\HostelAdmissionOfficeController;
 use App\Http\Controllers\Office\HostelVacateOfficeController;
@@ -36,6 +38,9 @@ use App\Http\Controllers\warden\WardenFeeAndPaymentController;
 use App\Http\Controllers\warden\WardenRoomDetailsController;
 use App\Http\Controllers\warden\WardenRuleAndNoticeController;
 
+use App\Http\Controllers\Hod\HostelAdmissionHodController;
+use App\Http\Controllers\Hod\HostelVacateHodController;
+use App\Http\Controllers\Hod\StudentDetailsHodController;
 
 /*
 |--------------------------------------------------------------------------
@@ -244,44 +249,47 @@ Route::get('feedback',function(){
 
 
 
-
-
-
-
 Route::get('admin-login', function() {
     return view('login');
 
 });
 
+/*
+-------------------HOD----------------
+*/
+Route::prefix('hod')->group(function () {
 
+    //index
+    Route::get('index', function() {
+        return view('admins.hod.dashboard');
+    });
 
-Route::get('hod-index', function() {
-    return view('admins.hod.dashboard');
+    //allocation request
+    Route::prefix('allocation')->group(function () {
+
+        Route::get('request', [HostelAdmissionHodController::class, 'showRequests']);
+        Route::get('action', [HostelAdmissionHodController::class, 'admissionAction']);
+        
+    });
+
+    //vacating request
+    Route::prefix('vacate')->group(function () {
+        
+        Route::get('request', [HostelVacateHodController::class, 'showRequests']);
+        Route::get('action', [HostelVacateHodController::class, 'vacateAction']);
+
+    });
+
+    Route::prefix('students-details')->group(function () {
+
+        Route::get('list', [StudentDetailsHodController::class, 'showList']);
+        Route::get('profile-details', [StudentDetailsHodController::class, 'profileDetails']);
+
+    });
+    
 });
 
-Route::get('hod-request-allocation', function() {
-    return view('admins.hod.allocation_req');
-});
 
-Route::get('hod-allocation-action', function() {
-    return view('admins.hod.allocation_req_action');
-});
-
-Route::get('hod-request-vacating', function() {
-    return view('admins.hod.vacate_req');
-});
-
-Route::get('hod-vacating-action', function() {
-    return view('admins.hod.vacate_req_action');
-});
-
-Route::get('hod-students-list', function() {
-    return view('admins.hod.students_list');
-});
-
-Route::get('hod-student-detail', function() {
-    return view('admins.hod.student_detail');
-});
 
 /* 
 ----------------Office staff-----------------------
