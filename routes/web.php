@@ -237,6 +237,9 @@ Route::get('feedback',function(){
 Route::get('admin-login', [LoginController::class, 'showAdminLogin']);
 Route::post('admin-login', [LoginController::class, 'adminLogin'])->name('admin.login');
 
+Route::get('admin-password-reset', [LoginController::class, 'showAdminPasswordReset']);
+Route::post('admin-password-reset', [LoginController::class, 'adminPasswordReset'])->name('admin.password.reset');
+
 
 
 Route::get('hod-index', function() {
