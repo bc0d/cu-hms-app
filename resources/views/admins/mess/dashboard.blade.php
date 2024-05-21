@@ -3,10 +3,10 @@
 @section('content')
 
   <div class="pagetitle">
-  <h1>Office</h1>
+  <h1>Mess</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href={{ url('office/index')}}>Home</a></li>
+        <li class="breadcrumb-item"><a href={{ url('mess/index')}}>Home</a></li>
         <li class="breadcrumb-item active">Dashboard</li>
       </ol>
     </nav>
@@ -20,10 +20,10 @@
         <div class="col-xxl-6 col-md-6">
           <div class="card info-card req-add-card">
             <div class="card-body">
-              <h5 class="card-title">All Students</h5>
-              <a class="d-flex align-items-center" href={{ url('office/student/list') }}>
+              <h5 class="card-title">Take Attendance</h5>
+              <a class="d-flex align-items-center" href={{ url('mess-index/take-attendance') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-file-spreadsheet"></i>
+                  <i class="bi bi-clipboard-plus"></i>
                 </div>
                 <div class="ps-3">
                   <h6>view</h6>
@@ -35,12 +35,12 @@
         <!-- End Allocation Card -->
         <!-- Vacating Card -->
         <div class="col-xxl-6 col-md-6">
-          <div class="card info-card req-view-card"> 
+          <div class="card info-card req-rmv-card"> 
             <div class="card-body">
-              <h5 class="card-title">New Block</h5>
-              <a class="d-flex align-items-center" href="">
+              <h5 class="card-title">Mess Menu</h5>
+              <a class="d-flex align-items-center" href={{ url('mess-index/mess-menu') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-house"></i>
+                  <i class="bi bi-basket"></i>
                 </div>
                 <div class="ps-3">
                   <h6>view</h6>
@@ -52,14 +52,31 @@
         <!-- End Vacating Card -->
       </div>
       <div class="row">
+        <!-- Room Allocation Card -->
+        <div class="col-xxl-6 col-md-6">
+          <div class="card info-card req-add-card">
+            <div class="card-body">
+              <h5 class="card-title">Purchase & Bills</span></h5>
+              <a class="d-flex align-items-center" href={{ url('mess-index/purchase-and-bills') }}>
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-house-add"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>view</h6>         
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- End Room allocation Card -->
         <!-- Room change Card -->
         <div class="col-xxl-6 col-md-6">
           <div class="card info-card req-view-card">
             <div class="card-body">
-              <h5 class="card-title">Old Block</span></h5>
-              <a class="d-flex align-items-center" href="">
+              <h5 class="card-title">View Attendance</span></h5>
+              <a class="d-flex align-items-center" href={{ url('mess-index/view-attendance') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-house"></i>
+                  <i class="bi bi-calendar3"></i>
                 </div>
                 <div class="ps-3">
                   <h6>view</h6>         
@@ -69,33 +86,16 @@
           </div>
         </div>
         <!-- End Room change Card -->
-        <!-- Complaints Card -->
-        <div class="col-xxl-6 col-md-6">
-          <div class="card info-card req-view-card">
-            <div class="card-body">
-              <h5 class="card-title">Annex</h5>
-              <a class="d-flex align-items-center" href="">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-house"></i>
-                </div>
-                <div class="ps-3">
-                  <h6>view</h6>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- End Complaints Card -->
       </div>
       <div class="row">
-        <!-- Room change Card -->
+        <!-- Rules Card -->
         <div class="col-xxl-6 col-md-6">
-          <div class="card info-card req-view-card">
+          <div class="card info-card req-warn-card">
             <div class="card-body">
-              <h5 class="card-title">PHD Block</span></h5>
-              <a class="d-flex align-items-center" href="">
+              <h5 class="card-title">Rules & Notices</span></h5>
+              <a class="d-flex align-items-center" href={{ url('mess-index/rules-and-notices') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-house"></i>
+                  <i class="bi bi-pencil-square"></i>
                 </div>
                 <div class="ps-3">
                   <h6>view</h6>         
@@ -104,15 +104,15 @@
             </div>
           </div>
         </div>
-        <!-- End Room change Card -->
-        <!-- Complaints Card -->
+        <!-- End Student Card -->
+        <!-- Room Card -->
         <div class="col-xxl-6 col-md-6">
-          <div class="card info-card req-view-card">
+          <div class="card info-card req-warn-card">
             <div class="card-body">
-              <h5 class="card-title">MPhil Block</h5>
-              <a class="d-flex align-items-center" href="">
+              <h5 class="card-title">Complaints</h5>
+              <a class="d-flex align-items-center" href={{ url('mess-index/complaints') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-house"></i>
+                  <i class="bi bi-person-exclamation"></i>
                 </div>
                 <div class="ps-3">
                   <h6>view</h6>
@@ -121,7 +121,7 @@
             </div>
           </div>
         </div>
-        <!-- End Complaints Card -->
+        <!-- End Room Card -->
       </div>
     </div>
     <!-- End Left side columns -->

@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Hash;
 class RegisterController extends Controller
 {
     public function signupPageFirst() {
-        return view('users.signup_basic');
+        return view('users.auth.signup_basic');
     }
 
     public function signupPageFinal() {
-        return view('users.signup_details');
+        return view('users.auth.signup_details');
     }
 
     public function signupStep1(Request $request) {

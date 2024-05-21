@@ -1,9 +1,8 @@
 @extends('layout.admin_master')
 
 @section('content')
-
     <div class="pagetitle">
-    <h1>Office</h1>
+    <h1>Mess</h1>
         <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href={{ url('office/index')}}>Home</a></li>
@@ -19,12 +18,12 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Rules</h5>
-                    <a href={{ url('office/rules/rule-add') }} class="btn btn-success btn-sm mb-3">Add New</a>
+                    <a href={{ url('mess-index/rules-and-notices/rules-add') }} class="btn btn-success btn-sm mb-3">Add New</a>
                     <!-- List group with Advanced Contents -->
                     <div class="list-group">
                         <div class="list-group-item list-group-item-action " aria-current="true">
                             <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">-Rule name-</h5>
+                                <h5 class="mb-1">-Notice name-</h5>
                                 <a href="" class="btn btn-danger rounded-pill btn-sm">Remove</a>
                             </div>
                             <p class="mb-1">-Ruledescriptionblablablablablablablablablablablablablablablablablablablablablablabla-</p>

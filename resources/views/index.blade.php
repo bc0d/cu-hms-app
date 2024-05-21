@@ -60,7 +60,7 @@
 
           <li><a href="#footer">Contact</a></li>
           <li><a href="{{ route('signup') }}">Register</a></li>
-          <li><a href="{{route('login')}}" class="getstarted">Login</a></li>
+          <li><a href="{{ route('login') }}" class="getstarted">Login</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -239,11 +239,9 @@
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Our Services</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ route('login') }}">Student Login</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ route('signup') }}">Student Registration</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ route('admin.login') }}">Staff Login</a></li>
                     </ul>
                 </div>
 
@@ -265,7 +263,7 @@
             <!-- You can delete the links only if you purchased the pro version. -->
             <!-- Licensing information: https://bootstrapmade.com/license/ -->
             <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/sailor-free-bootstrap-theme/ -->
-            Designed by <a href="#">CU</a>
+            Developed by <a href="#">ARM</a>
         </div>
     </div>
 </footer><!-- End Footer -->

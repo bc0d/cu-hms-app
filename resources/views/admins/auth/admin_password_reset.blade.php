@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Admin - Login</title>
+  <title>Admin - Password Reset</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -50,7 +50,7 @@
                   <div class="d-flex justify-content-center py-4">
                     <a href="index.html" class="logo d-flex align-items-center w-auto">
                       <img src="assets/img/logo.png" alt="">
-                      <span class="d-none d-lg-block">NiceAdmin</span>
+                      <span class="d-none d-lg-block">CU-HMS</span>
                     </a>
                   </div><!-- End Logo -->
     
@@ -59,51 +59,39 @@
                     <div class="card-body">
     
                       <div class="pt-4 pb-2">
-                        <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
-                        <p class="text-center small">Enter your personal details to create account</p>
+                        <h5 class="card-title text-center pb-0 fs-4">Reset Password</h5>
+                        
                       </div>
     
-                      <form class="row g-3 needs-validation" novalidate>
+                      <form class="row g-3 needs-validation" action="{{ route('admin.reset') }}" method="POST">
+                        @csrf
                         <div class="col-12">
-                          <label for="yourName" class="form-label">Your Name</label>
-                          <input type="text" name="name" class="form-control" id="yourName" required>
-                          <div class="invalid-feedback">Please, enter your name!</div>
+                          <label for="cur_pass" class="form-label">Current Password</label>
+                          <input type="password" name="cur_pass" class="form-control" id="cur_pass" required>
+                          @error('cur_pass')
+                            <span class="err_msg">{{ $message }}</span>
+                          @enderror
                         </div>
     
                         <div class="col-12">
-                          <label for="yourEmail" class="form-label">Your Email</label>
-                          <input type="email" name="email" class="form-control" id="yourEmail" required>
-                          <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                          <label for="pass" class="form-label">New Password</label>
+                          <input type="password" name="pass" class="form-control" id="pass" oninput="passLength()" required>
+                          <div id="pass_length">Password should contain 8 characters!</div>
                         </div>
     
-                        <div class="col-12">
-                          <label for="yourUsername" class="form-label">Username</label>
-                          <div class="input-group has-validation">
-                            <span class="input-group-text" id="inputGroupPrepend">@</span>
-                            <input type="text" name="username" class="form-control" id="yourUsername" required>
-                            <div class="invalid-feedback">Please choose a username.</div>
-                          </div>
-                        </div>
+                
     
                         <div class="col-12">
-                          <label for="yourPassword" class="form-label">Password</label>
-                          <input type="password" name="password" class="form-control" id="yourPassword" required>
-                          <div class="invalid-feedback">Please enter your password!</div>
+                          <label for="password" class="form-label">Confirm Password</label>
+                          <input type="password" name="password" class="form-control" id="conf_pass" oninput="passValidation()" required>
+                          <div id="pass_conf"></div>
                         </div>
     
+                        
                         <div class="col-12">
-                          <div class="form-check">
-                            <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
-                            <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
-                            <div class="invalid-feedback">You must agree before submitting.</div>
-                          </div>
+                          <button class="btn btn-primary w-100" type="submit">Submit</button>
                         </div>
-                        <div class="col-12">
-                          <button class="btn btn-primary w-100" type="submit">Create Account</button>
-                        </div>
-                        <div class="col-12">
-                          <p class="small mb-0">Already have an account? <a href="pages-login.html">Log in</a></p>
-                        </div>
+                        
                       </form>
     
                     </div>
@@ -114,7 +102,7 @@
                     <!-- You can delete the links only if you purchased the pro version. -->
                     <!-- Licensing information: https://bootstrapmade.com/license/ -->
                     <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                    Developed by <a href="#">ARM</a>
                   </div>
     
                 </div>

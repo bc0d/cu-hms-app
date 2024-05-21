@@ -12,7 +12,7 @@ class ResetPasswordController extends Controller
 {
     public function showPasswordReset() {
 
-        return view('users.password_reset');
+        return view('users.auth.password_reset');
     }
 
     public function passwordReset(Request $request) {
@@ -46,7 +46,7 @@ class ResetPasswordController extends Controller
 
     public function showAdminPasswordReset() {
 
-        return view('admins.admin_password_reset');
+        return view('admins.auth.admin_password_reset');
     }
 
     public function adminPasswordReset(Request $request) {

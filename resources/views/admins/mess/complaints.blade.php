@@ -1,12 +1,11 @@
 @extends('layout.admin_master')
-
 @section('content')
 
     <div class="pagetitle">
-    <h1>Office</h1>
+    <h1>Mess</h1>
         <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href={{ url('office/index')}}>Home</a></li>
+        <li class="breadcrumb-item"><a href={{ url('mess-index')}}>Dashboard</a></li>
             <li class="breadcrumb-item active">Complaints</li>
         </ol>
         </nav>
