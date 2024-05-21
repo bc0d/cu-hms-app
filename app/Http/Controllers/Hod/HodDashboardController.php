@@ -11,6 +11,6 @@ class HodDashboardController extends Controller
     public function showHodDashboard() {
         
         $admin = Auth::guard('admins')->user();
-        return view('admin.hod.dashboard', compact('admin'));
+        return view('admins.hod.dashboard', compact('admin'));
     }
 }

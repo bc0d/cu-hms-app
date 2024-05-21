@@ -45,6 +45,8 @@ use App\Http\Controllers\warden\WardenRuleAndNoticeController;
 use App\Http\Controllers\Hod\HostelAdmissionHodController;
 use App\Http\Controllers\Hod\HostelVacateHodController;
 use App\Http\Controllers\Hod\StudentDetailsHodController;
+use App\Http\Controllers\Hod\HodDashboardController;
+
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
@@ -248,9 +250,8 @@ Route::post('admin-login', [LoginController::class, 'adminLogin'])->name('admin.
 Route::prefix('hod')->group(function () {
 
     //index
-    Route::get('index', function() {
-        return view('admins.hod.dashboard');
-    });
+    Route::get('index', [HodDashboardController::class, 'showHodDashboard']);
+    
 
     //allocation request
     Route::prefix('allocation')->group(function () {
