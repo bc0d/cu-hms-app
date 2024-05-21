@@ -60,6 +60,11 @@
 
                   <div class="pt-4 pb-2">
                     <h5 class="card-title text-center pb-0 fs-4">Login</h5>
+                    @if(Session::has('success'))
+                      <div class="alert alert-success">
+                          {{ Session::get('success') }}
+                      </div>
+                     @endif
                     <p class="text-center small">Enter your email & password to login</p>
                   </div>
 
@@ -99,7 +104,7 @@
                 <!-- You can delete the links only if you purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
                 <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-                Designed by <a href="#">cu</a>
+                Developed by <a href="#">ARM</a>
               </div>
 
             </div>

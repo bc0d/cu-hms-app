@@ -82,7 +82,7 @@ Route::post('signup/step2', [RegisterController::class, 'signupStep2'])->name('s
 
 
 Route::get('user-mail-confirm', function() {
-    return view('users.mailconfirm');
+    return view('users.auth.mailconfirm');
 });
 
 
@@ -97,6 +97,7 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
 
     //index
     Route::get('dashboard', [UserDashboardController::class, 'showDashboard'])->name('dashboard');
+
     Route::prefix('profile')->group(function () {
 
         //profile
@@ -241,6 +242,9 @@ Route::get('feedback',function(){
 
 Route::get('admin-login', [LoginController::class, 'showAdminLogin']);
 Route::post('admin-login', [LoginController::class, 'adminLogin'])->name('admin.login');
+
+Route::get('admin-reset', [ResetPasswordController::class, 'showAdminPasswordReset']);
+Route::post('admin-reset', [ResetPasswordController::class, 'adminPasswordReset'])->name('admin.reset');
 
 /*
 -------------------HOD----------------

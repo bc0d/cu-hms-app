@@ -335,3 +335,25 @@
   }
 
 })();
+
+function passLength() {
+  let pass = document.getElementById("pass").value;
+  if(pass.length < 8) {
+    document.getElementById("pass_length").style.color = "red";
+    document.getElementById("pass_length").style.display = "block";
+  }
+  else {
+    document.getElementById("pass_length").style.display = "none";
+  }
+}
+
+function passValidation() {
+  let pass = document.getElementById("pass").value;
+  let confPass = document.getElementById("conf_pass").value;
+  if(pass == confPass) {
+    document.getElementById("pass_conf").innerHTML = "Password Confirmed";
+  }
+  else {
+    document.getElementById("pass_conf").innerHTML = "Password Not Matching";
+  }
+}
