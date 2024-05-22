@@ -44,7 +44,7 @@ return new class extends Migration
             $table->bigIncrements('rule_id')->unique();
             $table->string('title');
             $table->text('description');
-            $table->bigInteger('updatedby');
+            $table->unsignedBigInteger('updatedby');
             $table->foreign('updatedby')->references('admin_id')->on('admins')->onDelete('cascade');
             $table->timestamps();
         });
@@ -52,7 +52,7 @@ return new class extends Migration
         Schema::create('notice', function (Blueprint $table) {
             $table->bigIncrements('notice_id')->unique();
             $table->string('title');
-            $table->bigInteger('publishedby');
+            $table->unsignedBigInteger('publishedby');
             $table->foreign('publishedby')->references('admin_id')->on('admins')->onDelete('cascade');
             $table->string('path');
             $table->timestamps();
@@ -60,15 +60,15 @@ return new class extends Migration
 
         Schema::create('feedback', function (Blueprint $table) {
             $table->bigIncrements('feedback_id')->unique();
-            $table->bigInteger(student_id);
+            $table->unsignedBigInteger('student_id');
             $table->foreign('student_id')->references('student_id')->on('students')->onDelete('cascade');
             $table->text('review');
             $table->timestamps();
         });
 
         Schema::create('room_allocation_req',function (Blueprint $table) {
-            $table->bigIncrements(allocate_req_id)->unique();
-            $table->bigUnteger(student_id);
+            $table->bigIncrements('allocate_req_id')->unique();
+            $table->unsignedBigInteger('student_id');
             $table->foreign('student_id')->references('student_id')->on('students')->onDelete('cascade');
             $table->string('dep_verification_status');
             $table->string('payment_status');
@@ -77,8 +77,8 @@ return new class extends Migration
         });
 
         Schema::create('room_vacation_req',function (Blueprint $table) {
-            $table->bigIncrements(vacate_req_id)->unique();
-            $table->bigUnteger(student_id);
+            $table->bigIncrements('vacate_req_id')->unique();
+            $table->unsignedBigInteger('student_id');
             $table->foreign('student_id')->references('student_id')->on('students')->onDelete('cascade');
             $table->string('payment_status');
             $table->string('vacate_status');
