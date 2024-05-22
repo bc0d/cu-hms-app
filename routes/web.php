@@ -9,6 +9,8 @@ use App\Http\Controllers\User\UserComplaintsController;
 use App\Http\Controllers\User\UserMessController;
 use App\Http\Controllers\User\UserRoomController;
 
+use App\Http\Controllers\SuperUser\SuperUserDashboardController;
+use App\Http\Controllers\SuperUser\SuperUserProfileController;
 use App\Http\Controllers\SuperUser\StudentDetailsAdminController;
 use App\Http\Controllers\SuperUser\HostelAdmissionAdminController;
 use App\Http\Controllers\SuperUser\HostelVacateAdminController;
@@ -20,7 +22,22 @@ use App\Http\Controllers\SuperUser\FeeAndPaymentAdminController;
 use App\Http\Controllers\SuperUser\RuleAndNoticeAdminController;
 
 
+use App\Http\Controllers\Registrar\RegistrarDashboardController;
+use App\Http\Controllers\Registrar\RegistrarProfileController;
+use App\Http\Controllers\Registrar\StudentDetailsRegistrarController;
+use App\Http\Controllers\Registrar\HostelAdmissionRegistrarController;
+use App\Http\Controllers\Registrar\HostelVacateRegistrarController;
+use App\Http\Controllers\Registrar\RoomAllocationRegistrarController;
+use App\Http\Controllers\Registrar\RoomChangeRegistrarController;
+use App\Http\Controllers\Registrar\RoomDetailsRegistrarController;
+use App\Http\Controllers\Registrar\ComplaintsRegistrarController;
+use App\Http\Controllers\Registrar\FeeAndPaymentRegistrarController;
+use App\Http\Controllers\Registrar\RuleAndNoticeRegistrarController;
+
+
+
 use App\Http\Controllers\Office\OfficeDashboardController;
+use App\Http\Controllers\Office\OfficeProfileController;
 use App\Http\Controllers\Office\StudentDetailsController;
 use App\Http\Controllers\Office\HostelAdmissionOfficeController;
 use App\Http\Controllers\Office\HostelVacateOfficeController;
@@ -30,11 +47,11 @@ use App\Http\Controllers\Office\RoomDetailsController;
 use App\Http\Controllers\Office\ComplaintsController;
 use App\Http\Controllers\Office\FeeAndPaymentController;
 use App\Http\Controllers\Office\RuleAndNoticeController;
-use App\Http\Controllers\Office\OfficeProfileController;
+
 /*mess controllers */
 
-
-
+use App\Http\Controllers\Warden\WardenDashboardController;
+use App\Http\Controllers\Warden\WardenProfileController;
 use App\Http\Controllers\Warden\WardenComplaintsController;
 use App\Http\Controllers\Warden\WardenStudentDetailsController;
 use App\Http\Controllers\warden\HostelAdmissionWardenController;
@@ -385,9 +402,9 @@ Route::prefix('office')->group(function () {
 
 Route::prefix('warden')->group(function() {
     //dashboard
-    Route::get('index', function() {
-        return view('admins.warden.dashboard');
-    });
+    Route::get('index', [WardenDashboardController::class, 'showWardenDashboard']);
+    //profile
+    Route::get('my-profile', [WardenProfileController::class, 'showWardenProfile']);
 
     //student card
     Route::prefix('student')->group(function () {
@@ -451,16 +468,110 @@ Route::prefix('warden')->group(function() {
 
 
 /* 
+----------------Registrar staff-----------------------
+*/
+
+
+Route::prefix('registrar')->group(function () {
+    //dashboard
+    Route::get('index', [RegistrarDashboardController::class, 'showRegistrarDashboard']);
+    //profile
+    Route::get('my-profile', [RegistrarProfileController::class, 'showRegistrarProfile']);
+
+
+    //student card
+    Route::prefix('student')->group(function () {
+        
+        Route::get('card', [StudentDetailsRegistrarController::class, 'showCard']);
+        Route::get('list', [StudentDetailsRegistrarController::class, 'showList']);
+        Route::get('detail', [StudentDetailsRegistrarController::class, 'showDetails']);
+    });
+
+    //rooms details card
+    Route::prefix('room-details')->group(function () {
+
+        Route::get('card', [RoomDetailsRegistrarController::class, 'showCard']);
+        Route::get('list', [RoomDetailsRegistrarController::class, 'roomDetails']);
+
+    });
+    
+
+    //Complaints
+    Route::get('complaints', [ComplaintsRegistrarController::class, 'showComplaints']);
+
+    //admission card
+    Route::prefix('admission')->group(function () {
+
+        Route::get('request', [HostelAdmissionRegistrarController::class, 'showRequests']);
+        Route::get('action', [HostelAdmissionRegistrarController::class, 'admissionAction']);
+        
+    });
+
+
+    //room allocation
+    Route::prefix('room')->group(function () {
+
+        Route::get('allocation-list', [RoomAllocationRegistrarController::class, 'showRoomAllocList']);
+        Route::get('allocation', [RoomAllocationRegistrarController::class, 'roomAllocAction']);
+
+    });
+    
+
+    //room channge card
+    Route::prefix('room-change')->group(function () {
+
+
+        Route::get('request', [RoomChangeRegistrarController::class, 'showRoomChangeReq']);
+        Route::get('action', [RoomChangeRegistrarController::class, 'roomChangeAction']);
+
+    });
+    
+
+    //vacating card
+    Route::prefix('vacate')->group(function () {
+        
+        Route::get('request', [HostelVacateRegistrarController::class, 'showRequests']);
+        Route::get('action', [HostelVacateRegistrarController::class, 'vacateAction']);
+
+    });
+    
+
+    //fee card
+    Route::prefix('fee')->group(function () {
+
+        Route::get('card', [FeeAndPaymentRegistrarController::class, 'showCard']);
+        Route::get('room-rent', [FeeAndPaymentRegistrarController::class, 'roomRentDetails']);
+
+        //fee maintanance
+        Route::get('maintanance', [FeeAndPaymentRegistrarController::class, 'feeMaintanance']);
+        Route::get('updation', [FeeAndPaymentRegistrarController::class, 'feeUpdate']);
+
+    });
+
+    //rules and notice card
+    Route::prefix('rules')->group(function () {
+
+        Route::get('card', [RuleAndNoticeRegistrarController::class, 'showCard']);
+        Route::get('rule-list', [RuleAndNoticeRegistrarController::class, 'viewRules']);
+        Route::get('rule-add', [RuleAndNoticeRegistrarController::class, 'addRule']);
+    });
+    
+
+});
+
+
+/* 
 ----------------Superuser staff-----------------------
 */
 
 Route::prefix('super-user')->group(function () {
 
-    //index
-    Route::get('index', function() {
-        return view('admins.superUser.dashboard');
-    });
-
+    //dashboard
+    Route::get('index', [SuperUserDashboardController::class, 'showSuperUserDashboard']);
+    
+    //profile
+    Route::get('my-profile', [SuperUserProfileController::class, 'showSuperUserProfile']);
+    
     //student card
     Route::prefix('student')->group(function () {
         

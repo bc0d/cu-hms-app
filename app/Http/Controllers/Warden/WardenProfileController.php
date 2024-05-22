@@ -6,10 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class WardenComplaintsController extends Controller
+class WardenProfileController extends Controller
 {
-    public function showComplaints() {
+    public function showWardenProfile() {
+        
         $admin = Auth::guard('admins')->user();
-        return view('admins.warden.complaints_list', compact('admin'));
+        return view('admins.warden.warden_profile', compact('admin'));
     }
 }

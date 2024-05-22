@@ -3,25 +3,31 @@
 namespace App\Http\Controllers\Warden;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class WardenRuleAndNoticeController extends Controller
 {
     public function showCard() {
-        return view('admins.warden.rules_card');
+        $admin = Auth::guard('admins')->user();
+        return view('admins.warden.rules_card',compact('admin'));
     }
 
     public function viewRules() {
-        return view('admins.warden.rules_list');
+        $admin = Auth::guard('admins')->user();
+        return view('admins.warden.rules_list',compact('admin'));
     }
 
     public function addRule() {
-        return view('admins.warden.rules_add');
+        $admin = Auth::guard('admins')->user();
+        return view('admins.warden.rules_add',compact('admin'));
     }
     public function addNotice() {
-        return view('admins.warden.notice_add');
+        $admin = Auth::guard('admins')->user();
+        return view('admins.warden.notice_add',compact('admin'));
     }
     public function viewNotices() {
-        return view('admins.warden.notice_list');
+        $admin = Auth::guard('admins')->user();
+        return view('admins.warden.notice_list',compact('admin'));
     }
 }

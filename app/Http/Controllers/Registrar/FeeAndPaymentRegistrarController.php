@@ -1,31 +1,31 @@
 <?php
 
-namespace App\Http\Controllers\SuperUser;
+namespace App\Http\Controllers\Registrar;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
-class FeeAndPaymentAdminController extends Controller
+class FeeAndPaymentRegistrarController extends Controller
 {
     public function showCard() {
         $admin = Auth::guard('admins')->user();
-        return view('admins.superUser.fees_card', compact('admin'));
+        return view('admins.registrar.fees_card', compact('admin'));
     }
 
     public function roomRentDetails() {
         $admin = Auth::guard('admins')->user();
-        return view('admins.superUser.fee_details', compact('admin'));
+        return view('admins.registrar.fee_details', compact('admin'));
     }
 
     //fee maintanance
     public function feeMaintanance() {
         $admin = Auth::guard('admins')->user();
-        return view('admins.superUser.fee_maintanance', compact('admin'));
+        return view('admins.registrar.fee_maintanance', compact('admin'));
     }
 
     public function feeUpdate() {
-        return view('admins.superUser.fee_update', compact('admin'));
+        $admin = Auth::guard('admins')->user();
+        return view('admins.registrar.fee_update', compact('admin'));
     }
 
 }

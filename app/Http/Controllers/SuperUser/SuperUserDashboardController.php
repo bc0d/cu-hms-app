@@ -6,10 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class ComplaintsAdminController extends Controller
+class SuperUserDashboardController extends Controller
 {
-    public function showComplaints() {
+    public function showSuperUserDashboard() {
+        
         $admin = Auth::guard('admins')->user();
-        return view('admins.superUser.complaints', compact('admin'));
+        return view('admins.superUser.dashboard', compact('admin'));
     }
 }

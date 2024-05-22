@@ -194,10 +194,10 @@
               <a class="dropdown-item d-flex align-items-center" href={{ url('office/my-profile') }}>
                 @break
               @case("warden")
-              <span class="text-success">Completed</span>
+              <a class="dropdown-item d-flex align-items-center" href={{ url('warden/my-profile') }}>
                 @break
-              @case("mess")
-              <span class="text-success">Completed</span>
+              @case("admin")
+              <a class="dropdown-item d-flex align-items-center" href={{ url('registrar/my-profile') }}>
                 @break
               @default
               <span class="text-success">Completed</span>

@@ -3,25 +3,30 @@
 namespace App\Http\Controllers\Warden;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class WardenFeeAndPaymentController extends Controller
 {
     public function showCard() {
-        return view('admins.warden.fees_card');
+        $admin = Auth::guard('admins')->user();
+        return view('admins.warden.fees_card', compact('admin'));
     }
 
     public function roomRentDetails() {
-        return view('admins.warden.fee_details');
+        $admin = Auth::guard('admins')->user();
+        return view('admins.warden.fee_details', compact('admin'));
     }
 
     //fee maintanance
     public function feeMaintanance() {
-        return view('admins.warden.fee_maintanance');
+        $admin = Auth::guard('admins')->user();
+        return view('admins.warden.fee_maintanance', compact('admin'));
     }
 
     public function feeUpdate() {
-        return view('admins.warden.fee_update');
+        $admin = Auth::guard('admins')->user();
+        return view('admins.warden.fee_update', compact('admin'));
     }
 
 }
