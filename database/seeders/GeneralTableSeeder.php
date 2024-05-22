@@ -17,7 +17,7 @@ class GeneralTableSeeder extends Seeder
                 
                 'department_name' => 'Department Of Computer Science',
                 'hod' => 'Dr Lajish VL',
-                'session_officer' => 'Telma',
+                'section_officer' => 'Telma',
                 'contact_no' => '0487-253473',
             ],
 
@@ -25,7 +25,7 @@ class GeneralTableSeeder extends Seeder
                 
                 'department_name' => 'Department Of Mathematics',
                 'hod' => 'Dr Preethi Kuttipulakkal',
-                'session_officer' => 'Praveen KV',
+                'section_officer' => 'Praveen KV',
                 'contact_no' => '0494-2407428',
             ],
 
@@ -33,7 +33,7 @@ class GeneralTableSeeder extends Seeder
                
                 'department_name' => 'Department of Statistics',
                 'hod' => 'dr S D Krishnarani',
-                'session_officer' => 'Anas Muhammad Karim',
+                'section_officer' => 'Anas Muhammad Karim',
                 'contact_no' => '0494-2407341',
             ],
 
@@ -41,7 +41,7 @@ class GeneralTableSeeder extends Seeder
                 
                 'department_name' => 'Department of Education',
                 'hod' => 'Prof. (Dr.). BINDHU. C.M',
-                'session_officer' => 'Nisharani',
+                'section_officer' => 'Nisharani',
                 'contact_no' => '0494-2407510',
             ],
 
@@ -49,7 +49,7 @@ class GeneralTableSeeder extends Seeder
                 
                 'department_name' => 'Department of Malayalam & Kerala Studies ',
                 'hod' => 'Dr. P.Somanadhan',
-                'session_officer' => 'Lakshmanan A',
+                'section_officer' => 'Lakshmanan A',
                 'contact_no' => '0494-2407255',
             ],
 
@@ -57,106 +57,47 @@ class GeneralTableSeeder extends Seeder
                 
                 'department_name' => 'Department of Commerce and Management Studies',
                 'hod' => 'Dr. Sreesha C H',
-                'session_officer' => 'Ms. Santhi K.J',
+                'section_officer' => 'Ms. Santhi K.J',
                 'contact_no' => '0494-2407363',
             ]
         ]);
         DB::table('courses')->insert([
             [
-            
+                'department_id' => '1',
                 'course_name' => 'MSc Computer Science'
             ],
 
             [
-                
+                'department_id' => '2',
                 'course_name' => 'MSc Mathematics'
             ],
 
             [
-                
+                'department_id' => '3',
                 'course_name' => 'MSc Statistics'
             ],
 
             [
-                
+                'department_id' => '4',
                 'course_name' => 'MEd'
             ],
 
             [
-                
+                'department_id' => '5',
                 'course_name' => 'MA Malayalam'
             ],
 
             [
-                
+                'department_id' => '6',
                 'course_name' => 'MCom'
+            ],
+
+            [
+                'department_id' => '6',
+                'course_name' => 'MBA'
             ]
 
             ]);
-            DB::table('complaints')->insert([
-                [
-                    'complaint_id' => '',
-                    'student_id' => '',
-                    'category' => '',
-                    'complaint' => '',
-                    'status' => '',
-                    'closedby' => ''
-                ],
-
-                [
-                    'complaint_id' => '',
-                    'student_id' => '',
-                    'category' => '',
-                    'complaint' => '',
-                    'status' => '',
-                    'closedby' => ''
-                ],
-
-                [
-                    'complaint_id' => '',
-                    'student_id' => '',
-                    'category' => '',
-                    'complaint' => '',
-                    'status' => '',
-                    'closedby' => ''
-                ],
-
-                [
-                    'complaint_id' => '',
-                    'student_id' => '',
-                    'category' => '',
-                    'complaint' => '',
-                    'status' => '',
-                    'closedby' => ''
-                ],
-
-                [
-                    'complaint_id' => '',
-                    'student_id' => '',
-                    'category' => '',
-                    'complaint' => '',
-                    'status' => '',
-                    'closedby' => ''
-                ],
-
-                [
-                    'complaint_id' => '',
-                    'student_id' => '',
-                    'category' => '',
-                    'complaint' => '',
-                    'status' => '',
-                    'closedby' => ''
-                ],
-
-                [
-                    'complaint_id' => '',
-                    'student_id' => '',
-                    'category' => '',
-                    'complaint' => '',
-                    'status' => '',
-                    'closedby' => ''
-                ]
-
-            ]);
+            //test
     }
 }
