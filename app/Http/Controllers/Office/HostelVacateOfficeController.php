@@ -3,15 +3,18 @@
 namespace App\Http\Controllers\Office;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class HostelVacateOfficeController extends Controller
 {
     public function showRequests() {
-        return view('admins.office.vacate_req');
+        $admin = Auth::guard('admins')->user();
+        return view('admins.office.vacate_req', compact('admin'));
     }
 
     public function vacateAction() {
-        return view('admins.office.vacate_req_action');
+        $admin = Auth::guard('admins')->user();
+        return view('admins.office.vacate_req_action', compact('admin'));
     }
 }

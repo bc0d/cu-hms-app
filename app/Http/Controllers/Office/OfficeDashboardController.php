@@ -6,10 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class ComplaintsController extends Controller
+class OfficeDashboardController extends Controller
 {
-    public function showComplaints() {
+    public function showHodDashboard() {
+        
         $admin = Auth::guard('admins')->user();
-        return view('admins.office.complaints', compact('admin'));
+        return view('admins.office.dashboard', compact('admin'));
     }
 }

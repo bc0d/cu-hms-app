@@ -6,10 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class ComplaintsController extends Controller
+
+class OfficeProfileController extends Controller
 {
-    public function showComplaints() {
+    public function showOfficeProfile() {
+        
         $admin = Auth::guard('admins')->user();
-        return view('admins.office.complaints', compact('admin'));
+        
+        return view('admins.office.office_profile', compact('admin'));
     }
 }

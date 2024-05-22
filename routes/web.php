@@ -20,7 +20,7 @@ use App\Http\Controllers\SuperUser\FeeAndPaymentAdminController;
 use App\Http\Controllers\SuperUser\RuleAndNoticeAdminController;
 
 
-
+use App\Http\Controllers\Office\OfficeDashboardController;
 use App\Http\Controllers\Office\StudentDetailsController;
 use App\Http\Controllers\Office\HostelAdmissionOfficeController;
 use App\Http\Controllers\Office\HostelVacateOfficeController;
@@ -30,6 +30,7 @@ use App\Http\Controllers\Office\RoomDetailsController;
 use App\Http\Controllers\Office\ComplaintsController;
 use App\Http\Controllers\Office\FeeAndPaymentController;
 use App\Http\Controllers\Office\RuleAndNoticeController;
+use App\Http\Controllers\Office\OfficeProfileController;
 /*mess controllers */
 
 
@@ -46,6 +47,7 @@ use App\Http\Controllers\Hod\HostelAdmissionHodController;
 use App\Http\Controllers\Hod\HostelVacateHodController;
 use App\Http\Controllers\Hod\StudentDetailsHodController;
 use App\Http\Controllers\Hod\HodDashboardController;
+use App\Http\Controllers\Hod\HodProfileController;
 
 
 use App\Http\Controllers\Auth\RegisterController;
@@ -251,6 +253,10 @@ Route::prefix('hod')->group(function () {
 
     //index
     Route::get('index', [HodDashboardController::class, 'showHodDashboard']);
+    Route::get('my-profile', [HodProfileController::class, 'showHodProfile']);
+
+
+    //profile
     
 
     //allocation request
@@ -287,9 +293,9 @@ Route::prefix('hod')->group(function () {
 Route::prefix('office')->group(function () {
 
     //index
-    Route::get('index', function() {
-        return view('admins.office.dashboard');
-    });
+    Route::get('index', [OfficeDashboardController::class, 'showHodDashboard']);
+    
+    Route::get('my-profile', [OfficeProfileController::class, 'showOfficeProfile']);
 
     //student card
     Route::prefix('student')->group(function () {

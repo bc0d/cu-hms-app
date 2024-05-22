@@ -6,12 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class HodDashboardController extends Controller
+class HodProfileController extends Controller
 {
-    public function showHodDashboard() {
+    public function showHodProfile() {
         
         $admin = Auth::guard('admins')->user();
-        return view('admins.hod.dashboard', compact('admin'));
+        
+        return view('admins.hod.hod_profile', compact('admin'));
     }
-    
 }

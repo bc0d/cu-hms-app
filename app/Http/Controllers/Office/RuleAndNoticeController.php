@@ -3,19 +3,23 @@
 namespace App\Http\Controllers\Office;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class RuleAndNoticeController extends Controller
 {
     public function showCard() {
-        return view('admins.office.rules_card');
+        $admin = Auth::guard('admins')->user();
+        return view('admins.office.rules_card', compact('admin'));
     }
 
     public function viewRules() {
-        return view('admins.office.rules_list');
+        $admin = Auth::guard('admins')->user();
+        return view('admins.office.rules_list', compact('admin'));
     }
 
     public function addRule() {
-        return view('admins.office.rules_add');
+        $admin = Auth::guard('admins')->user();
+        return view('admins.office.rules_add', compact('admin'));
     }
 }

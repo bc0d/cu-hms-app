@@ -169,7 +169,7 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">{{ $admin->name  ?? 'Code Not Found'  }}</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{ $admin->name  }}</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -182,7 +182,30 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+            
+              
+           
+            @switch( $admin->designation )
+              @case("hod")
+              <a class="dropdown-item d-flex align-items-center" href={{ url('hod/my-profile') }}>
+                
+                @break
+              @case("staff")
+              <a class="dropdown-item d-flex align-items-center" href={{ url('office/my-profile') }}>
+                @break
+              @case("warden")
+              <span class="text-success">Completed</span>
+                @break
+              @case("mess")
+              <span class="text-success">Completed</span>
+                @break
+              @default
+              <span class="text-success">Completed</span>
+            
+            @endswitch
+
+
+              
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
