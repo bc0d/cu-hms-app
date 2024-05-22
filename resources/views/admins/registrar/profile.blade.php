@@ -36,7 +36,7 @@
                   
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                    <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+                    <div class="col-lg-9 col-md-8">{{ $admin->name }}</div>
                   </div>
 
                   <div class="row">
@@ -45,8 +45,8 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Job</div>
-                    <div class="col-lg-9 col-md-8">Web Designer</div>
+                    <div class="col-lg-3 col-md-4 label">Desgnation</div>
+                    <div class="col-lg-9 col-md-8"> {{ $admin->designation }} </div>
                   </div>
 
                   <div class="row">
@@ -66,7 +66,7 @@
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Email</div>
-                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                    <div class="col-lg-9 col-md-8">{{  $admin->email }}</div>
                   </div>
 
                 </div>
