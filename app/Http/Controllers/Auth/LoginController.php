@@ -110,6 +110,6 @@ class LoginController extends Controller
     {
         Auth::guard('admins')->logout();
         $request->session()->invalidate();
-        return redirect('admin-login');
+        return redirect('/');
     }
 }
