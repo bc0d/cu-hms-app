@@ -93,7 +93,7 @@ class AdminsTableSeeder extends Seeder
                 'department' => 'admin',
                 'designation' => 'admin',
                 'access' => 'all',
-                'email' => 'admin8@gmail.com',
+                'email' => 'admin9@gmail.com',
                 'password' => Hash::make('password'),
             ],
         ]);
