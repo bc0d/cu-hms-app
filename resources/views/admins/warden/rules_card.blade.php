@@ -7,7 +7,7 @@
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href={{ url('warden/index')}}>Home</a></li>
-        <li class="breadcrumb-item active"><a href={{ url('warden/rules/card')}}>Rules&amp;Notices</li>
+        <li class="breadcrumb-item active">Rules&amp;Notices</li>
       </ol>
     </nav>
   </div>

@@ -390,7 +390,9 @@ Route::prefix('office')->group(function () {
 
         Route::get('card', [RuleAndNoticeController::class, 'showCard']);
         Route::get('rule-list', [RuleAndNoticeController::class, 'viewRules']);
-        Route::get('rule-add', [RuleAndNoticeController::class, 'addRule']);
+        Route::get('rule-add', [RuleAndNoticeController::class, 'viewAddRule']);
+        Route::post('add-rule', [RuleAndNoticeController::class, 'addRule'])->name('office.rules.add');
+        Route::post('remove-rule',[RuleAndNoticeController::class,'removeRule'])->name('office.rules.remove');
     });
 });
 
