@@ -264,6 +264,8 @@ Route::get('feedback',function(){
 Route::get('admin-login', [LoginController::class, 'showAdminLogin']);
 Route::post('admin-login', [LoginController::class, 'adminLogin'])->name('admin.login');
 
+Route::post('admin-signout', [LoginController::class, 'adminLogout'])->name('admin.signout');
+
 Route::get('admin-reset', [ResetPasswordController::class, 'showAdminPasswordReset']);
 Route::post('admin-reset', [ResetPasswordController::class, 'adminPasswordReset'])->name('admin.reset');
 
