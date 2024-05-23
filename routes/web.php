@@ -103,7 +103,7 @@ Route::post('signup/step2', [RegisterController::class, 'signupStep2'])->name('s
 
 
 Route::get('user-mail-confirm', function() {
-    return view('users.mailconfirm');
+    return view('users.auth.mailconfirm');
 });
 
 
@@ -118,6 +118,7 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
 
     //index
     Route::get('dashboard', [UserDashboardController::class, 'showDashboard'])->name('dashboard');
+
     Route::prefix('profile')->group(function () {
 
         //profile
@@ -263,6 +264,9 @@ Route::get('feedback',function(){
 Route::get('admin-login', [LoginController::class, 'showAdminLogin']);
 Route::post('admin-login', [LoginController::class, 'adminLogin'])->name('admin.login');
 
+Route::get('admin-reset', [ResetPasswordController::class, 'showAdminPasswordReset']);
+Route::post('admin-reset', [ResetPasswordController::class, 'adminPasswordReset'])->name('admin.reset');
+
 /*
 -------------------HOD----------------
 */
@@ -327,60 +331,56 @@ Route::prefix('office')->group(function () {
 
         Route::get('card', [RoomDetailsController::class, 'showCard']);
         Route::get('list', [RoomDetailsController::class, 'roomDetails']);
-
     });
     
-
     //Complaints
-    Route::get('complaints', [ComplaintsController::class, 'showComplaints']);
+    Route::prefix('complaints')->group(function () {
 
+        Route::get('card', [ComplaintsController::class, 'showComplaintsCard']);
+        Route::get('new', [ComplaintsController::class, 'showNewComplaints']);
+        Route::get('view/{id}', [ComplaintsController::class, 'showComplaintView']);
+        Route::post('edit', [ComplaintsController::class, 'complaintEdit'])->name('complaint.action');
+        Route::get('solved', [ComplaintsController::class, 'showSolvedComplaints']);
+        Route::get('all', [ComplaintsController::class, 'showAllComplaints']);
+    });
+    
     //admission card
     Route::prefix('admission')->group(function () {
 
         Route::get('request', [HostelAdmissionOfficeController::class, 'showRequests']);
-        Route::get('action', [HostelAdmissionOfficeController::class, 'admissionAction']);
-        
+        Route::get('action', [HostelAdmissionOfficeController::class, 'admissionAction']);   
     });
-
 
     //room allocation
     Route::prefix('room')->group(function () {
 
         Route::get('allocation-list', [RoomAllocationController::class, 'showRoomAllocList']);
         Route::get('allocation', [RoomAllocationController::class, 'roomAllocAction']);
-
     });
     
-
     //room channge card
     Route::prefix('room-change')->group(function () {
 
 
         Route::get('request', [RoomChangeController::class, 'showRoomChangeReq']);
         Route::get('action', [RoomChangeController::class, 'roomChangeAction']);
-
     });
     
-
     //vacating card
     Route::prefix('vacate')->group(function () {
         
         Route::get('request', [HostelVacateOfficeController::class, 'showRequests']);
         Route::get('action', [HostelVacateOfficeController::class, 'vacateAction']);
-
     });
     
-
     //fee card
     Route::prefix('fee')->group(function () {
 
         Route::get('card', [FeeAndPaymentController::class, 'showCard']);
         Route::get('room-rent', [FeeAndPaymentController::class, 'roomRentDetails']);
-
         //fee maintanance
         Route::get('maintanance', [FeeAndPaymentController::class, 'feeMaintanance']);
         Route::get('updation', [FeeAndPaymentController::class, 'feeUpdate']);
-
     });
 
     //rules and notice card
@@ -390,8 +390,6 @@ Route::prefix('office')->group(function () {
         Route::get('rule-list', [RuleAndNoticeController::class, 'viewRules']);
         Route::get('rule-add', [RuleAndNoticeController::class, 'addRule']);
     });
-    
-
 });
 
 

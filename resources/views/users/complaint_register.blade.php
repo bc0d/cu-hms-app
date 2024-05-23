@@ -23,12 +23,12 @@
               </div>
               <select name="complaint_cat" id="select1" class="form-select ">
                 <option value="" selected disabled>Select</option>
-                <option>hostel</option>
-                <option>mess</option>
-                <option>electricity</option>
-                <option>internet</option>
-                <option>staff and management</option>
-                <option>other</option>
+                <option value="Hostel">Hostel</option>
+                <option value="Mess">Mess</option>
+                <option value="Electricity">Electricity</option>
+                <option value="Internet">Internet</option>
+                <option value="S&M">Staff and Management</option>
+                <option value="Other">Other</option>
               </select>
             </div>
           </div>
@@ -41,11 +41,9 @@
             <div class="col">
               <textarea class="form-control" name="complaint_msg" rows="3" placeholder=""></textarea>
             </div>
-
-
           </div>
 
-
+          
           <!--<div class="my-3">
                 <div class="loading">Loading</div>
                 <div class="error-message"></div>

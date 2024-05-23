@@ -4,58 +4,42 @@
  <!-- ======= service Section ======= --> 
 <section id="services" class="services">
 
-
   <h2 class="sign-sec text-center">My Complaints</h2><hr>
 
-<div class="container col-lg-8 hi mt-5 py-5 align-items-center">
- 
+  <div class="container col-lg-8 hi mt-5  align-items-center py-5">
+    <div class="row gy-4 gy-lg-0">
+      <div class="col-12">
 
-<table class="table">
-    <thead>
-      <tr>
-       
-        <th>Date</th>
-        <th>complaint type</th>
-        <th>summary</th>
-        <th>contact</th>
-        <th>status</th>
-        
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        
-        <td data-label="Date">01/12/23</td>
-        <td data-label="complaint type">electrical</a></td>
-        <td data-label="summary">no bulb in room 104</td>
-        <td data-label="contact">123456789</td>
-        <td data-label="status">resolved</td> 
-      </tr>
-      <tr>
-        
-        <td data-label="Date">05/01/24</td>
-        <td data-label="complaint type">electrical</a></td>
-        <td data-label="summary">fan switch not working  in room 104</td>
-        <td data-label="contact">123456789</td>
-        <td data-label="status">pending</td> 
-      </tr>
-      <tr>
-        
-        <td data-label="Date">06/01/24</td>
-        <td data-label="complaint type">electrical</a></td>
-        <td data-label="summary">fan switch not working  in room 104</td>
-        <td data-label="contact">123456789</td>
-        <td data-label="status">pending</td> 
-      </tr>
-      
-      <!-- Add more rows as needed -->
-    </tbody>
-</table>
-</div>
-
-
-
-  
-
+        @if($complaints->isEmpty())
+          <p>No complaints found.</p>
+        @else
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Complaint ID</th>
+                <th>Category</th>
+                <th>Complaint</th>
+                <th>Status</th>
+                <th>Comment</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach ($complaints as $complaint)
+                <tr>
+                  <td data-label="Complaint ID">{{ $complaint->complaint_id }}</td>
+                  <td data-label="Category">{{ $complaint->category }}</td>
+                  <td data-label="Complaint">{{ $complaint->complaint }}</td>
+                  <td data-label="Status">{{ $complaint->status }}</td>
+                  <td data-label="Comment">{{ $complaint->comment }}</td>
+                  <td data-label="Date">{{ $complaint->created_at->toDateString() }}</td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+        @endif
+      </div>
+    </div>
+  </div>
 </section>
 @endsection
