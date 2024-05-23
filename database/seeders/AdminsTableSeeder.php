@@ -82,7 +82,7 @@ class AdminsTableSeeder extends Seeder
             [
                 'name' => 'admin8',
                 'department' => 'registrar',
-                'designation' => 'admin',
+                'designation' => 'registrar',
                 'access' => 'all',
                 'email' => 'admin8@gmail.com',
                 'password' => Hash::make('password'),

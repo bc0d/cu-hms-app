@@ -186,21 +186,25 @@
               
            
             @switch( $admin->designation )
-              @case("hod")
-              <a class="dropdown-item d-flex align-items-center" href={{ url('hod/my-profile') }}>
-                
+              @case("warden")
+              <a class="dropdown-item d-flex align-items-center" href={{ url('warden/my-profile') }}>
                 @break
               @case("staff")
               <a class="dropdown-item d-flex align-items-center" href={{ url('office/my-profile') }}>
                 @break
-              @case("warden")
-              <a class="dropdown-item d-flex align-items-center" href={{ url('warden/my-profile') }}>
+              @case("hod")
+              <a class="dropdown-item d-flex align-items-center" href={{ url('hod/my-profile') }}>
                 @break
               @case("admin")
               <a class="dropdown-item d-flex align-items-center" href={{ url('registrar/my-profile') }}>
                 @break
-              @default
-              <span class="text-success">Completed</span>
+              @case("registrar")
+              <a class="dropdown-item d-flex align-items-center" href={{ url('registrar/my-profile') }}>
+                @break
+              @case("mess_admin")
+              <a class="dropdown-item d-flex align-items-center" href={{ url('registrar/my-profile') }}>
+                @break
+              
             
             @endswitch
 
