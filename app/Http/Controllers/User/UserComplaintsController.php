@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Complaint;
 use Illuminate\Http\Request;
 
 class UserComplaintsController extends Controller
@@ -22,12 +23,27 @@ class UserComplaintsController extends Controller
 
     public function registerComplaint(Request $request) {
 
-        return redirect()->intended('user/complaints/my-complaints');
+        $student = Auth::guard('students')->user();
+
+        $formData = $request->validate([
+            'complaint_cat' => 'required|string',
+            'complaint_msg' => 'required|string',
+        ]);
+
+        $complaint = new Complaint();
+        $complaint->student_id = $student->student_id;
+        $complaint->category = $formData['complaint_cat'];
+        $complaint->complaint = $formData['complaint_msg'];
+        $complaint->status = 'Pending'; // default status
+        $complaint->save();
+
+        return redirect()->intended('user/complaints/');
     }
 
     public function showMyComplaints() {
 
         $student = Auth::guard('students')->user();
-        return view('users.complaints_my', compact('student'));
+        $complaints = Complaint::where('student_id', $student->student_id)->get();
+        return view('users.complaints_my', compact('student','complaints'));
     }
 }

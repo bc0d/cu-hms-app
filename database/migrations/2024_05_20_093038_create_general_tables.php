@@ -37,6 +37,7 @@ return new class extends Migration
             $table->string('status');
             $table->unsignedBigInteger('closedby')->nullable();
             $table->foreign('closedby')->references('admin_id')->on('admins')->onDelete('cascade');
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
 
