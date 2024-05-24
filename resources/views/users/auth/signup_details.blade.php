@@ -109,9 +109,15 @@
                       <input type="text" name="country" class="form-control" id="country" placeholder="" required>
                     </div>
                 </div>
+                <div class="row">
+                  <div class="col-md-4 form-group">
+                    <label for="pin">Pin No<span aria-hidden="true" class="required-fields"> *</span></label>
+                  </div>
+                  <div class="col-md-8 form-group">
+                    <input type="text" name="pin" class="form-control" id="pin" placeholder="" required>
+                  </div>
+              </div>
             </fieldset>
-            
-            
             <div class="row">
               <div class="col-md-4 form-group">
                 <label for="guardian">Guardian<span aria-hidden="true" class="required-fields"> *</span></label>
@@ -141,11 +147,15 @@
             </div>
             <div class="row">
               <div class="col-md-4 form-group">
-                <label for="course_duration">Course Duration<span aria-hidden="true" class="required-fields"> *</span></label>
+                <label for="course_type">Course<span aria-hidden="true" class="required-fields"> *</span></label>
               </div>
               <div class="col-md-8 form-group">
-                <input type="text" name="course_duration" class="form-control" id="course_duration" placeholder="" required>
-                <span class="form-hint" id="">In years</span>
+                <select name="course" id="admsn_type" class="form-control">
+                  <option value="">--Select--</option>
+                  @foreach ($courses as $course)
+                    <option value="{{ $course->course_id }}">{{ $course->course_name }}</option>
+                  @endforeach
+                </select>
               </div>
             </div>
             <div class="row">
@@ -156,20 +166,7 @@
                 <input type="date" name="adm_date" class="form-control" id="admsn_date" placeholder="" required>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-4 form-group">
-                <label for="course_type">Course Type<span aria-hidden="true" class="required-fields"> *</span></label>
-              </div>
-              <div class="col-md-8 form-group">
-                <select name="course_type" id="admsn_type" class="form-control">
-                  <option value="">--Select--</option>
-                  <option value="intpg">Integrated PG</option>
-                  <option value="pg">PG</option>
-                  <option value="phd">PHD</option>
-                  <option value="pdf">PDF</option>
-                </select>
-              </div>
-            </div>
+            
             <div class="row">
               <div class="col-md-4 form-group">
                 <label for="reservation">Reservation Category<span aria-hidden="true" class="required-fields"> *</span></label>

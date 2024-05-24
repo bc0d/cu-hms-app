@@ -36,6 +36,7 @@ use App\Http\Controllers\Registrar\RuleAndNoticeRegistrarController;
 
 
 
+
 use App\Http\Controllers\Office\OfficeDashboardController;
 use App\Http\Controllers\Office\OfficeProfileController;
 use App\Http\Controllers\Office\StudentDetailsController;
@@ -59,6 +60,7 @@ use App\Http\Controllers\warden\HostelVacateWardenController;
 use App\Http\Controllers\warden\WardenFeeAndPaymentController;
 use App\Http\Controllers\warden\WardenRoomDetailsController;
 use App\Http\Controllers\warden\WardenRuleAndNoticeController;
+use App\Http\Controllers\Warden\ComplaintsWardenController;
 
 use App\Http\Controllers\Hod\HostelAdmissionHodController;
 use App\Http\Controllers\Hod\HostelVacateHodController;
@@ -469,10 +471,20 @@ Route::prefix('warden')->group(function() {
         Route::get('notice-list',[WardenRuleAndNoticeController::class, 'viewNotices']);
         Route::get('notice-add',[WardenRuleAndNoticeController::class, 'addNotice']);
     });
-
+/*
     //Complaints registry
     Route::get('complaints', [WardenComplaintsController::class, 'showComplaints']);
+*/
+    //Complaints
+    Route::prefix('complaints')->group(function () {
 
+        Route::get('card', [ComplaintsWardenController::class, 'showComplaintsCard']);
+        Route::get('new', [ComplaintsWardenController::class, 'showNewComplaints']);
+        Route::get('view/{id}', [ComplaintsWardenController::class, 'showComplaintView']);
+        Route::post('edit', [ComplaintsWardenController::class, 'complaintEdit'])->name('complaint.action');
+        Route::get('solved', [ComplaintsWardenController::class, 'showSolvedComplaints']);
+        Route::get('all', [ComplaintsWardenController::class, 'showAllComplaints']);
+    });
 });
 
 
@@ -505,10 +517,21 @@ Route::prefix('registrar')->group(function () {
 
     });
     
-
+/*
     //Complaints
     Route::get('complaints', [ComplaintsRegistrarController::class, 'showComplaints']);
+*/
+    //Complaints
+    Route::prefix('complaints')->group(function () {
 
+        Route::get('card', [ComplaintsRegistrarController::class, 'showComplaintsCard']);
+        Route::get('new', [ComplaintsRegistrarController::class, 'showNewComplaints']);
+        Route::get('view/{id}', [ComplaintsRegistrarController::class, 'showComplaintView']);
+        Route::post('edit', [ComplaintsRegistrarController::class, 'complaintEdit'])->name('complaint.action');
+        Route::get('solved', [ComplaintsRegistrarController::class, 'showSolvedComplaints']);
+        Route::get('all', [ComplaintsRegistrarController::class, 'showAllComplaints']);
+    });
+    
     //admission card
     Route::prefix('admission')->group(function () {
 
@@ -598,10 +621,21 @@ Route::prefix('super-user')->group(function () {
 
     });
     
-
+/*
     //Complaints
     Route::get('complaints', [ComplaintsAdminController::class, 'showComplaints']);
+*/
+    //Complaints
+    Route::prefix('complaints')->group(function () {
 
+        Route::get('card', [ComplaintsAdminController::class, 'showComplaintsCard']);
+        Route::get('new', [ComplaintsAdminController::class, 'showNewComplaints']);
+        Route::get('view/{id}', [ComplaintsAdminController::class, 'showComplaintView']);
+        Route::post('edit', [ComplaintsAdminController::class, 'complaintEdit'])->name('complaint.action');
+        Route::get('solved', [ComplaintsAdminController::class, 'showSolvedComplaints']);
+        Route::get('all', [ComplaintsAdminController::class, 'showAllComplaints']);
+    });
+    
     //admission card
     Route::prefix('admission')->group(function () {
 

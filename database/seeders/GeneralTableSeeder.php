@@ -62,43 +62,58 @@ class GeneralTableSeeder extends Seeder
                 'contact_no' => '0494-2407363',
             ]
         ]);
+
         DB::table('courses')->insert([
             [
                 'department_id' => '1',
-                'course_name' => 'MSc Computer Science'
+                'course_name' => 'MSc Computer Science',
+                'course_type' => 'PG',
+                'course_duration' => '2',
             ],
 
             [
                 'department_id' => '2',
-                'course_name' => 'MSc Mathematics'
+                'course_name' => 'MSc Mathematics',
+                'course_type' => 'PG',
+                'course_duration' => '2',
             ],
 
             [
                 'department_id' => '3',
-                'course_name' => 'MSc Statistics'
+                'course_name' => 'MSc Statistics',
+                'course_type' => 'PG',
+                'course_duration' => '2',
             ],
 
             [
                 'department_id' => '4',
-                'course_name' => 'MEd'
+                'course_name' => 'MEd',
+                'course_type' => 'PG',
+                'course_duration' => '2',
             ],
 
             [
                 'department_id' => '5',
-                'course_name' => 'MA Malayalam'
+                'course_name' => 'MA Malayalam',
+                'course_type' => 'PG',
+                'course_duration' => '2',
             ],
 
             [
                 'department_id' => '6',
-                'course_name' => 'MCom'
+                'course_name' => 'MCom',
+                'course_type' => 'PG',
+                'course_duration' => '2',
             ],
 
             [
                 'department_id' => '6',
-                'course_name' => 'MBA'
+                'course_name' => 'MBA',
+                'course_type' => 'PG',
+                'course_duration' => '2',
             ]
 
-            ]);
-            //test
+        ]);
+
     }
 }
