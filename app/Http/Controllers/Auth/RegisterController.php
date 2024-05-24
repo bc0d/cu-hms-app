@@ -5,16 +5,26 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User\Student;
+use App\Models\Department;
+use App\Models\Course;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
     public function signupPageFirst() {
-        return view('users.auth.signup_basic');
+
+        $departments = Department::all();
+        return view('users.auth.signup_basic', compact('departments'));
     }
 
     public function signupPageFinal() {
-        return view('users.auth.signup_details');
+
+        $step1Data = session()->get('step1');
+        $dept = $step1Data['department'];
+        
+        $courses = Course::where('department_id', $dept)->get();
+
+        return view('users.auth.signup_details', compact('courses'));
     }
 
     public function signupStep1(Request $request) {

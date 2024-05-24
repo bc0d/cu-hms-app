@@ -32,11 +32,19 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('messJoins', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('student_id');
+            $table->foreign('student_id')->references('student_id')->on('students')->onDelete('cascade');
+            $table->string('status')->nullable();
+            $table->timestamps();
+        });
+
 
         Schema::create('mess_menu', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('hostel_id');
-            $table->bigInteger('mess_id');
+            $table->unsignedBigInteger('mess_id');
+            $table->foreign('mess_id')->references('mess_id')->on('messes')->onDelete('cascade');
             $table->string('weekday');
             $table->string('breakfast');
             $table->string('lunch');
@@ -52,6 +60,26 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mess_tables');
+        Schema::table('messes',function (Blueprint $table) {
+            $table->dropForeign(['hostel_id']);
+        });
+
+        Schema::table('attendances',function (Blueprint $table) {
+            $table->dropForeign(['student_id']);
+            $table->dropForeign(['mess_id']);
+        });
+
+        Schema::table('messJoins',function (Blueprint $table) {
+            $table->dropForeign(['student_id']);
+        });
+
+        Schema::table('mess_menu',function (Blueprint $table) {
+            $table->dropForeign(['mess_id']);
+        });
+
+        Schema::dropIfExists('messes');
+        Schema::dropIfExists('attendances');
+        Schema::dropIfExists('messJoins');
+        Schema::dropIfExists('mess_menu');
     }
 };
