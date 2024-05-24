@@ -86,14 +86,9 @@
               <div class="col-md-8 form-group">
                 <select name="department" id="department" class="form-control">
                   <option value="">--Select--</option>
-                  {{--
-                    @foreach ($instructors as $instructor)
-                      <option value="{{ $instructor->id }}">{{ $instructor->FirstName }} {{ $instructor->LastName }}"</option>">
-                    @endforeach
-                    --}}
-                  <option value="cs">computer</option>
-                  <option value="cs">computer</option>
-                  <option value="cs">computer</option>
+                  @foreach ($departments as $department)
+                    <option value="{{ $department->department_id }}">{{ $department->department_name }}</option>">
+                  @endforeach
                 </select>
               </div>
             </div>

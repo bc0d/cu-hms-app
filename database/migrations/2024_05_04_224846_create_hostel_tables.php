@@ -66,6 +66,11 @@ return new class extends Migration
         Schema::table('beds', function (Blueprint $table) {
             $table->dropForeign(['room_id']);
         });
+
+        Schema::table('beds', function (Blueprint $table) {
+            $table->dropForeign(['student_id']);
+        });
+        
         Schema::dropIfExists('hostels');
         Schema::dropIfExists('blocks');
         Schema::dropIfExists('rooms');

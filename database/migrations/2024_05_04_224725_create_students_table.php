@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('second_name');
             $table->string('gender');
-            $table->string('department');
+            $table->unsignedBigInteger('department');
             $table->string('adm_no');
             $table->date('dob');
             $table->string('phone');
@@ -29,16 +29,17 @@ return new class extends Migration
             $table->string('post');
             $table->string('district');
             $table->string('state');
+            $table->string('pin');
             $table->string('country');
             $table->string('guardian');
             $table->string('guardian_phone');
             $table->string('pwd');
-            $table->string('course_duration');
+            $table->unsignedBigInteger('course');
             $table->date('adm_date');
-            $table->string('course_type');
             $table->string('reservation');
             $table->string('image');
             $table->rememberToken();
+            $table->unsignedBigInteger('bed_id')->nullable();
             $table->timestamps();
         });
     }
