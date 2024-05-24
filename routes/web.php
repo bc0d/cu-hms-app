@@ -393,6 +393,9 @@ Route::prefix('office')->group(function () {
         Route::get('rule-add', [RuleAndNoticeController::class, 'viewAddRule']);
         Route::post('add-rule', [RuleAndNoticeController::class, 'addRule'])->name('office.rules.add');
         Route::post('remove-rule',[RuleAndNoticeController::class,'removeRule'])->name('office.rules.remove');
+        
+
+
     });
 });
 
@@ -458,6 +461,8 @@ Route::prefix('warden')->group(function() {
         Route::get('card', [WardenRuleAndNoticeController::class, 'showCard']);
         Route::get('rule-list', [WardenRuleAndNoticeController::class, 'viewRules']);
         Route::get('rule-add', [WardenRuleAndNoticeController::class, 'addRule']);
+
+        
         Route::get('notice-list',[WardenRuleAndNoticeController::class, 'viewNotices']);
         Route::get('notice-add',[WardenRuleAndNoticeController::class, 'addNotice']);
     });
