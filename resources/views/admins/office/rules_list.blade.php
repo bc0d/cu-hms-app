@@ -22,6 +22,7 @@
                     <a href={{ url('office/rules/rule-add') }} class="btn btn-success btn-sm mb-3">Add New</a>
                     <!-- List group with Advanced Contents -->
                     <div class="list-group">
+                        
                         @if($rules->isEmpty())
                             <p>No rules here. </p>
                         @else

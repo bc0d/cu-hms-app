@@ -49,36 +49,7 @@ class RuleAndNoticeController extends Controller
     
     }
 
-    public function viewAddNotice() {
-        $admin = Auth::guard('admins')->user();
-        return view('admins.office.notice_add',compact('admin'));
-    }
-
-    public function addNotice(Request $request) {
-        $admin = Auth::guard('admins')->user();
-        $request->validate([
-            'pdf' => 'required|mimes:pdf|max:2048',
-        ]);
-
-        if ($request->file('pdf')->isValid()) {
-            $path = $request->file('pdf')->store('pdfs');
-
-            $pdf = new Pdf();
-            $pdf->filename = $request->file('pdf')->getClientOriginalName();
-            $pdf->path = $path;
-            $pdf->save();
-
-            return redirect('/upload')->with('success', 'File uploaded successfully!');
-        }
-
-        return redirect('/upload')->with('error', 'File upload failed.');
-
-    }
-    public function viewNotices() {
-        $admin = Auth::guard('admins')->user();
-        return view('admins.warden.notice_list',compact('admin'));
-    }
-
+    
     
 
 

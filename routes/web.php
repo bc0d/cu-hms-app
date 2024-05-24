@@ -457,10 +457,13 @@ Route::prefix('warden')->group(function() {
 
     //rules and notice card
     Route::prefix('rules')->group(function () {
-
+        
         Route::get('card', [WardenRuleAndNoticeController::class, 'showCard']);
         Route::get('rule-list', [WardenRuleAndNoticeController::class, 'viewRules']);
-        Route::get('rule-add', [WardenRuleAndNoticeController::class, 'addRule']);
+        Route::get('rule-add', [WardenRuleAndNoticeController::class, 'viewAddRule']);
+        Route::post('add-rule', [WardenRuleAndNoticeController::class, 'addRule'])->name('warden.rules.add');
+        Route::post('remove-rule',[wardenRuleAndNoticeController::class,'removeRule'])->name('warden.rules.remove');
+        
 
         
         Route::get('notice-list',[WardenRuleAndNoticeController::class, 'viewNotices']);
