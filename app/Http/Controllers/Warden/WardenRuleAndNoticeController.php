@@ -17,7 +17,7 @@ class WardenRuleAndNoticeController extends Controller
     public function viewRules() {
         $admin = Auth::guard('admins')->user();
         $rules = Rule::all();
-        return view('admins.warden.rules_list',compact('admin'));
+        return view('admins.warden.rules_list',compact('admin','rules'));
     }
 
     public function viewAddRule() {
