@@ -17,7 +17,7 @@ class GeneralTableSeeder extends Seeder
             [
                 
                 'department_name' => 'Department Of Computer Science',
-                'hod' => 'Dr Lajish VL',
+                'hod' => '1',
                 'section_officer' => 'Telma',
                 'contact_no' => '0487-253473',
             ],
@@ -25,7 +25,7 @@ class GeneralTableSeeder extends Seeder
             [
                 
                 'department_name' => 'Department Of Mathematics',
-                'hod' => 'Dr Preethi Kuttipulakkal',
+                'hod' => '2',
                 'section_officer' => 'Praveen KV',
                 'contact_no' => '0494-2407428',
             ],
@@ -33,7 +33,7 @@ class GeneralTableSeeder extends Seeder
             [
                
                 'department_name' => 'Department of Statistics',
-                'hod' => 'dr S D Krishnarani',
+                'hod' => '3',
                 'section_officer' => 'Anas Muhammad Karim',
                 'contact_no' => '0494-2407341',
             ],
@@ -41,15 +41,15 @@ class GeneralTableSeeder extends Seeder
             [
                 
                 'department_name' => 'Department of Education',
-                'hod' => 'Prof. (Dr.). BINDHU. C.M',
+                'hod' => '4',
                 'section_officer' => 'Nisharani',
                 'contact_no' => '0494-2407510',
             ],
 
             [
                 
-                'department_name' => 'Department of Malayalam & Kerala Studies ',
-                'hod' => 'Dr. P.Somanadhan',
+                'department_name' => 'Department of Malayalam & Kerala Studies',
+                'hod' => '5',
                 'section_officer' => 'Lakshmanan A',
                 'contact_no' => '0494-2407255',
             ],
@@ -57,7 +57,7 @@ class GeneralTableSeeder extends Seeder
             [
                 
                 'department_name' => 'Department of Commerce and Management Studies',
-                'hod' => 'Dr. Sreesha C H',
+                'hod' => '6',
                 'section_officer' => 'Ms. Santhi K.J',
                 'contact_no' => '0494-2407363',
             ]

@@ -2,7 +2,7 @@
 
 @section('content')
  <!-- ======= service Section ======= --> 
-<section id="services" class="services">
+<section id="services" class="services sign-sec">
 
   <h2 class="sign-sec text-center">My Complaints</h2><hr>
 

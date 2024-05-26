@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('departments', function (Blueprint $table) {
             $table->bigIncrements('department_id')->unique();
             $table->string('department_name');
-            $table->string('hod');
+            $table->unsignedBigInteger('hod');
+            $table->foreign('hod')->references('admin_id')->on('admins')->onDelete('cascade');
             $table->string('section_officer');
             $table->string('contact_no');
             $table->timestamps();
@@ -73,6 +74,8 @@ return new class extends Migration
             $table->bigIncrements('allocate_req_id')->unique();
             $table->unsignedBigInteger('student_id');
             $table->foreign('student_id')->references('student_id')->on('students')->onDelete('cascade');
+            $table->unsignedBigInteger('department_id');
+            $table->foreign('department_id')->references('department_id')->on('departments')->onDelete('cascade');
             $table->string('dep_verification_status');
             $table->string('payment_status');
             $table->string('allocation_status');
@@ -83,6 +86,8 @@ return new class extends Migration
             $table->bigIncrements('vacate_req_id')->unique();
             $table->unsignedBigInteger('student_id');
             $table->foreign('student_id')->references('student_id')->on('students')->onDelete('cascade');
+            $table->unsignedBigInteger('department_id');
+            $table->foreign('department_id')->references('department_id')->on('departments')->onDelete('cascade');
             $table->string('payment_status');
             $table->string('vacate_status');
             $table->timestamps();
@@ -100,10 +105,12 @@ return new class extends Migration
     {
         Schema::table('room_vacation_req',function (Blueprint $table) {
             $table->dropForeign(['student_id']);
+            $table->dropForeign(['department_id']);
         });
 
         Schema::table('room_allocation_req',function (Blueprint $table) {
             $table->dropForeign(['student_id']);
+            $table->dropForeign(['department_id']);
         });
 
         Schema::table('feedback',function (Blueprint $table) {
@@ -128,7 +135,12 @@ return new class extends Migration
 
         });
 
-        Schema::dropIfExists('departments');
+        Schema::table('departments',function (Blueprint $table) {
+            $table->dropForeign(['hod']);
+
+        });
+
+        
         Schema::dropIfExists('courses');
         Schema::dropIfExists('complaints');
         Schema::dropIfExists('rules');
@@ -136,5 +148,6 @@ return new class extends Migration
         Schema::dropIfExists('feedback');
         Schema::dropIfExists('room_allocation_req');
         Schema::dropIfExists('room_vacation_req');
+        Schema::dropIfExists('departments');
     }
 };

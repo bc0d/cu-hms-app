@@ -17,11 +17,56 @@ class AdminsTableSeeder extends Seeder
         DB::table('admins')->insert([
 
             [
-                'name' => 'admin1',
-                'department' => 'Computer Science',
+                'name' => 'Dr Lajish VL',
+                'department' => 'Department Of Computer Science',
                 'designation' => 'hod',
                 'access' => 'all',
-                'email' => 'admin1@gmail.com',
+                'email' => 'dcs@gmail.com',
+                'password' => Hash::make('password'),
+            ],
+
+            [
+                'name' => 'Dr Preethi Kuttipulakkal',
+                'department' => 'Department Of Mathematics',
+                'designation' => 'hod',
+                'access' => 'all',
+                'email' => 'dm@gmail.com',
+                'password' => Hash::make('password'),
+            ],
+
+            [
+                'name' => 'Dr S D Krishnarani',
+                'department' => 'Department of Statistics',
+                'designation' => 'hod',
+                'access' => 'all',
+                'email' => 'ds@gmail.com',
+                'password' => Hash::make('password'),
+            ],
+
+            [
+                'name' => 'Dr Bindhu C M',
+                'department' => 'Department of Education',
+                'designation' => 'hod',
+                'access' => 'all',
+                'email' => 'ded@gmail.com',
+                'password' => Hash::make('password'),
+            ],
+
+            [
+                'name' => 'Dr P Somanadhan',
+                'department' => 'Department of Malayalam & Kerala Studies',
+                'designation' => 'hod',
+                'access' => 'all',
+                'email' => 'dmks@gmail.com',
+                'password' => Hash::make('password'),
+            ],
+
+            [
+                'name' => 'Dr Sreesha C H',
+                'department' => 'Department of Commerce and Management Studies',
+                'designation' => 'hod',
+                'access' => 'all',
+                'email' => 'dcms@gmail.com',
                 'password' => Hash::make('password'),
             ],
 

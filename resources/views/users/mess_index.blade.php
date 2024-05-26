@@ -1,7 +1,7 @@
 @extends('layout.public_master')
 
 @section('content')
-<section id="services" class="services">
+<section id="services" class="services sign-sec">
   <h2 class="sign-sec  text-center">Mess</h2><hr>
   <div class="container col-lg-8 hi mt-5  align-items-center">
     

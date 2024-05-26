@@ -2,7 +2,7 @@
 @extends('layout.public_master')
 @section('content')
     <!-- ======= Contact Section ======= -->
-  <section id="contact" class="contact">
+  <section id="contact" class="contact sign-sec">
   
     <h2 class="sign-sec  text-center">Mess Join Status</h2><hr>
       <div class="row justify-content-center center-log align-items-center">
