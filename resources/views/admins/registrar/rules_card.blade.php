@@ -6,7 +6,7 @@
     <h1>Rules&amp;Notices</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href={{ url('super-user/index')}}>Home</a></li>
+        <li class="breadcrumb-item"><a href={{ url('registrar/index')}}>Home</a></li>
         <li class="breadcrumb-item active">Rules&amp;Notices</li>
       </ol>
     </nav>
@@ -21,7 +21,7 @@
           <div class="card info-card req-view-card">
             <div class="card-body">
               <h5 class="card-title">Rules</h5>
-              <a class="d-flex align-items-center" href={{ url('super-user/rules/rule-list') }}>
+              <a class="d-flex align-items-center" href={{ url('registrar/rules/rule-list') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-file-spreadsheet"></i>
                 </div>
@@ -38,7 +38,7 @@
           <div class="card info-card req-view-card"> 
             <div class="card-body">
               <h5 class="card-title">Notice</h5>
-              <a class="d-flex align-items-center" href="">
+              <a class="d-flex align-items-center" href={{ url('registrar/rules/notice-list') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-file-spreadsheet"></i>
                 </div>

@@ -6,7 +6,7 @@
     <h1>Office</h1>
         <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href={{ url('office/index')}}>Home</a></li>
+            <li class="breadcrumb-item"><a href={{ url('registrar/index')}}>Home</a></li>
             <li class="breadcrumb-item active">Complaints</li>
         </ol>
         </nav>
@@ -40,7 +40,7 @@
                         <td>{{ $complaint->category }}</td>
                         <td>{{ $complaint->status }}</td>
                         <td>{{ $complaint->created_at->toDateString() }}</td>
-                        <td><a href={{ url('office/complaints/view/' . $complaint->complaint_id) }} class="btn btn-primary btn-sm">view</a></td>
+                        <td><a href={{ url('registrar/complaints/view/' . $complaint->complaint_id) }} class="btn btn-primary btn-sm">view</a></td>
                       </tr>
                     @endforeach                   
                   </tbody>

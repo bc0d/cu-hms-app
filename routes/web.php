@@ -395,6 +395,14 @@ Route::prefix('office')->group(function () {
         Route::get('rule-add', [RuleAndNoticeController::class, 'viewAddRule']);
         Route::post('add-rule', [RuleAndNoticeController::class, 'addRule'])->name('office.rules.add');
         Route::post('remove-rule',[RuleAndNoticeController::class,'removeRule'])->name('office.rules.remove');
+
+        Route::get('notice-list',[RuleAndNoticeController::class, 'viewNotices']);
+        Route::get('notice-add',[RuleAndNoticeController::class, 'viewAddNotice']);
+        Route::post('notice-Add',[RuleAndNoticeController::class, 'addNotice'])->name('office.notice.add');
+        Route::post('remove-notice',[RuleAndNoticeController::class,'removeNotice'])->name('office.notice.remove');
+        
+
+
     });
 });
 
@@ -456,12 +464,19 @@ Route::prefix('warden')->group(function() {
 
     //rules and notice card
     Route::prefix('rules')->group(function () {
-
+        
         Route::get('card', [WardenRuleAndNoticeController::class, 'showCard']);
         Route::get('rule-list', [WardenRuleAndNoticeController::class, 'viewRules']);
-        Route::get('rule-add', [WardenRuleAndNoticeController::class, 'addRule']);
+        Route::get('rule-add', [WardenRuleAndNoticeController::class, 'viewAddRule']);
+        Route::post('add-rule', [WardenRuleAndNoticeController::class, 'addRule'])->name('warden.rules.add');
+        Route::post('remove-rule',[WardenRuleAndNoticeController::class,'removeRule'])->name('warden.rules.remove');
+        
+
+        
         Route::get('notice-list',[WardenRuleAndNoticeController::class, 'viewNotices']);
-        Route::get('notice-add',[WardenRuleAndNoticeController::class, 'addNotice']);
+        Route::get('notice-add',[WardenRuleAndNoticeController::class, 'viewAddNotice']);
+        Route::post('notice-Add',[WardenRuleAndNoticeController::class, 'addNotice'])->name('warden.notice.add');
+        Route::post('remove-notice',[WardenRuleAndNoticeController::class,'removeNotice'])->name('warden.notice.remove');
     });
 /*
     //Complaints registry
@@ -575,10 +590,19 @@ Route::prefix('registrar')->group(function () {
 
     //rules and notice card
     Route::prefix('rules')->group(function () {
-
+        
         Route::get('card', [RuleAndNoticeRegistrarController::class, 'showCard']);
         Route::get('rule-list', [RuleAndNoticeRegistrarController::class, 'viewRules']);
-        Route::get('rule-add', [RuleAndNoticeRegistrarController::class, 'addRule']);
+        Route::get('rule-add', [RuleAndNoticeRegistrarController::class, 'viewAddRule']);
+        Route::post('add-rule', [RuleAndNoticeRegistrarController::class, 'addRule'])->name('registrar.rules.add');
+        Route::post('remove-rule',[RuleAndNoticeRegistrarController::class,'removeRule'])->name('registrar.rules.remove');
+        
+
+        
+        Route::get('notice-list',[RuleAndNoticeRegistrarController::class, 'viewNotices']);
+        Route::get('notice-add',[RuleAndNoticeRegistrarController::class, 'viewAddNotice']);
+        Route::post('notice-Add',[RuleAndNoticeRegistrarController::class, 'addNotice'])->name('registrar.notice.add');
+        Route::post('remove-notice',[RuleAndNoticeRegistrarController::class,'removeNotice'])->name('registrar.notice.remove');
     });
     
 
@@ -682,7 +706,16 @@ Route::prefix('super-user')->group(function () {
 
         Route::get('card', [RuleAndNoticeAdminController::class, 'showCard']);
         Route::get('rule-list', [RuleAndNoticeAdminController::class, 'viewRules']);
-        Route::get('rule-add', [RuleAndNoticeAdminController::class, 'addRule']);
+        Route::get('rule-add', [RuleAndNoticeAdminController::class, 'viewAddRule']);
+        Route::post('add-rule', [RuleAndNoticeAdminController::class, 'addRule'])->name('super-user.rules.add');
+        Route::post('remove-rule',[RuleAndNoticeAdminController::class,'removeRule'])->name('super-user.rules.remove');
+        
+
+        
+        Route::get('notice-list',[RuleAndNoticeAdminController::class, 'viewNotices']);
+        Route::get('notice-add',[RuleAndNoticeAdminController::class, 'viewAddNotice']);
+        Route::post('notice-Add',[RuleAndNoticeAdminController::class, 'addNotice'])->name('super-user.notice.add');
+        Route::post('remove-notice',[RuleAndNoticeAdminController::class,'removeNotice'])->name('super-user.notice.remove');
     });
     
 

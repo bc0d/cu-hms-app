@@ -6,7 +6,7 @@
     <h1>Dashboard</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href={{ url('super-user/index')}}>Home</a></li>
+        <li class="breadcrumb-item"><a href={{ url('registrar/index')}}>Home</a></li>
         <li class="breadcrumb-item active">Dashboard</li>
       </ol>
     </nav>
@@ -21,7 +21,7 @@
           <div class="card info-card req-add-card">
             <div class="card-body">
               <h5 class="card-title">Admission Request</h5>
-              <a class="d-flex align-items-center" href={{ url('super-user/admission/request') }}>
+              <a class="d-flex align-items-center" href={{ url('registrar/admission/request') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-clipboard-plus"></i>
                 </div>
@@ -38,7 +38,7 @@
           <div class="card info-card req-rmv-card"> 
             <div class="card-body">
               <h5 class="card-title">Vacating Requests</h5>
-              <a class="d-flex align-items-center" href={{ url('super-user/vacate/request') }}>
+              <a class="d-flex align-items-center" href={{ url('registrar/vacate/request') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-clipboard-minus"></i>
                 </div>
@@ -57,7 +57,7 @@
           <div class="card info-card req-add-card">
             <div class="card-body">
               <h5 class="card-title">Room Allocation</span></h5>
-              <a class="d-flex align-items-center" href={{ url('super-user/room/allocation-list') }}>
+              <a class="d-flex align-items-center" href={{ url('registrar/room/allocation-list') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-house-add"></i>
                 </div>
@@ -74,7 +74,7 @@
           <div class="card info-card req-view-card">
             <div class="card-body">
               <h5 class="card-title">Room Change Request</span></h5>
-              <a class="d-flex align-items-center" href={{ url('super-user/room-change/request') }}>
+              <a class="d-flex align-items-center" href={{ url('registrar/room-change/request') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-house-gear"></i>
                 </div>
@@ -93,7 +93,7 @@
           <div class="card info-card req-view-card">
             <div class="card-body">
               <h5 class="card-title">Students Details</span></h5>
-              <a class="d-flex align-items-center" href={{ url('super-user/student/card') }}>
+              <a class="d-flex align-items-center" href={{ url('registrar/student/card') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-file-spreadsheet"></i>
                 </div>
@@ -110,7 +110,7 @@
           <div class="card info-card req-view-card">
             <div class="card-body">
               <h5 class="card-title">Room Details</h5>
-              <a class="d-flex align-items-center" href={{ url('super-user/room-details/card') }}>
+              <a class="d-flex align-items-center" href={{ url('registrar/room-details/card') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-file-spreadsheet"></i>
                 </div>
@@ -129,7 +129,7 @@
           <div class="card info-card req-view-card">
             <div class="card-body">
               <h5 class="card-title">Bills & Fees</h5>
-              <a class="d-flex align-items-center" href={{ url('super-user/fee/card') }}>
+              <a class="d-flex align-items-center" href={{ url('registrar/fee/card') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-file-spreadsheet"></i>
                 </div>
@@ -146,7 +146,7 @@
           <div class="card info-card req-view-card">
             <div class="card-body">
               <h5 class="card-title">Fee Maintanance</h5>
-              <a class="d-flex align-items-center" href={{ url('super-user/fee/maintanance') }}>
+              <a class="d-flex align-items-center" href={{ url('registrar/fee/maintanance') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-file-spreadsheet"></i>
                 </div>
@@ -165,7 +165,7 @@
           <div class="card info-card req-warn-card">
             <div class="card-body">
               <h5 class="card-title">Rules & Notices</span></h5>
-              <a class="d-flex align-items-center" href={{ url('super-user/rules/card') }}>
+              <a class="d-flex align-items-center" href={{ url('registrar/rules/card') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-pencil-square"></i>
                 </div>
@@ -183,7 +183,7 @@
           <div class="card info-card req-warn-card">
             <div class="card-body">
               <h5 class="card-title">Complaints</h5>
-              <a class="d-flex align-items-center" href={{ url('super-user/complaints/card') }}>
+              <a class="d-flex align-items-center" href={{ url('registrar/complaints/card') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-person-exclamation"></i>
                 </div>
