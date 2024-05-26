@@ -3,13 +3,13 @@
 @section('content')
 
     <div class="pagetitle">
-    <h1>Office</h1>
+      <h1>Notice Add</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href={{ url('office/index') }}>Home</a></li>
+          <li class="breadcrumb-item"><a href={{ url('super-user/index') }}>Home</a></li>
           <li class="breadcrumb-item">Rules&amp;Notice</li>
-          <li class="breadcrumb-item">Rules</li>
-          <li class="breadcrumb-item active">Rules Add</li>
+          <li class="breadcrumb-item">Notice</li>
+          <li class="breadcrumb-item active">Notice Add</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -21,33 +21,33 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">New Rule</h5>
+                        <h5 class="card-title">New Notice</h5>
             
-                        <!-- Rule Add Form -->
-                        <form class="row g-3" action="{{ route('office.rules.add') }}" method="POST">
+                        <!-- Notice Add Form -->
+                        <form class="row g-3" method="POST" action="{{route('super-user.notice.add')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-3">
-                                <label for="ruleName" class="col-md-4 col-lg-3 col-form-label">Rule Name</label>
+                                <label for="noticeSubject" class="col-md-4 col-lg-3 col-form-label">Notice Subject</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="ruleName" type="text" class="form-control" id="ruleNameNew">
+                                    <input name="noticeSubject" type="text" class="form-control" id="noticeSubject">
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="ruleDesc" class="col-md-4 col-lg-3 col-form-label">Rule Description</label>
+                                <label for="newNotice" class="col-md-4 col-lg-3 col-form-label">New Notice (PDF):</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <textarea name="ruleDesc" class="form-control" id="ruleDescNew" rows="5"></textarea>
+                                    <input type="file" id="newNotice" class="form-control" name="newNotice" accept=".pdf">
                                 </div>
                             </div>
                             <div class="text-center">
                                 <button type="reset" class="btn btn-secondary">Reset</button>
                                 <button type="submit" class="btn btn-primary">Add</button>
                             </div>
-                        </form><!-- End Rule Add Form -->
+                        </form><!-- End Notice Add Form -->
         
                     </div>
                 </div>
   
-          </div>
+          </div> 
         </div>
     </section>
   

@@ -38,7 +38,7 @@
           <div class="card info-card req-view-card"> 
             <div class="card-body">
               <h5 class="card-title">Notice</h5>
-              <a class="d-flex align-items-center" href="">
+              <a class="d-flex align-items-center" href={{ url('super-user/rules/notice-list') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-file-spreadsheet"></i>
                 </div>

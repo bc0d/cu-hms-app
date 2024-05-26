@@ -39,13 +39,13 @@
                                     <p class="mb-1">{{ $rule->description }}</p>
                                     
                                 </div>
-                            @endforeach
+                            @endforeach  
                         @endif
                     
                     </div><!-- End List group Advanced Content -->
 
                 </div>
-            </div>
+            </div>  
         </div>
 
         </div>

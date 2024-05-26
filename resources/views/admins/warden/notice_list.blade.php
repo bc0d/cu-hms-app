@@ -21,18 +21,34 @@
                     <h5 class="card-title">Notices</h5>
                     <a href={{ url('warden/rules/notice-add') }} class="btn btn-success btn-sm mb-3">Add New</a>
                     <!-- List group with Advanced Contents -->
+                    @if ($notices->isEmpty())
+                     <p>No Notices to display</p>
+                        
+                    @else
                     <div class="list-group">
+                        @foreach ($notices as $notice)
                         <div class="list-group-item list-group-item-action " aria-current="true">
                             <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">Notice Subject</h5>
-                                <a href="" class="btn btn-danger rounded-pill btn-sm">Remove</a>
+                                <h5 class="mb-1">{{ $notice->title }}</h5>
+                                <form action="{{ route('warden.notice.remove') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="noticeId" value="{{ $notice->notice_id }}">
+                                    <button type="submit" class="btn btn-danger rounded-pill btn-sm" onclick="return confirm('Are you sure You want to delete this Notice')">Remove</button>
+                                </form>
                             </div>
-                            <p class="mb-1">-Ruledescriptionblablablablablablablablablablablablablablablablablablablablablablabla-</p>
+                            <p class="mb-1"><a href="{{ asset($notice->path) }}">Click Here</a></p>
                             
                         </div>
+                            
+                        @endforeach
+                        
+
                         
                     
                     </div><!-- End List group Advanced Content -->
+                        
+                    @endif
+                    
 
                 </div>
             </div>

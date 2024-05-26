@@ -6,7 +6,7 @@
   <h1>Office</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href={{ url('office/index')}}>Home</a></li>
+        <li class="breadcrumb-item"><a href={{ url('registrar/index')}}>Home</a></li>
         <li class="breadcrumb-item active">Complaints</li>
       </ol>
     </nav>
@@ -21,7 +21,7 @@
           <div class="card info-card req-warn-card">
             <div class="card-body">
               <h5 class="card-title">New Complaints</h5>
-              <a class="d-flex align-items-center" href="{{ url('office/complaints/new') }}">
+              <a class="d-flex align-items-center" href="{{ url('registrar/complaints/new') }}">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-file-spreadsheet"></i>
                 </div>
@@ -38,7 +38,7 @@
           <div class="card info-card req-add-card"> 
             <div class="card-body">
               <h5 class="card-title">Solved Complaints</h5>
-              <a class="d-flex align-items-center" href="{{ url('office/complaints/solved') }}">
+              <a class="d-flex align-items-center" href="{{ url('registrar/complaints/solved') }}">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-file-spreadsheet"></i>
                 </div>
@@ -57,7 +57,7 @@
           <div class="card info-card req-view-card">
             <div class="card-body">
               <h5 class="card-title">All Complaints</span></h5>
-              <a class="d-flex align-items-center" href="{{ url('office/complaints/all') }}">
+              <a class="d-flex align-items-center" href="{{ url('registrar/complaints/all') }}">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-file-spreadsheet"></i>
                 </div>
