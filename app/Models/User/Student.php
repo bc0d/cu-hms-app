@@ -29,14 +29,15 @@ class Student extends Model implements Authenticatable
         'district',
         'state',
         'country',
+        'pin',
         'guardian',
         'guardian_phone',
         'pwd',
-        'course_duration',
+        'course',
         'adm_date',
-        'course_type',
         'reservation',
-        'image'
+        'image',
+        'bed_id',
     ];
 
     protected $hidden = [
