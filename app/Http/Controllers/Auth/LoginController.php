@@ -77,7 +77,7 @@ class LoginController extends Controller
             case 'hod' :
                 return redirect()->intended('hod/index');
             case 'mess_admin' :
-                return redirect()->intended('admin-login');
+                return redirect()->intended('mess/index');
             case 'staff' :
                 return redirect()->intended('office/index');
             case 'warden' :

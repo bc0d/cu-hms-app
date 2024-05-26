@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Office;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Complaint;
 use Illuminate\Http\Request;
 
 class StudentDetailsController extends Controller
@@ -19,7 +20,8 @@ class StudentDetailsController extends Controller
     }
 
     public function showDetails() {
+        $student = Auth::guard('students')->user();
         $admin = Auth::guard('admins')->user();
-        return view('admins.office.student_detail', compact('admin'));
+        return view('admins.office.student_detail', compact('student', 'admin'));
     }
 }

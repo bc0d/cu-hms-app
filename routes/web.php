@@ -69,6 +69,10 @@ use App\Http\Controllers\Hod\HodDashboardController;
 use App\Http\Controllers\Hod\HodProfileController;
 
 
+use App\Http\Controllers\Mess\DashboardMessController;
+use App\Http\Controllers\Mess\ProfileMessController;
+use App\Http\Controllers\Mess\ComplaintsMessController;
+
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -691,11 +695,12 @@ Route::prefix('super-user')->group(function () {
 
 /*---------mess dashboard-----------
 */ 
-Route::prefix('mess-index')->group(function () {
+Route::prefix('mess')->group(function () {
+    //dashboard
+    Route::get('index', [DashboardMessController::class, 'showMessDashboard']);
+    //profile
+    Route::get('my-profile', [ProfileMessController::class, 'showMessProfile']);
 
-    Route::get('/', function() {
-        return view('admins.mess.dashboard');
-    });
     Route::prefix('take-attendance')->group(function () {
         Route::get('/', function() {
             return view('admins.mess.attendance_take');
@@ -755,9 +760,17 @@ Route::prefix('mess-index')->group(function () {
         });
     });
 
-    Route::get('complaints', function() {
-        return view('admins.mess.complaints');
+    //Complaints
+    Route::prefix('complaints')->group(function () {
+
+        Route::get('card', [ComplaintsMessController::class, 'showComplaintsCard']);
+        Route::get('new', [ComplaintsMessController::class, 'showNewComplaints']);
+        Route::get('view/{id}', [ComplaintsMessController::class, 'showComplaintView']);
+        Route::post('edit', [ComplaintsMessController::class, 'complaintEdit'])->name('mess.complaint.action');
+        Route::get('solved', [ComplaintsMessController::class, 'showSolvedComplaints']);
+        Route::get('all', [ComplaintsMessController::class, 'showAllComplaints']);
     });
+    
    
 
 });

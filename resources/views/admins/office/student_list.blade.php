@@ -35,46 +35,27 @@
                   </tr>
                 </thead>
                 <tbody>
+                @foreach ($students as $student)
+                      <tr>
+                        <td>{{ $student->first_name." ".$student->second_name }}</td>
+                        <td>{{ $student->adm_no }}</td>
+                        <td>{{ $student->street }}</td>
+                        <td></td>
+                        <td></td>
+                        <td><a href={{ url('office/complaints/view/' . $complaint->complaint_id) }} class="btn btn-primary btn-sm">view</a></td>
+                      </tr>
+                    @endforeach 
                   <tr>
                     <td>Unity Pugh</td>
                     <td>9958</td>
                     <td>Curicó</td>
                     <td>2005/02/11</td>
                     <td>MH</td>
-                    <td><a href={{ url('office/student/detail') }} class="btn btn-primary btn-sm">view</a></td>
+                    <td><a href={{ url('office/student/detail' . $complaint->complaint_id) }} class="btn btn-primary btn-sm">view</a></td>
                   </tr>
-                  <tr>
-                    <td>Theodore Duran</td>
-                    <td>8971</td>
-                    <td>Dhanbad</td>
-                    <td>1999/04/07</td>
-                    <td>MH</td>
-                    <td><a href={{ url('office/student/detail') }} class="btn btn-primary btn-sm">view</a></td>
-                  </tr>
-                  <tr>
-                    <td>Kylie Bishop</td>
-                    <td>3147</td>
-                    <td>Norman</td>
-                    <td>2005/09/08</td>
-                    <td>MH</td>
-                    <td><a href={{ url('office/student/detail') }} class="btn btn-primary btn-sm">view</a></td>
-                  </tr>
-                  <tr>
-                    <td>Willow Gilliam</td>
-                    <td>3497</td>
-                    <td>Amqui</td>
-                    <td>2009/29/11</td>
-                    <td>MH</td>
-                    <td><a href={{ url('office/student/detail') }} class="btn btn-primary btn-sm">view</a></td>
-                  </tr>
-                  <tr>
-                    <td>Blossom Dickerson</td>
-                    <td>5018</td>
-                    <td>Kempten</td>
-                    <td>2006/11/09</td>
-                    <td>MH</td>
-                    <td><a href={{ url('office/student/detail') }} class="btn btn-primary btn-sm">view</a></td>
-                  </tr>
+                  
+                 
+                  
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->
