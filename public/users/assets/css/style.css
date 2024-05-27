@@ -56,7 +56,7 @@ h6 {
   line-height: 0;
 }
 .hi{
-  height: 50vh;
+  height: auto;
   margin-bottom: 30px;
 }
 @media (max-width: 991px) {
@@ -2415,4 +2415,13 @@ main {
 .btn-prof:hover {
   color: #e24d55;
   text-decoration: none;
+}
+
+.feed {
+  margin-left: 1rem;
+}
+
+.feed-name {
+  margin-top: 0;
+  margin-bottom: 0;
 }

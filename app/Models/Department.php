@@ -14,4 +14,9 @@ class Department extends Model
         'section_officer',
         'contact_no',
     ];
+
+    public function roomAlloc() {
+
+        return $this->hasMany(RoomAllocation::class, 'department_id');
+    }
 }

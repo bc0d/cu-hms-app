@@ -44,6 +44,13 @@
     <div class="row d-flex ">
       <div class="col-md-4">
         <div class="icon-box">
+          <i class="bi bi-bank"></i>
+          <h4><a href="{{url('user/room/request') }}">Request Room</a></h4>
+
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="icon-box">
           <i class="bi bi-calendar4-week"></i>
           <h4><a href="{{url('user/mess/attendance') }}">attendance viewer</a></h4>
 

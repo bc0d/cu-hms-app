@@ -8,6 +8,7 @@ use App\Http\Controllers\User\UserProfileController;
 use App\Http\Controllers\User\UserComplaintsController;
 use App\Http\Controllers\User\UserMessController;
 use App\Http\Controllers\User\UserRoomController;
+use App\Http\Controllers\User\UserFeedbackController;
 
 use App\Http\Controllers\SuperUser\SuperUserDashboardController;
 use App\Http\Controllers\SuperUser\SuperUserProfileController;
@@ -183,6 +184,9 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
             Route::get('status', [UserRoomController::class, 'showRoomRentStatus']);
         });
 
+        Route::get('request', [UserRoomController::class, 'showRoomReq']);
+        Route::post('room-req', [UserRoomController::class, 'roomRequest'])->name('room.request');
+
         //other-bill-room
         Route::get('other-bill', [UserRoomController::class, 'showOtherBill']); 
     });//end of room
@@ -202,13 +206,10 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
     //feedback
     Route::prefix('feedback')->group(function () {
         
-        Route::get('/',function(){
-            return view('users.feedback_index');
-        });
+        Route::get('/', [UserFeedbackController::class, 'showFeedback']);
         //give feedback
-        Route::get('give-feedback',function(){
-            return view('users.feedback_give');
-        });
+        Route::get('give-feedback', [UserFeedbackController::class, 'showAddFeedback']);
+        Route::post('submit-feedback', [UserFeedbackController::class, 'addFeedback'])->name('user.addfeedback');
     });
        
     //notification
@@ -288,7 +289,8 @@ Route::prefix('hod')->group(function () {
     Route::prefix('allocation')->group(function () {
 
         Route::get('request', [HostelAdmissionHodController::class, 'showRequests']);
-        Route::get('action', [HostelAdmissionHodController::class, 'admissionAction']);
+        Route::get('action/{id}', [HostelAdmissionHodController::class, 'admissionAction']);
+        Route::post('action', [HostelAdmissionHodController::class, 'admissionApprove'])->name('hod.alloc.action');
         
     });
 

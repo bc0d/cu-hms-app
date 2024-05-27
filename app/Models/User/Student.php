@@ -5,6 +5,7 @@ namespace App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
+use App\Models\Feedback;
 
 class Student extends Model implements Authenticatable
 {
@@ -44,38 +45,8 @@ class Student extends Model implements Authenticatable
         'password',
     ];
 
-    
-    //optional to add abstract methods definitions
-    // /**
-    //  * Get the name of the unique identifier for the user.
-    //  *
-    //  * @return string
-    //  */
-    // public function getAuthIdentifierName()
-    // {
-    //     return 'email';
-    // }
+    public function feedbacks() {
 
-    // /**
-    //  * Get the unique identifier for the user.
-    //  *
-    //  * @return mixed
-    //  */
-    // public function getAuthIdentifier()
-    // {
-    //     return $this->getAttribute('email');
-    // }
-
-    // /**
-    //  * Get the password for the user.
-    //  *
-    //  * @return string
-    //  */
-    // public function getAuthPassword()
-    // {
-    //     return $this->getAttribute('password');
-    // }
-
-    // // You may need to implement other methods if required by your application
-
+        return $this->hasMany(Feedback::class, 'student_id');
+    }
 }
