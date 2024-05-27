@@ -23,8 +23,9 @@
                     <div class="card-body">
                         <h5 class="card-title">New Rule</h5>
             
-                        <!-- Room allocation Form -->
-                        <form class="row g-3">
+                        <!-- Rule Add Form -->
+                        <form class="row g-3" action="{{ route('warden.rules.add') }}" method="POST">
+                            @csrf
                             <div class="row mb-3">
                                 <label for="ruleName" class="col-md-4 col-lg-3 col-form-label">Rule Name</label>
                                 <div class="col-md-8 col-lg-9">
@@ -41,10 +42,10 @@
                                 <button type="reset" class="btn btn-secondary">Reset</button>
                                 <button type="submit" class="btn btn-primary">Add</button>
                             </div>
-                        </form><!-- End Room allocation Form -->
+                        </form><!-- End Rule Add Form -->
         
                     </div>
-                </div>
+                </div>  
   
           </div>
         </div>

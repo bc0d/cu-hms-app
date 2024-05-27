@@ -82,6 +82,9 @@ class LoginController extends Controller
                 return redirect()->intended('office/index');
             case 'warden' :
                 return redirect()->intended('warden/index');
+            case 'registrar' :
+                return redirect()->intended('registrar/index');
+            
         }
     }
 
