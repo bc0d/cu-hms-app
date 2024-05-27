@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User\Student;
 
 class Feedback extends Model
 {
@@ -12,4 +13,9 @@ class Feedback extends Model
         'student_id',
         'review',
     ];
+
+    public function student() {
+        
+        return $this->belongsTo(Student::class, 'student_id');
+    }
 }
