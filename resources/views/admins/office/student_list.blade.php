@@ -42,17 +42,9 @@
                         <td>{{ $student->street }}</td>
                         <td></td>
                         <td></td>
-                        <td><a href={{ url('office/complaints/view/' . $complaint->complaint_id) }} class="btn btn-primary btn-sm">view</a></td>
+                        <td><a href={{ url('office/complaints/view/' . $student->student_id) }} class="btn btn-primary btn-sm">view</a></td>
                       </tr>
                     @endforeach 
-                  <tr>
-                    <td>Unity Pugh</td>
-                    <td>9958</td>
-                    <td>Curicó</td>
-                    <td>2005/02/11</td>
-                    <td>MH</td>
-                    <td><a href={{ url('office/student/detail' . $complaint->complaint_id) }} class="btn btn-primary btn-sm">view</a></td>
-                  </tr>
                   
                  
                   

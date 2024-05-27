@@ -330,7 +330,7 @@ Route::prefix('office')->group(function () {
     Route::prefix('student')->group(function () {
         
         Route::get('card', [StudentDetailsController::class, 'showCard']);
-        Route::get('list', [StudentDetailsController::class, 'showList']);
+        Route::get('list', [StudentDetailsController::class, 'showAllStudentList']);
         Route::get('detail', [StudentDetailsController::class, 'showDetails']);
     });
 
