@@ -44,7 +44,7 @@
                         <td></td>
                         <td><a href={{ url('office/complaints/view/' . $student->student_id) }} class="btn btn-primary btn-sm">view</a></td>
                       </tr>
-                    @endforeach 
+                 @endforeach 
                   
                  
                   
