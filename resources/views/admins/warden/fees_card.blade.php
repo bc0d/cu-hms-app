@@ -16,7 +16,7 @@
     <!-- Left side columns -->
     <div class="col-lg-10">
       <div class="row">
-        <!--Allocation  Card -->
+        <!--Room Fees   Card -->
         <div class="col-xxl-6 col-md-6">
           <div class="card info-card req-view-card">
             <div class="card-body">
@@ -32,8 +32,8 @@
             </div>
           </div>
         </div>
-        <!-- End Allocation Card -->
-        <!-- Vacating Card -->
+        <!-- End Room Fees Card -->
+        <!-- Water bill Card -->
         <div class="col-xxl-6 col-md-6">
           <div class="card info-card req-view-card"> 
             <div class="card-body">
@@ -49,10 +49,10 @@
             </div>
           </div>
         </div>
-        <!-- End Vacating Card -->
+        <!-- End Water bill Card -->
       </div>
       <div class="row">
-        <!-- Room change Card -->
+        <!-- Electricity bill Card -->
         <div class="col-xxl-6 col-md-6">
           <div class="card info-card req-view-card">
             <div class="card-body">
@@ -68,8 +68,8 @@
             </div>
           </div>
         </div>
-        <!-- End Room change Card -->
-        <!-- Complaints Card -->
+        <!-- End Electricity bill Card -->
+        <!-- Other fee Card -->
         <div class="col-xxl-6 col-md-6">
           <div class="card info-card req-view-card">
             <div class="card-body">
@@ -85,7 +85,7 @@
             </div>
           </div>
         </div>
-        <!-- End Complaints Card -->
+        <!-- End Other fee Card -->
       </div>
     </div>
     <!-- End Left side columns -->
