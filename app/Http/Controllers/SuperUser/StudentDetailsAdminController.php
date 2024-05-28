@@ -4,7 +4,8 @@ namespace App\Http\Controllers\SuperUser;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Department;
+use App\Models\Course;
 use App\Models\User\Student;
 use Illuminate\Http\Request;
 
@@ -16,12 +17,29 @@ class StudentDetailsAdminController extends Controller
     }
 
 
-    public function showList() {
+    public function showAllStudentDetails() {
         $admin = Auth::guard('admins')->user();
         $students = Student::orderBy('adm_no')->get();
         return view('admins.superUser.student_list', compact('admin', 'students'));
     }
+    public function showProfileDetails($id)
+    {
+        // Get the authenticated admin user
+        $admin = Auth::guard('admins')->user();
+        $student = Student::findOrFail($id);
+        // Find the course related to the student
+        $course = Course::findOrFail($student->course);
+         // Find the department related to the course
+        $department = Department::where('department_id', $course->department_id)->first();
 
+
+        // Retrieve the course name and department name
+        $courseName = $course->course_name;
+        $departmentName = $department->department_name;
+
+        // Return the view with the retrieved data
+        return view('admins.superUser.student_detail', compact('admin', 'student', 'courseName', 'departmentName'));
+    }
 
     public function showDetails() {
         $admin = Auth::guard('admins')->user();

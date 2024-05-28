@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
 use App\Models\Feedback;
+use App\Models\Course;
 
 class Student extends Model implements Authenticatable
 {
@@ -48,5 +49,10 @@ class Student extends Model implements Authenticatable
     public function feedbacks() {
 
         return $this->hasMany(Feedback::class, 'student_id');
+    }
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class, 'course', 'course_id');
     }
 }

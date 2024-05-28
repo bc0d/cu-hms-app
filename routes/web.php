@@ -307,9 +307,8 @@ Route::prefix('hod')->group(function () {
     });
 
     Route::prefix('students-details')->group(function () {
-
-        Route::get('list', [StudentDetailsHodController::class, 'showList']);
-        Route::get('profile-details', [StudentDetailsHodController::class, 'profileDetails']);
+        Route::get('all', [StudentDetailsHodController::class, 'showAllStudentDetails']);
+        Route::get('profile-details/{id}', [StudentDetailsHodController::class, 'showProfileDetails']);
 
     });
     
@@ -332,8 +331,8 @@ Route::prefix('office')->group(function () {
     Route::prefix('student')->group(function () {
         
         Route::get('card', [StudentDetailsController::class, 'showCard']);
-        Route::get('list', [StudentDetailsController::class, 'showAllStudentList']);
-        Route::get('detail', [StudentDetailsController::class, 'showDetails']);
+        Route::get('all', [StudentDetailsController::class, 'showAllStudentDetails']);
+        Route::get('detail/{id}', [StudentDetailsController::class, 'showStudentProfileDetails']);
     });
 
     //rooms details card
@@ -428,8 +427,8 @@ Route::prefix('warden')->group(function() {
     Route::prefix('student')->group(function () {
         
         Route::get('card', [WardenStudentDetailsController::class, 'showCard']);
-        Route::get('list', [WardenStudentDetailsController::class, 'showList']);
-        Route::get('detail', [WardenStudentDetailsController::class, 'showDetails']);
+        Route::get('all', [WardenStudentDetailsController::class, 'showAllStudentDetails']);
+        Route::get('detail/{id}', [WardenStudentDetailsController::class, 'showStudentProfileDetails']);
     });
     
     //admission card
@@ -518,8 +517,8 @@ Route::prefix('registrar')->group(function () {
     Route::prefix('student')->group(function () {
         
         Route::get('card', [StudentDetailsRegistrarController::class, 'showCard']);
-        Route::get('list', [StudentDetailsRegistrarController::class, 'showList']);
-        Route::get('detail', [StudentDetailsRegistrarController::class, 'showDetails']);
+        Route::get('all', [StudentDetailsRegistrarController::class, 'showAllStudentDetails']);
+        Route::get('detail/{id}', [StudentDetailsRegistrarController::class, 'showStudentProfileDetails']);
     });
 
     //rooms details card
@@ -631,15 +630,15 @@ Route::prefix('super-user')->group(function () {
     Route::prefix('student')->group(function () {
         
         Route::get('card', [StudentDetailsAdminController::class, 'showCard']);
-        Route::get('list', [StudentDetailsAdminController::class, 'showList']);
-        Route::get('detail', [StudentDetailsAdminController::class, 'showDetails']);
+        Route::get('all', [StudentDetailsAdminController::class, 'showAllStudentDetails']);
+        Route::get('detail/{id}', [StudentDetailsAdminController::class, 'showProfileDetails']);
     });
 
     //rooms details card
     Route::prefix('room-details')->group(function () {
 
         Route::get('card', [RoomDetailsAdminController::class, 'showCard']);
-        Route::get('list', [RoomDetailsAdminController::class, 'roomDetails']);
+        Route::get('list', [RoomDetailsAdminController::class, 'showAllStudentDetails']);
 
     });
     

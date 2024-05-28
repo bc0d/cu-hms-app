@@ -19,4 +19,9 @@ class Department extends Model
 
         return $this->hasMany(RoomAllocation::class, 'department_id');
     }
+    
+    public function courses()
+    {
+        return $this->hasMany(Course::class, 'department_id');
+    }
 }
