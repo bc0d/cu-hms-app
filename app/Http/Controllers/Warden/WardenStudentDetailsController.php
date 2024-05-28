@@ -51,8 +51,8 @@ class WardenStudentDetailsController extends Controller
         // Retrieve the course name and department name
         $courseName = $course->course_name;
         $departmentName = $department->department_name;
-return view('admins.warden.student_detail', compact('admin','student', 'courseName', 'departmentName'));
-}
+        return view('admins.warden.student_detail', compact('admin','student', 'courseName', 'departmentName'));
+    }
 
     public function showDetails() {
         $admin = Auth::guard('admins')->user();
