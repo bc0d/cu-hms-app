@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User\Student;
 
 class RoomAllocation extends Model
 {
@@ -13,8 +12,11 @@ class RoomAllocation extends Model
     protected $fillable = [
         'student_id',
         'department_id',
+        'hostel',
         'dep_verification_status',
         'payment_status',
+        'warden_verification_status',
+        'transaction_id',
         'allocation_status',
     ];
 
@@ -26,5 +28,10 @@ class RoomAllocation extends Model
     public function department() {
         
         return $this->belongsTo(Department::class, 'department_id');
+    }
+
+    public function transaction() {
+
+        return $this->belongsTo(Transaction::class, 'transaction_id');
     }
 }
