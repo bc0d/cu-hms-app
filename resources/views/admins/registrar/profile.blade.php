@@ -6,7 +6,7 @@
     <h1>Office</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href={{ url('office/index') }}>Home</a></li>
+          <li class="breadcrumb-item"><a href={{ url('registrar/index') }}>Home</a></li>
           <li class="breadcrumb-item"><a href="">Student List</a></li>
           <li class="breadcrumb-item active">Student Detail</li>
         </ol>

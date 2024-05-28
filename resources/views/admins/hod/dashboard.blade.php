@@ -57,7 +57,7 @@
           <div class="card info-card req-view-card">
             <div class="card-body">
               <h5 class="card-title">Students Details</span></h5>
-              <a class="d-flex align-items-center" href={{ url('hod/students-details/list') }}>
+              <a class="d-flex align-items-center" href={{ url('hod/students-details/all') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-file-spreadsheet"></i>
                 </div>

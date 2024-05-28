@@ -22,20 +22,30 @@
                     <a href={{ url('warden/rules/rule-add') }} class="btn btn-success btn-sm mb-3">Add New</a>
                     <!-- List group with Advanced Contents -->
                     <div class="list-group">
-                        <div class="list-group-item list-group-item-action " aria-current="true">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">-Rule name-</h5>
-                                <a href="" class="btn btn-danger rounded-pill btn-sm">Remove</a>
-                            </div>
-                            <p class="mb-1">-Ruledescriptionblablablablablablablablablablablablablablablablablablablablablablabla-</p>
-                            
-                        </div>
-                        
+
+                        @if($rules->isEmpty())
+                            <p>No rules here. </p>
+                        @else
+                            @foreach($rules as $rule)
+                                <div class="list-group-item list-group-item-action " aria-current="true">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">{{ $rule->title }}</h5>
+                                        <form action="{{ route('warden.rules.remove') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="ruleId" value="{{ $rule->rule_id }}">
+                                            <button type="submit" class="btn btn-danger rounded-pill btn-sm" onclick="return confirm('Are you sure You want to delete this rule')">Remove</button>
+                                        </form>
+                                    </div>
+                                    <p class="mb-1">{{ $rule->description }}</p>
+                                    
+                                </div>
+                            @endforeach  
+                        @endif
                     
                     </div><!-- End List group Advanced Content -->
 
                 </div>
-            </div>
+            </div>  
         </div>
 
         </div>

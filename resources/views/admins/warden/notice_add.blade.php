@@ -23,25 +23,26 @@
                     <div class="card-body">
                         <h5 class="card-title">New Notice</h5>
             
-                        <!-- Room allocation Form -->
-                        <form class="row g-3">
+                        <!-- Notice Add Form -->
+                        <form class="row g-3" method="POST" action="{{route('warden.notice.add')}}" enctype="multipart/form-data">
+                            @csrf
                             <div class="row mb-3">
                                 <label for="noticeSubject" class="col-md-4 col-lg-3 col-form-label">Notice Subject</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="noticeSubject" type="text" class="form-control" id="noticeSubjectNew">
+                                    <input name="noticeSubject" type="text" class="form-control" id="noticeSubject">
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="newNotice">New Notice (PDF):</label>
+                                <label for="newNotice" class="col-md-4 col-lg-3 col-form-label">New Notice (PDF):</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input type="file" id="newNotice" name="newNotice" accept=".pdf">
+                                    <input type="file" id="newNotice" class="form-control" name="newNotice" accept=".pdf">
                                 </div>
                             </div>
                             <div class="text-center">
                                 <button type="reset" class="btn btn-secondary">Reset</button>
                                 <button type="submit" class="btn btn-primary">Add</button>
                             </div>
-                        </form><!-- End Room allocation Form -->
+                        </form><!-- End Notice Add Form -->
         
                     </div>
                 </div>

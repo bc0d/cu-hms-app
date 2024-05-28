@@ -196,13 +196,13 @@
               <a class="dropdown-item d-flex align-items-center" href={{ url('hod/my-profile') }}>
                 @break
               @case("admin")
-              <a class="dropdown-item d-flex align-items-center" href={{ url('registrar/my-profile') }}>
+              <a class="dropdown-item d-flex align-items-center" href={{ url('super-user/my-profile') }}>
                 @break
               @case("registrar")
               <a class="dropdown-item d-flex align-items-center" href={{ url('registrar/my-profile') }}>
                 @break
               @case("mess_admin")
-              <a class="dropdown-item d-flex align-items-center" href={{ url('registrar/my-profile') }}>
+              <a class="dropdown-item d-flex align-items-center" href={{ url('mess/my-profile') }}>
                 @break
               
             

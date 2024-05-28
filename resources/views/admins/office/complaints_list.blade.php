@@ -32,6 +32,7 @@
                       <th></th>
                     </tr>
                   </thead>
+               
                   <tbody>
                     @foreach ($complaints as $complaint)
                       <tr>

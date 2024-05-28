@@ -89,7 +89,7 @@
                     <div class="p-2">Email Id</div>
                   </div>
                   <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
-                    <div class="p-2">abc123@gmail.com</div>
+                    <div class="p-2">{{ $student->email }}</div>
                   </div> 
                   
                   <div class="d-grid m-0 mr-2 mt-1 pb-1">

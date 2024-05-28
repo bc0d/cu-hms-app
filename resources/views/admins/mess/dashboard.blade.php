@@ -110,7 +110,7 @@
           <div class="card info-card req-warn-card">
             <div class="card-body">
               <h5 class="card-title">Complaints</h5>
-              <a class="d-flex align-items-center" href={{ url('mess-index/complaints') }}>
+              <a class="d-flex align-items-center" href={{ url('mess/complaints/card') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-person-exclamation"></i>
                 </div>

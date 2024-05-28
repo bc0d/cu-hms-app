@@ -81,7 +81,7 @@
       <div class="col-md-4 mt-4 mt-md-0">
         <div class="icon-box">
           <i class="bi bi-exclamation-triangle"></i>
-          <h4><a href="{{ url('user/notice') }}">notice</a></h4>
+          <h4><a href="{{ url('user/rules/card') }}">Rules & Notices</a></h4>
 
         </div>
       </div>

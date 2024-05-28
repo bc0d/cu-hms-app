@@ -30,43 +30,75 @@
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Profile Image</div>
                     <div class="col-md-8 col-lg-9">
-                        <img src="{{ asset('admins/assets/img/profile-img.jpg') }}" alt="Profile">
+                        <img src="{{ asset($student->image) }}" alt="Profile" class="img-fluid" style="width: 150px; height: 150px; object-fit: cover;">
                       </div>
                   </div>
                   
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                    <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+                    <div class="col-lg-9 col-md-8">{{ $student->first_name." ".$student->second_name }}</div>
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Company</div>
-                    <div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
+                    <div class="col-lg-3 col-md-4 label">Admission No</div>
+                    <div class="col-lg-9 col-md-8">{{ $student->adm_no }}</div>
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Job</div>
-                    <div class="col-lg-9 col-md-8">Web Designer</div>
+                    <div class="col-lg-3 col-md-4 label">DOB</div>
+                    <div class="col-lg-9 col-md-8"> {{ $student->dob }}</div>
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Country</div>
-                    <div class="col-lg-9 col-md-8">USA</div>
+                    <div class="col-lg-3 col-md-4 label">Gender</div>
+                    <div class="col-lg-9 col-md-8"> {{ $student->gender }}</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Course</div>
+                    <div class="col-lg-9 col-md-8">{{ $courseName }}</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Department</div>
+                    <div class="col-lg-9 col-md-8">{{ $departmentName }}</div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Address</div>
-                    <div class="col-lg-9 col-md-8">A108 Adam Street, New York, NY 535022</div>
+                    <div class="col-lg-9 col-md-8"> {{ $student->house }}, {{ $student->street }}, {{ $student->post }}, {{ $student->district }}, {{ $student->state }}, {{ $student->country }} - pincode: {{ $student->pin }}</div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Phone</div>
-                    <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
+                    <div class="col-lg-9 col-md-8"> {{ $student->phone }}</div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Email</div>
-                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                    <div class="col-lg-9 col-md-8">{{ $student->email }}</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Reservation</div>
+                    <div class="col-lg-9 col-md-8"> {{ $student->reservation }}</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Admission Date</div>
+                    <div class="col-lg-9 col-md-8"> {{ $student->adm_date }}</div>
+                  </div>
+
+
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Guardian Name</div>
+                    <div class="col-lg-9 col-md-8"> {{ $student->guardian }}</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Guardian Phone No</div>
+                    <div class="col-lg-9 col-md-8"> {{ $student->guardian_phone }}</div>
                   </div>
 
                 </div>
@@ -80,5 +112,4 @@
         </div>
       </div>
     </section>
-
 @endsection

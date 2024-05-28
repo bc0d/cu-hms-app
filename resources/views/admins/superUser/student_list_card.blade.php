@@ -21,7 +21,7 @@
           <div class="card info-card req-add-card">
             <div class="card-body">
               <h5 class="card-title">All Students</h5>
-              <a class="d-flex align-items-center" href={{ url('super-user/student/list') }}>
+              <a class="d-flex align-items-center" href={{ url('super-user/student/all') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-file-spreadsheet"></i>
                 </div>
