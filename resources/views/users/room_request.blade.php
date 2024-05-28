@@ -45,21 +45,50 @@
     @else
       <div class="row mt-1  justify-content-center">
         <div class="col-lg-8 mt-2 mb-5 mt-lg-2 pt-2 pt-3">
-          <div class="row mb-1">
+          <div class="row mb-2">
             <h5>Department Verification Status: </h5>
             <span>{{ $roomAlloc->dep_verification_status }}</span>
           </div>
-          <div class="row mb-1">
+          <div class="row mb-2">
             <h5>Payment Status: </h5>
             <span>{{ $roomAlloc->payment_status }}</span>
             @if ($roomAlloc->dep_verification_status == 'Approved' && $roomAlloc->payment_status == 'Pending')
                 <div class="row">
-                  <p>payment amount : 500</p>
-                  <a href="">make payment</a>
+                  @foreach ($fee as $item)
+                      <div class="col-lg-6 mt-1 mb-1">
+                        <p>Fee Name : {{ $item->fee_title }}</p>
+                        <p>Fee Amount : {{ $item->amount }}</p>
+                      </div>
+                  @endforeach
+                  <hr>
+                  <form action="{{ route('room.request.payment') }}" method="POST" class="col-lg-6">
+                    @csrf
+                    <input type="hidden" name="student_id" value="{{ $student->student_id }}">
+                    <div class="row mb-2">
+                      <div class="col-md-6 form-group">
+                        <label for="purpose">Purpose</label>
+                      </div>
+                      <div class="col-md-6 form-group">
+                        <input type="text" class="form-control" id="purpose" name="purpose" value="Hostel Admission" readonly>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6 form-group">
+                        <label for="amt">Total Fee</label>
+                      </div>
+                      <div class="col-md-6 form-group">
+                        <input type="text" class="form-control" id="amt" name="amount" value="{{ $total }}" readonly>
+                      </div>
+                    </div>
+                    <div class="mt-2 mb-3">
+                      <button type="submit" class="btn btn-secondary">Pay now</button>
+                    </div>
+                  </form>
+                  
                 </div>
             @endif
           </div>
-          <div class="row mb-1">
+          <div class="row mb-2">
             <h5>Allocation Status: </h5>
             <span>{{ $roomAlloc->allocation_status }}</span>
           </div>

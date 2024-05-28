@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Department;
 use App\Models\RoomAllocation;
+use App\Models\FeeDetail;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class UserRoomController extends Controller
@@ -45,8 +47,20 @@ class UserRoomController extends Controller
         $student = Auth::guard('students')->user();
         $department = Department::where('department_id', $student->department)->first();
         $roomAlloc = RoomAllocation::where('student_id', $student->student_id)->first();
-        
-        return view('users.room_request', compact('student', 'department', 'roomAlloc'));
+        $transaction = Transaction::firstWhere([
+            'student_id' => $student->student_id,
+            'purpose' => 'Hostel Admission'
+        ]);
+        if(!is_Null($transaction)) {
+            $roomAlloc->payment_status = $transaction->status;
+            $roomAlloc->save();
+        }
+        $fee = FeeDetail::where('fee_title', 'like', '%Admission%')->get();
+        $total = 0.0;
+        foreach($fee as $val) {
+            $total = $total + $val->amount;
+        }
+        return view('users.room_request', compact('student', 'department', 'roomAlloc', 'fee', 'total'));
     }
 
     public function roomRequest(Request $request) {
@@ -62,6 +76,26 @@ class UserRoomController extends Controller
         ]);
 
         return redirect('user/dashboard');
+    }
+
+    public function roomAllocationPayment(Request $request) {
+
+        $student = Auth::guard('students')->user();
+        $data = $request->validate([
+            'student_id' => 'required|string',
+            'purpose' => 'required|string',
+            'amount' => 'required|numeric',
+        ]);
+        
+        $paymentDetails = [
+            'student_id' => $data['student_id'],
+            'purpose' => $data['purpose'],
+            'amount' => $data['amount'],
+            'callback_url' => route('room.callback'),
+        ];
+
+        session()->flash('paymentDetails', $paymentDetails);
+        return redirect('/payment-gateway');
     }
 
 }

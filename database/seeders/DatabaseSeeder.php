@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             StudentsTableSeeder::class,
             AdminsTableSeeder::class,
             GeneralTableSeeder::class,
+            FeeDetailsTableSeeder::class,
         ]);
     }
 }

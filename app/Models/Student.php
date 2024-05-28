@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Models\User;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
-use App\Models\Feedback;
 
 class Student extends Model implements Authenticatable
 {
@@ -48,5 +47,10 @@ class Student extends Model implements Authenticatable
     public function feedbacks() {
 
         return $this->hasMany(Feedback::class, 'student_id');
+    }
+
+    public function transactions() {
+
+        return $this->hasMany(Transaction::class, 'student_id');
     }
 }

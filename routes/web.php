@@ -74,7 +74,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 
-
+use App\Http\Controllers\PaymentGatewayController;
 
 
 /*
@@ -114,7 +114,8 @@ Route::get('/', function() {
     return view('index');
 });
 
-
+Route::get('payment-gateway', [PaymentGatewayController::class, 'showPaymentGateway']);
+Route::post('payment-gateway/payment', [PaymentGatewayController::class, 'makePayment'])->name('payment.makepay');
 
 
 Route::middleware(['auth:students'])->prefix('user')->group(function () {
@@ -184,8 +185,9 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
             Route::get('status', [UserRoomController::class, 'showRoomRentStatus']);
         });
 
-        Route::get('request', [UserRoomController::class, 'showRoomReq']);
+        Route::get('request', [UserRoomController::class, 'showRoomReq'])->name('room.callback');
         Route::post('room-req', [UserRoomController::class, 'roomRequest'])->name('room.request');
+        Route::post('room-req-paymet', [UserRoomController::class, 'roomAllocationPayment'])->name('room.request.payment');
 
         //other-bill-room
         Route::get('other-bill', [UserRoomController::class, 'showOtherBill']); 
