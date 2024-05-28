@@ -3,10 +3,10 @@
 @section('content')
 
     <div class="pagetitle">
-    <h1>Office</h1>
+    <h1>Mess</h1>
         <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href={{ url('office/index')}}>Home</a></li>
+            <li class="breadcrumb-item"><a href={{ url('mess/index')}}>Home</a></li>
             <li class="breadcrumb-item active">Complaints</li>
         </ol>
         </nav>
@@ -32,7 +32,6 @@
                       <th></th>
                     </tr>
                   </thead>
-               
                   <tbody>
                     @foreach ($complaints as $complaint)
                       <tr>
@@ -41,7 +40,7 @@
                         <td>{{ $complaint->category }}</td>
                         <td>{{ $complaint->status }}</td>
                         <td>{{ $complaint->created_at->toDateString() }}</td>
-                        <td><a href={{ url('office/complaints/view/' . $complaint->complaint_id) }} class="btn btn-primary btn-sm">view</a></td>
+                        <td><a href={{ url('mess/complaints/view/' . $complaint->complaint_id) }} class="btn btn-primary btn-sm">view</a></td>
                       </tr>
                     @endforeach                   
                   </tbody>

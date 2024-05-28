@@ -71,6 +71,10 @@ use App\Http\Controllers\Hod\HodDashboardController;
 use App\Http\Controllers\Hod\HodProfileController;
 
 
+use App\Http\Controllers\Mess\DashboardMessController;
+use App\Http\Controllers\Mess\ProfileMessController;
+use App\Http\Controllers\Mess\ComplaintsMessController;
+
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -310,9 +314,8 @@ Route::prefix('hod')->group(function () {
     });
 
     Route::prefix('students-details')->group(function () {
-
-        Route::get('list', [StudentDetailsHodController::class, 'showList']);
-        Route::get('profile-details', [StudentDetailsHodController::class, 'profileDetails']);
+        Route::get('all', [StudentDetailsHodController::class, 'showAllStudentDetails']);
+        Route::get('profile-details/{id}', [StudentDetailsHodController::class, 'showProfileDetails']);
 
     });
     
@@ -335,8 +338,8 @@ Route::prefix('office')->group(function () {
     Route::prefix('student')->group(function () {
         
         Route::get('card', [StudentDetailsController::class, 'showCard']);
-        Route::get('list', [StudentDetailsController::class, 'showList']);
-        Route::get('detail', [StudentDetailsController::class, 'showDetails']);
+        Route::get('all', [StudentDetailsController::class, 'showAllStudentDetails']);
+        Route::get('detail/{id}', [StudentDetailsController::class, 'showStudentProfileDetails']);
     });
 
     //rooms details card
@@ -431,8 +434,8 @@ Route::prefix('warden')->group(function() {
     Route::prefix('student')->group(function () {
         
         Route::get('card', [WardenStudentDetailsController::class, 'showCard']);
-        Route::get('list', [WardenStudentDetailsController::class, 'showList']);
-        Route::get('detail', [WardenStudentDetailsController::class, 'showDetails']);
+        Route::get('all', [WardenStudentDetailsController::class, 'showAllStudentDetails']);
+        Route::get('detail/{id}', [WardenStudentDetailsController::class, 'showStudentProfileDetails']);
     });
     
     //admission card
@@ -521,8 +524,8 @@ Route::prefix('registrar')->group(function () {
     Route::prefix('student')->group(function () {
         
         Route::get('card', [StudentDetailsRegistrarController::class, 'showCard']);
-        Route::get('list', [StudentDetailsRegistrarController::class, 'showList']);
-        Route::get('detail', [StudentDetailsRegistrarController::class, 'showDetails']);
+        Route::get('all', [StudentDetailsRegistrarController::class, 'showAllStudentDetails']);
+        Route::get('detail/{id}', [StudentDetailsRegistrarController::class, 'showStudentProfileDetails']);
     });
 
     //rooms details card
@@ -634,15 +637,15 @@ Route::prefix('super-user')->group(function () {
     Route::prefix('student')->group(function () {
         
         Route::get('card', [StudentDetailsAdminController::class, 'showCard']);
-        Route::get('list', [StudentDetailsAdminController::class, 'showList']);
-        Route::get('detail', [StudentDetailsAdminController::class, 'showDetails']);
+        Route::get('all', [StudentDetailsAdminController::class, 'showAllStudentDetails']);
+        Route::get('detail/{id}', [StudentDetailsAdminController::class, 'showProfileDetails']);
     });
 
     //rooms details card
     Route::prefix('room-details')->group(function () {
 
         Route::get('card', [RoomDetailsAdminController::class, 'showCard']);
-        Route::get('list', [RoomDetailsAdminController::class, 'roomDetails']);
+        Route::get('list', [RoomDetailsAdminController::class, 'showAllStudentDetails']);
 
     });
     
@@ -733,11 +736,12 @@ Route::prefix('super-user')->group(function () {
 
 /*---------mess dashboard-----------
 */ 
-Route::prefix('mess-index')->group(function () {
+Route::prefix('mess')->group(function () {
+    //dashboard
+    Route::get('index', [DashboardMessController::class, 'showMessDashboard']);
+    //profile
+    Route::get('my-profile', [ProfileMessController::class, 'showMessProfile']);
 
-    Route::get('/', function() {
-        return view('admins.mess.dashboard');
-    });
     Route::prefix('take-attendance')->group(function () {
         Route::get('/', function() {
             return view('admins.mess.attendance_take');
@@ -797,9 +801,17 @@ Route::prefix('mess-index')->group(function () {
         });
     });
 
-    Route::get('complaints', function() {
-        return view('admins.mess.complaints');
+    //Complaints
+    Route::prefix('complaints')->group(function () {
+
+        Route::get('card', [ComplaintsMessController::class, 'showComplaintsCard']);
+        Route::get('new', [ComplaintsMessController::class, 'showNewComplaints']);
+        Route::get('view/{id}', [ComplaintsMessController::class, 'showComplaintView']);
+        Route::post('edit', [ComplaintsMessController::class, 'complaintEdit'])->name('mess.complaint.action');
+        Route::get('solved', [ComplaintsMessController::class, 'showSolvedComplaints']);
+        Route::get('all', [ComplaintsMessController::class, 'showAllComplaints']);
     });
+    
    
 
 });
