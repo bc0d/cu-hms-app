@@ -9,6 +9,7 @@ use App\Http\Controllers\User\UserComplaintsController;
 use App\Http\Controllers\User\UserMessController;
 use App\Http\Controllers\User\UserRoomController;
 use App\Http\Controllers\User\UserFeedbackController;
+use App\Http\Controllers\User\UserRulesAndNoticeController;
 
 use App\Http\Controllers\SuperUser\SuperUserDashboardController;
 use App\Http\Controllers\SuperUser\SuperUserProfileController;
@@ -195,9 +196,15 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
     Route::get('room-change',function(){
         return view('users.room_change');
     }); 
-    //notice
-    Route::get('notice',function(){
-        return view('users.notice');
+    //rules and notice card
+    Route::prefix('rules')->group(function () {
+
+        Route::get('card', [UserRulesAndNoticeController::class, 'showCard']);
+        Route::get('rule-list', [UserRulesAndNoticeController::class, 'viewRules']);
+        
+
+        Route::get('notice-list',[UserRulesAndNoticeController::class, 'viewNotices']);
+        
     });
     //fee-pending-status
     Route::get('fee-pending-status',function(){
