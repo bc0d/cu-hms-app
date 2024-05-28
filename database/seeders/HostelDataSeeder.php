@@ -1,0 +1,921 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB; // Import the DB facade
+
+class HostelDataSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        DB::table('hostels')->insert([
+            [
+                'hostel_name' => 'Mens Hostel',
+                'no_of_blocks' => '5',
+
+            ],
+            [
+                'hostel_name' => 'Ladies Hostel',
+                'no_of_blocks' => '3',
+            ],
+        ]);
+
+
+        DB::table('blocks')->insert([
+            [
+                'block_name' => 'Old block',
+                'hostel_id' => '1',
+                'no_of_rooms' => '10',
+            ],
+            [
+                'block_name' => 'New block',
+                'hostel_id' => '1',
+                'no_of_rooms' => '10',
+            ],
+            [
+                'block_name' => 'Annex',
+                'hostel_id' => '1',
+                'no_of_rooms' => '10',
+            ],
+            [
+                'block_name' => 'New Annex',
+                'hostel_id' => '1',
+                'no_of_rooms' => '10',
+            ],
+            [
+                'block_name' => 'Phd block',
+                'hostel_id' => '1',
+                'no_of_rooms' => '10',
+            ],
+            [
+                'block_name' => 'Annex',
+                'hostel_id' => '2',
+                'no_of_rooms' => '10',
+            ],
+            [
+                'block_name' => 'Everest',
+                'hostel_id' => '2',
+                'no_of_rooms' => '10',
+            ],
+            [
+                'block_name' => 'Mulla',
+                'hostel_id' => '2',
+                'no_of_rooms' => '10',
+            ],
+        ]);
+
+
+        DB::table('rooms')->insert([
+            [
+                'block_id' => '1',
+                'room_name' => 'MH1-1',
+                'room_type' =>'single',
+                'no_of_beds' => '1',
+            ],
+            [
+                'block_id' => '1',
+                'room_name' => 'MH1-2',
+                'room_type' =>'single',
+                'no_of_beds' => '1',
+            ],
+            [
+                'block_id' => '1',
+                'room_name' => 'MH1-3',
+                'room_type' =>'single',
+                'no_of_beds' => '1',
+            ],
+            [
+                'block_id' => '1',
+                'room_name' => 'MH1-4',
+                'room_type' =>'single',
+                'no_of_beds' => '1',
+            ],
+            [
+                'block_id' => '1',
+                'room_name' => 'MH1-5',
+                'room_type' =>'single',
+                'no_of_beds' => '1',
+            ],
+            [
+                'block_id' => '2',
+                'room_name' => 'MH2-1',
+                'room_type' =>'single',
+                'no_of_beds' => '1',
+            ],
+            [
+                'block_id' => '2',
+                'room_name' => 'MH2-2',
+                'room_type' =>'single',
+                'no_of_beds' => '1',
+            ],
+            [
+                'block_id' => '2',
+                'room_name' => 'MH2-3',
+                'room_type' =>'single',
+                'no_of_beds' => '1',
+            ],
+            [
+                'block_id' => '2',
+                'room_name' => 'MH2-4',
+                'room_type' =>'single',
+                'no_of_beds' => '1',
+            ],
+            [
+                'block_id' => '2',
+                'room_name' => 'MH2-5',
+                'room_type' =>'single',
+                'no_of_beds' => '1',
+            ],
+            [
+                'block_id' => '3',
+                'room_name' => 'MH3-1',
+                'room_type' =>'shared',
+                'no_of_beds' => '4',
+            ],
+            [
+                'block_id' => '3',
+                'room_name' => 'MH3-2',
+                'room_type' =>'shared',
+                'no_of_beds' => '4',
+            ],
+            [
+                'block_id' => '3',
+                'room_name' => 'MH3-3',
+                'room_type' =>'shared',
+                'no_of_beds' => '4',
+            ],
+            [
+                'block_id' => '3',
+                'room_name' => 'MH3-4',
+                'room_type' =>'shared',
+                'no_of_beds' => '4',
+            ],
+            [
+                'block_id' => '3',
+                'room_name' => 'MH3-5',
+                'room_type' =>'shared',
+                'no_of_beds' => '4',
+            ],
+            [
+                'block_id' => '4',
+                'room_name' => 'MH4-1',
+                'room_type' =>'shared',
+                'no_of_beds' => '4',
+            ],
+            [
+                'block_id' => '4',
+                'room_name' => 'MH4-2',
+                'room_type' =>'shared',
+                'no_of_beds' => '4',
+            ],
+            [
+                'block_id' => '4',
+                'room_name' => 'MH4-3',
+                'room_type' =>'shared',
+                'no_of_beds' => '4',
+            ],
+            [
+                'block_id' => '4',
+                'room_name' => 'MH4-4',
+                'room_type' =>'shared',
+                'no_of_beds' => '4',
+            ],
+            [
+                'block_id' => '4',
+                'room_name' => 'MH4-5',
+                'room_type' =>'shared',
+                'no_of_beds' => '4',
+            ],
+            [
+                'block_id' => '5',
+                'room_name' => 'MH5-1',
+                'room_type' =>'single',
+                'no_of_beds' => '1',
+            ],
+            [
+                'block_id' => '5',
+                'room_name' => 'MH5-2',
+                'room_type' =>'single',
+                'no_of_beds' => '1',
+            ],
+            [
+                'block_id' => '5',
+                'room_name' => 'MH5-3',
+                'room_type' =>'single',
+                'no_of_beds' => '1',
+            ],
+            [
+                'block_id' => '5',
+                'room_name' => 'MH5-4',
+                'room_type' =>'single',
+                'no_of_beds' => '1',
+            ],
+            [
+                'block_id' => '5',
+                'room_name' => 'MH5-5',
+                'room_type' =>'single',
+                'no_of_beds' => '1',
+            ],
+            [
+                'block_id' => '6',
+                'room_name' => 'LH1-1',
+                'room_type' =>'shared',
+                'no_of_beds' => '4',
+            ],
+            [
+                'block_id' => '6',
+                'room_name' => 'LH1-2',
+                'room_type' =>'shared',
+                'no_of_beds' => '4',
+            ],
+            [
+                'block_id' => '6',
+                'room_name' => 'LH1-3',
+                'room_type' =>'shared',
+                'no_of_beds' => '4',
+            ],
+            [
+                'block_id' => '6',
+                'room_name' => 'LH1-4',
+                'room_type' =>'shared',
+                'no_of_beds' => '4',
+            ],
+            [
+                'block_id' => '6',
+                'room_name' => 'LH1-5',
+                'room_type' =>'shared',
+                'no_of_beds' => '4',
+            ],
+            [
+                'block_id' => '7',
+                'room_name' => 'LH2-1',
+                'room_type' =>'single',
+                'no_of_beds' => '1',
+            ],
+            [
+                'block_id' => '7',
+                'room_name' => 'LH2-2',
+                'room_type' =>'single',
+                'no_of_beds' => '1',
+            ],
+            [
+                'block_id' => '7',
+                'room_name' => 'LH2-3',
+                'room_type' =>'single',
+                'no_of_beds' => '1',
+            ],
+            [
+                'block_id' => '7',
+                'room_name' => 'LH2-4',
+                'room_type' =>'single',
+                'no_of_beds' => '1',
+            ],
+            [
+                'block_id' => '7',
+                'room_name' => 'LH2-5',
+                'room_type' =>'single',
+                'no_of_beds' => '1',
+            ],
+            [
+                'block_id' => '8',
+                'room_name' => 'LH3-1',
+                'room_type' =>'shared',
+                'no_of_beds' => '4',
+            ],
+            [
+                'block_id' => '8',
+                'room_name' => 'LH3-2',
+                'room_type' =>'shared',
+                'no_of_beds' => '4',
+            ],
+            [
+                'block_id' => '8',
+                'room_name' => 'LH3-3',
+                'room_type' =>'shared',
+                'no_of_beds' => '4',
+            ],
+            [
+                'block_id' => '8',
+                'room_name' => 'LH3-4',
+                'room_type' =>'shared',
+                'no_of_beds' => '4',
+            ],
+            [
+                'block_id' => '8',
+                'room_name' => 'LH3-5',
+                'room_type' =>'shared',
+                'no_of_beds' => '4',
+            ],
+
+        ]);
+
+
+        DB::table('beds')->insert([
+            [
+                'room_id' => '1',
+                'bed_name' => 'MH1-1-1',
+                'status' => 'vacant',
+                'bed_type' => 'single',
+            ],
+            [
+                'room_id' => '2',
+                'bed_name' => 'MH1-2-1',
+                'status' => 'vacant',
+                'bed_type' => 'single',
+            ],
+            [
+                'room_id' => '3',
+                'bed_name' => 'MH1-3-1',
+                'status' => 'vacant',
+                'bed_type' => 'single',
+            ],
+            [
+                'room_id' => '4',
+                'bed_name' => 'MH1-4-1',
+                'status' => 'vacant',
+                'bed_type' => 'single',
+            ],
+            [
+                'room_id' => '5',
+                'bed_name' => 'MH1-5-1',
+                'status' => 'vacant',
+                'bed_type' => 'single',
+            ],
+            [
+                'room_id' => '6',
+                'bed_name' => 'MH2-1-1',
+                'status' => 'vacant',
+                'bed_type' => 'single',
+            ],
+            [
+                'room_id' => '7',
+                'bed_name' => 'MH2-2-1',
+                'status' => 'vacant',
+                'bed_type' => 'single',
+            ],
+            [
+                'room_id' => '8',
+                'bed_name' => 'MH2-3-1',
+                'status' => 'vacant',
+                'bed_type' => 'single',
+            ],
+            [
+                'room_id' => '9',
+                'bed_name' => 'MH2-4-1',
+                'status' => 'vacant',
+                'bed_type' => 'single',
+            ],
+            [
+                'room_id' => '10',
+                'bed_name' => 'MH2-5-1',
+                'status' => 'vacant',
+                'bed_type' => 'single',
+            ],
+            [
+                'room_id' => '11',
+                'bed_name' => 'MH3-1-1',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '11',
+                'bed_name' => 'MH3-1-2',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '11',
+                'bed_name' => 'MH3-1-3',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '11',
+                'bed_name' => 'MH3-1-4',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '12',
+                'bed_name' => 'MH3-2-1',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '12',
+                'bed_name' => 'MH3-2-2',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '12',
+                'bed_name' => 'MH3-2-3',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '12',
+                'bed_name' => 'MH3-2-4',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '13',
+                'bed_name' => 'MH3-3-1',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '13',
+                'bed_name' => 'MH3-3-2',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '13',
+                'bed_name' => 'MH3-3-3',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '13',
+                'bed_name' => 'MH3-3-4',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '14',
+                'bed_name' => 'MH3-4-1',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '14',
+                'bed_name' => 'MH3-4-2',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '14',
+                'bed_name' => 'MH3-4-3',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '14',
+                'bed_name' => 'MH3-4-4',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '15',
+                'bed_name' => 'MH3-5-1',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '15',
+                'bed_name' => 'MH3-5-2',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '15',
+                'bed_name' => 'MH3-5-3',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '15',
+                'bed_name' => 'MH3-5-4',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '16',
+                'bed_name' => 'MH4-1-1',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '16',
+                'bed_name' => 'MH4-1-2',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '16',
+                'bed_name' => 'MH4-1-3',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '16',
+                'bed_name' => 'MH4-1-4',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '17',
+                'bed_name' => 'MH4-2-1',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '17',
+                'bed_name' => 'MH4-2-2',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '17',
+                'bed_name' => 'MH4-2-3',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '17',
+                'bed_name' => 'MH4-2-4',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '18',
+                'bed_name' => 'MH4-3-1',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '18',
+                'bed_name' => 'MH4-3-2',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '18',
+                'bed_name' => 'MH4-3-3',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '18',
+                'bed_name' => 'MH4-3-4',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '19',
+                'bed_name' => 'MH4-4-1',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '19',
+                'bed_name' => 'MH4-4-2',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '19',
+                'bed_name' => 'MH4-4-3',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '19',
+                'bed_name' => 'MH4-4-4',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '20',
+                'bed_name' => 'MH4-5-1',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '20',
+                'bed_name' => 'MH4-5-2',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '20',
+                'bed_name' => 'MH4-5-3',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '20',
+                'bed_name' => 'MH4-5-4',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '21',
+                'bed_name' => 'MH5-1-1',
+                'status' => 'vacant',
+                'bed_type' => 'single',
+            ],
+            [
+                'room_id' => '22',
+                'bed_name' => 'MH5-2-1',
+                'status' => 'vacant',
+                'bed_type' => 'single',
+            ],
+            [
+                'room_id' => '23',
+                'bed_name' => 'MH5-3-1',
+                'status' => 'vacant',
+                'bed_type' => 'single',
+            ],
+            [
+                'room_id' => '24',
+                'bed_name' => 'MH5-4-1',
+                'status' => 'vacant',
+                'bed_type' => 'single',
+            ],
+            [
+                'room_id' => '25',
+                'bed_name' => 'MH5-5-1',
+                'status' => 'vacant',
+                'bed_type' => 'single',
+            ],
+            [
+                'room_id' => '26',
+                'bed_name' => 'LH1-1-1',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '26',
+                'bed_name' => 'LH1-1-2',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '26',
+                'bed_name' => 'LH1-1-3',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '26',
+                'bed_name' => 'LH1-1-4',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '27',
+                'bed_name' => 'LH1-2-1',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '27',
+                'bed_name' => 'LH1-2-2',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '27',
+                'bed_name' => 'LH1-2-3',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '27',
+                'bed_name' => 'LH1-2-4',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '28',
+                'bed_name' => 'LH1-3-1',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '28',
+                'bed_name' => 'LH1-3-2',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '28',
+                'bed_name' => 'LH1-3-3',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '28',
+                'bed_name' => 'LH1-3-4',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '29',
+                'bed_name' => 'LH1-4-1',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '29',
+                'bed_name' => 'LH1-4-2',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '29',
+                'bed_name' => 'LH1-4-3',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '29',
+                'bed_name' => 'LH1-4-4',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '30',
+                'bed_name' => 'LH1-5-1',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '30',
+                'bed_name' => 'LH1-5-2',
+                'status' => 'vacant',
+                'bed_type' => 'sahred',
+            ],
+            [
+                'room_id' => '30',
+                'bed_name' => 'LH1-5-3',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '30',
+                'bed_name' => 'LH1-5-4',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '31',
+                'bed_name' => 'LH2-1-1',
+                'status' => 'vacant',
+                'bed_type' => 'single',
+            ],
+            [
+                'room_id' => '32',
+                'bed_name' => 'LH2-2-1',
+                'status' => 'vacant',
+                'bed_type' => 'single',
+            ],
+            [
+                'room_id' => '33',
+                'bed_name' => 'LH2-3-1',
+                'status' => 'vacant',
+                'bed_type' => 'single',
+            ],
+            [
+                'room_id' => '34',
+                'bed_name' => 'LH2-4-1',
+                'status' => 'vacant',
+                'bed_type' => 'single',
+            ],
+            [
+                'room_id' => '35',
+                'bed_name' => 'LH2-5-1',
+                'status' => 'vacant',
+                'bed_type' => 'single',
+            ],
+            [
+                'room_id' => '36',
+                'bed_name' => 'LH3-1-1',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '36',
+                'bed_name' => 'LH3-1-2',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '36',
+                'bed_name' => 'LH3-1-3',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '36',
+                'bed_name' => 'LH3-1-4',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '37',
+                'bed_name' => 'LH3-2-1',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '37',
+                'bed_name' => 'LH3-2-2',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '37',
+                'bed_name' => 'LH3-2-3',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '37',
+                'bed_name' => 'LH3-2-4',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '38',
+                'bed_name' => 'LH3-3-1',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '38',
+                'bed_name' => 'LH3-3-2',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '38',
+                'bed_name' => 'LH3-3-3',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '38',
+                'bed_name' => 'LH3-3-4',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '39',
+                'bed_name' => 'LH3-4-1',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '39',
+                'bed_name' => 'LH3-4-2',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '39',
+                'bed_name' => 'LH3-4-3',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '39',
+                'bed_name' => 'LH3-4-4',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '40',
+                'bed_name' => 'LH3-5-1',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '40',
+                'bed_name' => 'LH3-5-2',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '40',
+                'bed_name' => 'LH3-5-3',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+            [
+                'room_id' => '40',
+                'bed_name' => 'LH3-5-4',
+                'status' => 'vacant',
+                'bed_type' => 'shared',
+            ],
+        ]);
+    }
+}

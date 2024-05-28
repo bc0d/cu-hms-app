@@ -67,10 +67,16 @@ class UserRoomController extends Controller
 
         $student = Auth::guard('students')->user();
 
+        $data = $request->validate([
+            'hostel' => 'required|string',
+        ]);
+
         RoomAllocation::create([
             'student_id' => $student->student_id,
             'department_id' => $student->department,
+            'hostel' => $data['hostel'],
             'dep_verification_status' => 'Pending',
+            'warden_verification_status' => 'Pending',
             'payment_status' => 'Pending',
             'allocation_status' => 'Pending',
         ]);

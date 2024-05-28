@@ -34,6 +34,18 @@
                 <input type="text" name="dept" class="form-control" value="{{ $student->adm_no }}" readonly>
               </div>
             </div>
+            <div class="row">
+              <div class="col-md-4 form-group">
+                <label for="hostel">Hostel </label>
+              </div>
+              <div class="col-md-8 form-group">
+                <select name="hostel" id="hostel" class="form-control">
+                  <option selected>--select--</option>
+                  <option value="Mens Hostel">Mens Hostel</option>
+                  <option value="Ladies Hostel">Ladies Hostel</option>
+                </select>
+              </div>
+            </div>
             <div class="text-center mt-3">
               <button type="submit" class="btn btn-primary">Request Room</button>
             </div>
@@ -87,6 +99,10 @@
                   
                 </div>
             @endif
+          </div>
+          <div class="row mb-2">
+            <h5>Warden Verification Status: </h5>
+            <span>{{ $roomAlloc->warden_verification_status }}</span>
           </div>
           <div class="row mb-2">
             <h5>Allocation Status: </h5>

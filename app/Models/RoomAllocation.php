@@ -12,8 +12,10 @@ class RoomAllocation extends Model
     protected $fillable = [
         'student_id',
         'department_id',
+        'hostel',
         'dep_verification_status',
         'payment_status',
+        'warden_verification_status',
         'transaction_id',
         'allocation_status',
     ];

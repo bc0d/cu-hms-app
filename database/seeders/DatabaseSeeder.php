@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             AdminsTableSeeder::class,
             GeneralTableSeeder::class,
             FeeDetailsTableSeeder::class,
+            HostelDataSeeder::class
         ]);
     }
 }

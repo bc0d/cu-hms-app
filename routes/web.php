@@ -56,11 +56,11 @@ use App\Http\Controllers\Warden\WardenDashboardController;
 use App\Http\Controllers\Warden\WardenProfileController;
 use App\Http\Controllers\Warden\WardenComplaintsController;
 use App\Http\Controllers\Warden\WardenStudentDetailsController;
-use App\Http\Controllers\warden\HostelAdmissionWardenController;
-use App\Http\Controllers\warden\HostelVacateWardenController;
-use App\Http\Controllers\warden\WardenFeeAndPaymentController;
-use App\Http\Controllers\warden\WardenRoomDetailsController;
-use App\Http\Controllers\warden\WardenRuleAndNoticeController;
+use App\Http\Controllers\Warden\HostelAdmissionWardenController;
+use App\Http\Controllers\Warden\HostelVacateWardenController;
+use App\Http\Controllers\Warden\WardenFeeAndPaymentController;
+use App\Http\Controllers\Warden\WardenRoomDetailsController;
+use App\Http\Controllers\Warden\WardenRuleAndNoticeController;
 use App\Http\Controllers\Warden\ComplaintsWardenController;
 
 use App\Http\Controllers\Hod\HostelAdmissionHodController;
@@ -426,7 +426,8 @@ Route::prefix('warden')->group(function() {
     Route::prefix('admission')->group(function () {
 
         Route::get('request', [HostelAdmissionWardenController::class, 'showRequests']);
-        Route::get('action', [HostelAdmissionWardenController::class, 'admissionAction']);
+        Route::get('action/{id}', [HostelAdmissionWardenController::class, 'admissionAction']);
+        Route::post('action', [HostelAdmissionWardenController::class, 'admissionApproval'])->name('warden.admission.approve');
         
     });
 

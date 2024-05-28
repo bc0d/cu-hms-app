@@ -34,12 +34,13 @@ class HostelAdmissionHodController extends Controller
 
         $admin = Auth::guard('admins')->user();
         $data = $request->validate([
-
+            'hostel' => 'required|string',
             'status' => 'required|string',
             'requestId' => 'required|string',
         ]);
         $roomReq = RoomAllocation::findOrFail($data['requestId']);
         $roomReq->dep_verification_status = $data['status'];
+        $roomReq->hostel = $data['hostel'];
         $roomReq->save();
 
         return redirect('hod/allocation/request');
