@@ -77,12 +77,12 @@ return [
 
         'students' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User\Student::class,
+            'model' => App\Models\Student::class,
         ],
 
         'admins' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Admins\Admin::class,
+            'model' => App\Models\Admin::class,
         ],
 
         // 'users' => [

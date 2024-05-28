@@ -30,6 +30,7 @@
                     <th>Name</th>
                     <th>Adnission No</th>
                     <th>District</th>
+                    <th>Hostel</th>
                     <th data-type="date" data-format="YYYY/DD/MM">Request Date</th>
                     <th>Distance</th>
                     <th></th>
@@ -41,6 +42,7 @@
                       <td>{{ $req->student->first_name }} {{ $req->student->second_name }}</td>
                       <td>{{ $req->student->adm_no }}</td>
                       <td>{{ $req->student->district }}</td>
+                      <td>{{ $req->hostel }}</td>
                       <td>{{ $req->created_at->toDateString() }}</td>
                       <td>{{ $req->student->distance }} km</td>
                       <td><a href={{ url('hod/allocation/action/' . $req->allocate_req_id) }} class="btn btn-primary btn-sm">view</a></td>
