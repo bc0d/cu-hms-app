@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Department;
 use App\Models\Course;
-use App\Models\User\Student;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class StudentDetailsAdminController extends Controller
