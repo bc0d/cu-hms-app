@@ -89,7 +89,7 @@
       <div class="col-md-4 mt-4 mt-md-0">
         <div class="icon-box">
           <i class="bi bi-info-circle"></i>
-          <h4><a href="{{ url('user/fee-pending-status') }}">fee pending status</a></h4>
+          <h4><a href="{{ url('user/bills-payments/card') }}">Bills And Payments</a></h4>
 
         </div>
       </div>

@@ -214,8 +214,14 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
         
     });
     //fee-pending-status
-    Route::prefix('fee-pending-status')->group(function() {
-        Route::get('/',[UserFeeAndPayment::class, 'ShowPendingStatus']);
+    Route::prefix('bills-payments')->group(function() {
+
+        Route::get('card', [UserFeeAndPaymentController::class, 'showBills']);
+        Route::get('rent-card', [UserFeeAndPaymentController::class, 'viewRents']);
+        Route::get('bills-card', [UserFeeAndPaymentController::class, 'viewBills']);
+
+
+
     });
     //feedback
     Route::prefix('feedback')->group(function () {

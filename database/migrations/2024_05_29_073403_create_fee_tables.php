@@ -13,22 +13,36 @@ return new class extends Migration
     {
 
         Schema::create('monthly_fees', function (Blueprint $table) {
-            $table->bigINcrements('monthly_fee_id')->unique();
+            $table->bigIncrements('monthly_fee_id')->unique();
             $table->string('hostel_id');
             $table->string('room_type');
-            $table->decimal('rent', 8, 2);
-            $table->decimal('water_bill', 8, 2);
-            $table->decimal('electricity_bill', 8, 2);
+            $table->string('fee_name');
+            $table->decimal('amount', 8, 2);
             $table->timestamps();
         });
 
 
-        Schema::create('fee_payments', function (Blueprint $table) {
-            $table->bigIncrement('payment_id')->unique();
-            $table->foreignId('fee_structure_id')->constrained('fee_structures')->onDelete('cascade');
-            $table->foreignId('student_id')->constrained('students')->onDelete('cascade');
+        Schema::create('rent_payments', function (Blueprint $table) {
+            $table->bigIncrements('rent_payment_id')->unique();
+            $table->unsignedBigInteger('monthly_fee_id');
+            $table->foreign('monthly_fee_id')->references('monthly_fee_id')->on('monthly_fees')->onDelete('cascade');
+            $table->unsignedBigInteger('student_id');
+            $table->foreign('student_id')->references('student_id')->on('students')->onDelete('cascade');
             $table->string('month_of_fee');
-            $table->boolean('paid');
+            $table->string('paid_status');
+            $table->date('month_of_payment')->nullable();
+            $table->string('transaction_id')->nullable();
+            $table->timestamps();
+        });
+
+        Schema::create('water_electricity_payments', function (Blueprint $table) {
+            $table->bigIncrements('water_electricity_payment_id')->unique();
+            $table->unsignedBigInteger('monthly_fee_id');
+            $table->foreign('monthly_fee_id')->references('monthly_fee_id')->on('monthly_fees')->onDelete('cascade');
+            $table->unsignedBigInteger('student_id');
+            $table->foreign('student_id')->references('student_id')->on('students')->onDelete('cascade');
+            $table->string('month_of_fee');
+            $table->string('paid_status');
             $table->date('month_of_payment')->nullable();
             $table->string('transaction_id')->nullable();
             $table->timestamps();
@@ -41,8 +55,14 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('fee_payments', function (Blueprint $table) {
-            $table->dropForeign(['fee_structure_id'],['student_id']);
+        Schema::table('rent_payments', function (Blueprint $table) {
+            $table->dropForeign(['monthly_fee_id']);
+            $table->dropForeign(['student_id']);
+        });
+
+        Schema::table('water_electricity_payments', function (Blueprint $table) {
+            $table->dropForeign(['monthly_fee_id']);
+            $table->dropForeign(['student_id']);
         });
        
         Schema::dropIfExists('fee_payments');
