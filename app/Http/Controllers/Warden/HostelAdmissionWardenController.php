@@ -22,7 +22,10 @@ class HostelAdmissionWardenController extends Controller
             return view('admins.warden.admission_req', compact('admin', 'roomReq'));
         } else {
 
-            $roomReq = RoomAllocation::with('student')->where('hostel', 'Ladies Hostel')->get();
+            $roomReq = RoomAllocation::with('student')->where([
+                ['hostel', '=', 'Ladies Hostel'],
+                ['warden_verification_status', '=', 'Pending'] 
+            ])->get();
             return view('admins.warden.admission_req', compact('admin', 'roomReq'));
         }
         

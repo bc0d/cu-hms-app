@@ -42,10 +42,18 @@
   <div class="container">
 
     <div class="row d-flex ">
-      <div class="col-md-4">
+      @if($allocStatus === 'Pending')
+        <div class="col-md-4">
+          <div class="icon-box">
+            <i class="bi bi-bank"></i>
+            <h4><a href="{{url('user/room/request') }}">Request Room</a></h4>
+          </div>
+        </div>
+      @endif
+      <div class="col-md-4 mt-4 mt-md-0">
         <div class="icon-box">
           <i class="bi bi-bank"></i>
-          <h4><a href="{{url('user/room/request') }}">Request Room</a></h4>
+          <h4><a href="{{ url('user/room') }}">room</a></h4>
 
         </div>
       </div>
@@ -63,13 +71,7 @@
 
         </div>
       </div>
-      <div class="col-md-4 mt-4 mt-md-0">
-        <div class="icon-box">
-          <i class="bi bi-bank"></i>
-          <h4><a href="{{ url('user/room') }}">room</a></h4>
-
-        </div>
-      </div>
+      
 
       <div class="col-md-4 mt-4 mt-md-0">
         <div class="icon-box">

@@ -195,7 +195,7 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
         Route::post('room-req-paymet', [UserRoomController::class, 'roomAllocationPayment'])->name('room.request.payment');
 
         //other-bill-room
-        Route::get('other-bill', [UserRoomController::class, 'showOtherBill']); 
+        Route::get('details', [UserRoomController::class, 'showRoomDetails']); 
     });//end of room
 
     //room change
@@ -373,7 +373,10 @@ Route::prefix('office')->group(function () {
     Route::prefix('room')->group(function () {
 
         Route::get('allocation-list', [RoomAllocationController::class, 'showRoomAllocList']);
-        Route::get('allocation', [RoomAllocationController::class, 'roomAllocAction']);
+        Route::get('allocation/{id}', [RoomAllocationController::class, 'roomAllocAction']);
+        Route::get('blocks/{block}/rooms', [RoomAllocationController::class, 'getRooms']);
+        Route::get('rooms/{room}/beds', [RoomAllocationController::class, 'getBeds']);
+        Route::post('allocate', [RoomAllocationController::class, 'asignRoom'])->name('office.room.allocate');
     });
     
     //room channge card
