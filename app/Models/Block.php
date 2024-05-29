@@ -10,7 +10,7 @@ class Block extends Model
 
     public function hostel() {
 
-        return $this->belongsTo(Hostel::class, 'hostel_id');
+        return $this->belongsTo(Hostel::class, 'hostel_id', 'hostel_id');
     }
 
     public function rooms() {

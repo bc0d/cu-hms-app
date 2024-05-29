@@ -8,6 +8,7 @@ use App\Models\RoomAllocation;
 use App\Models\Block;
 use App\Models\Room;
 use App\Models\Bed;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class RoomAllocationController extends Controller
@@ -81,6 +82,10 @@ class RoomAllocationController extends Controller
 
         $bed = Bed::findOrFail($data['bed']);
         $roomReq = RoomAllocation::findOrFail($data['req_id']);
+        $student =Student::findOrFail($data['student_id']);
+
+        $student->bed_id = $bed->bed_id;
+        $student->save();
 
         $bed->student_id = $data['student_id'];
         $bed->status = 'occupied';

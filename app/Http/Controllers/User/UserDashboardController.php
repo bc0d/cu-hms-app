@@ -13,7 +13,6 @@ class UserDashboardController extends Controller
 
         $student = Auth::guard('students')->user();
         $roomAlloc = RoomAllocation::where('student_id', $student->student_id)->first();
-        $allocStatus = $roomAlloc->allocation_status;
-        return view('users.dashboard', compact('student', 'allocStatus'));
+        return view('users.dashboard', compact('student', 'roomAlloc'));
     }
 }

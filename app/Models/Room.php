@@ -10,7 +10,7 @@ class Room extends Model
 
     public function block() {
 
-        return $this->belongsTo(Block::class, 'block_id');
+        return $this->belongsTo(Block::class, 'block_id', 'block_id');
     }
 
     public function beds() {
