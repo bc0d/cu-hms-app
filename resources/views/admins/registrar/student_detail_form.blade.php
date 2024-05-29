@@ -19,114 +19,95 @@
                 <div class="card-body">
                     <h5 class="card-title">Student Details</h5>
                     <!-- Vertical Form -->
-                    <form class="row g-3">
-                        <div class="row d-flex mt-4">
-                            <div class="col-lg-4">
-                                <div class="form-label">Hostel</div>
-                            </div>
-                            <div class="col-lg-8">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1">
-                                    <label class="form-check-label" for="gridRadios1">
-                                        Mens Hostel
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                                    <label class="form-check-label" for="gridRadios2">
-                                        Womens Hostel
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
-                                    <label class="form-check-label" for="gridRadios3">
-                                        All
-                                    </label>
-                                </div>
-                            </div>
+                    <form method="POST" action="{{ route('registrar.student.list') }}">
+                        @csrf
+                        <div>
+                            <label for="hostel">Hostel:</label>
+                            <select id="hostel" name="hostel">
+                                <option value="all">All</option>
+                                <option value="1">Mens Hostel</option>
+                                <option value="2">Ladies Hostel</option>
+                            </select>
                         </div>
-                        <div class="row d-flex" id="additional-radios"></div>
-                        <!-- Container to dynamically display additional radio buttons -->
-                        <div id="hostelOptions" class="mt-2"></div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary">View</button>
+                        <div id="blocks-container" style="display: none;">
+                            <label>Blocks:</label>
+                            <div>
+                                <input type="checkbox" id="select-all-blocks">
+                                <label for="select-all-blocks">All</label>
+                            </div>
+                            <div id="blocks-list"></div>
                         </div>
-                    </form><!-- Vertical Form -->
+                        <button type="submit">Show Students</button>
+                    </form>
+                     @if(isset($students))
+                        <h2>Student List</h2>
+                        <form method="POST" action="{{ url('office/students/export') }}">
+                            @csrf
+                            <input type="hidden" name="hostel" value="{{ request('hostel') }}">
+                            <input type="hidden" name="blocks" value="{{ json_encode(request('blocks')) }}">
+                            <button type="submit">Export to Excel</button>
+                        </form>
+                        <table border="1">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Bed</th>
+                                    <th>Room</th>
+                                    <th>Block</th>
+                                    <th>Hostel</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($students as $student)
+                                    <tr>
+                                        <td>{{ $student->name }}</td>
+                                        <td>{{ $student->email }}</td>
+                                        <td>{{ $student->bed->bed_name }}</td>
+                                        <td>{{ $student->bed->room->room_name }}</td>
+                                        <td>{{ $student->bed->room->block->block_name }}</td>
+                                        <td>{{ $student->bed->room->block->hostel->hostel_name }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
 </section>
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('input[name="gridRadios"]').change(function() {
-            if ($('#gridRadios1').is(':checked')) {
-                // Mens Hostel is selected
-                $('#additional-radios').html('');
-                $('#hostelOptions').html(`
-                    <div class="row d-flex mt-4">
-                        <div class="col-lg-4">
-                            <div class="form-label">Block</div>
-                        </div>
-                        <div class="col-lg-8">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="hostelNumbers" id="hostelNumber1" value="1">
-                                <label class="form-check-label" for="hostelNumber1">New Block</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="hostelNumbers" id="hostelNumber2" value="2">
-                                <label class="form-check-label" for="hostelNumber2">Annex</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="hostelNumbers" id="hostelNumber3" value="3">
-                                <label class="form-check-label" for="hostelNumber3">New Annex</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="hostelNumbers" id="hostelNumber3" value="3">
-                                <label class="form-check-label" for="hostelNumber3">PhD </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="hostelNumbers" id="hostelNumber3" value="3">
-                                <label class="form-check-label" for="hostelNumber3">Old Block~~</label>
-                            </div>
-                        </div>
-                    </div>
-                `);
-            } else if ($('#gridRadios2').is(':checked')) {
-                // Womens Hostel is selected
-                $('#additional-radios').html('');
-                $('#hostelOptions').html(`
-                    <div class="row d-flex mt-4">
-                        <div class="col-lg-4">
-                            <div class="form-label">Block</div>
-                        </div>
-                        <div class="col-lg-8">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="hostelNumbers" id="hostelNumber4" value="4">
-                                <label class="form-check-label" for="hostelNumber4">ANNEX</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="hostelNumbers" id="hostelNumber5" value="5">
-                                <label class="form-check-label" for="hostelNumber5">EVEREST</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="hostelNumbers" id="hostelNumber6" value="6">
-                                <label class="form-check-label" for="hostelNumber6">MULLA</label>
-                            </div>
-                        </div>
-                    </div>
-                `);
+        $('#hostel').change(function() {
+            var hostel = $(this).val();
+            if (hostel && hostel !== 'all') {
+                $.ajax({
+                    url: '/registrar/blocks/' + hostel,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#blocks-container').show();
+                        $('#blocks-list').empty();
+                        $.each(data, function(key, value) {
+                            $('#blocks-list').append(
+                                '<div><input type="checkbox" name="blocks[]" value="' + value.block_id + '"> ' +
+                                '<label>' + value.block_name + '</label></div>'
+                            );
+                        });
+                    }
+                });
             } else {
-                // Other options are selected, clear the additional radios
-                $('#additional-radios').empty();
-                $('#hostelOptions').empty();
+                $('#blocks-container').hide();
+                $('#blocks-list').empty();
             }
         });
 
-        // Trigger change event on page load to handle the default selected radio button
-        $('input[name="gridRadios"]:checked').trigger('change');
+        $('#select-all-blocks').change(function() {
+            var isChecked = $(this).is(':checked');
+            $('#blocks-list input[type="checkbox"]').prop('checked', isChecked);
+        });
     });
 </script>
 

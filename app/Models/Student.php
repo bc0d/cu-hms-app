@@ -58,4 +58,7 @@ class Student extends Model implements Authenticatable
         return $this->belongsTo(Course::class, 'course', 'course_id');
 
     }
+    public function bed(){
+        return $this->belongsTo(Bed::class, 'bed_id', 'bed_id');
+    }
 }

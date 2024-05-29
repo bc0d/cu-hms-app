@@ -39,6 +39,7 @@ use App\Http\Controllers\Registrar\RegistrarStudentDetailsController;
 
 
 
+
 use App\Http\Controllers\Office\OfficeDashboardController;
 use App\Http\Controllers\Office\OfficeProfileController;
 use App\Http\Controllers\Office\StudentDetailsController;
@@ -63,7 +64,6 @@ use App\Http\Controllers\Warden\WardenFeeAndPaymentController;
 use App\Http\Controllers\Warden\WardenRoomDetailsController;
 use App\Http\Controllers\Warden\WardenRuleAndNoticeController;
 use App\Http\Controllers\Warden\ComplaintsWardenController;
-
 
 use App\Http\Controllers\Hod\HostelAdmissionHodController;
 use App\Http\Controllers\Hod\HostelVacateHodController;
@@ -196,7 +196,7 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
         Route::post('room-req-paymet', [UserRoomController::class, 'roomAllocationPayment'])->name('room.request.payment');
 
         //other-bill-room
-        Route::get('other-bill', [UserRoomController::class, 'showOtherBill']);
+        Route::get('details', [UserRoomController::class, 'showRoomDetails']);
     }); //end of room
 
     //room change
@@ -369,7 +369,10 @@ Route::prefix('office')->group(function () {
     Route::prefix('room')->group(function () {
 
         Route::get('allocation-list', [RoomAllocationController::class, 'showRoomAllocList']);
-        Route::get('allocation', [RoomAllocationController::class, 'roomAllocAction']);
+        Route::get('allocation/{id}', [RoomAllocationController::class, 'roomAllocAction']);
+        Route::get('blocks/{block}/rooms', [RoomAllocationController::class, 'getRooms']);
+        Route::get('rooms/{room}/beds', [RoomAllocationController::class, 'getBeds']);
+        Route::post('allocate', [RoomAllocationController::class, 'asignRoom'])->name('office.room.allocate');
     });
 
     //room channge card
@@ -586,7 +589,6 @@ Route::prefix('registrar')->group(function () {
         Route::get('updation', [FeeAndPaymentRegistrarController::class, 'feeUpdate']);
     });
 
-
     //rules and notice card
     Route::prefix('rules')->group(function () {
 
@@ -603,11 +605,10 @@ Route::prefix('registrar')->group(function () {
         Route::post('notice-Add', [RuleAndNoticeRegistrarController::class, 'addNotice'])->name('registrar.notice.add');
         Route::post('remove-notice', [RuleAndNoticeRegistrarController::class, 'removeNotice'])->name('registrar.notice.remove');
     });
-
-    //rules and notice card
-    Route::prefix('student-details')->group(function () {
-        Route::get('/', [RegistrarStudentDetailsController::class, 'showStudentDetails']);
-    });
+    Route::get('student-details', [RegistrarStudentDetailsController::class, 'showStudentDetails']);
+    Route::post('list', [RegistrarStudentDetailsController::class, 'viewStudentDetails']);
+    Route::get('blocks/{hostel}', [RegistrarStudentDetailsController::class, 'getBlocks']);
+    Route::post('student-details', [RegistrarStudentDetailsController::class, 'filterStudents'])->name('registrar.student.list');
 });
 
 
