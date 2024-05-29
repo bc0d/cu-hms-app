@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Office;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Department;
@@ -10,10 +11,12 @@ use Illuminate\Http\Request;
 
 class StudentDetailsController extends Controller
 {
-    public function showCard() {
+    public function showCard()
+    {
         $admin = Auth::guard('admins')->user();
         return view('admins.office.student_list_card', compact('admin'));
-    }/*
+    }
+
     public function showAllStudentDetails()
     {
         // Get the authenticated admin user
@@ -26,52 +29,36 @@ class StudentDetailsController extends Controller
         } elseif ($admin->access === 'womens') {
             // Fetch all female students
             $students = Student::where('gender', 'female')->get();
-        }  
-                    // Return the view with the students and admin data
-            return view('admins.office.student_list', compact('students', 'admin'));
+        } else {
+            // Fetch all students if no specific access type is specified
+            $students = Student::all();
         }
-           */
-        public function showAllStudentDetails()
-        {
-            // Get the authenticated admin user
-            $admin = Auth::guard('admins')->user();
-    
-            // Check the admin's access type and fetch students accordingly
-            if ($admin->access === 'mens') {
-                // Fetch all male students
-                $students = Student::where('gender', 'male')->get();
-            } elseif ($admin->access === 'womens') {
-                // Fetch all female students
-                $students = Student::where('gender', 'female')->get();
-            } else {
-                // Fetch all students if no specific access type is specified
-                $students = Student::all();
-            }
-    
+
 
 
         // Return the view with the students and admin data
         return view('admins.office.student_list', compact('students', 'admin'));
     }
 
-    public function showStudentProfileDetails($id) {
-       
+    public function showStudentProfileDetails($id)
+    {
+
 
         // Get the authenticated admin user
         $admin = Auth::guard('admins')->user();
         $student = Student::findOrFail($id);
         // Find the course related to the student
         $course = Course::findOrFail($student->course);
-         // Find the department related to the course
+        // Find the department related to the course
         $department = Department::where('department_id', $course->department_id)->first();
 
 
         // Retrieve the course name and department name
         $courseName = $course->course_name;
         $departmentName = $department->department_name;
-return view('admins.registrar.student_detail', compact('admin','student', 'courseName', 'departmentName'));
-}
-/*
+        return view('admins.registrar.student_detail', compact('admin', 'student', 'courseName', 'departmentName'));
+    }
+    /*
     public function showAllStudentDetails() {
         // Get the authenticated admin user
         $admin = Auth::guard('admins')->user();
@@ -92,7 +79,7 @@ return view('admins.registrar.student_detail', compact('admin','student', 'cours
             } 
     }
 */
-/*
+    /*
    public function showAllStudentList() {
       
         $students = Student::all(); // Fetch all students
@@ -100,12 +87,14 @@ return view('admins.registrar.student_detail', compact('admin','student', 'cours
         return view('admins.office.student_list', compact('students', 'admin'));
     }*/
 
-    public function showDetails() {
-        
+    public function showDetails()
+    {
+
         $admin = Auth::guard('admins')->user();
-        return view('admins.office.student_detail', compact( 'admin'));
+        return view('admins.office.student_detail', compact('admin'));
     }
-    public function showList() { 
+    public function showList()
+    {
         $admin = Auth::guard('admins')->user();
         return view('admins.office.student_list', compact('admin'));
     }

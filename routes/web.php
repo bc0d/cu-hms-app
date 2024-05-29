@@ -35,6 +35,7 @@ use App\Http\Controllers\Registrar\RoomDetailsRegistrarController;
 use App\Http\Controllers\Registrar\ComplaintsRegistrarController;
 use App\Http\Controllers\Registrar\FeeAndPaymentRegistrarController;
 use App\Http\Controllers\Registrar\RuleAndNoticeRegistrarController;
+use App\Http\Controllers\Registrar\RegistrarStudentDetailsController;
 
 
 
@@ -110,12 +111,12 @@ Route::post('signup/step2', [RegisterController::class, 'signupStep2'])->name('s
 
 
 
-Route::get('user-mail-confirm', function() {
+Route::get('user-mail-confirm', function () {
     return view('users.auth.mailconfirm');
 });
 
 
-Route::get('/', function() {
+Route::get('/', function () {
     return view('index');
 });
 
@@ -139,11 +140,11 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
         Route::post('reset', [ResetPasswordController::class, 'passwordReset'])->name('reset');
     });
 
-    
-    
+
+
 
     //qr
-    Route::get('my-qr',function(){
+    Route::get('my-qr', function () {
         return view('users.qr');
     });
 
@@ -173,7 +174,7 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
         //messbill
         Route::get('bill', [UserMessController::class, 'showMessBill']);
         //mess-payment
-        Route::get('payment', [UserMessController::class, 'showMessPayment']);    
+        Route::get('payment', [UserMessController::class, 'showMessPayment']);
     });
 
 
@@ -193,46 +194,44 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
         Route::get('request', [UserRoomController::class, 'showRoomReq'])->name('room.callback');
         Route::post('room-req', [UserRoomController::class, 'roomRequest'])->name('room.request');
         Route::post('room-req-paymet', [UserRoomController::class, 'roomAllocationPayment'])->name('room.request.payment');
-
         
     });//end of room
 
     //room change
-    Route::get('room-change',function(){
+    Route::get('room-change', function () {
         return view('users.room_change');
-    }); 
+    });
     //rules and notice card
     Route::prefix('rules')->group(function () {
 
         Route::get('card', [UserRulesAndNoticeController::class, 'showCard']);
         Route::get('rule-list', [UserRulesAndNoticeController::class, 'viewRules']);
-        
 
-        Route::get('notice-list',[UserRulesAndNoticeController::class, 'viewNotices']);
-        
+
+        Route::get('notice-list', [UserRulesAndNoticeController::class, 'viewNotices']);
     });
     //fee-pending-status
-    Route::get('fee-pending-status',function(){
+    Route::get('fee-pending-status', function () {
         return view('users.fee_pending_status');
     });
     //feedback
     Route::prefix('feedback')->group(function () {
-        
+
         Route::get('/', [UserFeedbackController::class, 'showFeedback']);
         //give feedback
         Route::get('give-feedback', [UserFeedbackController::class, 'showAddFeedback']);
         Route::post('submit-feedback', [UserFeedbackController::class, 'addFeedback'])->name('user.addfeedback');
     });
-       
+
     //notification
-    Route::get('notification',function(){
+    Route::get('notification', function () {
         return view('users.notification');
-    }); 
-    Route::get('test',function(){
+    });
+    Route::get('test', function () {
         return view('users.feeed');
-    }); 
-//end of user
-}); 
+    });
+    //end of user
+});
 
 
 /*
@@ -255,10 +254,10 @@ Route::prefix('user/payment')->group(function () {
 
 
 
- 
 
 
-Route::get('feedback',function(){
+
+Route::get('feedback', function () {
     return view('users.feedback');
 });
 
@@ -295,7 +294,7 @@ Route::prefix('hod')->group(function () {
 
 
     //profile
-    
+
 
     //allocation request
     Route::prefix('allocation')->group(function () {
@@ -303,23 +302,19 @@ Route::prefix('hod')->group(function () {
         Route::get('request', [HostelAdmissionHodController::class, 'showRequests']);
         Route::get('action/{id}', [HostelAdmissionHodController::class, 'admissionAction']);
         Route::post('action', [HostelAdmissionHodController::class, 'admissionApprove'])->name('hod.alloc.action');
-        
     });
 
     //vacating request
     Route::prefix('vacate')->group(function () {
-        
+
         Route::get('request', [HostelVacateHodController::class, 'showRequests']);
         Route::get('action', [HostelVacateHodController::class, 'vacateAction']);
-
     });
 
     Route::prefix('students-details')->group(function () {
         Route::get('all', [StudentDetailsHodController::class, 'showAllStudentDetails']);
         Route::get('profile-details/{id}', [StudentDetailsHodController::class, 'showProfileDetails']);
-
     });
-    
 });
 
 
@@ -332,12 +327,12 @@ Route::prefix('office')->group(function () {
 
     //index
     Route::get('index', [OfficeDashboardController::class, 'showHodDashboard']);
-    
+
     Route::get('my-profile', [OfficeProfileController::class, 'showOfficeProfile']);
 
     //student card
     Route::prefix('student')->group(function () {
-        
+
         Route::get('card', [StudentDetailsController::class, 'showCard']);
         Route::get('all', [StudentDetailsController::class, 'showAllStudentDetails']);
         Route::get('detail/{id}', [StudentDetailsController::class, 'showStudentProfileDetails']);
@@ -349,7 +344,7 @@ Route::prefix('office')->group(function () {
         Route::get('card', [RoomDetailsController::class, 'showCard']);
         Route::get('list', [RoomDetailsController::class, 'roomDetails']);
     });
-    
+
     //Complaints
     Route::prefix('complaints')->group(function () {
 
@@ -360,12 +355,12 @@ Route::prefix('office')->group(function () {
         Route::get('solved', [ComplaintsController::class, 'showSolvedComplaints']);
         Route::get('all', [ComplaintsController::class, 'showAllComplaints']);
     });
-    
+
     //admission card
     Route::prefix('admission')->group(function () {
 
         Route::get('request', [HostelAdmissionOfficeController::class, 'showRequests']);
-        Route::get('action', [HostelAdmissionOfficeController::class, 'admissionAction']);   
+        Route::get('action', [HostelAdmissionOfficeController::class, 'admissionAction']);
     });
 
     //room allocation
@@ -377,7 +372,7 @@ Route::prefix('office')->group(function () {
         Route::get('rooms/{room}/beds', [RoomAllocationController::class, 'getBeds']);
         Route::post('allocate', [RoomAllocationController::class, 'asignRoom'])->name('office.room.allocate');
     });
-    
+
     //room channge card
     Route::prefix('room-change')->group(function () {
 
@@ -385,14 +380,14 @@ Route::prefix('office')->group(function () {
         Route::get('request', [RoomChangeController::class, 'showRoomChangeReq']);
         Route::get('action', [RoomChangeController::class, 'roomChangeAction']);
     });
-    
+
     //vacating card
     Route::prefix('vacate')->group(function () {
-        
+
         Route::get('request', [HostelVacateOfficeController::class, 'showRequests']);
         Route::get('action', [HostelVacateOfficeController::class, 'vacateAction']);
     });
-    
+
     //fee card
     Route::prefix('fee')->group(function () {
 
@@ -410,15 +405,12 @@ Route::prefix('office')->group(function () {
         Route::get('rule-list', [RuleAndNoticeController::class, 'viewRules']);
         Route::get('rule-add', [RuleAndNoticeController::class, 'viewAddRule']);
         Route::post('add-rule', [RuleAndNoticeController::class, 'addRule'])->name('office.rules.add');
-        Route::post('remove-rule',[RuleAndNoticeController::class,'removeRule'])->name('office.rules.remove');
+        Route::post('remove-rule', [RuleAndNoticeController::class, 'removeRule'])->name('office.rules.remove');
 
-        Route::get('notice-list',[RuleAndNoticeController::class, 'viewNotices']);
-        Route::get('notice-add',[RuleAndNoticeController::class, 'viewAddNotice']);
-        Route::post('notice-Add',[RuleAndNoticeController::class, 'addNotice'])->name('office.notice.add');
-        Route::post('remove-notice',[RuleAndNoticeController::class,'removeNotice'])->name('office.notice.remove');
-        
-
-
+        Route::get('notice-list', [RuleAndNoticeController::class, 'viewNotices']);
+        Route::get('notice-add', [RuleAndNoticeController::class, 'viewAddNotice']);
+        Route::post('notice-Add', [RuleAndNoticeController::class, 'addNotice'])->name('office.notice.add');
+        Route::post('remove-notice', [RuleAndNoticeController::class, 'removeNotice'])->name('office.notice.remove');
     });
 });
 
@@ -428,7 +420,7 @@ Route::prefix('office')->group(function () {
 ---------------------warden-----------------------
 */
 
-Route::prefix('warden')->group(function() {
+Route::prefix('warden')->group(function () {
     //dashboard
     Route::get('index', [WardenDashboardController::class, 'showWardenDashboard']);
     //profile
@@ -436,27 +428,25 @@ Route::prefix('warden')->group(function() {
 
     //student card
     Route::prefix('student')->group(function () {
-        
+
         Route::get('card', [WardenStudentDetailsController::class, 'showCard']);
         Route::get('all', [WardenStudentDetailsController::class, 'showAllStudentDetails']);
         Route::get('detail/{id}', [WardenStudentDetailsController::class, 'showStudentProfileDetails']);
     });
-    
+
     //admission card
     Route::prefix('admission')->group(function () {
 
         Route::get('request', [HostelAdmissionWardenController::class, 'showRequests']);
         Route::get('action/{id}', [HostelAdmissionWardenController::class, 'admissionAction']);
         Route::post('action', [HostelAdmissionWardenController::class, 'admissionApproval'])->name('warden.admission.approve');
-        
     });
 
     //vacating card
     Route::prefix('vacate')->group(function () {
-        
+
         Route::get('request', [HostelVacateWardenController::class, 'showRequests']);
         Route::get('action', [HostelVacateWardenController::class, 'vacateAction']);
-
     });
 
     //rooms details card
@@ -464,7 +454,6 @@ Route::prefix('warden')->group(function() {
 
         Route::get('card', [WardenRoomDetailsController::class, 'showCard']);
         Route::get('list', [WardenRoomDetailsController::class, 'roomDetails']);
-
     });
 
     //fee card
@@ -476,26 +465,25 @@ Route::prefix('warden')->group(function() {
         //fee maintanance
         Route::get('maintanance', [WardenFeeAndPaymentController::class, 'feeMaintanance']);
         Route::get('updation', [WardenFeeAndPaymentController::class, 'feeUpdate']);
-
     });
 
     //rules and notice card
     Route::prefix('rules')->group(function () {
-        
+
         Route::get('card', [WardenRuleAndNoticeController::class, 'showCard']);
         Route::get('rule-list', [WardenRuleAndNoticeController::class, 'viewRules']);
         Route::get('rule-add', [WardenRuleAndNoticeController::class, 'viewAddRule']);
         Route::post('add-rule', [WardenRuleAndNoticeController::class, 'addRule'])->name('warden.rules.add');
-        Route::post('remove-rule',[WardenRuleAndNoticeController::class,'removeRule'])->name('warden.rules.remove');
-        
+        Route::post('remove-rule', [WardenRuleAndNoticeController::class, 'removeRule'])->name('warden.rules.remove');
 
-        
-        Route::get('notice-list',[WardenRuleAndNoticeController::class, 'viewNotices']);
-        Route::get('notice-add',[WardenRuleAndNoticeController::class, 'viewAddNotice']);
-        Route::post('notice-Add',[WardenRuleAndNoticeController::class, 'addNotice'])->name('warden.notice.add');
-        Route::post('remove-notice',[WardenRuleAndNoticeController::class,'removeNotice'])->name('warden.notice.remove');
+
+
+        Route::get('notice-list', [WardenRuleAndNoticeController::class, 'viewNotices']);
+        Route::get('notice-add', [WardenRuleAndNoticeController::class, 'viewAddNotice']);
+        Route::post('notice-Add', [WardenRuleAndNoticeController::class, 'addNotice'])->name('warden.notice.add');
+        Route::post('remove-notice', [WardenRuleAndNoticeController::class, 'removeNotice'])->name('warden.notice.remove');
     });
-/*
+    /*
     //Complaints registry
     Route::get('complaints', [WardenComplaintsController::class, 'showComplaints']);
 */
@@ -527,7 +515,7 @@ Route::prefix('registrar')->group(function () {
 
     //student card
     Route::prefix('student')->group(function () {
-        
+
         Route::get('card', [StudentDetailsRegistrarController::class, 'showCard']);
         Route::get('all', [StudentDetailsRegistrarController::class, 'showAllStudentDetails']);
         Route::get('detail/{id}', [StudentDetailsRegistrarController::class, 'showStudentProfileDetails']);
@@ -538,10 +526,9 @@ Route::prefix('registrar')->group(function () {
 
         Route::get('card', [RoomDetailsRegistrarController::class, 'showCard']);
         Route::get('list', [RoomDetailsRegistrarController::class, 'roomDetails']);
-
     });
-    
-/*
+
+    /*
     //Complaints
     Route::get('complaints', [ComplaintsRegistrarController::class, 'showComplaints']);
 */
@@ -555,13 +542,12 @@ Route::prefix('registrar')->group(function () {
         Route::get('solved', [ComplaintsRegistrarController::class, 'showSolvedComplaints']);
         Route::get('all', [ComplaintsRegistrarController::class, 'showAllComplaints']);
     });
-    
+
     //admission card
     Route::prefix('admission')->group(function () {
 
         Route::get('request', [HostelAdmissionRegistrarController::class, 'showRequests']);
         Route::get('action', [HostelAdmissionRegistrarController::class, 'admissionAction']);
-        
     });
 
 
@@ -570,9 +556,8 @@ Route::prefix('registrar')->group(function () {
 
         Route::get('allocation-list', [RoomAllocationRegistrarController::class, 'showRoomAllocList']);
         Route::get('allocation', [RoomAllocationRegistrarController::class, 'roomAllocAction']);
-
     });
-    
+
 
     //room channge card
     Route::prefix('room-change')->group(function () {
@@ -580,18 +565,16 @@ Route::prefix('registrar')->group(function () {
 
         Route::get('request', [RoomChangeRegistrarController::class, 'showRoomChangeReq']);
         Route::get('action', [RoomChangeRegistrarController::class, 'roomChangeAction']);
-
     });
-    
+
 
     //vacating card
     Route::prefix('vacate')->group(function () {
-        
+
         Route::get('request', [HostelVacateRegistrarController::class, 'showRequests']);
         Route::get('action', [HostelVacateRegistrarController::class, 'vacateAction']);
-
     });
-    
+
 
     //fee card
     Route::prefix('fee')->group(function () {
@@ -602,27 +585,28 @@ Route::prefix('registrar')->group(function () {
         //fee maintanance
         Route::get('maintanance', [FeeAndPaymentRegistrarController::class, 'feeMaintanance']);
         Route::get('updation', [FeeAndPaymentRegistrarController::class, 'feeUpdate']);
-
     });
 
     //rules and notice card
     Route::prefix('rules')->group(function () {
-        
+
         Route::get('card', [RuleAndNoticeRegistrarController::class, 'showCard']);
         Route::get('rule-list', [RuleAndNoticeRegistrarController::class, 'viewRules']);
         Route::get('rule-add', [RuleAndNoticeRegistrarController::class, 'viewAddRule']);
         Route::post('add-rule', [RuleAndNoticeRegistrarController::class, 'addRule'])->name('registrar.rules.add');
-        Route::post('remove-rule',[RuleAndNoticeRegistrarController::class,'removeRule'])->name('registrar.rules.remove');
-        
+        Route::post('remove-rule', [RuleAndNoticeRegistrarController::class, 'removeRule'])->name('registrar.rules.remove');
 
-        
-        Route::get('notice-list',[RuleAndNoticeRegistrarController::class, 'viewNotices']);
-        Route::get('notice-add',[RuleAndNoticeRegistrarController::class, 'viewAddNotice']);
-        Route::post('notice-Add',[RuleAndNoticeRegistrarController::class, 'addNotice'])->name('registrar.notice.add');
-        Route::post('remove-notice',[RuleAndNoticeRegistrarController::class,'removeNotice'])->name('registrar.notice.remove');
+
+
+        Route::get('notice-list', [RuleAndNoticeRegistrarController::class, 'viewNotices']);
+        Route::get('notice-add', [RuleAndNoticeRegistrarController::class, 'viewAddNotice']);
+        Route::post('notice-Add', [RuleAndNoticeRegistrarController::class, 'addNotice'])->name('registrar.notice.add');
+        Route::post('remove-notice', [RuleAndNoticeRegistrarController::class, 'removeNotice'])->name('registrar.notice.remove');
     });
-    
-
+    Route::get('student-details', [RegistrarStudentDetailsController::class, 'showStudentDetails']);
+    Route::post('list', [RegistrarStudentDetailsController::class, 'viewStudentDetails']);
+    Route::get('blocks/{hostel}', [RegistrarStudentDetailsController::class, 'getBlocks']);
+    Route::post('student-details', [RegistrarStudentDetailsController::class, 'filterStudents'])->name('registrar.student.list');
 });
 
 
@@ -634,13 +618,13 @@ Route::prefix('super-user')->group(function () {
 
     //dashboard
     Route::get('index', [SuperUserDashboardController::class, 'showSuperUserDashboard']);
-    
+
     //profile
     Route::get('my-profile', [SuperUserProfileController::class, 'showSuperUserProfile']);
-    
+
     //student card
     Route::prefix('student')->group(function () {
-        
+
         Route::get('card', [StudentDetailsAdminController::class, 'showCard']);
         Route::get('all', [StudentDetailsAdminController::class, 'showAllStudentDetails']);
         Route::get('detail/{id}', [StudentDetailsAdminController::class, 'showProfileDetails']);
@@ -651,10 +635,9 @@ Route::prefix('super-user')->group(function () {
 
         Route::get('card', [RoomDetailsAdminController::class, 'showCard']);
         Route::get('list', [RoomDetailsAdminController::class, 'showAllStudentDetails']);
-
     });
-    
-/*
+
+    /*
     //Complaints
     Route::get('complaints', [ComplaintsAdminController::class, 'showComplaints']);
 */
@@ -668,13 +651,12 @@ Route::prefix('super-user')->group(function () {
         Route::get('solved', [ComplaintsAdminController::class, 'showSolvedComplaints']);
         Route::get('all', [ComplaintsAdminController::class, 'showAllComplaints']);
     });
-    
+
     //admission card
     Route::prefix('admission')->group(function () {
 
         Route::get('request', [HostelAdmissionAdminController::class, 'showRequests']);
         Route::get('action', [HostelAdmissionAdminController::class, 'admissionAction']);
-        
     });
 
 
@@ -683,9 +665,8 @@ Route::prefix('super-user')->group(function () {
 
         Route::get('allocation-list', [RoomAllocationAdminController::class, 'showRoomAllocList']);
         Route::get('allocation', [RoomAllocationAdminController::class, 'roomAllocAction']);
-
     });
-    
+
 
     //room channge card
     Route::prefix('room-change')->group(function () {
@@ -693,18 +674,16 @@ Route::prefix('super-user')->group(function () {
 
         Route::get('request', [RoomChangeAdminController::class, 'showRoomChangeReq']);
         Route::get('action', [RoomChangeAdminController::class, 'roomChangeAction']);
-
     });
-    
+
 
     //vacating card
     Route::prefix('vacate')->group(function () {
-        
+
         Route::get('request', [HostelVacateAdminController::class, 'showRequests']);
         Route::get('action', [HostelVacateAdminController::class, 'vacateAction']);
-
     });
-    
+
 
     //fee card
     Route::prefix('fee')->group(function () {
@@ -715,7 +694,6 @@ Route::prefix('super-user')->group(function () {
         //fee maintanance
         Route::get('maintanance', [FeeAndPaymentAdminController::class, 'feeMaintanance']);
         Route::get('updation', [FeeAndPaymentAdminController::class, 'feeUpdate']);
-
     });
 
     //rules and notice card
@@ -725,22 +703,20 @@ Route::prefix('super-user')->group(function () {
         Route::get('rule-list', [RuleAndNoticeAdminController::class, 'viewRules']);
         Route::get('rule-add', [RuleAndNoticeAdminController::class, 'viewAddRule']);
         Route::post('add-rule', [RuleAndNoticeAdminController::class, 'addRule'])->name('super-user.rules.add');
-        Route::post('remove-rule',[RuleAndNoticeAdminController::class,'removeRule'])->name('super-user.rules.remove');
-        
+        Route::post('remove-rule', [RuleAndNoticeAdminController::class, 'removeRule'])->name('super-user.rules.remove');
 
-        
-        Route::get('notice-list',[RuleAndNoticeAdminController::class, 'viewNotices']);
-        Route::get('notice-add',[RuleAndNoticeAdminController::class, 'viewAddNotice']);
-        Route::post('notice-Add',[RuleAndNoticeAdminController::class, 'addNotice'])->name('super-user.notice.add');
-        Route::post('remove-notice',[RuleAndNoticeAdminController::class,'removeNotice'])->name('super-user.notice.remove');
+
+
+        Route::get('notice-list', [RuleAndNoticeAdminController::class, 'viewNotices']);
+        Route::get('notice-add', [RuleAndNoticeAdminController::class, 'viewAddNotice']);
+        Route::post('notice-Add', [RuleAndNoticeAdminController::class, 'addNotice'])->name('super-user.notice.add');
+        Route::post('remove-notice', [RuleAndNoticeAdminController::class, 'removeNotice'])->name('super-user.notice.remove');
     });
-    
-
 });
 
 
 /*---------mess dashboard-----------
-*/ 
+*/
 Route::prefix('mess')->group(function () {
     //dashboard
     Route::get('index', [DashboardMessController::class, 'showMessDashboard']);
@@ -748,60 +724,58 @@ Route::prefix('mess')->group(function () {
     Route::get('my-profile', [ProfileMessController::class, 'showMessProfile']);
 
     Route::prefix('take-attendance')->group(function () {
-        Route::get('/', function() {
+        Route::get('/', function () {
             return view('admins.mess.attendance_take');
         });
-        Route::get('scan-qr', function() {
+        Route::get('scan-qr', function () {
             return view('admins.mess.scan_qr');
         });
-        Route::get('profile', function() {
+        Route::get('profile', function () {
             return view('admins.mess.attendance_profile');
         });
-        
     });
-    
+
     Route::prefix('mess-menu')->group(function () {
-        Route::get('/', function() {
-        return view('admins.mess.menu');
+        Route::get('/', function () {
+            return view('admins.mess.menu');
         });
-        Route::get('view', function() {
+        Route::get('view', function () {
             return view('admins.mess.menu_view');
         });
-        Route::get('edit', function() {
-                return view('admins.mess.menu_edit');
+        Route::get('edit', function () {
+            return view('admins.mess.menu_edit');
         });
     });
-    
+
     Route::prefix('purchase-and-bills')->group(function () {
-        Route::get('/', function() {
+        Route::get('/', function () {
             return view('admins.mess.bill_and_purchase');
         });
-        Route::get('purchase-bill', function() {
+        Route::get('purchase-bill', function () {
             return view('admins.mess.bill_purchase');
         });
-        Route::get('student-bill', function() {
+        Route::get('student-bill', function () {
             return view('admins.mess.bill_student');
         });
-        
     });
-    
-    Route::get('view-attendance', function() {
+
+    Route::get('view-attendance', function () {
         return view('admins.mess.attendance_view');
     });
     Route::prefix('rules-and-notices')->group(function () {
-        Route::get('/', function() {
-            return view('admins.mess.rules_notices_card');                                    
+        Route::get('/', function () {
+            return view('admins.mess.rules_notices_card');
         });
-        Route::get('rules-list', function() {
-            return view('admins.mess.rules_list');                                    
+        Route::get('rules-list', function () {
+            return view('admins.mess.rules_list');
         });
-        Route::get('rules-add', function() {
-            return view('admins.mess.rules_add');                                    
+        Route::get('rules-add', function () {
+            return view('admins.mess.rules_add');
         });
-        Route::get('notices-list', function() {
+        Route::get('notices-list', function () {
             return view('admins.mess.notice_list');
         });
-        Route::get('notices-add', function() {
+        Route::get('notices-add', function () {
             return view('admins.mess.notice_add');
         });
     });
@@ -816,7 +790,4 @@ Route::prefix('mess')->group(function () {
         Route::get('solved', [ComplaintsMessController::class, 'showSolvedComplaints']);
         Route::get('all', [ComplaintsMessController::class, 'showAllComplaints']);
     });
-    
-   
-
 });
