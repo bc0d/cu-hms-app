@@ -10,6 +10,7 @@ use App\Http\Controllers\User\UserMessController;
 use App\Http\Controllers\User\UserRoomController;
 use App\Http\Controllers\User\UserFeedbackController;
 use App\Http\Controllers\User\UserRulesAndNoticeController;
+use App\Http\Controllers\User\UserFeeAndPaymentController;
 
 use App\Http\Controllers\SuperUser\SuperUserDashboardController;
 use App\Http\Controllers\SuperUser\SuperUserProfileController;
@@ -213,8 +214,8 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
         
     });
     //fee-pending-status
-    Route::get('fee-pending-status',function(){
-        return view('users.fee_pending_status');
+    Route::prefix('fee-pending-status')->group(function() {
+        Route::get('/',[UserFeeAndPayment::class, 'ShowPendingStatus']);
     });
     //feedback
     Route::prefix('feedback')->group(function () {
