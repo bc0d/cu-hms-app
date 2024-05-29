@@ -43,47 +43,53 @@
                 <h5 class="mb-3">Profile</h5><hr>
                 <div class="row g-0">
                   <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
-                    <div class="p-2">Hostel Id</div>
-                  </div>
-                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
-                    <div class="p-2">MH123</div>
-                  </div>
-                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
                     <div class="p-2">Hostel Name</div>
                   </div>
                   <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
-                    <div class="p-2">Devatharam</div>
+                    <div class="p-2">{{ $bed->room->block->hostel->hostel_name }}</div>
+                  </div>
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Block Name</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">{{ $bed->room->block->block_name }}</div>
                   </div>
                   <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
                     <div class="p-2">Room No</div>
                   </div>
                   <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
-                    <div class="p-2">104</div>
+                    <div class="p-2">{{ $bed->room->room_name }}</div>
+                  </div>
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Bed No</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">{{ $bed->bed_name }}</div>
                   </div>
 
                   <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
                     <div class="p-2">Date of Birth</div>
                   </div>
                   <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
-                    <div class="p-2">01/04/2001</div>
+                    <div class="p-2">{{ $student->dob }}</div>
                   </div>
                   <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
-                    <div class="p-2">Course Name</div>
+                    <div class="p-2">Department</div>
                   </div>
                   <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
-                    <div class="p-2">M.Sc Computer Science</div>
+                    <div class="p-2">{{ $course->department->department_name }}</div>
                   </div>
                   <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
-                    <div class="p-2">Course Duration</div>
+                    <div class="p-2">Course</div>
                   </div>
                   <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
-                    <div class="p-2">2nd year</div>
+                    <div class="p-2">{{ $course->course_name }}</div>
                   </div>
                   <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
                     <div class="p-2">Mobile No</div>
                   </div>
                   <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
-                    <div class="p-2">123456789</div>
+                    <div class="p-2">{{ $student->phone }}</div>
                   </div>
                   <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
                     <div class="p-2">Email Id</div>

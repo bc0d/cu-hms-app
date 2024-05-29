@@ -16,6 +16,7 @@ class HostelAdmissionWardenController extends Controller
             
             $roomReq = RoomAllocation::with('student')->where([
                 ['hostel', '=', 'Mens Hostel'],
+                ['payment_status', '=', 'Success'],
                 ['warden_verification_status', '=', 'Pending']    
             ])->get();
             
@@ -24,6 +25,7 @@ class HostelAdmissionWardenController extends Controller
 
             $roomReq = RoomAllocation::with('student')->where([
                 ['hostel', '=', 'Ladies Hostel'],
+                ['payment_status', '=', 'Success'],
                 ['warden_verification_status', '=', 'Pending'] 
             ])->get();
             return view('admins.warden.admission_req', compact('admin', 'roomReq'));

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Department;
 use App\Models\RoomAllocation;
 use App\Models\FeeDetail;
+use App\Models\Bed;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 
@@ -39,7 +40,8 @@ class UserRoomController extends Controller
     public function showRoomDetails() {
 
         $student = Auth::guard('students')->user();
-        return view('users.room_details', compact('student'));
+        $bed = Bed::with('room.block.hostel')->findOrFail($student->bed_id);
+        return view('users.room_details', compact('student', 'bed'));
     }
 
     public function showRoomReq() {

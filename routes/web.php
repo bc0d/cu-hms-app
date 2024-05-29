@@ -181,7 +181,7 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
     Route::prefix('room')->group(function () {
 
         //complaint-index
-        Route::get('/', [UserRoomController::class, 'showRoomSection']);
+        Route::get('/', [UserRoomController::class, 'showRoomDetails']);
         //room rent
         Route::prefix('room-rent')->group(function () {
 
@@ -194,8 +194,7 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
         Route::post('room-req', [UserRoomController::class, 'roomRequest'])->name('room.request');
         Route::post('room-req-paymet', [UserRoomController::class, 'roomAllocationPayment'])->name('room.request.payment');
 
-        //other-bill-room
-        Route::get('details', [UserRoomController::class, 'showRoomDetails']); 
+        
     });//end of room
 
     //room change
