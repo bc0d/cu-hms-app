@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Block extends Model
 {
-    protected $primaryKey = 'block id';
+    protected $primaryKey = 'block_id';
 
     public function hostel() {
 
