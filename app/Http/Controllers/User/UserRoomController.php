@@ -36,10 +36,10 @@ class UserRoomController extends Controller
         return view('users.room_rent_status', compact('student'));
     }
 
-    public function showOtherBill() {
+    public function showRoomDetails() {
 
         $student = Auth::guard('students')->user();
-        return view('users.room_other_bill', compact('student'));
+        return view('users.room_details', compact('student'));
     }
 
     public function showRoomReq() {
@@ -53,6 +53,7 @@ class UserRoomController extends Controller
         ]);
         if(!is_Null($transaction)) {
             $roomAlloc->payment_status = $transaction->status;
+            $roomAlloc->transaction_id = $transaction->transaction_id;
             $roomAlloc->save();
         }
         $fee = FeeDetail::where('fee_title', 'like', '%Admission%')->get();
