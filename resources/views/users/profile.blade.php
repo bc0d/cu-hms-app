@@ -42,31 +42,32 @@
                 
                 <h5 class="mb-3">Profile</h5><hr>
                 <div class="row g-0">
-                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
-                    <div class="p-2">Hostel Name</div>
-                  </div>
-                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
-                    <div class="p-2">{{ $bed->room->block->hostel->hostel_name }}</div>
-                  </div>
-                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
-                    <div class="p-2">Block Name</div>
-                  </div>
-                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
-                    <div class="p-2">{{ $bed->room->block->block_name }}</div>
-                  </div>
-                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
-                    <div class="p-2">Room No</div>
-                  </div>
-                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
-                    <div class="p-2">{{ $bed->room->room_name }}</div>
-                  </div>
-                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
-                    <div class="p-2">Bed No</div>
-                  </div>
-                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
-                    <div class="p-2">{{ $bed->bed_name }}</div>
-                  </div>
-
+                  @if(!is_Null($bed))
+                    <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                      <div class="p-2">Hostel Name</div>
+                    </div>
+                    <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                      <div class="p-2">{{ $bed->room->block->hostel->hostel_name }}</div>
+                    </div>
+                    <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                      <div class="p-2">Block Name</div>
+                    </div>
+                    <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                      <div class="p-2">{{ $bed->room->block->block_name }}</div>
+                    </div>
+                    <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                      <div class="p-2">Room No</div>
+                    </div>
+                    <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                      <div class="p-2">{{ $bed->room->room_name }}</div>
+                    </div>
+                    <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                      <div class="p-2">Bed No</div>
+                    </div>
+                    <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                      <div class="p-2">{{ $bed->bed_name }}</div>
+                    </div>
+                  @endif
                   <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
                     <div class="p-2">Date of Birth</div>
                   </div>

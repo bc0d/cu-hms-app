@@ -49,30 +49,15 @@
             <h4><a href="{{url('user/room/request') }}">Request Room</a></h4>
           </div>
         </div>
+      @else
+        <div class="col-md-4 mt-4 mt-md-0">
+          <div class="icon-box">
+            <i class="bi bi-bank"></i>
+            <h4><a href="{{ url('user/room') }}">room</a></h4>
+
+          </div>
+        </div>
       @endif
-      <div class="col-md-4 mt-4 mt-md-0">
-        <div class="icon-box">
-          <i class="bi bi-bank"></i>
-          <h4><a href="{{ url('user/room') }}">room</a></h4>
-
-        </div>
-      </div>
-      <div class="col-md-4 mt-4 mt-md-0">
-        <div class="icon-box">
-          <i class="bi bi-calendar4-week"></i>
-          <h4><a href="{{url('user/mess/attendance') }}">attendance viewer</a></h4>
-
-        </div>
-      </div>
-      <div class="col-md-4 mt-4 mt-md-0 ml-2">
-        <div class="icon-box">
-          <i class="bi bi-box-arrow-right"></i>
-          <h4><a href="{{url('user/mess') }}">mess</a></h4>
-
-        </div>
-      </div>
-      
-
       <div class="col-md-4 mt-4 mt-md-0">
         <div class="icon-box">
           <i class="bi bi-arrow-repeat"></i>

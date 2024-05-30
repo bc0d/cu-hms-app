@@ -31,34 +31,35 @@
           
             <div class="tab-content pt-1" id="profileTabContent">
               <div class="tab-pane fade show active" id="overview-tab-pane" role="tabpanel" aria-labelledby="overview-tab" tabindex="0">
-                
-                <h5 class="mb-2">Hostel Detailes</h5><hr>
-                <div class="row mb-2 g-0">
-                  <div class="col-5 col-md-4 bg-light border-bottom border-white border-3">
-                    <div class="p-2">Hostel</div>
+                @if(!is_Null($bed))
+                  <h5 class="mb-2">Hostel Detailes</h5><hr>
+                  <div class="row mb-2 g-0">
+                    <div class="col-5 col-md-4 bg-light border-bottom border-white border-3">
+                      <div class="p-2">Hostel</div>
+                    </div>
+                    <div class="col-7 col-md-8 bg-light border-start border-bottom border-white border-3">
+                      <div class="p-2">{{ $bed->room->block->hostel->hostel_name }}</div>
+                    </div>
+                    <div class="col-5 col-md-4 bg-light border-bottom border-white border-3">
+                      <div class="p-2">Block</div>
+                    </div>
+                    <div class="col-7 col-md-8 bg-light border-start border-bottom border-white border-3">
+                      <div class="p-2">{{ $bed->room->block->block_name }}</div>
+                    </div>
+                    <div class="col-5 col-md-4 bg-light border-bottom border-white border-3">
+                      <div class="p-2">Room</div>
+                    </div>
+                    <div class="col-7 col-md-8 bg-light border-start border-bottom border-white border-3">
+                      <div class="p-2">{{ $bed->room->room_name }}</div>
+                    </div>
+                    <div class="col-5 col-md-4 bg-light border-bottom border-white border-3">
+                      <div class="p-2">Bed</div>
+                    </div>
+                    <div class="col-7 col-md-8 bg-light border-start border-bottom border-white border-3">
+                      <div class="p-2">{{ $bed->bed_name }}</div>
+                    </div>
                   </div>
-                  <div class="col-7 col-md-8 bg-light border-start border-bottom border-white border-3">
-                    <div class="p-2">{{ $bed->room->block->hostel->hostel_name }}</div>
-                  </div>
-                  <div class="col-5 col-md-4 bg-light border-bottom border-white border-3">
-                    <div class="p-2">Block</div>
-                  </div>
-                  <div class="col-7 col-md-8 bg-light border-start border-bottom border-white border-3">
-                    <div class="p-2">{{ $bed->room->block->block_name }}</div>
-                  </div>
-                  <div class="col-5 col-md-4 bg-light border-bottom border-white border-3">
-                    <div class="p-2">Room</div>
-                  </div>
-                  <div class="col-7 col-md-8 bg-light border-start border-bottom border-white border-3">
-                    <div class="p-2">{{ $bed->room->room_name }}</div>
-                  </div>
-                  <div class="col-5 col-md-4 bg-light border-bottom border-white border-3">
-                    <div class="p-2">Bed</div>
-                  </div>
-                  <div class="col-7 col-md-8 bg-light border-start border-bottom border-white border-3">
-                    <div class="p-2">{{ $bed->bed_name }}</div>
-                  </div>
-                </div>
+                @endif
                 <h5 class="mb-2">Personal Detailes</h5><hr>
                 <div class="row g-0">
                   <div class="col-5 col-md-4 bg-light border-bottom border-white border-3">

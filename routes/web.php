@@ -97,8 +97,8 @@ use App\Http\Controllers\PaymentGatewayController;
 
 
 
-Route::get('user-login', [LoginController::class, 'showStudentLogin']);
-Route::post('user-login', [LoginController::class, 'studentLogin'])->name('login');
+Route::get('login', [LoginController::class, 'showStudentLogin']);
+Route::post('login', [LoginController::class, 'studentLogin'])->name('login');
 Route::post('user-logout', [LoginController::class, 'studentLogout'])->name('logout');
 
 Route::get('user-signup', [RegisterController::class, 'signupPageFirst'])->name('signup');
@@ -286,7 +286,7 @@ Route::post('admin-reset', [ResetPasswordController::class, 'adminPasswordReset'
 /*
 -------------------HOD----------------
 */
-Route::prefix('hod')->group(function () {
+Route::middleware(['auth:admins'])->prefix('hod')->group(function () {
 
     //index
     Route::get('index', [HodDashboardController::class, 'showHodDashboard']);
@@ -323,7 +323,7 @@ Route::prefix('hod')->group(function () {
 ----------------Office staff-----------------------
 */
 
-Route::prefix('office')->group(function () {
+Route::middleware(['auth:admins'])->prefix('office')->group(function () {
 
     //index
     Route::get('index', [OfficeDashboardController::class, 'showHodDashboard']);
@@ -420,7 +420,7 @@ Route::prefix('office')->group(function () {
 ---------------------warden-----------------------
 */
 
-Route::prefix('warden')->group(function () {
+Route::middleware(['auth:admins'])->prefix('warden')->group(function () {
     //dashboard
     Route::get('index', [WardenDashboardController::class, 'showWardenDashboard']);
     //profile
@@ -506,7 +506,7 @@ Route::prefix('warden')->group(function () {
 */
 
 
-Route::prefix('registrar')->group(function () {
+Route::middleware(['auth:admins'])->prefix('registrar')->group(function () {
     //dashboard
     Route::get('index', [RegistrarDashboardController::class, 'showRegistrarDashboard']);
     //profile
@@ -614,7 +614,7 @@ Route::prefix('registrar')->group(function () {
 ----------------Superuser staff-----------------------
 */
 
-Route::prefix('super-user')->group(function () {
+Route::middleware(['auth:admins'])->prefix('super-user')->group(function () {
 
     //dashboard
     Route::get('index', [SuperUserDashboardController::class, 'showSuperUserDashboard']);
@@ -624,6 +624,12 @@ Route::prefix('super-user')->group(function () {
 
     //student card
     Route::prefix('student')->group(function () {
+
+        Route::get('filter', [StudentDetailsAdminController::class, 'filterStudents']);
+        Route::get('blocks/{hostelId}', [StudentDetailsAdminController::class, 'getBlocks']);
+        Route::post('students', [StudentDetailsAdminController::class, 'getStudents']);
+
+
 
         Route::get('card', [StudentDetailsAdminController::class, 'showCard']);
         Route::get('all', [StudentDetailsAdminController::class, 'showAllStudentDetails']);
@@ -717,7 +723,7 @@ Route::prefix('super-user')->group(function () {
 
 /*---------mess dashboard-----------
 */
-Route::prefix('mess')->group(function () {
+Route::middleware(['auth:admins'])->prefix('mess')->group(function () {
     //dashboard
     Route::get('index', [DashboardMessController::class, 'showMessDashboard']);
     //profile
