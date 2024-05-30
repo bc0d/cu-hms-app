@@ -16,7 +16,7 @@
     <!-- Left side columns -->
     <div class="col-lg-10">
       <div class="row">
-        <!--Allocation  Card -->
+        <!--Rent  Card -->
         <div class="col-xxl-6 col-md-6">
           <div class="card info-card req-view-card">
             <div class="card-body">
@@ -32,13 +32,13 @@
             </div>
           </div>
         </div>
-        <!-- End Allocation Card -->
-        <!-- Vacating Card -->
+        <!-- End Rent Card -->
+        <!-- End Water&Electricity Card -->
         <div class="col-xxl-6 col-md-6">
-          <div class="card info-card req-view-card"> 
+          <div class="card info-card req-view-card">
             <div class="card-body">
-              <h5 class="card-title">Water bill</h5>
-              <a class="d-flex align-items-center" href="">
+              <h5 class="card-title">Water&Electricity</h5>
+              <a class="d-flex align-items-center" href={{ url('office/fee/room-rent') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-file-spreadsheet"></i>
                 </div>
@@ -49,79 +49,9 @@
             </div>
           </div>
         </div>
-        <!-- End Vacating Card -->
-      </div>
-      <div class="row">
-        <!-- Room change Card -->
-        <div class="col-xxl-6 col-md-6">
-          <div class="card info-card req-view-card">
-            <div class="card-body">
-              <h5 class="card-title">Electric bill</span></h5>
-              <a class="d-flex align-items-center" href="">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-file-spreadsheet"></i>
-                </div>
-                <div class="ps-3">
-                  <h6>view</h6>         
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- End Room change Card -->
-        <!-- Complaints Card -->
-        <div class="col-xxl-6 col-md-6">
-          <div class="card info-card req-view-card">
-            <div class="card-body">
-              <h5 class="card-title">That fee</h5>
-              <a class="d-flex align-items-center" href="">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-file-spreadsheet"></i>
-                </div>
-                <div class="ps-3">
-                  <h6>view</h6>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- End Complaints Card -->
-      </div>
-      <div class="row">
-        <!-- Room change Card -->
-        <div class="col-xxl-6 col-md-6">
-          <div class="card info-card req-view-card">
-            <div class="card-body">
-              <h5 class="card-title">This fee</span></h5>
-              <a class="d-flex align-items-center" href="">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-file-spreadsheet"></i>
-                </div>
-                <div class="ps-3">
-                  <h6>view</h6>         
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- End Room change Card -->
-        <!-- Complaints Card -->
-        <div class="col-xxl-6 col-md-6">
-          <div class="card info-card req-view-card">
-            <div class="card-body">
-              <h5 class="card-title">Some fee</h5>
-              <a class="d-flex align-items-center" href="">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-file-spreadsheet"></i>
-                </div>
-                <div class="ps-3">
-                  <h6>view</h6>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- End Complaints Card -->
+        <!-- End Water and Electricity Card -->
+
+
       </div>
     </div>
     <!-- End Left side columns -->

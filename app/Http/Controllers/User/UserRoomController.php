@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Department;
 use App\Models\RoomAllocation;
 use App\Models\FeeDetail;
+use App\Models\Bed;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 
@@ -36,10 +37,11 @@ class UserRoomController extends Controller
         return view('users.room_rent_status', compact('student'));
     }
 
-    public function showOtherBill() {
+    public function showRoomDetails() {
 
         $student = Auth::guard('students')->user();
-        return view('users.room_other_bill', compact('student'));
+        $bed = Bed::with('room.block.hostel')->findOrFail($student->bed_id);
+        return view('users.room_details', compact('student', 'bed'));
     }
 
     public function showRoomReq() {
@@ -53,6 +55,7 @@ class UserRoomController extends Controller
         ]);
         if(!is_Null($transaction)) {
             $roomAlloc->payment_status = $transaction->status;
+            $roomAlloc->transaction_id = $transaction->transaction_id;
             $roomAlloc->save();
         }
         $fee = FeeDetail::where('fee_title', 'like', '%Admission%')->get();

@@ -12,33 +12,36 @@ return new class extends Migration
     public function up(): void
     {
 
-        Schema::create('monthly_fees', function (Blueprint $table) {
-            $table->bigIncrements('monthly_fee_id')->unique();
-            $table->string('hostel_id');
+        Schema::create('fees', function (Blueprint $table) {
+            $table->bigIncrements('fee_id')->unique();
+            $table->unsignedBigInteger('hostel_id');
+            $table->foreign('hostel_id')->references('hostel_id')->on('hostels')->onDelete('cascade');
             $table->string('room_type');
             $table->string('fee_name');
             $table->decimal('amount', 8, 2);
+            $table->unsignedBigInteger('updatedby');
+            $table->foreign('updatedby')->references('admin_id')->on('admins')->onDelete('cascade');
             $table->timestamps();
         });
 
 
-        Schema::create('rent_payments', function (Blueprint $table) {
-            $table->bigIncrements('rent_payment_id')->unique();
-            $table->unsignedBigInteger('monthly_fee_id');
-            $table->foreign('monthly_fee_id')->references('monthly_fee_id')->on('monthly_fees')->onDelete('cascade');
+        Schema::create('room_rents', function (Blueprint $table) {
+            $table->bigIncrements('room_rent_id')->unique();
+            $table->unsignedBigInteger('fee_id');
+            $table->foreign('fee_id')->references('fee_id')->on('fees')->onDelete('cascade');
             $table->unsignedBigInteger('student_id');
             $table->foreign('student_id')->references('student_id')->on('students')->onDelete('cascade');
             $table->string('month_of_fee');
             $table->string('paid_status');
-            $table->date('month_of_payment')->nullable();
+            $table->date('payment_date')->nullable();
             $table->string('transaction_id')->nullable();
             $table->timestamps();
         });
 
-        Schema::create('water_electricity_payments', function (Blueprint $table) {
-            $table->bigIncrements('water_electricity_payment_id')->unique();
-            $table->unsignedBigInteger('monthly_fee_id');
-            $table->foreign('monthly_fee_id')->references('monthly_fee_id')->on('monthly_fees')->onDelete('cascade');
+        Schema::create('waterelectric_bills', function (Blueprint $table) {
+            $table->bigIncrements('waterelectric_bills_id')->unique();
+            $table->unsignedBigInteger('fee_id');
+            $table->foreign('fee_id')->references('fee_id')->on('fees')->onDelete('cascade');
             $table->unsignedBigInteger('student_id');
             $table->foreign('student_id')->references('student_id')->on('students')->onDelete('cascade');
             $table->string('month_of_fee');
@@ -55,17 +58,23 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('rent_payments', function (Blueprint $table) {
-            $table->dropForeign(['monthly_fee_id']);
+        Schema::table('waterelectric_bills', function (Blueprint $table) {
+            $table->dropForeign(['fee_id']);
             $table->dropForeign(['student_id']);
         });
 
-        Schema::table('water_electricity_payments', function (Blueprint $table) {
-            $table->dropForeign(['monthly_fee_id']);
+        Schema::table('room_rents', function (Blueprint $table) {
+            $table->dropForeign(['fee_id']);
             $table->dropForeign(['student_id']);
         });
+
+        Schema::table('fees', function (Blueprint $table) {
+            $table->dropForeign(['hostel_id']);
+            $table->dropForeign(['updatedby']);
+        });
        
-        Schema::dropIfExists('fee_payments');
-        Schema::dropIfExists('monthly_fees');
+        Schema::dropIfExists('waterelectric_bills');
+        Schema::dropIfExists('room_rents');
+        Schema::dropIfExists('fees');
     }
 };
