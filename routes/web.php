@@ -10,6 +10,7 @@ use App\Http\Controllers\User\UserMessController;
 use App\Http\Controllers\User\UserRoomController;
 use App\Http\Controllers\User\UserFeedbackController;
 use App\Http\Controllers\User\UserRulesAndNoticeController;
+use App\Http\Controllers\User\UserFeeAndPaymentController;
 
 use App\Http\Controllers\SuperUser\SuperUserDashboardController;
 use App\Http\Controllers\SuperUser\SuperUserProfileController;
@@ -211,8 +212,14 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
         Route::get('notice-list', [UserRulesAndNoticeController::class, 'viewNotices']);
     });
     //fee-pending-status
-    Route::get('fee-pending-status', function () {
-        return view('users.fee_pending_status');
+    Route::prefix('bills-payments')->group(function() {
+
+        Route::get('card', [UserFeeAndPaymentController::class, 'showBills']);
+        Route::get('rent-card', [UserFeeAndPaymentController::class, 'viewRents']);
+        Route::get('bills-card', [UserFeeAndPaymentController::class, 'viewBills']);
+
+
+
     });
     //feedback
     Route::prefix('feedback')->group(function () {
@@ -395,7 +402,8 @@ Route::prefix('office')->group(function () {
         Route::get('room-rent', [FeeAndPaymentController::class, 'roomRentDetails']);
         //fee maintanance
         Route::get('maintanance', [FeeAndPaymentController::class, 'feeMaintanance']);
-        Route::get('updation', [FeeAndPaymentController::class, 'feeUpdate']);
+        Route::get('add', [FeeAndPaymentController::class, 'showFeeAdd']);
+        Route::post('add',[FeeAndPaymentController::class,'feeAdd'])->name('office.fee.add');
     });
 
     //rules and notice card
