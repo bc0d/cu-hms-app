@@ -9,6 +9,7 @@ use App\Models\RoomAllocation;
 use App\Models\FeeDetail;
 use App\Models\Bed;
 use App\Models\Transaction;
+use App\Models\RoomChange;
 use Illuminate\Http\Request;
 
 class UserRoomController extends Controller
@@ -84,7 +85,7 @@ class UserRoomController extends Controller
             'allocation_status' => 'Pending',
         ]);
 
-        return redirect('user/dashboard');
+        return redirect()->back()->with('message', 'Room Requested');
     }
 
     public function roomAllocationPayment(Request $request) {
@@ -105,6 +106,37 @@ class UserRoomController extends Controller
 
         session()->flash('paymentDetails', $paymentDetails);
         return redirect('/payment-gateway');
+    }
+
+    public function showRoomChangeRequest() {
+
+        $student = Auth::guard('students')->user();
+        return view('users.room_change', compact('student'));
+    }
+
+    public function roomChangeRequest(Request $request) {
+
+        $student = Auth::guard('students')->user();
+        $data = $request->validate([
+            'preference' => 'required|string',
+            'reason' => 'required|string',
+        ]);
+        $bed = Bed::findOrFail($student->bed_id);
+        $roomChange = new RoomChange();
+        $roomChange->student_id = $student->student_id;
+        $roomChange->current_room = $bed->room_id;
+        $roomChange->request = $data['preference'];
+        $roomChange->reason = $data['reason'];
+        $roomChange->status = 'Pending';
+        $roomChange->save();
+
+        return redirect()->back()->with('message', 'Room change request submited successfully!!');
+    }
+
+    public function showRoomVacate() {
+
+        $student = Auth::guard('students')->user();
+        return view('users.room_vacate', compact('student'));
     }
 
 }

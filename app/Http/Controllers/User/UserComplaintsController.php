@@ -35,15 +35,16 @@ class UserComplaintsController extends Controller
         $complaint->category = $formData['complaint_cat'];
         $complaint->complaint = $formData['complaint_msg'];
         $complaint->status = 'Pending'; // default status
+        $complaint->comment = 'Not Reviewed';
         $complaint->save();
 
-        return redirect()->intended('user/complaints/');
+        return redirect()->back()->with('message', 'Complaint added successfully');
     }
 
     public function showMyComplaints() {
 
         $student = Auth::guard('students')->user();
-        $complaints = Complaint::where('student_id', $student->student_id)->get();
+        $complaints = Complaint::where('student_id', $student->student_id)->latest()->get();
         return view('users.complaints_my', compact('student','complaints'));
     }
 }

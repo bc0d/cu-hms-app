@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class waterelectric_bill extends Model
+class WaterElectricBill extends Model
 {
-    use HasFactory;
-    protected $primary = 'waterelectric_bills_id';
+    protected $table = 'waterelectric_bills';
+    protected $primaryKey = 'waterelectric_bills_id';
 
     protected $fillable = [
         'fee_id',
@@ -17,6 +16,7 @@ class waterelectric_bill extends Model
         'paid_status',
         'payment_date',
         'transaction_id',
+        'amount',
     ];
 
     public function student() {

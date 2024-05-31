@@ -204,7 +204,14 @@
   </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
-
+  <div class="container">
+    <div class="copyright text-center">
+      &copy; Copyright <strong><span>ARM</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits text-center">
+        Developed by <a href="#">ARM</a>
+    </div>
+  </div>
   
 
   <!-- Vendor JS Files -->

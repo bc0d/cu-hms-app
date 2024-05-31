@@ -47,10 +47,8 @@
                   {{ Session::get('success') }}
               </div>
           @endif
-          <div>
-            <center>
+          <div class="text-center">
               <h2>Login</h2>
-            </center>
           </div>
           <form action="{{ route('login') }}" method="POST" role="form" class="php-email-form">
             @csrf
@@ -68,11 +66,14 @@
               <button type="reset" class="btn btn-secondary">Clear</button>
               <button type="submit" class="btn btn-primary">Login</button>
             </div>
-            <div class="row ">
+            <div class="row mt-1">
               <span class="form-group">New user?<a href="{{ url('user-signup') }}">Register</a></span>
             </div>
+            
           </form>
-
+          <div class="row ">
+            <span class="form-group">Staff<a href="{{ url('admin-login') }}"> Login</a></span>
+          </div>
         </div>
       </div>
 
@@ -81,7 +82,14 @@
 
   </main><!-- End #main -->
 
-  
+  <div class="container">
+    <div class="copyright text-center">
+      &copy; Copyright <strong><span>ARM</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits text-center">
+        Developed by <a href="#">ARM</a>
+    </div>
+  </div>
 
   <!-- Vendor JS Files -->
   <script src="{{ asset('users/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

@@ -6,7 +6,7 @@
 <section id="services" class="services sign-sec">
   <h2 class="sign-sec  text-center">Feedbacks</h2><hr>
   <div class="container col-lg-8 hi mt-5  align-items-center">
-      
+    
     <div class="notify-tray flex items-center justify-between pb-6 font-bold mt-5 mb-3">
           <div class="d-grid m-0 mr-2 mt-1">
                 <a href="{{ url('user/feedback/give-feedback') }}" class=" d-flex justify-content-end"><span class="arrow  ">&#8594;</span>give feedback</a>

@@ -13,7 +13,7 @@
       </div>
       <div class="col-md-4 mt-5 mt-md-0 ml-md-2"> <!-- Added ml-md-2 for margin on medium screens and above -->
         <div class="icon-box">
-          <h4 ><a href="{{ url('user/bills-paymets/bills-card') }}">Water&Electricity</a></h4>
+          <h4 ><a href="{{ url('user/bills-payments/bills-card') }}">Water&Electricity</a></h4>
         </div>
         
       </div>

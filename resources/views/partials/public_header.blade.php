@@ -10,34 +10,23 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a href="{{ route('dashboard') }}" class="active">Home</a></li>
-
-                <li class="dropdown"><a href="{{ url("#") }}"><span>About</span> <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown"><a href="{{ url("#") }}"><span>Menu</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="{{ url("about.html") }}">About</a></li>
-                        <li><a href="{{ url("team.html") }}">Team</a></li>
-                        <li><a href="{{ url("testimonials.html") }}">Testimonials</a></li>
-
-                        <li class="dropdown"><a href="{{ url("#") }}"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                            <ul>
-                                <li><a href="{{ url("#") }}">Deep Drop Down 1</a></li>
-                                <li><a href="{{ url("#") }}">Deep Drop Down 2</a></li>
-                                <li><a href="{{ url("#") }}">Deep Drop Down 3</a></li>
-                                <li><a href="{{ url("#") }}">Deep Drop Down 4</a></li>
-                                <li><a href="{{ url("#") }}">Deep Drop Down 5</a></li>
-                            </ul>
-                        </li>
+                        @if($student->bed_id)
+                            <li><a href="{{ url('user/room') }}">Room</a></li>
+                            <li><a href="{{ url('user/room-change') }}">Room Change</a></li>
+                            <li><a href="{{ url('user/bills-payments/card') }}">Bills & Payments</a></li>
+                            <li><a href="{{ url('user/complaints') }}">Complaints</a></li>
+                            <li><a href="{{ url('user/feedback') }}">Feedback</a></li>
+                        @endif
+                        <li><a href="{{ url('user/rules/card') }}">Rules & Notices</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ url("services.html") }}">Services</a></li>
-                <li><a href="{{ url("portfolio.html") }}">Portfolio</a></li>
-                <li><a href="{{ url("pricing.html") }}">Pricing</a></li>
-                <li><a href="{{ url("blog.html") }}">Blog</a></li>
-
-                <li><a href="{{ url("contact.html") }}">Contact</a></li>
                 <li><a href="{{ url('user/profile') }}"><img class="nav-prof" src="{{ asset($student->image)}}" alt=""></a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
-
+        <a href="{{ url('user/notifications') }}"><h1 class="bell"><i class="bi bi-bell"></i></h1></a>
+        
     </div>
 </header><!-- End Header -->

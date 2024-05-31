@@ -54,7 +54,7 @@ class FeeAndPaymentController extends Controller
         $fee->updatedby = $admin->admin_id; // default status
         $fee->save();
 
-        return redirect()->intended('/office/fee/maintanance');
+        return redirect()->back()->with('message', 'Fee added successfully');
     }
 
 }
