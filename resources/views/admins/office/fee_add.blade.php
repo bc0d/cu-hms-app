@@ -21,7 +21,12 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Fee Update</h5>
-            
+                        @if (session('message'))
+                          <div class="alert alert-success">
+                            {{ session('message') }}
+                          </div>
+                        @endif
+                                
                         <!-- Room allocation Form -->
                         <form class="row g-3" action="{{route('office.fee.add')}}" method="POST" >  
                             @csrf
@@ -45,8 +50,8 @@
                                 <label for="fee_item" class="form-label">Fee Item</label>
                                 <select name="fee_item" id="fee_item" class="form-select">
                                   <option selected>--select--</option>
-                                  <option value="rent">rent</option>
-                                  <option value="bills">water & electricity</option>
+                                  <option value="room rent">Room Rent</option>
+                                  <option value="water/electric bill">Water & Electricity</option>
                                 </select>
                             </div>
                             <div class="col-md-8">

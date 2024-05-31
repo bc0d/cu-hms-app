@@ -43,6 +43,6 @@ class HostelAdmissionHodController extends Controller
         $roomReq->hostel = $data['hostel'];
         $roomReq->save();
 
-        return redirect('hod/allocation/request');
+        return redirect()->back()->with('message', 'Submited');
     }
 }

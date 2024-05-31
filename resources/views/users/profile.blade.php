@@ -16,9 +16,6 @@
                 </div>
                 <ul class="list-group list-group-flush mb-1 mt-3">
                   <li class="list-group-item d-flex justify-content-start align-items-start">
-                    <a href="{{ url('user/my-qr') }}" class=" d-flex justify-content-end">My QR</a>
-                  </li>
-                  <li class="list-group-item d-flex justify-content-start align-items-start">
                     <a href="{{ url('user/profile/password-reset') }}" class=" d-flex justify-content-end">Reset Password</a>
                   </li>
                   <li class="list-group-item d-flex justify-content-start align-items-start">

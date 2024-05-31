@@ -5,6 +5,11 @@
 <section id="contact" class="contact sign-sec">
   <h2 class="sign-sec  text-center">Give Your Complaint</h2><hr>
   <div class="container">
+    @if (session('message'))
+      <div class="alert alert-success">
+        {{ session('message') }}
+      </div>
+    @endif
     <div class="row mt-1  justify-content-center">
       <div class="col-lg-8 mt-2 mt-lg-0 pt-2 pt-3">
         <form action="{{ route('register-complaint') }}" method="POST" role="form" class="php-email-form">

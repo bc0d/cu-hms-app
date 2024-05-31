@@ -85,6 +85,7 @@ class RoomAllocationController extends Controller
         $student =Student::findOrFail($data['student_id']);
 
         $student->bed_id = $bed->bed_id;
+        $student->status = 'Active';
         $student->save();
 
         $bed->student_id = $data['student_id'];
@@ -95,7 +96,7 @@ class RoomAllocationController extends Controller
         $roomReq->allocatedBy = $admin->admin_id;
         $roomReq->save();
 
-        return redirect('office/room/allocation-list');
+        return redirect()->back()->with('message', 'Room allocated Successfully');
         
     }
 }

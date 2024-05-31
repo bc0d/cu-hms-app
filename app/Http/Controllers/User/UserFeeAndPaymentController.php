@@ -5,8 +5,12 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Models\Rent;
-use App\Models\Bill;
+use App\Models\RoomRent;
+use App\Models\WaterElectricBill;
+
+use App\Models\Student;
+use App\Models\Fee;
+use Carbon\Carbon;
 
 class UserFeeAndPaymentController extends Controller
 {
@@ -17,16 +21,24 @@ class UserFeeAndPaymentController extends Controller
     } 
 
     public function viewRents() {
+
         $student = Auth::guard('students')->user();
-        $rents = Rent::all();
+        $rents = RoomRent::where('student_id', $student->student_id)->get();
         return view('users.room_rent_status', compact('student','rents'));
     }
 
-    public function viewBills() {
+    public function payRoomRent($id) {
+
         $student = Auth::guard('students')->user();
-        $bills = Bill::all();
-        return view('users.room_rent',compact('student','bills'));
+        $rents = RoomRent::findOrFail($id);
+
     }
 
+    public function viewBills() {
 
+        $student = Auth::guard('students')->user();
+        $bills = WaterElectricBill::where('student_id', $student->student_id)->get();
+
+        return view('users.room_elecwat_status',compact('student','bills'));
+    }
 }

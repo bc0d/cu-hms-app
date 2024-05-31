@@ -30,7 +30,7 @@
                     <th scope='col'>Fee_item</th>
                     <th scope='col'>Amount</th>
                     <th data-type="date" data-format="YYYY/DD/MM" scope="col">Update Date</th>
-                    
+                    <th></th>
                     
                   </tr>
                 </thead>
@@ -44,8 +44,8 @@
                     <td>{{$item->room_type}}</td>
                     <td>{{$item->fee_name}}</td>
                     <td>{{$item->amount}}</td>
-                    <td></td>
-                    
+                    <td>{{$item->updated_at->toDateString()}}</td>
+                    <tr><a href=""></a></tr>
                   </tr>
                   @endforeach
                   

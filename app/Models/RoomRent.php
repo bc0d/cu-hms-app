@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Room_rent extends Model
+class RoomRent extends Model
 {
-    use HasFactory;
-
-    protected $primary = 'room_rent_id';
+    protected $table = 'room_rents';
+    protected $primaryKey = 'room_rent_id';
 
     protected $fillable = [
         'fee_id',
@@ -18,6 +16,7 @@ class Room_rent extends Model
         'paid_status',
         'payment_date',
         'transaction_id',
+        'amount',
     ];
 
     public function student() {

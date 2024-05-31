@@ -118,6 +118,12 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Room Allocation</h5>
+
+                        @if (session('message'))
+                          <div class="alert alert-success">
+                            {{ session('message') }}
+                          </div>
+                        @endif
             
                         <!-- Room allocation Form -->
                         <form action="{{ route('office.room.allocate') }}" method="POST" class="row g-3">

@@ -32,6 +32,6 @@ class UserFeedbackController extends Controller
         $feedback->review = $data['feedback'];
         $feedback->save();
 
-        return redirect('user/feedback');
+        return redirect()->back()->with('message', 'Your feedback added successfully');
     }
 }

@@ -28,7 +28,7 @@
       </div>
       <div class="d-grid m-0 mr-2 mt-1">
         <!--<button class="btn btn-outline-primary" type="button">more profie</button>-->
-        <a href="{{ url('user/moreprofile') }}" class=" d-flex justify-content-end"><span class="arrow  ">&#8594;</span>More</a>
+        <a href="" class=" d-flex justify-content-end"><span class="arrow  ">&#8594;</span>More</a>
       </div>
     </div>
 
@@ -49,48 +49,49 @@
             <h4><a href="{{url('user/room/request') }}">Request Room</a></h4>
           </div>
         </div>
-      @else
+      @endif
+      @if($student->bed_id)
         <div class="col-md-4 mt-4 mt-md-0">
           <div class="icon-box">
             <i class="bi bi-bank"></i>
-            <h4><a href="{{ url('user/room') }}">room</a></h4>
-
+            <h4><a href="{{ url('user/room') }}">Room</a></h4>
+          </div>
+        </div>
+        <div class="col-md-4 mt-4 mt-md-0">
+          <div class="icon-box">
+            <i class="bi bi-arrow-repeat"></i>
+            <h4><a href="{{ url('user/room/change/request') }}">Room change</a></h4>
+          </div>
+        </div>
+        <div class="col-md-4 mt-4 mt-md-0">
+          <div class="icon-box">
+            <i class="bi bi-bank"></i>
+            <h4><a href="{{ url('user/room/vacate') }}">Room Vacate</a></h4>
+          </div>
+        </div>
+        <div class="col-md-4 mt-4 mt-md-0">
+          <div class="icon-box">
+            <i class="bi bi-info-circle"></i>
+            <h4><a href="{{ url('user/bills-payments/card') }}">Bills & Payments</a></h4>
+          </div>
+        </div>
+        <div class="col-md-4 mt-4 mt-md-0">
+          <div class="icon-box">
+            <i class="bi bi-exclamation-octagon"></i>
+            <h4><a href="{{ url('user/complaints') }}">Complaints</a></h4>
+          </div>
+        </div>
+        <div class="col-md-4 mt-4 mt-md-0">
+          <div class="icon-box">
+            <i class="bi bi-chat-dots"></i>
+            <h4><a href="{{ url('user/feedback') }}">Feedback</a></h4>
           </div>
         </div>
       @endif
       <div class="col-md-4 mt-4 mt-md-0">
         <div class="icon-box">
-          <i class="bi bi-arrow-repeat"></i>
-          <h4><a href="{{ url('user/room-change') }}">room change</a></h4>
-
-        </div>
-      </div>
-      <div class="col-md-4 mt-4 mt-md-0">
-        <div class="icon-box">
           <i class="bi bi-exclamation-triangle"></i>
           <h4><a href="{{ url('user/rules/card') }}">Rules & Notices</a></h4>
-
-        </div>
-      </div>
-
-      <div class="col-md-4 mt-4 mt-md-0">
-        <div class="icon-box">
-          <i class="bi bi-info-circle"></i>
-          <h4><a href="{{ url('user/bills-payments/card') }}">Bills And Payments</a></h4>
-
-        </div>
-      </div>
-      <div class="col-md-4 mt-4 mt-md-0">
-        <div class="icon-box">
-          <i class="bi bi-exclamation-octagon"></i>
-          <h4><a href="{{ url('user/complaints') }}">complaints</a></h4>
-
-        </div>
-      </div>
-      <div class="col-md-4 mt-4 mt-md-0">
-        <div class="icon-box">
-          <i class="bi bi-chat-dots"></i>
-          <h4><a href="{{ url('user/feedback') }}">feedback</a></h4>
 
         </div>
       </div>
