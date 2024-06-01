@@ -6,10 +6,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\User\UserProfileController;
 use App\Http\Controllers\User\UserComplaintsController;
-use App\Http\Controllers\User\UserMessController;
+//use App\Http\Controllers\User\UserMessController;
 use App\Http\Controllers\User\UserRoomController;
 use App\Http\Controllers\User\UserFeedbackController;
 use App\Http\Controllers\User\UserRulesAndNoticeController;
+use App\Http\Controllers\User\UserFeeAndPaymentController;
+use App\Http\Controllers\User\UserNotificationController;
 
 use App\Http\Controllers\SuperUser\SuperUserDashboardController;
 use App\Http\Controllers\SuperUser\SuperUserProfileController;
@@ -26,11 +28,11 @@ use App\Http\Controllers\SuperUser\RuleAndNoticeAdminController;
 
 use App\Http\Controllers\Registrar\RegistrarDashboardController;
 use App\Http\Controllers\Registrar\RegistrarProfileController;
-use App\Http\Controllers\Registrar\StudentDetailsRegistrarController;
-use App\Http\Controllers\Registrar\HostelAdmissionRegistrarController;
-use App\Http\Controllers\Registrar\HostelVacateRegistrarController;
-use App\Http\Controllers\Registrar\RoomAllocationRegistrarController;
-use App\Http\Controllers\Registrar\RoomChangeRegistrarController;
+//use App\Http\Controllers\Registrar\StudentDetailsRegistrarController;
+//use App\Http\Controllers\Registrar\HostelAdmissionRegistrarController;
+//use App\Http\Controllers\Registrar\HostelVacateRegistrarController;
+//use App\Http\Controllers\Registrar\RoomAllocationRegistrarController;
+//use App\Http\Controllers\Registrar\RoomChangeRegistrarController;
 use App\Http\Controllers\Registrar\RoomDetailsRegistrarController;
 use App\Http\Controllers\Registrar\ComplaintsRegistrarController;
 use App\Http\Controllers\Registrar\FeeAndPaymentRegistrarController;
@@ -43,7 +45,7 @@ use App\Http\Controllers\Registrar\RegistrarStudentDetailsController;
 use App\Http\Controllers\Office\OfficeDashboardController;
 use App\Http\Controllers\Office\OfficeProfileController;
 use App\Http\Controllers\Office\StudentDetailsController;
-use App\Http\Controllers\Office\HostelAdmissionOfficeController;
+//use App\Http\Controllers\Office\HostelAdmissionOfficeController;
 use App\Http\Controllers\Office\HostelVacateOfficeController;
 use App\Http\Controllers\Office\RoomAllocationController;
 use App\Http\Controllers\Office\RoomChangeController;
@@ -72,9 +74,9 @@ use App\Http\Controllers\Hod\HodDashboardController;
 use App\Http\Controllers\Hod\HodProfileController;
 
 
-use App\Http\Controllers\Mess\DashboardMessController;
-use App\Http\Controllers\Mess\ProfileMessController;
-use App\Http\Controllers\Mess\ComplaintsMessController;
+// use App\Http\Controllers\Mess\DashboardMessController;
+// use App\Http\Controllers\Mess\ProfileMessController;
+// use App\Http\Controllers\Mess\ComplaintsMessController;
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
@@ -93,12 +95,14 @@ use App\Http\Controllers\PaymentGatewayController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/horizon', function () {
+    return view('horizon');
+});
 
 
 
-
-Route::get('user-login', [LoginController::class, 'showStudentLogin']);
-Route::post('user-login', [LoginController::class, 'studentLogin'])->name('login');
+Route::get('login', [LoginController::class, 'showStudentLogin']);
+Route::post('login', [LoginController::class, 'studentLogin'])->name('login');
 Route::post('user-logout', [LoginController::class, 'studentLogout'])->name('logout');
 
 Route::get('user-signup', [RegisterController::class, 'signupPageFirst'])->name('signup');
@@ -120,10 +124,11 @@ Route::get('/', function () {
     return view('index');
 });
 
+//payment gateway
 Route::get('payment-gateway', [PaymentGatewayController::class, 'showPaymentGateway']);
 Route::post('payment-gateway/payment', [PaymentGatewayController::class, 'makePayment'])->name('payment.makepay');
 
-
+//user start
 Route::middleware(['auth:students'])->prefix('user')->group(function () {
 
     //index
@@ -140,13 +145,10 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
         Route::post('reset', [ResetPasswordController::class, 'passwordReset'])->name('reset');
     });
 
-
-
-
-    //qr
-    Route::get('my-qr', function () {
-        return view('users.qr');
-    });
+    // //qr
+    // Route::get('my-qr', function () {
+    //     return view('users.qr');
+    // });
 
     //complaint
     Route::prefix('complaints')->group(function () {
@@ -163,19 +165,18 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
     //notice board
 
     //mess
-    Route::prefix('mess')->group(function () {
-
-        //complaint-index
-        Route::get('/', [UserMessController::class, 'showMessSection']);
-        //mess attendance
-        Route::get('attendance', [UserMessController::class, 'showMessAttendance']);
-        //mess-in-out
-        Route::get('in-out', [UserMessController::class, 'showMessStatus']);
-        //messbill
-        Route::get('bill', [UserMessController::class, 'showMessBill']);
-        //mess-payment
-        Route::get('payment', [UserMessController::class, 'showMessPayment']);
-    });
+    // Route::prefix('mess')->group(function () {
+    //     //complaint-index
+    //     Route::get('/', [UserMessController::class, 'showMessSection']);
+    //     //mess attendance
+    //     Route::get('attendance', [UserMessController::class, 'showMessAttendance']);
+    //     //mess-in-out
+    //     Route::get('in-out', [UserMessController::class, 'showMessStatus']);
+    //     //messbill
+    //     Route::get('bill', [UserMessController::class, 'showMessBill']);
+    //     //mess-payment
+    //     Route::get('payment', [UserMessController::class, 'showMessPayment']);
+    // });
 
 
     //start of room
@@ -183,37 +184,48 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
 
         //complaint-index
         Route::get('/', [UserRoomController::class, 'showRoomDetails']);
-        //room rent
-        Route::prefix('room-rent')->group(function () {
-
-            Route::get('/', [UserRoomController::class, 'showRoomRent']);
-            Route::get('payment', [UserRoomController::class, 'showRoomRentPayment']);
-            Route::get('status', [UserRoomController::class, 'showRoomRentStatus']);
-        });
-
+        // //room rent
+        // Route::prefix('room-rent')->group(function () {
+        //     Route::get('/', [UserRoomController::class, 'showRoomRent']);
+        //     Route::get('payment', [UserRoomController::class, 'showRoomRentPayment']);
+        //     Route::get('status', [UserRoomController::class, 'showRoomRentStatus']);
+        // });
+        //room request
         Route::get('request', [UserRoomController::class, 'showRoomReq'])->name('room.callback');
         Route::post('room-req', [UserRoomController::class, 'roomRequest'])->name('room.request');
         Route::post('room-req-paymet', [UserRoomController::class, 'roomAllocationPayment'])->name('room.request.payment');
-        
-    });//end of room
+        //endroom request
 
-    //room change
-    Route::get('room-change', function () {
-        return view('users.room_change');
-    });
+        //start room change section
+        Route::prefix('change')->group(function () {
+            Route::get('request', [UserRoomController::class, 'showRoomChangeRequest']);
+            Route::post('request', [UserRoomController::class, 'roomChangeRequest'])->name('room.change.request');
+        });
+        Route::prefix('vacate')->group(function () {
+
+            Route::get('/', [UserRoomController::class, 'showRoomVacate']);
+        });
+    });//end of room
+    
     //rules and notice card
     Route::prefix('rules')->group(function () {
 
         Route::get('card', [UserRulesAndNoticeController::class, 'showCard']);
         Route::get('rule-list', [UserRulesAndNoticeController::class, 'viewRules']);
-
-
         Route::get('notice-list', [UserRulesAndNoticeController::class, 'viewNotices']);
     });
+
     //fee-pending-status
-    Route::get('fee-pending-status', function () {
-        return view('users.fee_pending_status');
+    Route::prefix('bills-payments')->group(function() {
+
+        Route::get('card', [UserFeeAndPaymentController::class, 'showBills']);
+        Route::get('rent-card', [UserFeeAndPaymentController::class, 'viewRents']);
+        Route::get('rent/{id}', [UserFeeAndPaymentController::class, 'payRoomRent']);
+        Route::get('bills-card', [UserFeeAndPaymentController::class, 'viewBills']);
+        Route::get('bill/{id}', [UserFeeAndPaymentController::class, 'payWaterElectricBill']);
+        Route::get('pay', [UserFeeAndPaymentController::class, 'showPayment']);
     });
+
     //feedback
     Route::prefix('feedback')->group(function () {
 
@@ -224,44 +236,10 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
     });
 
     //notification
-    Route::get('notification', function () {
-        return view('users.notification');
-    });
-    Route::get('test', function () {
-        return view('users.feeed');
-    });
-    //end of user
+    Route::get('notifications', [UserNotificationController::class, 'showNotifications']);
+
 });
-
-
-/*
-
-//mess bill and roomrent payment
-Route::prefix('user/payment')->group(function () {
-    Route::get('',function(){
-        return view('users.paymentlink');
-    })->name('paymentlink');
-    Route::get('paymentlink',function(){
-        return view('users.paymentlink');
-    })->name('paymentlink');
-    
-    
-    //mess bill calculate and pay
-  
-});
-*/
-
-
-
-
-
-
-
-Route::get('feedback', function () {
-    return view('users.feedback');
-});
-
-
+//end of user
 
 
 
@@ -284,9 +262,9 @@ Route::get('admin-reset', [ResetPasswordController::class, 'showAdminPasswordRes
 Route::post('admin-reset', [ResetPasswordController::class, 'adminPasswordReset'])->name('admin.reset');
 
 /*
--------------------HOD----------------
+-------------------HOD-------------------------------------------------------------------------------------------------------------------------
 */
-Route::prefix('hod')->group(function () {
+Route::middleware(['auth:admins'])->prefix('hod')->group(function () {
 
     //index
     Route::get('index', [HodDashboardController::class, 'showHodDashboard']);
@@ -320,10 +298,10 @@ Route::prefix('hod')->group(function () {
 
 
 /* 
-----------------Office staff-----------------------
+----------------Office staff-------------------------------------------------------------------------------------------------------------------------
 */
 
-Route::prefix('office')->group(function () {
+Route::middleware(['auth:admins'])->prefix('office')->group(function () {
 
     //index
     Route::get('index', [OfficeDashboardController::class, 'showHodDashboard']);
@@ -336,13 +314,30 @@ Route::prefix('office')->group(function () {
         Route::get('card', [StudentDetailsController::class, 'showCard']);
         Route::get('all', [StudentDetailsController::class, 'showAllStudentDetails']);
         Route::get('detail/{id}', [StudentDetailsController::class, 'showStudentProfileDetails']);
+        //
+
+        //student filtering
+        Route::get('filter', [StudentDetailsController::class, 'filterStudents']);
+        Route::get('blocks/{hostelId}', [StudentDetailsController::class, 'getBlocks']);
+        Route::post('students', [StudentDetailsController::class, 'getStudents']);
     });
 
     //rooms details card
-    Route::prefix('room-details')->group(function () {
+    Route::prefix('rooms')->group(function () {
 
         Route::get('card', [RoomDetailsController::class, 'showCard']);
         Route::get('list', [RoomDetailsController::class, 'roomDetails']);
+
+        //room fltering
+        Route::get('filter', [RoomDetailsController::class, 'index']);
+
+        Route::get('/hostels/{hostelId}/blocks', [RoomDetailsController::class, 'getBlocks']);
+        Route::get('/blocks/{blockIds}/rooms', [RoomDetailsController::class, 'getRooms']);
+        Route::get('/rooms/{roomIds}/beds', [RoomDetailsController::class, 'getBeds']);
+        Route::get('/filter-beds', [RoomDetailsController::class, 'filterBeds']);
+        Route::get('/blocks/all', [RoomDetailsController::class, 'getAllBlocks']);
+
+
     });
 
     //Complaints
@@ -378,7 +373,8 @@ Route::prefix('office')->group(function () {
 
 
         Route::get('request', [RoomChangeController::class, 'showRoomChangeReq']);
-        Route::get('action', [RoomChangeController::class, 'roomChangeAction']);
+        Route::get('action/{id}', [RoomChangeController::class, 'roomChangeAction']);
+        Route::post('change', [RoomChangeController::class, 'roomChange'])->name('office.room.change');
     });
 
     //vacating card
@@ -388,14 +384,23 @@ Route::prefix('office')->group(function () {
         Route::get('action', [HostelVacateOfficeController::class, 'vacateAction']);
     });
 
+    //rent and bills
+    Route::prefix('bills')->group(function () {
+
+        Route::get('/', [FeeAndPaymentController::class, 'showBills']);
+        Route::get('room-rent', [FeeAndPaymentController::class, 'roomRentDetails']);
+        Route::get('water-electric', [FeeAndPaymentController::class, 'waterElectricBills']);
+    });
+
     //fee card
     Route::prefix('fee')->group(function () {
 
-        Route::get('card', [FeeAndPaymentController::class, 'showCard']);
-        Route::get('room-rent', [FeeAndPaymentController::class, 'roomRentDetails']);
         //fee maintanance
         Route::get('maintanance', [FeeAndPaymentController::class, 'feeMaintanance']);
-        Route::get('updation', [FeeAndPaymentController::class, 'feeUpdate']);
+        Route::get('add', [FeeAndPaymentController::class, 'showFeeAdd']);
+        Route::post('add',[FeeAndPaymentController::class,'feeAdd'])->name('office.fee.add');
+        Route::get('edit/{id}', [FeeAndPaymentController::class, 'showFeeEdit']);
+        Route::post('edit', [FeeAndPaymentController::class, 'feeEdit'])->name('office.fee.edit');
     });
 
     //rules and notice card
@@ -417,10 +422,10 @@ Route::prefix('office')->group(function () {
 
 
 /*
----------------------warden-----------------------
+---------------------warden---------------------------------------------------------------------------------------------------------------------------
 */
 
-Route::prefix('warden')->group(function () {
+Route::middleware(['auth:admins'])->prefix('warden')->group(function () {
     //dashboard
     Route::get('index', [WardenDashboardController::class, 'showWardenDashboard']);
     //profile
@@ -502,11 +507,11 @@ Route::prefix('warden')->group(function () {
 
 
 /* 
-----------------Registrar staff-----------------------
+----------------Registrar staff-------------------------------------------------------------------------------------------------------------------------
 */
 
 
-Route::prefix('registrar')->group(function () {
+Route::middleware(['auth:admins'])->prefix('registrar')->group(function () {
     //dashboard
     Route::get('index', [RegistrarDashboardController::class, 'showRegistrarDashboard']);
     //profile
@@ -611,10 +616,10 @@ Route::prefix('registrar')->group(function () {
 
 
 /* 
-----------------Superuser staff-----------------------
+----------------Superuser staff------------------------------------------------------------------------------------------------------------------------------
 */
 
-Route::prefix('super-user')->group(function () {
+Route::middleware(['auth:admins'])->prefix('super-user')->group(function () {
 
     //dashboard
     Route::get('index', [SuperUserDashboardController::class, 'showSuperUserDashboard']);
@@ -624,6 +629,12 @@ Route::prefix('super-user')->group(function () {
 
     //student card
     Route::prefix('student')->group(function () {
+
+        Route::get('filter', [StudentDetailsAdminController::class, 'filterStudents']);
+        Route::get('blocks/{hostelId}', [StudentDetailsAdminController::class, 'getBlocks']);
+        Route::post('students', [StudentDetailsAdminController::class, 'getStudents']);
+
+
 
         Route::get('card', [StudentDetailsAdminController::class, 'showCard']);
         Route::get('all', [StudentDetailsAdminController::class, 'showAllStudentDetails']);
@@ -715,79 +726,79 @@ Route::prefix('super-user')->group(function () {
 });
 
 
-/*---------mess dashboard-----------
-*/
-Route::prefix('mess')->group(function () {
-    //dashboard
-    Route::get('index', [DashboardMessController::class, 'showMessDashboard']);
-    //profile
-    Route::get('my-profile', [ProfileMessController::class, 'showMessProfile']);
+// /*---------mess dashboard-----------
+// */
+// Route::middleware(['auth:admins'])->prefix('mess')->group(function () {
+//     //dashboard
+//     Route::get('index', [DashboardMessController::class, 'showMessDashboard']);
+//     //profile
+//     Route::get('my-profile', [ProfileMessController::class, 'showMessProfile']);
 
-    Route::prefix('take-attendance')->group(function () {
-        Route::get('/', function () {
-            return view('admins.mess.attendance_take');
-        });
-        Route::get('scan-qr', function () {
-            return view('admins.mess.scan_qr');
-        });
-        Route::get('profile', function () {
-            return view('admins.mess.attendance_profile');
-        });
-    });
+//     Route::prefix('take-attendance')->group(function () {
+//         Route::get('/', function () {
+//             return view('admins.mess.attendance_take');
+//         });
+//         Route::get('scan-qr', function () {
+//             return view('admins.mess.scan_qr');
+//         });
+//         Route::get('profile', function () {
+//             return view('admins.mess.attendance_profile');
+//         });
+//     });
 
-    Route::prefix('mess-menu')->group(function () {
-        Route::get('/', function () {
-            return view('admins.mess.menu');
-        });
-        Route::get('view', function () {
-            return view('admins.mess.menu_view');
-        });
-        Route::get('edit', function () {
-            return view('admins.mess.menu_edit');
-        });
-    });
+//     Route::prefix('mess-menu')->group(function () {
+//         Route::get('/', function () {
+//             return view('admins.mess.menu');
+//         });
+//         Route::get('view', function () {
+//             return view('admins.mess.menu_view');
+//         });
+//         Route::get('edit', function () {
+//             return view('admins.mess.menu_edit');
+//         });
+//     });
 
-    Route::prefix('purchase-and-bills')->group(function () {
-        Route::get('/', function () {
-            return view('admins.mess.bill_and_purchase');
-        });
-        Route::get('purchase-bill', function () {
-            return view('admins.mess.bill_purchase');
-        });
-        Route::get('student-bill', function () {
-            return view('admins.mess.bill_student');
-        });
-    });
+//     Route::prefix('purchase-and-bills')->group(function () {
+//         Route::get('/', function () {
+//             return view('admins.mess.bill_and_purchase');
+//         });
+//         Route::get('purchase-bill', function () {
+//             return view('admins.mess.bill_purchase');
+//         });
+//         Route::get('student-bill', function () {
+//             return view('admins.mess.bill_student');
+//         });
+//     });
 
-    Route::get('view-attendance', function () {
-        return view('admins.mess.attendance_view');
-    });
-    Route::prefix('rules-and-notices')->group(function () {
-        Route::get('/', function () {
-            return view('admins.mess.rules_notices_card');
-        });
-        Route::get('rules-list', function () {
-            return view('admins.mess.rules_list');
-        });
-        Route::get('rules-add', function () {
-            return view('admins.mess.rules_add');
-        });
-        Route::get('notices-list', function () {
-            return view('admins.mess.notice_list');
-        });
-        Route::get('notices-add', function () {
-            return view('admins.mess.notice_add');
-        });
-    });
+//     Route::get('view-attendance', function () {
+//         return view('admins.mess.attendance_view');
+//     });
+//     Route::prefix('rules-and-notices')->group(function () {
+//         Route::get('/', function () {
+//             return view('admins.mess.rules_notices_card');
+//         });
+//         Route::get('rules-list', function () {
+//             return view('admins.mess.rules_list');
+//         });
+//         Route::get('rules-add', function () {
+//             return view('admins.mess.rules_add');
+//         });
+//         Route::get('notices-list', function () {
+//             return view('admins.mess.notice_list');
+//         });
+//         Route::get('notices-add', function () {
+//             return view('admins.mess.notice_add');
+//         });
+//     });
 
-    //Complaints
-    Route::prefix('complaints')->group(function () {
+//     //Complaints
+//     Route::prefix('complaints')->group(function () {
 
-        Route::get('card', [ComplaintsMessController::class, 'showComplaintsCard']);
-        Route::get('new', [ComplaintsMessController::class, 'showNewComplaints']);
-        Route::get('view/{id}', [ComplaintsMessController::class, 'showComplaintView']);
-        Route::post('edit', [ComplaintsMessController::class, 'complaintEdit'])->name('mess.complaint.action');
-        Route::get('solved', [ComplaintsMessController::class, 'showSolvedComplaints']);
-        Route::get('all', [ComplaintsMessController::class, 'showAllComplaints']);
-    });
-});
+//         Route::get('card', [ComplaintsMessController::class, 'showComplaintsCard']);
+//         Route::get('new', [ComplaintsMessController::class, 'showNewComplaints']);
+//         Route::get('view/{id}', [ComplaintsMessController::class, 'showComplaintView']);
+//         Route::post('edit', [ComplaintsMessController::class, 'complaintEdit'])->name('mess.complaint.action');
+//         Route::get('solved', [ComplaintsMessController::class, 'showSolvedComplaints']);
+//         Route::get('all', [ComplaintsMessController::class, 'showAllComplaints']);
+//     });
+// });

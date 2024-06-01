@@ -13,15 +13,26 @@ class UserProfileController extends Controller
     public function showStudentProfile() {
         $student = Auth::guard('students')->user();
         $course = Course::with('department')->where('course_id', $student->course)->first();
-        $bed = Bed::with('room.block.hostel')->findOrFail($student->bed_id);
-        return view('users.profile', compact('student', 'course', 'bed'));
+        if($student->bed_id === Null) {
+            $bed = Null;
+            return view('users.profile', compact('student', 'course', 'bed'));
+        } else {
+            $bed = Bed::with('room.block.hostel')->findOrFail($student->bed_id);
+            return view('users.profile', compact('student', 'course', 'bed'));
+        }
+        
     }
 
     public function showMoreDetails() {
 
         $student = Auth::guard('students')->user();
         $course = Course::with('department')->where('course_id', $student->course)->first();
-        $bed = Bed::with('room.block.hostel')->findOrFail($student->bed_id);
-        return view('users.profileDetailed', compact('student', 'course', 'bed'));
+        if($student->bed_id === Null) {
+            $bed = Null;
+            return view('users.profileDetailed', compact('student', 'course', 'bed'));
+        } else {
+            $bed = Bed::with('room.block.hostel')->findOrFail($student->bed_id);
+            return view('users.profileDetailed', compact('student', 'course', 'bed'));
+        }
     }
 }

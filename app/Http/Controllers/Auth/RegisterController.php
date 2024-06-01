@@ -73,6 +73,6 @@ class RegisterController extends Controller
 
         Student::create($userData);
 
-        return redirect('user-login');
+        return redirect('login');
     }
 }

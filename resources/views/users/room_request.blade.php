@@ -5,6 +5,11 @@
 <section id="contact" class="contact sign-sec">
   <h2 class="sign-sec  text-center">Request room</h2><hr>
   <div class="container">
+    @if (session('message'))
+      <div class="alert alert-success">
+        {{ session('message') }}
+      </div>
+    @endif
     @if (is_Null($roomAlloc))
       <div class="row mt-1  justify-content-center">
         <div class="col-lg-8 mt-2 mb-5 mt-lg-2 pt-2 pt-3">

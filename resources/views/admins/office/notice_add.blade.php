@@ -18,13 +18,17 @@
       <div class="row">
 
           <div class="col-lg-10"> 
-
               <div class="card">
-                  <div class="card-body">
+                    @if (session('message'))
+                        <div class="alert alert-success">
+                            {{ session('message') }}
+                        </div>
+                    @endif
+                    <div class="card-body">
                       <h5 class="card-title">New Notice</h5>
           
                       <!-- Notice Add Form -->
-                      <form class="row g-3" method="POST" action="{{route('office.notice.add')}}" enctype="multipart/form-data">
+                        <form class="row g-3" method="POST" action="{{route('office.notice.add')}}" enctype="multipart/form-data">
                           @csrf
                           <div class="row mb-3">
                               <label for="noticeSubject" class="col-md-4 col-lg-3 col-form-label">Notice Subject</label>

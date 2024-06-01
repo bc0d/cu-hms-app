@@ -7,36 +7,36 @@
   <div class="container col-lg-8 hi mt-5  align-items-center py-5">
     <div class="row gy-4 gy-lg-0">
       <div class="col-12">
-        <h1 class="heading">ROOM RENT PAYMENT STATUS</h1>
-        <table class="table">
-            <thead>
-              <tr>
-                <th>Month</th>
-                <th>Bill Amount</th>
-                <th>Status</th>
-                
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td data-label="Month">april</td>
-                <td data-label="Bill Amount">70</td>
-                <td data-label="Status">paid</a></td> 
-              </tr>
-              <tr>
-                <td data-label="Month">may</td>
-                <td data-label="Bill Amount">70</td>
-                <td data-label="Status">not paid</a></td> 
-              </tr>
-              <tr>
-                <td data-label="Month">june</td>
-                <td data-label="Bill Amount">70</td>
-                <td data-label="Status">not paid</a></td> 
-              </tr>
-              
-              <!-- Add more rows as needed -->
-            </tbody>
-        </table>
+        @if(is_Null($rents))
+          <p>No data to display</p>
+        @else
+          <table class="table">
+              <thead>
+                <tr>
+                  <th>Month</th>
+                  <th>Rent Amount</th>
+                  <th>Payment Status</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                @foreach ($rents as $rent)
+                  @php
+                      $createdAt = \Carbon\Carbon::parse($rent->month_of_fee);
+                      $monthYear = $createdAt->format('F Y'); // 'F' for full month name, 'Y' for four-digit year
+                  @endphp
+                  <tr>
+                    <td data-label="Month">{{ $monthYear }}</td>
+                    <td data-label="Rent Amount">{{ $rent->amount }}</td>
+                    <td data-label="Payment Status">{{ $rent->paid_status }}</td>
+                    @if($rent->paid_status === 'Pending')
+                      <td><a href="{{ url('user/bills-payments/rent/'.$rent->room_rent_id) }}">Pay Now</a></td> 
+                    @endif
+                  </tr>
+                @endforeach
+              </tbody>
+          </table>
+        @endif
       </div>
     </div>
   </div>

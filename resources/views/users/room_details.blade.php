@@ -38,6 +38,16 @@
                                         <div class="p-2">{{ $bed->bed_name }}</div>
                                     </div>
                                 </div>  
+                                <div class="row">
+                                    <ul class="list-group list-group-flush mb-1 mt-3">
+                                        <li class="list-group-item d-flex justify-content-start align-items-start">
+                                            <a href="{{ url('user/bills-payments/rent-card') }}" class=" d-flex justify-content-end">Room Rent</a>
+                                          </li>
+                                          <li class="list-group-item d-flex justify-content-start align-items-start">
+                                            <a href="{{ url('user/bills-payments/bills-card') }}" class=" d-flex justify-content-end">Water and Electric Bill</a>
+                                          </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>

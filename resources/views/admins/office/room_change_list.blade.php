@@ -19,66 +19,38 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Requests</h5>
-
-            <!-- Table with stripped rows -->
-            <table class="table datatable table-hover">
-              <thead>
-                <tr>
-                  <th>
-                    <b>N</b>ame
-                  </th>
-                  <th>Adnission No</th>
-                  <th>Current block</th>
-                  <th>Current room</th>
-                  <th>request block and room</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Unity Pugh</td>
-                  <td>9958</td>
-                  <td>Curicó</td>
-                  <td>2005/02/11</td>
-                  <td>block a room 3</td>
-                  <td><a href={{ url('office/room-change/action') }} class="btn btn-primary btn-sm">view</a></td>
-                </tr>
-                <tr>
-                  <td>Theodore Duran</td>
-                  <td>8971</td>
-                  <td>Dhanbad</td>
-                  <td>1999/04/07</td>
-                  <td>block a room 3</td>
-                  <td><a href={{ url('office/room-change/action') }} class="btn btn-primary btn-sm">view</a></td>
-                </tr>
-                <tr>
-                  <td>Kylie Bishop</td>
-                  <td>3147</td>
-                  <td>Norman</td>
-                  <td>2005/09/08</td>
-                  <td>block a room 3</td>
-                  <td><a href={{ url('office/room-change/action') }} class="btn btn-primary btn-sm">view</a></td>
-                </tr>
-                <tr>
-                  <td>Willow Gilliam</td>
-                  <td>3497</td>
-                  <td>Amqui</td>
-                  <td>2009/29/11</td>
-                  <td>block a room 3</td>
-                  <td><a href={{ url('office/room-change/action') }} class="btn btn-primary btn-sm">view</a></td>
-                </tr>
-                <tr>
-                  <td>Blossom Dickerson</td>
-                  <td>5018</td>
-                  <td>Kempten</td>
-                  <td>2006/11/09</td>
-                  <td>block a room 3</td>
-                  <td><a href={{ url('office/room-change/action') }} class="btn btn-primary btn-sm">view</a></td>
-                </tr>
-              </tbody>
-            </table>
-            <!-- End Table with stripped rows -->
-
+            @if($roomChange->isEmpty())
+              <p>No requests</p>
+            @else
+              <!-- Table with stripped rows -->
+              <table class="table datatable table-hover">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Current block</th>
+                    <th>Current room</th>
+                    <th>Request</th>
+                    <th>Reason</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach ($roomChange as $item)
+                    <tr>
+                      <td>{{ $item->student->first_name }} {{ $item->student->second_name }}</td>
+                      <td>{{ $item->room->block->block_name }}</td>
+                      <td>{{ $item->room->room_name }}</td>
+                      <td>{{ $item->request }}</td>
+                      <td>{{ $item->reason }}</td>
+                      <td><a href={{ url('office/room-change/action/'.$item->roomchange_id) }} class="btn btn-primary btn-sm">view</a></td>
+                    </tr>
+                  @endforeach
+                  
+                  
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+            @endif
           </div>
         </div>
 

@@ -22,7 +22,11 @@
               <div class="card-body pt-3">
   
                   <div class="tab-pane profile-edit pt-3" id="profile-edit">
-  
+                    @if (session('message'))
+                      <div class="alert alert-success">
+                        {{ session('message') }}
+                      </div>
+                    @else
                     <!-- Profile Edit Form -->
                     <div>
                       <div class="row mb-3">
@@ -143,7 +147,7 @@
                         <button type="submit" class="btn btn-success">Submit</button>
                       </div>
                     </form><!-- End Profile Edit Form -->
-  
+                    @endif
                   </div>
   
 

@@ -38,6 +38,7 @@ class Student extends Model implements Authenticatable
         'reservation',
         'image',
         'bed_id',
+        'status',
     ];
 
     protected $hidden = [

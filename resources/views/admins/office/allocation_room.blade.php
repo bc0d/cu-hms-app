@@ -21,7 +21,7 @@
                 <div class="card-body pt-3">
                     <div class="tab-pane profile-edit pt-3" id="profile-edit">
                         <!-- Profile Data -->
-                        <div>
+                          <div>
                             <div class="row mb-3">
                               <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                               <div class="col-md-8 col-lg-9">
@@ -118,6 +118,12 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Room Allocation</h5>
+
+                        @if (session('message'))
+                          <div class="alert alert-success">
+                            {{ session('message') }}
+                          </div>
+                        @endif
             
                         <!-- Room allocation Form -->
                         <form action="{{ route('office.room.allocate') }}" method="POST" class="row g-3">
