@@ -38,7 +38,7 @@ class RuleAndNoticeController extends Controller
         $rules->description = $data['ruleDesc'];
         $rules->updatedby = $admin->admin_id;
         $rules->save();
-        return redirect()->intended('office/rules/rule-list');
+        return redirect()->back()->with('message', 'Rule added successfully');
     }
     
     public function removeRule(Request $request) {
@@ -46,7 +46,7 @@ class RuleAndNoticeController extends Controller
         $data = $request->validate(['ruleId' => 'required|string']);
         $rule = Rule::findOrFail($data['ruleId']);
         $rule->delete();
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Rule removed successfully');
     
     }
 
@@ -82,7 +82,7 @@ class RuleAndNoticeController extends Controller
         $notice->path = $path.$filename;
         $notice->save();
 
-        return redirect('office/rules/notice-list');
+        return redirect()->back()->with('message', 'Notice added successfully');
 
     }
    
@@ -92,7 +92,7 @@ class RuleAndNoticeController extends Controller
         $data = $request->validate(['noticeId' => 'required|string']);
         $notice = Notice::findOrFail($data['noticeId']);
         $notice->delete();
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Notice removed successfully');
     
     }
 

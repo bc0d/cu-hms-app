@@ -21,7 +21,7 @@
           <div class="card info-card req-view-card">
             <div class="card-body">
               <h5 class="card-title">Room rent</h5>
-              <a class="d-flex align-items-center" href={{ url('office/fee/room-rent') }}>
+              <a class="d-flex align-items-center" href={{ url('office/bills/room-rent') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-file-spreadsheet"></i>
                 </div>
@@ -38,7 +38,7 @@
           <div class="card info-card req-view-card">
             <div class="card-body">
               <h5 class="card-title">Water&Electricity</h5>
-              <a class="d-flex align-items-center" href={{ url('office/fee/room-rent') }}>
+              <a class="d-flex align-items-center" href={{ url('office/bills/water-electric') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-file-spreadsheet"></i>
                 </div>

@@ -6,23 +6,37 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Fee;
+use App\Models\Hostel;
+use App\Models\RoomRent;
+use App\Models\WaterElectricBill;
 
 class FeeAndPaymentController extends Controller
 {
-    public function showCard() {
+    public function showBills() {
         $admin = Auth::guard('admins')->user();
-        return view('admins.office.fees_card', compact('admin'));
+        return view('admins.office.bills_card', compact('admin'));
     }
 
     public function roomRentDetails() {
         $admin = Auth::guard('admins')->user();
-        return view('admins.office.fee_details', compact('admin'));
+        $rents = RoomRent::with('student')->whereHas('student', function ($query) {
+            $query->where('status', 'Active');
+        })->get();
+        return view('admins.office.bill_room', compact('admin', 'rents'));
+    }
+
+    public function waterElectricBills() {
+        $admin = Auth::guard('admins')->user();
+        $bills = WaterElectricBill::with('student')->whereHas('student', function ($query) {
+            $query->where('status', 'Active');
+        })->get();
+        return view('admins.office.bill_waterelectric', compact('admin', 'bills'));
     }
 
     //fee maintanance
     public function feeMaintanance() {
         $admin = Auth::guard('admins')->user();
-        $fees = Fee::all();
+        $fees = Fee::with('hostel')->get(); 
         return view('admins.office.fee_maintanance', compact('admin','fees'));
     }
 
@@ -30,10 +44,6 @@ class FeeAndPaymentController extends Controller
         $admin = Auth::guard('admins')->user();
         return view('admins.office.fee_add',compact('admin'));
     }
-
-
-
-  
 
     public function feeAdd(Request $request) {
 
@@ -57,4 +67,28 @@ class FeeAndPaymentController extends Controller
         return redirect()->back()->with('message', 'Fee added successfully');
     }
 
+
+    public function showFeeEdit($id) {
+
+        $admin = Auth::guard('admins')->user();
+        $fee = Fee::findOrFail($id);
+
+        return view('admins.office.fee_edit', compact('admin', 'fee'));
+    }
+
+    public function feeEdit(Request $request) {
+
+        $admin = Auth::guard('admins')->user();
+        $data = $request->validate([
+            'id' => 'required',
+            'newrate' => 'required',
+        ]);
+
+        $fee = Fee::findOrFail($data['id'])->first();
+        $fee->amount = $data['newrate'];
+        $fee->updatedby = $admin->admin_id;
+        $fee->save();
+
+        return redirect()->back()->with('message', 'Amount updated');
+    }
 }

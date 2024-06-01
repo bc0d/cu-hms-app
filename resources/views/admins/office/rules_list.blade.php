@@ -17,7 +17,12 @@
         <div class="row">
         <div class="col-lg-10">
             <div class="card">
-                <div class="card-body">
+                @if (session('message'))
+                    <div class="alert alert-success">
+                        {{ session('message') }}
+                    </div>
+                @endif
+                            <div class="card-body">
                     <h5 class="card-title">Rules</h5>
                     <a href={{ url('office/rules/rule-add') }} class="btn btn-success btn-sm mb-3">Add New</a>
                     <!-- List group with Advanced Contents -->

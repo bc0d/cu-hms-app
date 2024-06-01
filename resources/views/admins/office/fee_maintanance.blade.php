@@ -23,9 +23,7 @@
               <table class="table table-bordered">
                 <thead>
                   <tr>
-
-                    <th scope="col">Fee_id</th>
-                    <th scope="col">Hostel_id</th>
+                    <th scope="col">Hostel</th>
                     <th scope='col'>Room_type</th>
                     <th scope='col'>Fee_item</th>
                     <th scope='col'>Amount</th>
@@ -36,17 +34,14 @@
                 </thead>
                 <tbody>
                   @foreach ($fees as $item)
-                      
-                 
-                  <tr>
-                    <td>{{$item->fee_id}}</td>
-                    <td>{{$item->hostel_id}}</td>
-                    <td>{{$item->room_type}}</td>
-                    <td>{{$item->fee_name}}</td>
-                    <td>{{$item->amount}}</td>
-                    <td>{{$item->updated_at->toDateString()}}</td>
-                    <tr><a href=""></a></tr>
-                  </tr>
+                    <tr>
+                      <td>{{$item->hostel->hostel_name}}</td>
+                      <td>{{$item->room_type}}</td>
+                      <td>{{$item->fee_name}}</td>
+                      <td>{{$item->amount}}</td>
+                      <td>{{$item->updated_at->toDateString()}}</td>
+                      <td><a class="btn btn-primary btn-sm" href="{{ url('office/fee/edit/'.$item->fee_id) }}">Edit</a></td>
+                    </tr>
                   @endforeach
                   
                 </tbody>
