@@ -16,84 +16,16 @@
     <!-- Left side columns -->
     <div class="col-lg-10">
       <div class="row">
-        <!--Allocation  Card -->
-        <div class="col-xxl-6 col-md-6">
-          <div class="card info-card req-add-card">
-            <div class="card-body">
-              <h5 class="card-title">Admission Request</h5>
-              <a class="d-flex align-items-center" href={{ url('registrar/admission/request') }}>
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-clipboard-plus"></i>
-                </div>
-                <div class="ps-3">
-                  <h6>view</h6>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- End Allocation Card -->
-        <!-- Vacating Card -->
-        <div class="col-xxl-6 col-md-6">
-          <div class="card info-card req-rmv-card"> 
-            <div class="card-body">
-              <h5 class="card-title">Vacating Requests</h5>
-              <a class="d-flex align-items-center" href={{ url('registrar/vacate/request') }}>
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-clipboard-minus"></i>
-                </div>
-                <div class="ps-3">
-                  <h6>view</h6>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- End Vacating Card -->
-      </div>
-      <div class="row">
-        <!-- Room Allocation Card -->
-        <div class="col-xxl-6 col-md-6">
-          <div class="card info-card req-add-card">
-            <div class="card-body">
-              <h5 class="card-title">Room Allocation</span></h5>
-              <a class="d-flex align-items-center" href={{ url('registrar/room/allocation-list') }}>
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-house-add"></i>
-                </div>
-                <div class="ps-3">
-                  <h6>view</h6>         
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- End Room allocation Card -->
-        <!-- Room change Card -->
-        <div class="col-xxl-6 col-md-6">
-          <div class="card info-card req-view-card">
-            <div class="card-body">
-              <h5 class="card-title">Room Change Request</span></h5>
-              <a class="d-flex align-items-center" href={{ url('registrar/room-change/request') }}>
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-house-gear"></i>
-                </div>
-                <div class="ps-3">
-                  <h6>view</h6>         
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- End Room change Card -->
-      </div>
-      <div class="row">
+
+
+
+
         <!-- Student Card -->
         <div class="col-xxl-6 col-md-6">
           <div class="card info-card req-view-card">
             <div class="card-body">
               <h5 class="card-title">Students Details</span></h5>
-              <a class="d-flex align-items-center" href={{ url('registrar/student/card') }}>
+              <a class="d-flex align-items-center" href={{ url('registrar/student/filter') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-file-spreadsheet"></i>
                 </div>
@@ -110,7 +42,7 @@
           <div class="card info-card req-view-card">
             <div class="card-body">
               <h5 class="card-title">Room Details</h5>
-              <a class="d-flex align-items-center" href={{ url('registrar/room-details/card') }}>
+              <a class="d-flex align-items-center" href={{ url('registrar/room-details/filter') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-file-spreadsheet"></i>
                 </div>
@@ -122,8 +54,7 @@
           </div>
         </div>
         <!-- End Room Card -->
-      </div>
-      <div class="row">
+
         <!-- Bills Card -->
         <div class="col-xxl-6 col-md-6">
           <div class="card info-card req-view-card">
@@ -158,8 +89,7 @@
           </div>
         </div>
         <!-- End Fee Card -->
-      </div>
-      <div class="row">
+
         <!-- Rules Card -->
         <div class="col-xxl-6 col-md-6">
           <div class="card info-card req-warn-card">
@@ -195,25 +125,8 @@
           </div>
         </div>
         <!-- End Complaints Card -->
-      </div>
-      <div class="row">
-        <!-- Mess Card -->
-        <div class="col-xxl-6 col-md-6">
-          <div class="card info-card req-view-card">
-            <div class="card-body">
-              <h5 class="card-title">Mess Details</span></h5>
-              <a class="d-flex align-items-center" href="">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-file-spreadsheet"></i>
-                </div>
-                <div class="ps-3">
-                  <h6>view</h6>         
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- End Mess Card -->
+
+      
       </div>
     </div>
     <!-- End Left side columns -->

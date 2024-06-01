@@ -52,7 +52,7 @@
                     return;
                 }
                 $.ajax({
-                    url: '/super-user/student/blocks/' + hostelId,
+                    url: '/registrar/student/blocks/' + hostelId,
                     method: 'GET',
                     success: function(blocks) {
                         $('#blocksContainer').empty();
@@ -94,7 +94,7 @@
                 }
 
                 $.ajax({
-                    url: '/super-user/student/students',
+                    url: '/registrar/student/students',
                     method: 'POST',
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -138,8 +138,7 @@
                                 <td>${student.bed.room.block.block_name}</td>
                                 <td>${student.bed.room.room_name}</td>
                                 <td>${student.bed.bed_name}</td>
-                                <td><a href="http://127.0.0.1:8000/super-user/student/detail/${student.student_id}" class="btn btn-primary btn-sm">view</a></td>
-                                
+                                <td><a href="http://127.0.0.1:8000/registrar/student/detail/${student.student_id}" class="btn btn-primary btn-sm">view</a></td>
                             `);
                             tbody.append(tr);
                         } else {

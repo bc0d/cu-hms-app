@@ -114,7 +114,7 @@
                                   </select>
                               </div>
                               <input type="hidden" name="student_id" value="{{ $roomChange->student->student_id }}">
-                              <input type="hidden" name="req_id" value="{{ $roomChange->roomchange_id }}">
+                              <input type="hidden" name="rmchg_id" value="{{ $roomChange->roomchange_id }}">
                               <div class="text-center">
                                   <button type="reset" class="btn btn-secondary">Reset</button>
                                   <button type="submit" class="btn btn-primary">Assign</button>
