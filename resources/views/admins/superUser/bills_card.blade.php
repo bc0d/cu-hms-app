@@ -3,11 +3,11 @@
 @section('content')
 
   <div class="pagetitle">
-    <h1>SuperUser</h1>
+  <h1>SuperUser</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href={{ url('super-user/index')}}>Home</a></li>
-        <li class="breadcrumb-item active">Rules&amp;Notices</li>
+        <li class="breadcrumb-item active">Fees Details</li>
       </ol>
     </nav>
   </div>
@@ -16,12 +16,12 @@
     <!-- Left side columns -->
     <div class="col-lg-10">
       <div class="row">
-        <!--Rule  Card -->
+        <!--Rent  Card -->
         <div class="col-xxl-6 col-md-6">
           <div class="card info-card req-view-card">
             <div class="card-body">
-              <h5 class="card-title">Rules</h5>
-              <a class="d-flex align-items-center" href={{ url('super-user/rules/rule-list') }}>
+              <h5 class="card-title">Room rent</h5>
+              <a class="d-flex align-items-center" href={{ url('super-user/fee/room-rent') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-file-spreadsheet"></i>
                 </div>
@@ -32,13 +32,13 @@
             </div>
           </div>
         </div>
-        <!-- End Rule Card -->
-        <!-- Notice Card -->
+        <!-- End Rent Card -->
+        <!-- End Water&Electricity Card -->
         <div class="col-xxl-6 col-md-6">
-          <div class="card info-card req-view-card"> 
+          <div class="card info-card req-view-card">
             <div class="card-body">
-              <h5 class="card-title">Notice</h5>
-              <a class="d-flex align-items-center" href={{ url('super-user/rules/notice-list') }}>
+              <h5 class="card-title">Water&Electricity</h5>
+              <a class="d-flex align-items-center" href={{ url('super-user/fee/water-electric') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-file-spreadsheet"></i>
                 </div>
@@ -49,7 +49,9 @@
             </div>
           </div>
         </div>
-        <!-- End Notice Card -->
+        <!-- End Water and Electricity Card -->
+
+
       </div>
     </div>
     <!-- End Left side columns -->
