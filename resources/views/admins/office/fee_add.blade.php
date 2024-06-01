@@ -34,8 +34,11 @@
                                 <label for="hostel_id" class="form-label">Hostel Name</label>
                                 <select name="hostel_id" id="hostel_id" class="form-select">
                                   <option selected>--select--</option>
-                                  <option value="1">1.Mens Hostel</option>
-                                  <option value="2">2.Ladies Hostel</option>
+                                  @if($admin->access === 'mens')
+                                    <option value="1">1.Mens Hostel</option>
+                                  @else
+                                    <option value="2">2.Ladies Hostel</option>
+                                  @endif
                                 </select>
                             </div>
                             <div class="col-md-8">
@@ -54,9 +57,12 @@
                                   <option value="water/electric bill">Water & Electricity</option>
                                 </select>
                             </div>
-                            <div class="col-md-8">
-                                <label for="amt" class="form-label">Amount</label>
-                                <input type="text" class="form-input" name="amt" id="amt"></input>
+                            <div class="col-md-8 mb-3">
+                                <label for="amt" class="col-md-4 col-lg-3 col-form-label">Amount</label>
+                                <div class="col-md-8 col-lg-6">
+                                  <input type="text" class="form-control" name="amt" id="amt"></input>
+                                </div>
+                                
                             </div>
                             <div class="text-center">
                                 <button type="reset" class="btn btn-secondary">Reset</button>

@@ -17,9 +17,7 @@
         <hr>
         <ul style="overflow-y: hidden; ">
           <li style="overflow: hidden; padding-bottom:0px; margin-bottom:0px;">
-            <a href="j.pdf"><span class="greater-than" style="margin-right: 8px;">&gt;</span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum</a>
+            <a href="j.pdf"><span class="greater-than" style="margin-right: 8px;">&gt;</span>At present, furniture, fan, light etc. that are non-functional or non-existent in the hostel rooms, the hostel executive committee should be informed if the situation arises.</a>
             <p>20/02/2023</p>
           </li>
         </ul>

@@ -314,13 +314,30 @@ Route::middleware(['auth:admins'])->prefix('office')->group(function () {
         Route::get('card', [StudentDetailsController::class, 'showCard']);
         Route::get('all', [StudentDetailsController::class, 'showAllStudentDetails']);
         Route::get('detail/{id}', [StudentDetailsController::class, 'showStudentProfileDetails']);
+        //
+
+        //student filtering
+        Route::get('filter', [StudentDetailsController::class, 'filterStudents']);
+        Route::get('blocks/{hostelId}', [StudentDetailsController::class, 'getBlocks']);
+        Route::post('students', [StudentDetailsController::class, 'getStudents']);
     });
 
     //rooms details card
-    Route::prefix('room-details')->group(function () {
+    Route::prefix('rooms')->group(function () {
 
         Route::get('card', [RoomDetailsController::class, 'showCard']);
         Route::get('list', [RoomDetailsController::class, 'roomDetails']);
+
+        //room fltering
+        Route::get('filter', [RoomDetailsController::class, 'index']);
+
+        Route::get('/hostels/{hostelId}/blocks', [RoomDetailsController::class, 'getBlocks']);
+        Route::get('/blocks/{blockIds}/rooms', [RoomDetailsController::class, 'getRooms']);
+        Route::get('/rooms/{roomIds}/beds', [RoomDetailsController::class, 'getBeds']);
+        Route::get('/filter-beds', [RoomDetailsController::class, 'filterBeds']);
+        Route::get('/blocks/all', [RoomDetailsController::class, 'getAllBlocks']);
+
+
     });
 
     //Complaints
@@ -356,7 +373,8 @@ Route::middleware(['auth:admins'])->prefix('office')->group(function () {
 
 
         Route::get('request', [RoomChangeController::class, 'showRoomChangeReq']);
-        Route::get('action', [RoomChangeController::class, 'roomChangeAction']);
+        Route::get('action/{id}', [RoomChangeController::class, 'roomChangeAction']);
+        Route::post('change', [RoomChangeController::class, 'roomChange'])->name('office.room.change');
     });
 
     //vacating card
@@ -366,15 +384,23 @@ Route::middleware(['auth:admins'])->prefix('office')->group(function () {
         Route::get('action', [HostelVacateOfficeController::class, 'vacateAction']);
     });
 
+    //rent and bills
+    Route::prefix('bills')->group(function () {
+
+        Route::get('/', [FeeAndPaymentController::class, 'showBills']);
+        Route::get('room-rent', [FeeAndPaymentController::class, 'roomRentDetails']);
+        Route::get('water-electric', [FeeAndPaymentController::class, 'waterElectricBills']);
+    });
+
     //fee card
     Route::prefix('fee')->group(function () {
 
-        Route::get('card', [FeeAndPaymentController::class, 'showCard']);
-        Route::get('room-rent', [FeeAndPaymentController::class, 'roomRentDetails']);
         //fee maintanance
         Route::get('maintanance', [FeeAndPaymentController::class, 'feeMaintanance']);
         Route::get('add', [FeeAndPaymentController::class, 'showFeeAdd']);
         Route::post('add',[FeeAndPaymentController::class,'feeAdd'])->name('office.fee.add');
+        Route::get('edit/{id}', [FeeAndPaymentController::class, 'showFeeEdit']);
+        Route::post('edit', [FeeAndPaymentController::class, 'feeEdit'])->name('office.fee.edit');
     });
 
     //rules and notice card

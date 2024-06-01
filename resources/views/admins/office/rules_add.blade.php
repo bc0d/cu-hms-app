@@ -20,6 +20,11 @@
             <div class="col-lg-10"> 
 
                 <div class="card">
+                    @if (session('message'))
+                        <div class="alert alert-success">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                     <div class="card-body">
                         <h5 class="card-title">New Rule</h5>
             
@@ -33,7 +38,7 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="ruleDesc" class="col-md-4 col-lg-3 col-form-label">Rule Description</label>
+                                <label for="ruleDesc" class="col-md-4 col-lg-3 col-form-label" >Rule Description</label>
                                 <div class="col-md-8 col-lg-9">
                                     <textarea name="ruleDesc" class="form-control" id="ruleDescNew" rows="5"></textarea>
                                 </div>
