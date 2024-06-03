@@ -101,7 +101,7 @@ class UserRoomController extends Controller
             'student_id' => $data['student_id'],
             'purpose' => $data['purpose'],
             'amount' => $data['amount'],
-            'callback_url' => route('room.callback'),
+            'purpose_id' => 'Nil'
         ];
 
         session()->flash('paymentDetails', $paymentDetails);

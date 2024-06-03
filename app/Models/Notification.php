@@ -12,6 +12,8 @@ class Notification extends Model
         'student_id',
         'notification',
         'status',
+        'category',
+        'cat_id',
     ];
 
 }

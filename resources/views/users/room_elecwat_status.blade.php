@@ -30,7 +30,7 @@
                     <td data-label="Bill Amount">{{ $bill->amount }}</td>
                     <td data-label="Payment Status">{{ $bill->paid_status }}</td>
                     @if($bill->paid_status === 'Pending')
-                      <td><a href="{{ url('user/bills-payments/bill/'.$bill->waterelectric_bill_id) }}">Pay Now</a></td> 
+                      <td><a href="{{ url('user/bills-payments/bill/'.$bill->waterelectric_bills_id) }}">Pay Now</a></td> 
                     @endif
                   </tr>
                 @endforeach
