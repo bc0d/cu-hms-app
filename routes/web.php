@@ -58,7 +58,7 @@ use App\Http\Controllers\Office\RuleAndNoticeController;
 
 use App\Http\Controllers\Warden\WardenDashboardController;
 use App\Http\Controllers\Warden\WardenProfileController;
-use App\Http\Controllers\Warden\WardenComplaintsController;
+//use App\Http\Controllers\Warden\WardenComplaintsController;
 use App\Http\Controllers\Warden\WardenStudentDetailsController;
 use App\Http\Controllers\Warden\HostelAdmissionWardenController;
 use App\Http\Controllers\Warden\HostelVacateWardenController;
@@ -352,11 +352,11 @@ Route::middleware(['auth:admins'])->prefix('office')->group(function () {
     });
 
     //admission card
-    Route::prefix('admission')->group(function () {
+   // Route::prefix('admission')->group(function () {
 
-        Route::get('request', [HostelAdmissionOfficeController::class, 'showRequests']);
-        Route::get('action', [HostelAdmissionOfficeController::class, 'admissionAction']);
-    });
+        //Route::get('request', [HostelAdmissionOfficeController::class, 'showRequests']);
+       // Route::get('action', [HostelAdmissionOfficeController::class, 'admissionAction']);
+   // });
 
     //room allocation
     Route::prefix('room')->group(function () {
@@ -526,9 +526,9 @@ Route::middleware(['auth:admins'])->prefix('registrar')->group(function () {
         Route::post('students', [StudentDetailsAdminController::class, 'getStudents']);
 
 
-        Route::get('card', [StudentDetailsRegistrarController::class, 'showCard']);
-        Route::get('all', [StudentDetailsRegistrarController::class, 'showAllStudentDetails']);
-        Route::get('detail/{id}', [StudentDetailsRegistrarController::class, 'showStudentProfileDetails']);
+       // Route::get('card', [StudentDetailsRegistrarController::class, 'showCard']);
+       // Route::get('all', [StudentDetailsRegistrarController::class, 'showAllStudentDetails']);
+       // Route::get('detail/{id}', [StudentDetailsRegistrarController::class, 'showStudentProfileDetails']);
     });
 
     //rooms details card
@@ -565,36 +565,36 @@ Route::middleware(['auth:admins'])->prefix('registrar')->group(function () {
     });
 
     //admission card
-    Route::prefix('admission')->group(function () {
+   // Route::prefix('admission')->group(function () {
 
-        Route::get('request', [HostelAdmissionRegistrarController::class, 'showRequests']);
-        Route::get('action', [HostelAdmissionRegistrarController::class, 'admissionAction']);
-    });
+        //Route::get('request', [HostelAdmissionRegistrarController::class, 'showRequests']);
+       // Route::get('action', [HostelAdmissionRegistrarController::class, 'admissionAction']);
+   // });
 
 
     //room allocation
-    Route::prefix('room')->group(function () {
+   // Route::prefix('room')->group(function () {
 
-        Route::get('allocation-list', [RoomAllocationRegistrarController::class, 'showRoomAllocList']);
-        Route::get('allocation', [RoomAllocationRegistrarController::class, 'roomAllocAction']);
-    });
+       // Route::get('allocation-list', [RoomAllocationRegistrarController::class, 'showRoomAllocList']);
+       // Route::get('allocation', [RoomAllocationRegistrarController::class, 'roomAllocAction']);
+   // });
 
 
     //room channge card
-    Route::prefix('room-change')->group(function () {
+    //Route::prefix('room-change')->group(function () {
 
 
-        Route::get('request', [RoomChangeRegistrarController::class, 'showRoomChangeReq']);
-        Route::get('action', [RoomChangeRegistrarController::class, 'roomChangeAction']);
-    });
+        //Route::get('request', [RoomChangeRegistrarController::class, 'showRoomChangeReq']);
+        //Route::get('action', [RoomChangeRegistrarController::class, 'roomChangeAction']);
+    //});
 
 
     //vacating card
-    Route::prefix('vacate')->group(function () {
+   // Route::prefix('vacate')->group(function () {
 
-        Route::get('request', [HostelVacateRegistrarController::class, 'showRequests']);
-        Route::get('action', [HostelVacateRegistrarController::class, 'vacateAction']);
-    });
+        //Route::get('request', [HostelVacateRegistrarController::class, 'showRequests']);
+       // Route::get('action', [HostelVacateRegistrarController::class, 'vacateAction']);
+   // });
 
 
     //fee card
