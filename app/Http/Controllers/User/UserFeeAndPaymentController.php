@@ -17,7 +17,7 @@ class UserFeeAndPaymentController extends Controller
     public function showBills() {
 
         $student = Auth::guard('students')->user();
-        return view('users.bills_and_payments', compact('student'));
+        return view('users.room_bills_and_payments', compact('student'));
     } 
 
     public function viewRents() {
@@ -31,7 +31,7 @@ class UserFeeAndPaymentController extends Controller
 
         $student = Auth::guard('students')->user();
         $rents = RoomRent::findOrFail($id);
-
+        return view('users.room_rent_payment', compact('student', 'rents'));
     }
 
     public function viewBills() {

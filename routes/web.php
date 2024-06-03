@@ -24,6 +24,7 @@ use App\Http\Controllers\SuperUser\RoomDetailsAdminController;
 use App\Http\Controllers\SuperUser\ComplaintsAdminController;
 use App\Http\Controllers\SuperUser\FeeAndPaymentAdminController;
 use App\Http\Controllers\SuperUser\RuleAndNoticeAdminController;
+use App\Http\Controllers\SuperUser\AdminManageController;
 
 
 use App\Http\Controllers\Registrar\RegistrarDashboardController;
@@ -58,7 +59,7 @@ use App\Http\Controllers\Office\RuleAndNoticeController;
 
 use App\Http\Controllers\Warden\WardenDashboardController;
 use App\Http\Controllers\Warden\WardenProfileController;
-use App\Http\Controllers\Warden\WardenComplaintsController;
+//use App\Http\Controllers\Warden\WardenComplaintsController;
 use App\Http\Controllers\Warden\WardenStudentDetailsController;
 use App\Http\Controllers\Warden\HostelAdmissionWardenController;
 use App\Http\Controllers\Warden\HostelVacateWardenController;
@@ -134,6 +135,7 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
     //index
     Route::get('dashboard', [UserDashboardController::class, 'showDashboard'])->name('dashboard');
 
+    //profile------------------------------->okay
     Route::prefix('profile')->group(function () {
 
         //profile
@@ -150,7 +152,7 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
     //     return view('users.qr');
     // });
 
-    //complaint
+    //complaint--------------------------------->okay
     Route::prefix('complaints')->group(function () {
 
         //complaint-index
@@ -207,7 +209,7 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
         });
     });//end of room
     
-    //rules and notice card
+    //rules and notice card --------------------->okay
     Route::prefix('rules')->group(function () {
 
         Route::get('card', [UserRulesAndNoticeController::class, 'showCard']);
@@ -226,7 +228,7 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
         Route::get('pay', [UserFeeAndPaymentController::class, 'showPayment']);
     });
 
-    //feedback
+    //feedback ------------------->okay
     Route::prefix('feedback')->group(function () {
 
         Route::get('/', [UserFeedbackController::class, 'showFeedback']);
@@ -674,11 +676,12 @@ Route::middleware(['auth:admins'])->prefix('super-user')->group(function () {
         Route::get('all', [ComplaintsAdminController::class, 'showAllComplaints']);
     });
 
-    //admission card
+    //admission card ------------------->okay
     Route::prefix('admission')->group(function () {
 
         Route::get('request', [HostelAdmissionAdminController::class, 'showRequests']);
-        Route::get('action', [HostelAdmissionAdminController::class, 'admissionAction']);
+        Route::get('action/{id}', [HostelAdmissionAdminController::class, 'admissionAction']);
+        Route::post('action', [HostelAdmissionAdminController::class. 'admissionApproval'])->name('superuser.admission.approve');
     });
 
     //room allocation --------------->okay
@@ -734,6 +737,16 @@ Route::middleware(['auth:admins'])->prefix('super-user')->group(function () {
         Route::get('notice-add', [RuleAndNoticeAdminController::class, 'viewAddNotice']);
         Route::post('notice-Add', [RuleAndNoticeAdminController::class, 'addNotice'])->name('super-user.notice.add');
         Route::post('remove-notice', [RuleAndNoticeAdminController::class, 'removeNotice'])->name('super-user.notice.remove');
+    });
+
+    //managing admins ---------------->okay
+    Route::prefix('admins')->group(function () {
+
+        Route::get('manage', [AdminManageController::class, 'showAdmins']);
+        Route::get('view-admin/{id}', [AdminManageController::class, 'viewAdmin']);
+        Route::get('add', [AdminManageController::class, 'viewAdminAdd']);
+        Route::post('add', [AdminManageController::class, 'adminAdd'])->name('superuser.admin.add');
+        Route::post('remove', [AdminManageController::class, 'removeAdmin'])->name('superuser.admin.remove');
     });
 });
 

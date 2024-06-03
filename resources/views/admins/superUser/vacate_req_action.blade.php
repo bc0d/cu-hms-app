@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="pagetitle">
-        <h1>Student Aproval</h1>
+        <h1>SuperUser</h1>
         <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href={{ url('super-user/index') }}>Home</a></li>

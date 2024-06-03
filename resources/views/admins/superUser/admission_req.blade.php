@@ -3,7 +3,7 @@
 @section('content')
    
   <div class="pagetitle">
-    <h1>Admission Requests</h1>
+    <h1>SuperUser</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href={{ url('super-user/index')}}>Home</a></li>
@@ -20,65 +20,38 @@
           <div class="card-body">
             <h5 class="card-title">Requests</h5>
 
-            <!-- Table with stripped rows -->
-            <table class="table datatable table-hover">
-              <thead>
-                <tr>
-                  <th>
-                    <b>N</b>ame
-                  </th>
-                  <th>Admission No</th>
-                  <th>Department</th>
-                  <th data-type="date" data-format="YYYY/DD/MM">Date</th>
-                  <th>Room Id</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Unity Pugh</td>
-                  <td>9958</td>
-                  <td>Computer Science</td>
-                  <td>2005/02/11</td>
-                  <td>001</td>
-                  <td><a href={{ url('super-user/admission/action') }} class="btn btn-primary btn-sm">view</a></td>
-
-                </tr>
-                <tr>
-                  <td>Theodore Duran</td>
-                  <td>8971</td>
-                  <td>Statistics</td>
-                  <td>1999/04/07</td>
-                  <td>002</td>
-                  <td><a href={{ url('super-user/admission/action') }} class="btn btn-primary btn-sm">view</a></td>
-                </tr>
-                <tr>
-                  <td>Kylie Bishop</td>
-                  <td>3147</td>
-                  <td>Maths</td>
-                  <td>2005/09/08</td>
-                  <td>003</td>
-                  <td><a href={{ url('super-user/admission/action') }} class="btn btn-primary btn-sm">view</a></td>
-                </tr>
-                <tr>
-                  <td>Willow Gilliam</td>
-                  <td>3497</td>
-                  <td>Amqui</td>
-                  <td>2009/29/11</td>
-                  <td>004</td>
-                  <td><a href={{ url('super-user/admission/action') }} class="btn btn-primary btn-sm">view</a></td>
-                </tr>
-                <tr>
-                  <td>Blossom Dickerson</td>
-                  <td>5018</td>
-                  <td>Kempten</td>
-                  <td>2006/11/09</td>
-                  <td>005</td>
-                  <td><a href={{ url('super-user/admission/action') }} class="btn btn-primary btn-sm">view</a></td>
-                </tr>
-              </tbody>
-            </table>
-            <!-- End Table with stripped rows -->
+            @if ($roomReq->isEmpty())
+                <p>There is no Requests!</p>
+            @else
+              <!-- Table with stripped rows -->
+              <table class="table datatable table-hover">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Adnission No</th>
+                    <th>District</th>
+                    <th>Department</th>
+                    <th data-type="date" data-format="YYYY/DD/MM">Request Date</th>
+                    <th>Distance</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach ($roomReq as $req)
+                    <tr>
+                      <td>{{ $req->student->first_name }} {{ $req->student->second_name }}</td>
+                      <td>{{ $req->student->adm_no }}</td>
+                      <td>{{ $req->student->district }}</td>
+                      <td>{{ $req->dep_verification_status }}</td>
+                      <td>{{ $req->created_at->toDateString() }}</td>
+                      <td>{{ $req->student->distance }} km</td>
+                      <td><a href={{ url('super-user/admission/action/' . $req->allocate_req_id) }} class="btn btn-primary btn-sm">view</a></td>
+                    </tr>
+                  @endforeach
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+            @endif
 
           </div>
         </div>

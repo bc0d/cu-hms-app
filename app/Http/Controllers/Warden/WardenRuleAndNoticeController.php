@@ -17,8 +17,14 @@ class WardenRuleAndNoticeController extends Controller
 
     public function viewRules() {
         $admin = Auth::guard('admins')->user();
-        $rules = Rule::all();
-        return view('admins.warden.rules_list',compact('admin','rules'));
+        if($admin->access === 'mens') {
+            $rules = Rule::where('hostel_id', '1')->get();
+            return view('admins.warden.rules_list',compact('admin','rules'));
+        } else {
+            $rules = Rule::where('hostel_id', '2')->get();
+            return view('admins.warden.rules_list',compact('admin','rules'));
+        }
+        
     }
 
     public function viewAddRule() {
@@ -36,8 +42,13 @@ class WardenRuleAndNoticeController extends Controller
         $rules->title = $data['ruleName'];
         $rules->description = $data['ruleDesc'];
         $rules->updatedby = $admin->admin_id;
+        if($admin->access === 'mens') {
+            $rules->hostel_id = '1';
+        } else {
+            $rules->hostel_id = '2';
+        }
         $rules->save();
-        return redirect()->intended('warden/rules/rule-list');
+        return redirect()->back()->with('message', 'Rule added');
     }
     
     public function removeRule(Request $request) {
@@ -45,14 +56,19 @@ class WardenRuleAndNoticeController extends Controller
         $data = $request->validate(['ruleId' => 'required|string']);
         $rule = Rule::findOrFail($data['ruleId']);
         $rule->delete();
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Rule removed');
     
     }
 
     public function viewNotices() {
         $admin = Auth::guard('admins')->user();
-        $notices = Notice::all();
-        return view('admins.warden.notice_list',compact('admin','notices'));
+        if($admin->access === 'mens') {
+            $notices = Notice::where('hostel_id', '1')->get();
+            return view('admins.warden.notice_list',compact('admin','notices'));
+        } else {
+            $notices = Notice::where('hostel_id', '2')->get();
+            return view('admins.warden.notice_list',compact('admin','notices'));
+        }
     }
 
     public function viewAddNotice() {
@@ -67,8 +83,6 @@ class WardenRuleAndNoticeController extends Controller
             'noticeSubject' => 'required|string',
 
         ]);
-    
-
         $file = $request->file('newNotice');
         $extension = $file->getClientOriginalExtension();
         $filename = time().'-'.$noticeData['noticeSubject'].'.'.$extension;
@@ -79,9 +93,14 @@ class WardenRuleAndNoticeController extends Controller
         $notice->title = $request->noticeSubject;
         $notice->publishedby = $admin->admin_id;
         $notice->path = $path.$filename;
+        if($admin->access === 'mens') {
+            $notice->hostel_id = '1';
+        } else {
+            $notice->hostel_id = '2';
+        }
         $notice->save();
 
-        return redirect('warden/rules/notice-list');
+        return redirect()->back()->with('message', 'Notice added');
 
     }
    
@@ -91,7 +110,7 @@ class WardenRuleAndNoticeController extends Controller
         $data = $request->validate(['noticeId' => 'required|string']);
         $notice = Notice::findOrFail($data['noticeId']);
         $notice->delete();
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Notice removed');
     
     }
 }

@@ -50,6 +50,6 @@ class HostelAdmissionWardenController extends Controller
         $roomReq->warden_verification_status = $data['status'];
         $roomReq->save();
 
-        return redirect('warden/admission/request');
+        return redirect()->back()->with('message', 'Approved');
     }
 }
