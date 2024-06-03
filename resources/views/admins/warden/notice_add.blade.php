@@ -22,6 +22,11 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">New Notice</h5>
+                        @if (session('message'))
+                            <div class="alert alert-success">
+                            {{ session('message') }}
+                            </div>
+                        @endif
             
                         <!-- Notice Add Form -->
                         <form class="row g-3" method="POST" action="{{route('warden.notice.add')}}" enctype="multipart/form-data">

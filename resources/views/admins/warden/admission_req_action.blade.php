@@ -19,6 +19,11 @@
             <div class="col-lg-10">
   
               <div class="card">
+                @if (session('message'))
+                  <div class="alert alert-success">
+                    {{ session('message') }}
+                  </div>
+                @endif
                 <div class="card-body pt-3">
   
                   <div class="tab-pane profile-edit pt-3" id="profile-edit">

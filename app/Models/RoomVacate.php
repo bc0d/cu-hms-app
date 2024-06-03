@@ -10,6 +10,16 @@ class RoomVacate extends Model
 
     protected $primaryKey = 'vacate_req_id';
 
+    protected $fillable = [
+        'student_id',
+        'department_id',
+        'payment_status',
+        'vacate_status',
+        'office_status',
+        'warden_status',
+        'hod_status',
+    ];
+
     public function student() {
         return $this->belongsTo(Student::class, 'student_id', 'student_id');
     }

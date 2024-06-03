@@ -34,4 +34,12 @@ class PaymentGatewayController extends Controller
 
         return redirect()->back();
     }
+    
+    public function showPayMonthly() {
+
+        $paymentDetails = session('paymentDetails');
+
+        // Use $paymentDetails as needed
+         return view('payment.payment_gateway', compact('paymentDetails'));
+    }
 }

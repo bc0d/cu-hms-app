@@ -22,6 +22,11 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">New Rule</h5>
+                        @if (session('message'))
+                            <div class="alert alert-success">
+                            {{ session('message') }}
+                            </div>
+                        @endif
             
                         <!-- Rule Add Form -->
                         <form class="row g-3" action="{{ route('warden.rules.add') }}" method="POST">

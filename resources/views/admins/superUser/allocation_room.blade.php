@@ -3,10 +3,10 @@
 @section('content')
 
     <div class="pagetitle">
-    <h1>Office</h1>
+    <h1>SuperUser</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href={{ url('office/index') }}>Home</a></li>
+          <li class="breadcrumb-item"><a href={{ url('super-user/index') }}>Home</a></li>
           <li class="breadcrumb-item">Room Allocation List</li>
           <li class="breadcrumb-item active">Room Allocation</li>
         </ol>
