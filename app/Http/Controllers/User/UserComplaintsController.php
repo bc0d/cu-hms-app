@@ -24,7 +24,7 @@ class UserComplaintsController extends Controller
     public function registerComplaint(Request $request) {
 
         $student = Auth::guard('students')->user();
-
+        $stud = Student::with('bed.room.block.hostel')->where('student_id', $student->student_id)->first();
         $formData = $request->validate([
             'complaint_cat' => 'required|string',
             'complaint_msg' => 'required|string',
@@ -36,6 +36,11 @@ class UserComplaintsController extends Controller
         $complaint->complaint = $formData['complaint_msg'];
         $complaint->status = 'Pending'; // default status
         $complaint->comment = 'Not Reviewed';
+        if($stud->hostel_id === '1') {
+            $complaint->hostel_id = '1';
+        } else {
+            $complaint->hostel_id = '2';
+        }
         $complaint->save();
 
         return redirect()->back()->with('message', 'Complaint added successfully');

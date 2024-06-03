@@ -3,7 +3,7 @@
 @section('content')
    
   <div class="pagetitle">
-    <h1>Vacating Requests</h1>
+    <h1>SuperUser</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href={{ url('super-user/index')}}>Home</a></li>
@@ -19,65 +19,44 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Requests</h5>
+            @if ($vacateReqs->isEmpty())
+                <p>No requests to show</p>
+            @else
+                <!-- Table with stripped rows -->
+                <table class="table datatable table-hover">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Department</th>
+                      <th>Payment status</th>
+                      <th>Hostel status</th>
+                      <th>Warden status</th>
+                      <th>HOD status</th>
+                      <th data-type="date" data-format="YYYY/DD/MM">Date</th>
+                      <th>Payment Status</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($vacateReqs as $item)
+                      <tr>
+                        <td>{{ $item->student->first_name }} {{ $item->student->second_name }}</td>
+                        <td>{{ $item->department->department_name }}</td>
+                        <td>{{ $item->payment_status }}</td>
+                        <td>{{ $item->office_status }}</td>
+                        <td>{{ $item->warden_status }}</td>
+                        <td>{{ $item->hod__status }}</td>
+                        <td><span class="badge bg-success">No Due</span></td>
+                        <td><a href={{ url('super-user/vacate/action') }} class="btn btn-primary btn-sm">view</a></td>
+                      </tr>
+                    @endforeach
+                    
+                  </tbody>
+                </table>
+                <!-- End Table with stripped rows -->
+            @endif
 
-            <!-- Table with stripped rows -->
-            <table class="table datatable table-hover">
-              <thead>
-                <tr>
-                  <th>
-                    <b>N</b>ame
-                  </th>
-                  <th>Adnission No</th>
-                  <th>City</th>
-                  <th data-type="date" data-format="YYYY/DD/MM">Date</th>
-                  <th>Payment Status</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Unity Pugh</td>
-                  <td>9958</td>
-                  <td>Curicó</td>
-                  <td>2005/02/11</td>
-                  <td><span class="badge bg-success">No Due</span></td>
-                  <td><a href={{ url('super-user/vacate/action') }} class="btn btn-primary btn-sm">view</a></td>
-                </tr>
-                <tr>
-                  <td>Theodore Duran</td>
-                  <td>8971</td>
-                  <td>Dhanbad</td>
-                  <td>1999/04/07</td>
-                  <td><span class="badge bg-danger">Due</span></td>
-                  <td><a href={{ url('super-user/vacate/action') }} class="btn btn-primary btn-sm">view</a></td>
-                </tr>
-                <tr>
-                  <td>Kylie Bishop</td>
-                  <td>3147</td>
-                  <td>Norman</td>
-                  <td>2005/09/08</td>
-                  <td><span class="badge bg-danger">Due</span></td>
-                  <td><a href={{ url('super-user/vacate/action') }} class="btn btn-primary btn-sm">view</a></td>
-                </tr>
-                <tr>
-                  <td>Willow Gilliam</td>
-                  <td>3497</td>
-                  <td>Amqui</td>
-                  <td>2009/29/11</td>
-                  <td><span class="badge bg-danger">Due</span></td>
-                  <td><a href={{ url('super-user/vacate/action') }} class="btn btn-primary btn-sm">view</a></td>
-                </tr>
-                <tr>
-                  <td>Blossom Dickerson</td>
-                  <td>5018</td>
-                  <td>Kempten</td>
-                  <td>2006/11/09</td>
-                  <td><span class="badge bg-success">No Due</span></td>
-                  <td><a href={{ url('super-user/vacate/action') }} class="btn btn-primary btn-sm">view</a></td>
-                </tr>
-              </tbody>
-            </table>
-            <!-- End Table with stripped rows -->
+            
 
           </div>
         </div>

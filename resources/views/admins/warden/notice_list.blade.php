@@ -20,6 +20,11 @@
                 <div class="card-body">
                     <h5 class="card-title">Notices</h5>
                     <a href={{ url('warden/rules/notice-add') }} class="btn btn-success btn-sm mb-3">Add New</a>
+                    @if (session('message'))
+                        <div class="alert alert-success">
+                        {{ session('message') }}
+                        </div>
+                    @endif
                     <!-- List group with Advanced Contents -->
                     @if ($notices->isEmpty())
                      <p>No Notices to display</p>

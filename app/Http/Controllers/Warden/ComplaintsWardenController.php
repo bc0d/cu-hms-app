@@ -18,22 +18,50 @@ class ComplaintsWardenController extends Controller
     public function showNewComplaints() {
 
         $admin = Auth::guard('admins')->user();
-        $complaints = Complaint::where('status', 'Pending')->get();
-        return view('admins.warden.complaints_list', compact('admin', 'complaints'));
+        if($admin->access === 'mens') {
+            $complaints = Complaint::where([
+                ['status', 'Pending'],
+                ['hostel_id', '1']
+            ])->get();
+            return view('admins.warden.complaints_list', compact('admin', 'complaints'));
+        } else {
+            $complaints = Complaint::where([
+                ['status', 'Pending'],
+                ['hostel_id', '2']
+            ])->get();
+            return view('admins.warden.complaints_list', compact('admin', 'complaints'));
+        }
+        
     }
 
     public function showSolvedComplaints() {
 
         $admin = Auth::guard('admins')->user();
-        $complaints = Complaint::where('status', 'Solved')->get();
-        return view('admins.warden.complaints_list', compact('admin', 'complaints'));
+        if($admin->access === 'mens') {
+            $complaints = Complaint::where([
+                ['status', 'Solved'],
+                ['hostel_id', '1']
+            ])->get();
+            return view('admins.warden.complaints_list', compact('admin', 'complaints'));
+        } else {
+            $complaints = Complaint::where([
+                ['status', 'Solved'],
+                ['hostel_id', '2']
+            ])->get();
+            return view('admins.warden.complaints_list', compact('admin', 'complaints'));
+        }
     }
 
     public function showAllComplaints() {
 
         $admin = Auth::guard('admins')->user();
-        $complaints = Complaint::all();
-        return view('admins.warden.complaints_list', compact('admin', 'complaints'));
+        if($admin->access === 'mens') {
+            $complaints = Complaint::where('hostel_id', '1')->get();
+            return view('admins.warden.complaints_list', compact('admin', 'complaints'));
+        } else {
+            $complaints = Complaint::where('hostel_id', '2')->get();
+            return view('admins.warden.complaints_list', compact('admin', 'complaints'));
+        }
     }
 
     public function showComplaintView($id) {
