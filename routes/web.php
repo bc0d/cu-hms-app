@@ -227,9 +227,10 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
         Route::get('card', [UserFeeAndPaymentController::class, 'showBills']);
         Route::get('rent-card', [UserFeeAndPaymentController::class, 'viewRents']);
         Route::get('rent/{id}', [UserFeeAndPaymentController::class, 'payRoomRent']);
+        Route::post('rent-pay', [UserFeeAndPaymentController::class, 'callPaymentGatewayRent'])->name('bills.rent.pay');
         Route::get('bills-card', [UserFeeAndPaymentController::class, 'viewBills']);
         Route::get('bill/{id}', [UserFeeAndPaymentController::class, 'payWaterElectricBill']);
-        Route::get('pay', [UserFeeAndPaymentController::class, 'showPayment']);
+        Route::post('bill-pay', [UserFeeAndPaymentController::class, 'callPaymentGatewayBills'])->name('bills.bill.pay');
     });
 
     //feedback ------------------->okay
