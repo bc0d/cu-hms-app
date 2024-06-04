@@ -19,7 +19,7 @@ class StudentDetailsHodController extends Controller
         $admin = Auth::guard('admins')->user();
         $department = Department::where('hod', $admin->admin_id)->first();
         $students = Student::where('department', $department->department_id)->get();
-        return view('admins.hod.students_list', compact('admin', 'department', 'students'));
+        return view('admins.hod.students_list', compact('admin','department','students'));
     }
     public function showProfileDetails($id)
     {

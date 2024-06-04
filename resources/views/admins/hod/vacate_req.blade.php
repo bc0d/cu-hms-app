@@ -27,7 +27,7 @@
                   <th>
                     <b>N</b>ame
                   </th>
-                  <th>Adnission No</th>
+                  <th>Admission No</th>
                   <th>City</th>
                   <th data-type="date" data-format="YYYY/DD/MM">Date</th>
                   <th>Status</th>
