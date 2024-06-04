@@ -3,10 +3,10 @@
 @section('content')
     
     <div class="pagetitle">
-        <h1>Students List</h1>
+        <h1>Registrar</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('super-user/index') }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('registrar/index') }}">Home</a></li>
                 <li class="breadcrumb-item">Students List</li>
             </ol>
         </nav>
