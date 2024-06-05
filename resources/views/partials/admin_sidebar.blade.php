@@ -60,7 +60,7 @@
         </li><!-- End Fee Maintanance Nav -->
         <li class="nav-item">
           <a class="nav-link collapsed" href={{ url('office/rules/card') }}>
-            <i class="bi bi-file-spreadsheet"></i>
+            <i class="bi bi-pencil-square"></i>
             <span>Rules & Notices</span>
           </a>
         </li><!-- End Fee Maintanance Nav -->
@@ -110,16 +110,10 @@
         </li><!-- End Fee Maintanance Nav -->
         <li class="nav-item">
           <a class="nav-link collapsed" href={{ url('warden/rules/card') }}>
-            <i class="bi bi-file-spreadsheet"></i>
+            <i class="bi bi-pencil-square"></i>
             <span>Rules & Notices</span>
           </a>
         </li><!-- End Rules & Notices Nav -->
-        <li class="nav-item">
-          <a class="nav-link collapsed" href={{ url('warden/complaints/card') }}>
-            <i class="bi bi-person-exclamation"></i>
-            <span>Complaints</span>
-          </a>
-        </li><!-- End Complaints Nav -->
         <li class="nav-item">
           <a class="nav-link collapsed" href={{ url('warden/complaints/card') }}>
             <i class="bi bi-person-exclamation"></i>
@@ -192,8 +186,14 @@
           </a>
         </li><!-- End Fee Maintanance Nav -->
         <li class="nav-item">
+          <a class="nav-link collapsed" href={{ url('registrar/admins/manage') }}>
+            <i class="bi bi-pencil-square"></i>
+            <span>Manage Admins</span>
+          </a>
+        </li><!-- manage admin Nav -->
+        <li class="nav-item">
           <a class="nav-link collapsed" href={{ url('registrar/rules/card') }}>
-            <i class="bi bi-file-spreadsheet"></i>
+            <i class="bi bi-pencil-square"></i>
             <span>Rules & Notices</span>
           </a>
         </li><!-- End Rules & Notices Nav -->
@@ -213,7 +213,7 @@
         </li><!-- End Dashboard Nav -->
         <li class="nav-item">
           <a class="nav-link collapsed" href={{ url('super-user/admission/request') }}>
-            <i class="bi bi-house-add"></i>
+            <i class="bi bi-clipboard-plus"></i>
             <span>Admission Request</span>
           </a>
         </li><!-- End Admission Request Nav -->
@@ -225,8 +225,8 @@
         </li><!-- End Vacating Requests Nav -->
         <li class="nav-item">
           <a class="nav-link collapsed" href={{ url('super-user/room/allocation-list') }}>
-            <i class="bi bi-file-spreadsheet"></i>
-            <span>Room Details</span>
+            <i class="bi bi-house-add"></i>
+            <span>Room Allocation</span>
           </a>
         </li><!-- End Room Details Nav -->
         <li class="nav-item">
@@ -260,15 +260,22 @@
           </a>
         </li><!-- End Fee Maintanance Nav -->
         <li class="nav-item">
+          <a class="nav-link collapsed" href={{ url('super-user/admins/manage') }}
+          >
+            <i class="bi bi-pencil-square"></i>
+            <span>Manage Admins</span>
+          </a>
+        </li><!-- End Fee Maintanance Nav -->
+        <li class="nav-item">
           <a class="nav-link collapsed" href={{ url('super-user/rules/card') }}
           >
-            <i class="bi bi-file-spreadsheet"></i>
+            <i class="bi bi-pencil-square"></i>
             <span>Rules & Notices</span>
           </a>
         </li><!-- End Fee Maintanance Nav -->
         <li class="nav-item">
           <a class="nav-link collapsed" href={{ url('super-user/complaints/card') }}>
-            <i class="bi bi-file-spreadsheet"></i>
+            <i class="bi bi-person-exclamation"></i>
             <span>Complaints</span>
           </a>
         </li><!-- End Fee Maintanance Nav -->

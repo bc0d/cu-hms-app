@@ -14,7 +14,7 @@ class RegistrarAdminManageController extends Controller
     public function showAdmins() {
 
         $admin = Auth::guard('admins')->user();
-        $admins = Admin::all();
+        $admins = Admin::whereNotIn('designation', ['registrar','admin'])->get();
         return view('admins.registrar.admins_list', compact('admin', 'admins'));
 
     }
