@@ -20,8 +20,12 @@ class Department extends Model
         return $this->hasMany(RoomAllocation::class, 'department_id');
     }
     
-    public function courses()
+    public function course()
     {
         return $this->hasMany(Course::class, 'department_id', 'department_id');
+    }
+    public function student() {
+
+        return $this->hasMany(Student::class, 'department_id', 'department');
     }
 }
