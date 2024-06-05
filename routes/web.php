@@ -210,6 +210,7 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
         Route::prefix('vacate')->group(function () {
 
             Route::get('/', [UserRoomController::class, 'showRoomVacate']);
+            Route::post('request', [UserRoomController::class, 'roomVacate'])->name('room.vacate.request');
         });
     });//end of room
     
@@ -221,7 +222,7 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
         Route::get('notice-list', [UserRulesAndNoticeController::class, 'viewNotices']);
     });
 
-    //fee-pending-status
+    //fee-pending-status --------------->okay
     Route::prefix('bills-payments')->group(function() {
 
         Route::get('card', [UserFeeAndPaymentController::class, 'showBills']);
@@ -293,7 +294,7 @@ Route::middleware(['auth:admins'])->prefix('hod')->group(function () {
     Route::prefix('vacate')->group(function () {
 
         Route::get('request', [HostelVacateHodController::class, 'showRequests']);
-        Route::get('action', [HostelVacateHodController::class, 'vacateAction']);
+        Route::get('action/{id}', [HostelVacateHodController::class, 'vacateAction']);
     });
 
     Route::prefix('students-details')->group(function () {
@@ -388,7 +389,8 @@ Route::middleware(['auth:admins'])->prefix('office')->group(function () {
     Route::prefix('vacate')->group(function () {
 
         Route::get('request', [HostelVacateOfficeController::class, 'showRequests']);
-        Route::get('action', [HostelVacateOfficeController::class, 'vacateAction']);
+        Route::get('action/{id}', [HostelVacateOfficeController::class, 'vacateAction']);
+        Route::post('action', [HostelVacateOfficeController::class, 'approveVacate'])->name('office.vacate.approve');
     });
 
     //rent and bills
@@ -458,7 +460,8 @@ Route::middleware(['auth:admins'])->prefix('warden')->group(function () {
     Route::prefix('vacate')->group(function () {
 
         Route::get('request', [HostelVacateWardenController::class, 'showRequests']);
-        Route::get('action', [HostelVacateWardenController::class, 'vacateAction']);
+        Route::get('action/{id}', [HostelVacateWardenController::class, 'vacateAction']);
+        Route::post('approve', [HostelVacateWardenController::class, 'approveVacating'])->name('warden.vacate.approve');
     });
 
     //rooms details card

@@ -6,10 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Department;
 use App\Models\RoomAllocation;
+use App\Models\RoomVacate;
 use App\Models\FeeDetail;
 use App\Models\Bed;
 use App\Models\Transaction;
 use App\Models\RoomChange;
+use App\Models\RoomRent;
+use App\Models\WaterElectricBill;
 use Illuminate\Http\Request;
 
 class UserRoomController extends Controller
@@ -135,8 +138,41 @@ class UserRoomController extends Controller
 
     public function showRoomVacate() {
 
-        $student = Auth::guard('students')->user();
-        return view('users.room_vacate', compact('student'));
+        $student = Auth::guard('students')->user(); 
+        $vacateReq = RoomVacate::where('student_id', $student->student_id)->first();
+        $rentStatus = RoomRent::where([
+            ['student_id', $student->student_id],
+            ['paid_status', 'Pending']
+        ])->get();
+
+        $billStatus = WaterElectricBill::where([
+            ['student_id', $student->student_id],
+            ['paid_status', 'Pending']
+        ])->get();
+        $bed = Bed::with('room.block.hostel')
+            ->where('bed_id', $student->bed_id)
+            ->first();
+        return view('users.room_vacate_section', compact('student', 'vacateReq', 'rentStatus', 'billStatus', 'bed'));
     }
 
+    public function roomVacate(Request $request) {
+        
+        $data = $request->validate([
+            'student_id' => 'required',
+            'department' => 'required',
+        ]);
+        $student = Student::with('bed.room.block.hostel')->findOrFail($data['student_id']);
+        $hostel = $student->bed->room->block->hostel->hostel_id;
+        RoomVacate::create([
+            'student_id' => $data['student_id'],
+            'department_id' =>$data['department'],
+            'payment_status' => 'Success',
+            'vacate_status' => 'Pending',
+            'office_status' => 'Pending',
+            'warden_status' => 'Pending',
+            'hod_status' => 'Pending',
+            'hostel_id' => $hostel,
+        ]);
+        return redirect()->back()->with('message', 'Hostel vacating request registered!');
+    }
 }
