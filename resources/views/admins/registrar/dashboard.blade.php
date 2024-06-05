@@ -90,6 +90,24 @@
         </div>
         <!-- End Fee Card -->
 
+                <!-- Admins Card -->
+                <div class="col-xxl-6 col-md-6">
+          <div class="card info-card req-warn-card">
+            <div class="card-body">
+              <h5 class="card-title">Manage Admins</span></h5>
+              <a class="d-flex align-items-center" href={{ url('registrar/admins/manage') }}>
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-pencil-square"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>view</h6>         
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- End Admins Card -->
+
         <!-- Rules Card -->
         <div class="col-xxl-6 col-md-6">
           <div class="card info-card req-warn-card">

@@ -47,7 +47,7 @@
                             <input type="hidden" name="blocks" value="{{ json_encode(request('blocks')) }}">
                             <button type="submit">Export to Excel</button>
                         </form>
-                        <table border="1">
+                        <table border="1" class="table datatable table-hover">
                             <thead>
                                 <tr>
                                     <th>Name</th>
