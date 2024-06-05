@@ -50,7 +50,7 @@
                                 <label class="col-sm-2 col-form-label">Department</label>
                                 <div class="col-sm-10">
                                     <select class="form-select" name="department" required>
-                                        <option selected>--select--</option>
+                                        <option selected disabled>--select--</option>
                                         <option value="Admin">Admin</option>
                                         <option value="Mens Hostel">Mens Hostel</option>
                                         <option value="Womens Hostel">Womens Hostel</option>
@@ -65,7 +65,7 @@
                                 <label class="col-sm-2 col-form-label">Designation</label>
                                 <div class="col-sm-10">
                                     <select class="form-select" name="designation" required>
-                                        <option selected>--select--</option>
+                                        <option selected disabled>--select--</option>
                                         <option value="admin">Admin</option>
                                         <option value="hod">HOD</option>
                                         <option value="registrar">Registrar</option>
@@ -78,7 +78,7 @@
                                 <label class="col-sm-2 col-form-label">Access</label>
                                 <div class="col-sm-10">
                                     <select class="form-select" name="access" required>
-                                        <option selected>--select--</option>
+                                        <option selected disabled>--select--</option>
                                         <option value="all">All</option>
                                         <option value="mens">Mens</option>
                                         <option value="womens">Womens</option>

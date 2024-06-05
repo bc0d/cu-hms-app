@@ -15,6 +15,7 @@ use App\Http\Controllers\User\UserNotificationController;
 
 use App\Http\Controllers\SuperUser\SuperUserDashboardController;
 use App\Http\Controllers\SuperUser\SuperUserProfileController;
+//use App\Http\Controllers\SuperUser\StudentDetailsAdminController;
 use App\Http\Controllers\SuperUser\StudentDetailsAdminController;
 use App\Http\Controllers\SuperUser\HostelAdmissionAdminController;
 use App\Http\Controllers\SuperUser\HostelVacateAdminController;
@@ -29,16 +30,19 @@ use App\Http\Controllers\SuperUser\AdminManageController;
 
 use App\Http\Controllers\Registrar\RegistrarDashboardController;
 use App\Http\Controllers\Registrar\RegistrarProfileController;
-//use App\Http\Controllers\Registrar\StudentDetailsRegistrarController;
+use App\Http\Controllers\Registrar\StudentDetailsRegistrarController;
 //use App\Http\Controllers\Registrar\HostelAdmissionRegistrarController;
 //use App\Http\Controllers\Registrar\HostelVacateRegistrarController;
 //use App\Http\Controllers\Registrar\RoomAllocationRegistrarController;
 //use App\Http\Controllers\Registrar\RoomChangeRegistrarController;
+
 use App\Http\Controllers\Registrar\RoomDetailsRegistrarController;
 use App\Http\Controllers\Registrar\ComplaintsRegistrarController;
 use App\Http\Controllers\Registrar\FeeAndPaymentRegistrarController;
 use App\Http\Controllers\Registrar\RuleAndNoticeRegistrarController;
 use App\Http\Controllers\Registrar\RegistrarStudentDetailsController;
+use App\Http\Controllers\Registrar\RegistrarAdminManageController;
+
 
 
 
@@ -356,11 +360,11 @@ Route::middleware(['auth:admins'])->prefix('office')->group(function () {
     });
 
     //admission card
-    Route::prefix('admission')->group(function () {
+   // Route::prefix('admission')->group(function () {
 
-        Route::get('request', [HostelAdmissionOfficeController::class, 'showRequests']);
-        Route::get('action', [HostelAdmissionOfficeController::class, 'admissionAction']);
-    });
+        //Route::get('request', [HostelAdmissionOfficeController::class, 'showRequests']);
+       // Route::get('action', [HostelAdmissionOfficeController::class, 'admissionAction']);
+   // });
 
     //room allocation
     Route::prefix('room')->group(function () {
@@ -527,14 +531,14 @@ Route::middleware(['auth:admins'])->prefix('registrar')->group(function () {
     //student card
     Route::prefix('student')->group(function () {
 
-        Route::get('filter', [StudentDetailsAdminController::class, 'filterStudents']);
-        Route::get('blocks/{hostelId}', [StudentDetailsAdminController::class, 'getBlocks']);
-        Route::post('students', [StudentDetailsAdminController::class, 'getStudents']);
+        Route::get('filter', [StudentDetailsRegistrarController::class, 'filterStudents']);
+        Route::get('blocks/{hostelId}', [StudentDetailsRegistrarController::class, 'getBlocks']);
+        Route::post('students', [StudentDetailsRegistrarController::class, 'getStudents']);
+        Route::get('detail/{id}', [StudentDetailsRegistrarController::class, 'showProfileDetails']);
 
-
-        Route::get('card', [StudentDetailsRegistrarController::class, 'showCard']);
-        Route::get('all', [StudentDetailsRegistrarController::class, 'showAllStudentDetails']);
-        Route::get('detail/{id}', [StudentDetailsRegistrarController::class, 'showStudentProfileDetails']);
+       // Route::get('card', [StudentDetailsRegistrarController::class, 'showCard']);
+       // Route::get('all', [StudentDetailsRegistrarController::class, 'showAllStudentDetails']);
+       // Route::get('detail/{id}', [StudentDetailsRegistrarController::class, 'showStudentProfileDetails']);
     });
 
     //rooms details card
@@ -546,13 +550,13 @@ Route::middleware(['auth:admins'])->prefix('registrar')->group(function () {
 
 
         //filter
-        Route::get('filter', [RoomDetailsController::class, 'index']);
+        Route::get('filter', [RoomDetailsRegistrarController::class, 'index']);
 
-        Route::get('/hostels/{hostelId}/blocks', [RoomDetailsController::class, 'getBlocks']);
-        Route::get('/blocks/{blockIds}/rooms', [RoomDetailsController::class, 'getRooms']);
-        Route::get('/rooms/{roomIds}/beds', [RoomDetailsController::class, 'getBeds']);
-        Route::get('/filter-beds', [RoomDetailsController::class, 'filterBeds']);
-        Route::get('/blocks/all', [RoomDetailsController::class, 'getAllBlocks']);
+        Route::get('/hostels/{hostelId}/blocks', [RoomDetailsRegistrarController::class, 'getBlocks']);
+        Route::get('/blocks/{blockIds}/rooms', [RoomDetailsRegistrarController::class, 'getRooms']);
+        Route::get('/rooms/{roomIds}/beds', [RoomDetailsRegistrarController::class, 'getBeds']);
+        Route::get('/filter-beds', [RoomDetailsRegistrarController::class, 'filterBeds']);
+        Route::get('/blocks/all', [RoomDetailsRegistrarController::class, 'getAllBlocks']);
     });
 
     /*
@@ -571,36 +575,36 @@ Route::middleware(['auth:admins'])->prefix('registrar')->group(function () {
     });
 
     //admission card
-    Route::prefix('admission')->group(function () {
+   // Route::prefix('admission')->group(function () {
 
-        Route::get('request', [HostelAdmissionRegistrarController::class, 'showRequests']);
-        Route::get('action', [HostelAdmissionRegistrarController::class, 'admissionAction']);
-    });
+        //Route::get('request', [HostelAdmissionRegistrarController::class, 'showRequests']);
+       // Route::get('action', [HostelAdmissionRegistrarController::class, 'admissionAction']);
+   // });
 
 
     //room allocation
-    Route::prefix('room')->group(function () {
+   // Route::prefix('room')->group(function () {
 
-        Route::get('allocation-list', [RoomAllocationRegistrarController::class, 'showRoomAllocList']);
-        Route::get('allocation', [RoomAllocationRegistrarController::class, 'roomAllocAction']);
-    });
+       // Route::get('allocation-list', [RoomAllocationRegistrarController::class, 'showRoomAllocList']);
+       // Route::get('allocation', [RoomAllocationRegistrarController::class, 'roomAllocAction']);
+   // });
 
 
     //room channge card
-    Route::prefix('room-change')->group(function () {
+    //Route::prefix('room-change')->group(function () {
 
 
-        Route::get('request', [RoomChangeRegistrarController::class, 'showRoomChangeReq']);
-        Route::get('action', [RoomChangeRegistrarController::class, 'roomChangeAction']);
-    });
+        //Route::get('request', [RoomChangeRegistrarController::class, 'showRoomChangeReq']);
+        //Route::get('action', [RoomChangeRegistrarController::class, 'roomChangeAction']);
+    //});
 
 
     //vacating card
-    Route::prefix('vacate')->group(function () {
+   // Route::prefix('vacate')->group(function () {
 
-        Route::get('request', [HostelVacateRegistrarController::class, 'showRequests']);
-        Route::get('action', [HostelVacateRegistrarController::class, 'vacateAction']);
-    });
+        //Route::get('request', [HostelVacateRegistrarController::class, 'showRequests']);
+       // Route::get('action', [HostelVacateRegistrarController::class, 'vacateAction']);
+   // });
 
 
     //fee card
@@ -634,6 +638,16 @@ Route::middleware(['auth:admins'])->prefix('registrar')->group(function () {
     Route::post('list', [RegistrarStudentDetailsController::class, 'viewStudentDetails']);
     Route::get('blocks/{hostel}', [RegistrarStudentDetailsController::class, 'getBlocks']);
     Route::post('student-details', [RegistrarStudentDetailsController::class, 'filterStudents'])->name('registrar.student.list');
+
+        //managing admins ---------------->okay
+        Route::prefix('admins')->group(function () {
+
+            Route::get('manage', [RegistrarAdminManageController::class, 'showAdmins']);
+            Route::get('view-admin/{id}', [RegistrarAdminManageController::class, 'viewAdmin']);
+            Route::get('add', [RegistrarAdminManageController::class, 'viewAdminAdd']);
+            Route::post('add', [RegistrarAdminManageController::class, 'adminAdd'])->name('superuser.admin.add');
+            Route::post('remove', [RegistrarAdminManageController::class, 'removeAdmin'])->name('superuser.admin.remove');
+        });
 });
 
 

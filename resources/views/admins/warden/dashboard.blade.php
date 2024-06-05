@@ -160,7 +160,28 @@
         </div>
         <!-- End Complaints Card -->
       </div>
-      
+
+      <!--
+      <div class="row">
+         Mess Card -->
+        <div class="col-xxl-6 col-md-6">
+          <div class="card info-card req-view-card">
+            <div class="card-body">
+              <h5 class="card-title">Mess Details</span></h5>
+              <a class="d-flex align-items-center" href="">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-file-spreadsheet"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>view</h6>         
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+         End Mess Card 
+      </div>
+-->
     </div>
     <!-- End Left side columns -->
   </section>
