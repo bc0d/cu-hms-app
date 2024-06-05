@@ -11,6 +11,7 @@ use App\Models\Student;
 use App\Models\Fee;
 use App\Models\RoomRent;
 use App\Models\WaterElectricBill;
+use App\Models\Notification;
 use Carbon\Carbon;
 
 class CalculateMonthlyFees implements ShouldQueue
@@ -43,7 +44,7 @@ class CalculateMonthlyFees implements ShouldQueue
                 ->first();
 
             if ($roomRentFee) {
-                RoomRent::create([
+                $roomRent = RoomRent::create([
                     'fee_id' => $roomRentFee->fee_id,
                     'student_id' => $student->student_id,
                     'month_of_fee' => $currentMonth->toDateString(),
@@ -51,6 +52,14 @@ class CalculateMonthlyFees implements ShouldQueue
                     'payment_date' => null,
                     'transaction_id' => null,
                     'amount' => $roomRentFee->amount,
+                ]);
+
+                Notification::create([
+                    'student_id' => $student->student_id,
+                    'category' => 'Room Rent',
+                    'status' => 'Not seen',
+                    'notification' => 'Room rent has generated for '.$currentMonth->toDateString(),
+                    'cat_id' => $roomRent->room_rent_id,
                 ]);
             }
 
@@ -61,7 +70,7 @@ class CalculateMonthlyFees implements ShouldQueue
                 ->first();
 
             if ($waterElectricFee) {
-                WaterElectricBill::create([
+                $waterElec = WaterElectricBill::create([
                     'fee_id' => $waterElectricFee->fee_id,
                     'student_id' => $student->student_id,
                     'month_of_fee' => $currentMonth->toDateString(),
@@ -69,6 +78,14 @@ class CalculateMonthlyFees implements ShouldQueue
                     'payment_date' => null,
                     'transaction_id' => null,
                     'amount' => $waterElectricFee->amount,
+                ]);
+
+                Notification::create([
+                    'student_id' => $student->student_id,
+                    'category' => 'Water and Electric',
+                    'status' => 'Not seen',
+                    'notification' => 'Water and Electric bill has generated for '.$currentMonth->toDateString(),
+                    'cat_id' => $waterElec->waterelectric_bills_id,
                 ]);
             }
         }

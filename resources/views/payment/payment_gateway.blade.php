@@ -50,7 +50,7 @@
                 <input type="hidden" name="student_id" value="{{ $paymentDetails['student_id'] }}">
                 <input type="hidden" name="amount" value="{{ $paymentDetails['amount'] }}">
                 <input type="hidden" name="purpose" value="{{ $paymentDetails['purpose'] }}">
-                <input type="hidden" name="callback_url" value="{{ $paymentDetails['callback_url'] }}">
+                <input type="hidden" name="purpose_id" value="{{ $paymentDetails['purpose_id'] }}">
                 <button type="submit" name="status" value="Success" class="button">Complete Payment</button>
                 <button type="submit" name="status" value="Failed" class="button cancel">Cancel Payment</button>
             </form>
