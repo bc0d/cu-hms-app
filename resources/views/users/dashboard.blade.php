@@ -38,8 +38,7 @@
 <!-- ======= Services Section ======= -->
 <section id="services" class="services">
   <div class="container">
-
-    <div class="row d-flex ">
+    <div class="row d-flex">
       @if(is_Null($roomAlloc) || $roomAlloc->allocation_status === 'Pending')
         <div class="col-md-4">
           <div class="icon-box">

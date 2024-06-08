@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\RoomVacate;
 use App\Models\Department;
+use App\Models\Student;
 
 class HostelVacateHodController extends Controller
 {
@@ -21,7 +22,8 @@ class HostelVacateHodController extends Controller
         })
         ->where([
             ['office_status', 'Success'],
-            ['warden_status', 'Success']
+            ['warden_status', 'Success'],
+            ['hod_status', 'Pending']
         ])->get();
         return view('admins.hod.vacate_req', compact('admin', 'vacates'));
     }
