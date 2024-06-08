@@ -69,6 +69,9 @@
             <div class="row mt-1">
               <span class="form-group">New user?<a href="{{ url('user-signup') }}">Register</a></span>
             </div>
+            <div class="row mt-1">
+              <span class="form-group"><a href="{{ url('forgot/password') }}">Forgot Password</a></span>
+            </div>
             
           </form>
           <div class="row ">

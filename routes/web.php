@@ -12,6 +12,7 @@ use App\Http\Controllers\User\UserFeedbackController;
 use App\Http\Controllers\User\UserRulesAndNoticeController;
 use App\Http\Controllers\User\UserFeeAndPaymentController;
 use App\Http\Controllers\User\UserNotificationController;
+use App\Http\Controllers\User\MailConfirmationController;
 
 use App\Http\Controllers\SuperUser\SuperUserDashboardController;
 use App\Http\Controllers\SuperUser\SuperUserProfileController;
@@ -86,8 +87,10 @@ use App\Http\Controllers\Hod\HodProfileController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 
 use App\Http\Controllers\PaymentGatewayController;
+use App\Http\Controllers\OtpController;
 
 
 /*
@@ -100,10 +103,31 @@ use App\Http\Controllers\PaymentGatewayController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+// In routes/web.php or routes/api.php
+
+use Illuminate\Support\Facades\Mail;
+
+Route::get('/send-test-email', function () {
+    Mail::raw('This is a test email.', function ($message) {
+        $message->to('riverojulez@gmail.com')
+                ->subject('Test Email 2');
+    });
+
+    return 'Test email sent!';
+});
+
+
+
+
 Route::get('/horizon', function () {
     return view('horizon');
 });
 
+Route::get('mailcontent', function () {
+    $key = '1234';
+    return view('emails.forgotpassword', compact('key'));
+});
 
 
 Route::get('login', [LoginController::class, 'showStudentLogin']);
@@ -117,12 +141,22 @@ Route::post('signup/step1', [RegisterController::class, 'signupStep1'])->name('s
 Route::get('user-signup-dtls', [RegisterController::class, 'signupPageFinal']);
 
 Route::post('signup/step2', [RegisterController::class, 'signupStep2'])->name('signupstep2');
+//mail confirmation
+Route::prefix('mail')->group(function () {
 
-
-
-Route::get('user-mail-confirm', function () {
-    return view('users.auth.mailconfirm');
+    Route::get('confirmation', [MailConfirmationController::class, 'showMailConfirm']);
+    Route::post('send-otp', [OtpController::class, 'sendOtp']);
+    Route::post('verify-otp', [OtpController::class, 'verifyOtp']);
 });
+
+Route::prefix('forgot')->group(function () {
+    Route::get('password', [ForgotPasswordController::class, 'showForgot']);
+    Route::post('generate-link', [ForgotPasswordController::class, 'sendPasswordResetLink'])->name('generate.password.link');
+    Route::get('reset/{key}', [ForgotPasswordController::class, 'showResetForgotPassword']);
+    Route::post('reset', [ForgotPasswordController::class, 'setNewPassword'])->name('forgot.reset.password');
+});
+
+
 
 
 Route::get('/', function () {
@@ -151,11 +185,6 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
         Route::post('reset', [ResetPasswordController::class, 'passwordReset'])->name('reset');
     });
 
-    // //qr
-    // Route::get('my-qr', function () {
-    //     return view('users.qr');
-    // });
-
     //complaint--------------------------------->okay
     Route::prefix('complaints')->group(function () {
 
@@ -167,23 +196,6 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
         //my-complaint
         Route::get('my-complaints', [UserComplaintsController::class, 'showMyComplaints']);
     });
-
-    //notice board
-
-    //mess
-    // Route::prefix('mess')->group(function () {
-    //     //complaint-index
-    //     Route::get('/', [UserMessController::class, 'showMessSection']);
-    //     //mess attendance
-    //     Route::get('attendance', [UserMessController::class, 'showMessAttendance']);
-    //     //mess-in-out
-    //     Route::get('in-out', [UserMessController::class, 'showMessStatus']);
-    //     //messbill
-    //     Route::get('bill', [UserMessController::class, 'showMessBill']);
-    //     //mess-payment
-    //     Route::get('payment', [UserMessController::class, 'showMessPayment']);
-    // });
-
 
     //start of room
     Route::prefix('room')->group(function () {
@@ -200,19 +212,19 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
         Route::get('request', [UserRoomController::class, 'showRoomReq'])->name('room.callback');
         Route::post('room-req', [UserRoomController::class, 'roomRequest'])->name('room.request');
         Route::post('room-req-paymet', [UserRoomController::class, 'roomAllocationPayment'])->name('room.request.payment');
-        //endroom request
 
         //start room change section
         Route::prefix('change')->group(function () {
             Route::get('request', [UserRoomController::class, 'showRoomChangeRequest']);
             Route::post('request', [UserRoomController::class, 'roomChangeRequest'])->name('room.change.request');
         });
+
         Route::prefix('vacate')->group(function () {
 
             Route::get('/', [UserRoomController::class, 'showRoomVacate']);
             Route::post('request', [UserRoomController::class, 'roomVacate'])->name('room.vacate.request');
         });
-    });//end of room
+    });
     
     //rules and notice card --------------------->okay
     Route::prefix('rules')->group(function () {
@@ -238,13 +250,38 @@ Route::middleware(['auth:students'])->prefix('user')->group(function () {
     Route::prefix('feedback')->group(function () {
 
         Route::get('/', [UserFeedbackController::class, 'showFeedback']);
-        //give feedback
         Route::get('give-feedback', [UserFeedbackController::class, 'showAddFeedback']);
         Route::post('submit-feedback', [UserFeedbackController::class, 'addFeedback'])->name('user.addfeedback');
     });
 
+    
+    
+
     //notification
     Route::get('notifications', [UserNotificationController::class, 'showNotifications']);
+
+
+        // //qr
+    // Route::get('my-qr', function () {
+    //     return view('users.qr');
+    // });
+
+        //mess
+    // Route::prefix('mess')->group(function () {
+    //     //complaint-index
+    //     Route::get('/', [UserMessController::class, 'showMessSection']);
+    //     //mess attendance
+    //     Route::get('attendance', [UserMessController::class, 'showMessAttendance']);
+    //     //mess-in-out
+    //     Route::get('in-out', [UserMessController::class, 'showMessStatus']);
+    //     //messbill
+    //     Route::get('bill', [UserMessController::class, 'showMessBill']);
+    //     //mess-payment
+    //     Route::get('payment', [UserMessController::class, 'showMessPayment']);
+    // });
+
+
+
 
 });
 //end of user
@@ -295,6 +332,7 @@ Route::middleware(['auth:admins'])->prefix('hod')->group(function () {
 
         Route::get('request', [HostelVacateHodController::class, 'showRequests']);
         Route::get('action/{id}', [HostelVacateHodController::class, 'vacateAction']);
+        Route::post('approve', [HostelVacateHodController::class, 'approveVacate'])->name('hod.vacate.approve');
     });
 
     Route::prefix('students-details')->group(function () {

@@ -34,10 +34,20 @@ class LoginController extends Controller
                 // User authentication failed
                 \Log::warning('User authentication failed.');
             }
+
+            $student = Auth::guard('students')->user();
+            if ($student->email_verified_at) {
+
+                \Log::info('Email is verified.');
+            } else {
+
+                \Log::warning('Email is not verified.');
+                return redirect('mail/confirmation');
+            }
             // Authentication successful
             return redirect()->intended('user/dashboard'); // Redirect to the dashboard
         } else {
-
+            
             // Authentication failed
             return redirect()->back()->withErrors(['email' => 'Invalid credentials']);
         }
