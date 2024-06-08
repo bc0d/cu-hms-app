@@ -73,8 +73,8 @@
         <div class="col-xxl-6 col-md-6">
           <div class="card info-card req-view-card">
             <div class="card-body">
-              <h5 class="card-title">Fee Dues</h5>
-              <a class="d-flex align-items-center" href="">
+              <h5 class="card-title">Fees & Rent</h5>
+              <a class="d-flex align-items-center" href={{ url('hod/bills/card') }}>
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-file-spreadsheet"></i>
                 </div>

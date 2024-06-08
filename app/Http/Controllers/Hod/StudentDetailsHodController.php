@@ -39,6 +39,5 @@ class StudentDetailsHodController extends Controller
         // Return the view with the retrieved data
         return view('admins.hod.student_detail', compact('admin', 'student', 'courseName', 'departmentName'));
     }
-
   
 }

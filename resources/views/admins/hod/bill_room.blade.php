@@ -6,9 +6,9 @@
   <h1>Office</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href={{ url('office/index')}}>Home</a></li>
+        <li class="breadcrumb-item"><a href={{ url('hod/index')}}>Home</a></li>
         <li class="breadcrumb-item">Fees&amp;Rents</li>
-        <li class="breadcrumb-item active">Water Electric Bills</li>
+        <li class="breadcrumb-item active">Room Rent</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -19,8 +19,8 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Water and Electric Bills</h5>
-            @if(is_Null($bills))
+            <h5 class="card-title">Room Rents</h5>
+            @if(is_Null($rents))
               <p>No data to display</p>
             @else
               <!-- Table with stripped rows -->
@@ -34,16 +34,16 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($bills as $bill)
+                  @foreach ($rents as $rent)
                     @php
-                        $createdAt = \Carbon\Carbon::parse($bill->month_of_fee);
+                        $createdAt = \Carbon\Carbon::parse($rent->month_of_fee);
                         $monthYear = $createdAt->format('F Y'); // 'F' for full month name, 'Y' for four-digit year
                     @endphp
                     <tr>
-                      <td>{{ $bill->student->first_name }} {{ $bill->student->second_name }}</td>
+                      <td>{{ $rent->student->first_name }} {{ $rent->student->second_name }}</td>
                       <td>{{ $monthYear }}</td>
-                      <td>{{ $bill->amount }}</td>
-                      <td>{{ $bill->paid_status }}</td>
+                      <td>{{ $rent->amount }}</td>
+                      <td>{{ $rent->paid_status }}</td>
                     </tr>
                   @endforeach
                   

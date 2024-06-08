@@ -77,6 +77,7 @@ use App\Http\Controllers\Hod\HostelVacateHodController;
 use App\Http\Controllers\Hod\StudentDetailsHodController;
 use App\Http\Controllers\Hod\HodDashboardController;
 use App\Http\Controllers\Hod\HodProfileController;
+use App\Http\Controllers\Hod\HodFeeAndPaymentController;
 
 
 // use App\Http\Controllers\Mess\DashboardMessController;
@@ -299,6 +300,13 @@ Route::middleware(['auth:admins'])->prefix('hod')->group(function () {
     Route::prefix('students-details')->group(function () {
         Route::get('all', [StudentDetailsHodController::class, 'showAllStudentDetails']);
         Route::get('profile-details/{id}', [StudentDetailsHodController::class, 'showProfileDetails']);
+    });
+    // bills and dues 
+    Route::prefix('bills')->group(function () {
+
+        Route::get('card', [HodFeeAndPaymentController::class, 'showBills']);
+        Route::get('room-rent', [HodFeeAndPaymentController::class, 'roomRentDetails']);
+        Route::get('water-electric', [HodFeeAndPaymentController::class, 'waterElectricBills']);
     });
 });
 
