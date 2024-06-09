@@ -19,6 +19,7 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Requests</h5>
+<<<<<<< HEAD
 
             <!-- Table with stripped rows -->
             <table class="table datatable table-hover">
@@ -79,6 +80,38 @@
             </table>
             <!-- End Table with stripped rows -->
 
+=======
+            @if($vacates->isEmpty())
+              <p>No Vacating requests</p>
+            @else
+              <!-- Table with stripped rows -->
+              <table class="table datatable table-hover">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Adnission No</th>
+                    <th>Office Status</th>
+                    <th>Warden Status</th>
+                    <th>Payment Status</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach ($vacates as $vacate)
+                    <tr>
+                      <td>{{ $vacate->student->first_name }} {{ $vacate->student->second_name }}</td>
+                      <td>{{ $vacate->student->adm_no }}</td>
+                      <td>{{ $vacate->office_status }}</td>
+                      <td>{{ $vacate->warden_status }}</td>
+                      <td>{{ $vacate->payment_status }}</td>
+                      <td><a href={{ url('hod/vacate/action/'.$vacate->vacate_req_id) }} class="btn btn-primary btn-sm">view</a></td>
+                    </tr>
+                  @endforeach
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+            @endif
+>>>>>>> main
           </div>
         </div>
 

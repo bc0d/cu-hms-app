@@ -5,7 +5,7 @@
 <section id="contact" class="contact sign-sec">
   <h2 class="sign-sec  text-center">Request Vacate</h2><hr>
   <div class="container">
-   {{-- @if (is_Null($roomAlloc))
+    @if (is_Null($vacateReq))
       <div class="row mt-1  justify-content-center">
         <div class="col-lg-8 mt-2 mb-5 mt-lg-2 pt-2 pt-3">
           <form action="{{ route('room.request') }}" method="POST" role="form" class="php-email-form">
@@ -112,10 +112,6 @@
 
       </div>
     @endif
-    --}}
-
-
-
   </div>
 </section><!-- End Contact Section -->
 @endsection

@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('notifications', function (Blueprint $table) {
-            $table->string('category')->nullable();
-            $table->string('cat_id')->nullable();
+        Schema::create('forgot_passwords', function (Blueprint $table) {
+            $table->id();
+            $table->string('email');
+            $table->string('key');
+            $table->timestamp('expires_at');
+            $table->timestamps();
         });
     }
 
@@ -22,9 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('notifications', function (Blueprint $table) {
-            $table->dropColumn('category');
-            $table->dropColumn('cat_id');
-        });
+        Schema::dropIfExists('forgot_passwords');
     }
 };
