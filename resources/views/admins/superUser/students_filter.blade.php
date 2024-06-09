@@ -18,7 +18,7 @@
                 <div class="card col-lg-10">
                     <div class="card-body">
                         <h5 class="card-title">Filter</h5>
-                        <form action="" class="col-lg-8" id="filterForm">
+                        <form action="{{ route('students.export.excel') }}" method="POST" class="col-lg-8" id="filterForm">
                             @csrf
                             <div class="row mb-3">
                                 <label for="hostel" class="col-md-4 col-lg-3 col-form-label">Filter By</label>
@@ -31,8 +31,10 @@
                                 </div>
                             </div>
                             <div id="blocksContainer"></div>
+                            <input type="hidden" name="blocks" id="blocks" value="">
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Filter</button>
+                                <button type="submit" class="btn btn-primary" id="filterButton">Filter</button>
+                                <button type="submit" class="btn btn-primary" id="exportExcel">Download Excel</button>
                             </div>
                         </form>
                         <div id="results"></div>
@@ -80,7 +82,7 @@
                 });
             });
 
-            $('#filterForm').submit(function(e) {
+            $('#filterButton').click(function(e) {
                 e.preventDefault();
 
                 const hostelId = $('#hostel').val();
@@ -138,7 +140,7 @@
                                 <td>${student.bed.room.block.block_name}</td>
                                 <td>${student.bed.room.room_name}</td>
                                 <td>${student.bed.bed_name}</td>
-                                <td><a href="http://127.0.0.1:8000/super-user/student/detail/${student.student_id}" class="btn btn-primary btn-sm">view</a></td>
+                                <td><a href="{{ url('super-user/student/detail') }}/${student.student_id}" class="btn btn-primary btn-sm">view</a></td>
                                 
                             `);
                             tbody.append(tr);
@@ -149,7 +151,6 @@
                             console.error('Room:', student.bed ? student.bed.room : null);
                             console.error('Block:', student.bed && student.bed.room ? student.bed.room.block : null);
                             console.error('Hostel:', student.bed && student.bed.room && student.bed.room.block ? student.bed.room.block.hostel : null);
-    
                         }
                     });
 
@@ -159,6 +160,28 @@
                     $('#results').text('No students found.');
                 }
             }
+
+            $('#exportExcel').click(function(e) {
+                e.preventDefault();
+                let selectedBlocks = [];
+
+                // Check if "All" is selected
+                if ($('#hostel').val() !== 'all') {
+                    // Get selected blocks
+                    selectedBlocks = $('input[name="blocks"]:checked').map(function() {
+                        return $(this).val();
+                    }).get();
+                } else {
+                    selectedBlocks = ['all']; // Set to ['all'] if "All" is selected
+                }
+
+                // Set the value of hidden input 'blocks' in the form
+                $('#blocks').val(selectedBlocks);
+
+                // Submit the form
+                $('#filterForm').submit();
+            });
+
         });
     </script>
 

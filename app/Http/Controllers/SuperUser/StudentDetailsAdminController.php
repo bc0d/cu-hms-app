@@ -9,6 +9,8 @@ use App\Models\Course;
 use App\Models\Student;
 use App\Models\Block;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\StudentsFilterExport;
 
 class StudentDetailsAdminController extends Controller
 {
@@ -78,4 +80,21 @@ class StudentDetailsAdminController extends Controller
         $admin = Auth::guard('admins')->user();
         return view('admins.superUser.student_detail', compact('admin'));
     }
+
+    public function exportToExcel(Request $request)
+    {
+
+        $blockIds = explode(',', $request->input('blocks'));
+    
+        if (in_array('all', $blockIds)) {
+            $students = Student::with(['bed.room.block.hostel'])->get();
+        } else {
+            $students = Student::whereHas('bed.room.block', function ($query) use ($blockIds) {
+                $query->whereIn('block_id', $blockIds);
+            })->with(['bed.room.block.hostel'])->get();
+        }
+        
+        // Export filtered students to Excel using Maatwebsite\Excel
+        return Excel::download(new StudentsFilterExport($students), 'filtered_students.xlsx');
+    }    
 }

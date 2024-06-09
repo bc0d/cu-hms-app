@@ -18,6 +18,7 @@ class RoomVacate extends Model
         'office_status',
         'warden_status',
         'hod_status',
+        'hostel_id'
     ];
 
     public function student() {
