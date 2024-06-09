@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Feedback;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class UserFeedbackController extends Controller
