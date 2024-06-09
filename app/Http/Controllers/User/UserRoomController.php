@@ -164,6 +164,7 @@ class UserRoomController extends Controller
         ]);
         $student = Student::with('bed.room.block.hostel')->findOrFail($data['student_id']);
         $hostel = $student->bed->room->block->hostel->hostel_id;
+
         RoomVacate::create([
             'student_id' => $data['student_id'],
             'department_id' =>$data['department'],

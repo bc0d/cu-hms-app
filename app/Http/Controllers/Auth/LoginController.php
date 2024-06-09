@@ -44,6 +44,9 @@ class LoginController extends Controller
                 \Log::warning('Email is not verified.');
                 return redirect('mail/confirmation');
             }
+            if($student->status === 'Vacated') {
+                return redirect()->back();
+            }
             // Authentication successful
             return redirect()->intended('user/dashboard'); // Redirect to the dashboard
         } else {
