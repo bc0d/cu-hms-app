@@ -59,34 +59,7 @@ class StudentDetailsController extends Controller
         $departmentName = $department->department_name;
         return view('admins.registrar.student_detail', compact('admin', 'student', 'courseName', 'departmentName'));
     }
-    /*
-    public function showAllStudentDetails() {
-        // Get the authenticated admin user
-        $admin = Auth::guard('admins')->user();
-        $students = Student::all(); // Fetch all students
-        // Check if the authenticated admin has "mens" access
-        if ($admin->access === 'mens') {
-            // Fetch all male students
-            $students = Student::where('gender', 'male')->get();
-            
-            // Return the view with the male students and admin data
-            return view('admins.office.student_list', compact('students', 'admin'));
-        } 
-        elseif ($admin->access === 'womens'){
-            $students = Student::where('gender', 'female')->get();
-                
-                // Return the view with the male students and admin data
-                return view('admins.office.student_list', compact('students', 'admin'));
-            } 
-    }
-*/
-    /*
-   public function showAllStudentList() {
-      
-        $students = Student::all(); // Fetch all students
-        $admin = Auth::guard('admins')->user();
-        return view('admins.office.student_list', compact('students', 'admin'));
-    }*/
+
 
     public function showDetails()
     {
@@ -131,8 +104,4 @@ class StudentDetailsController extends Controller
         }
         return response()->json($students);
     }
-
-
-
-
 }

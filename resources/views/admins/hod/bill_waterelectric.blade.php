@@ -6,9 +6,9 @@
   <h1>Office</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href={{ url('office/index')}}>Home</a></li>
+        <li class="breadcrumb-item"><a href={{ url('hod/index')}}>Home</a></li>
         <li class="breadcrumb-item">Fees&amp;Rents</li>
-        <li class="breadcrumb-item active">Water Electric Bills</li>
+        <li class="breadcrumb-item active">Water-Electric bills</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -28,8 +28,8 @@
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>Rent Month</th>
-                    <th>Rent Amount</th>
+                    <th>Bill Month</th>
+                    <th>Bill Amount</th>
                     <th>Status</th>
                   </tr>
                 </thead>

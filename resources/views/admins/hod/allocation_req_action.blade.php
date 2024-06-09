@@ -124,8 +124,8 @@
                       <div class="row mb-3">
                         <label for="hostel" class="col-md-4 col-lg-3 col-form-label">Hostel</label>
                         <div class="col-md-8 col-lg-9">
-                          <select name="hostel" id="hostel" class="form-control">
-                            <option selected>--Select--</option>
+                          <select name="hostel" id="hostel" class="form-control" required>
+                            <option selected disabled>--Select--</option>
                             <option value="Mens Hostel">Mens Hostel</option>
                             <option value="Ladies Hostel">Ladies Hostel</option>
                           </select>
@@ -134,8 +134,8 @@
                       <div class="row mb-3">
                         <label for="status" class="col-md-4 col-lg-3 col-form-label">Request status</label>
                         <div class="col-md-8 col-lg-9">
-                          <select name="status" id="status" class="form-control">
-                            <option selected>--Select--</option>
+                          <select name="status" id="status" class="form-control" required>
+                            <option selected disabled>--Select--</option>
                             <option value="Approved">Approve</option>
                             <option value="Rejected">Reject</option>
                           </select>
