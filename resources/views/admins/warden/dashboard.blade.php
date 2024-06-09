@@ -160,6 +160,7 @@
         </div>
         <!-- End Complaints Card -->
       </div>
+
       <!--
       <div class="row">
          Mess Card -->
@@ -178,8 +179,9 @@
             </div>
           </div>
         </div>
-         End Mess Card -->
+         End Mess Card 
       </div>
+-->
     </div>
     <!-- End Left side columns -->
   </section>
