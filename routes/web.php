@@ -718,6 +718,8 @@ Route::middleware(['auth:admins'])->prefix('super-user')->group(function () {
         Route::get('blocks/{hostelId}', [StudentDetailsAdminController::class, 'getBlocks']);
         Route::post('students', [StudentDetailsAdminController::class, 'getStudents']);
         Route::get('detail/{id}', [StudentDetailsAdminController::class, 'showProfileDetails']);
+        Route::post('export/excel', [StudentDetailsAdminController::class, 'exportToExcel'])->name('students.export.excel');
+
     });
 
     //rooms details card --------------->okay
