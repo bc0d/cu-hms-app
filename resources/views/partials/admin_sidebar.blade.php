@@ -203,6 +203,12 @@
             <span>Complaints</span>
           </a>
         </li><!-- End Complaints Nav -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href={{ url('registrar/request-admin') }}>
+            <i class="bi bi-envelope"></i>
+            <span>Request Admin</span>
+          </a>
+        </li><!-- End Complaints Nav -->
         @break
         @case("admin")
         <li class="nav-item">

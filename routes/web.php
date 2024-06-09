@@ -43,7 +43,7 @@ use App\Http\Controllers\Registrar\FeeAndPaymentRegistrarController;
 use App\Http\Controllers\Registrar\RuleAndNoticeRegistrarController;
 use App\Http\Controllers\Registrar\RegistrarStudentDetailsController;
 use App\Http\Controllers\Registrar\RegistrarAdminManageController;
-
+use App\Http\Controllers\Registrar\RegistarRequestToAdminController;
 
 
 
@@ -645,15 +645,21 @@ Route::middleware(['auth:admins'])->prefix('registrar')->group(function () {
    // });
 
 
-    //fee card
-    Route::prefix('fee')->group(function () {
 
-        Route::get('card', [FeeAndPaymentRegistrarController::class, 'showCard']);
+
+       //fee card ---------->okay
+       Route::prefix('fee')->group(function () {
+        //bills
+        Route::get('card', [FeeAndPaymentRegistrarController::class, 'showBills']);
         Route::get('room-rent', [FeeAndPaymentRegistrarController::class, 'roomRentDetails']);
-
+        Route::get('water-electric', [FeeAndPaymentRegistrarController::class, 'waterElectricBills']);
         //fee maintanance
         Route::get('maintanance', [FeeAndPaymentRegistrarController::class, 'feeMaintanance']);
         Route::get('updation', [FeeAndPaymentRegistrarController::class, 'feeUpdate']);
+        Route::get('add', [FeeAndPaymentRegistrarController::class, 'showFeeAdd']);
+        Route::post('add',[FeeAndPaymentRegistrarController::class,'feeAdd'])->name('registrar.fee.add');
+        Route::get('edit/{id}', [FeeAndPaymentRegistrarController::class, 'showFeeEdit']);
+        Route::post('edit', [FeeAndPaymentRegistrarController::class, 'feeEdit'])->name('registrar.fee.edit');
     });
 
     //rules and notice card
@@ -672,20 +678,24 @@ Route::middleware(['auth:admins'])->prefix('registrar')->group(function () {
         Route::post('notice-Add', [RuleAndNoticeRegistrarController::class, 'addNotice'])->name('registrar.notice.add');
         Route::post('remove-notice', [RuleAndNoticeRegistrarController::class, 'removeNotice'])->name('registrar.notice.remove');
     });
+    
+
+    //students details filter
     Route::get('student-details', [RegistrarStudentDetailsController::class, 'showStudentDetails']);
     Route::post('list', [RegistrarStudentDetailsController::class, 'viewStudentDetails']);
     Route::get('blocks/{hostel}', [RegistrarStudentDetailsController::class, 'getBlocks']);
     Route::post('student-details', [RegistrarStudentDetailsController::class, 'filterStudents'])->name('registrar.student.list');
 
-        //managing admins ---------------->okay
-        Route::prefix('admins')->group(function () {
+            //managing admins ---------------->okay
+    Route::prefix('admins')->group(function () {
 
-            Route::get('manage', [RegistrarAdminManageController::class, 'showAdmins']);
-            Route::get('view-admin/{id}', [RegistrarAdminManageController::class, 'viewAdmin']);
-            Route::get('add', [RegistrarAdminManageController::class, 'viewAdminAdd']);
-            Route::post('add', [RegistrarAdminManageController::class, 'adminAdd'])->name('superuser.admin.add');
-            Route::post('remove', [RegistrarAdminManageController::class, 'removeAdmin'])->name('superuser.admin.remove');
-        });
+        Route::get('manage', [RegistrarAdminManageController::class, 'showAdmins']);
+        Route::get('view-admin/{id}', [RegistrarAdminManageController::class, 'viewAdmin']);
+        Route::get('add', [RegistrarAdminManageController::class, 'viewAdminAdd']);
+        Route::post('add', [RegistrarAdminManageController::class, 'adminAdd'])->name('registrar.admin.add');
+        Route::post('remove', [RegistrarAdminManageController::class, 'removeAdmin'])->name('registrar.admin.remove');
+    });
+     Route::post('request-admin', [RegistarRequestToAdminController::class, 'requestadmin'])->name('registrar.admin.request');
 });
 
 
