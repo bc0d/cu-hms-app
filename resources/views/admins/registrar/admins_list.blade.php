@@ -49,7 +49,7 @@
                                         <td>{{$item->designation}}</td>
                                         <td>{{$item->access}}</td>
                                         <td>
-                                            <form action="{{ route('superuser.admin.remove') }}" method="POST">
+                                            <form action="{{ route('registrar.admin.remove') }}" method="POST">
                                                 @csrf
                                                 <input type="hidden" name="admin" value="{{ $item->admin_id }}">
                                                 <button type="submit" class="btn btn-danger rounded-pill btn-sm" onclick="return confirm('Are you sure You want to delete this Admin')">Remove</button>
