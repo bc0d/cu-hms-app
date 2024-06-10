@@ -3,10 +3,10 @@
 @section('content')
 
     <div class="pagetitle">
-    <h1>Office</h1>
+    <h1>Warden</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href={{ url('office/index') }}>Home</a></li>
+          <li class="breadcrumb-item"><a href={{ url('warden/index') }}>Home</a></li>
           <li class="breadcrumb-item">Fee Maintanance</li>
           <li class="breadcrumb-item active">Fee Update</li>
         </ol>
@@ -28,7 +28,7 @@
                         @endif
                                 
                         <!-- Room allocation Form -->
-                        <form class="row g-3" action="{{route('office.fee.add')}}" method="POST" >  
+                        <form class="row g-3" action="{{route('warden.fee.add')}}" method="POST" >  
                             @csrf
                             <div class="col-md-8">
                                 <label for="hostel_id" class="form-label">Hostel Name</label>

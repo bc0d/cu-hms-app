@@ -136,28 +136,12 @@
       <div class="container">
 
         <div class="row content">
-          <div class="col-lg-6">
+          <div class="col-lg-12 mt-5 mb-5">
             <h2 id="text-size">Calicut University Hostel</h2>
             <h5>The Calicut University Men's and Women's Hostels are vital parts of the campus, meeting diverse student accommodation needs. They provide safe, conducive living environments, evolving alongside the university. With modern amenities, vibrant atmospheres, and a focus on community, they foster academic focus, personal growth, and friendships, enriching campus life.</h5>
           </div>
-          <div class="col-lg-6 pt-4 pt-lg-0">
-            <h3 class="text-size pt-3"><strong>Latest Notification</strong></h3>
-            <hr>
-            <ul style="overflow-y: hidden; ">
-              <li style="overflow: hidden; padding-bottom:0px; margin-bottom:0px;">
-                <a href="j.pdf"><span class="greater-than" style="margin-right: 8px;">&gt;</span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum</a>
-                <p>20/02/2023</p>
-              </li>
-            </ul>
-    
-    
-          </div>
-          <div class="d-grid m-0 mr-2 mt-1">
-            <!--<button class="btn btn-outline-primary" type="button">more profie</button>-->
-            <a href="{{ url('user/moreprofile') }}" class=" d-flex justify-content-end"><span class="arrow  ">&#8594;</span>More</a>
-          </div>
+          
+          
         </div>
     
       </div>

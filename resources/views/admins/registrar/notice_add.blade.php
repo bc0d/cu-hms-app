@@ -21,7 +21,7 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">New Notice</h5>
+                        <h5 class="card-title">Registrar</h5>
             
                         <!-- Notice Add Form -->
                         <form class="row g-3" method="POST" action="{{route('registrar.notice.add')}}" enctype="multipart/form-data">

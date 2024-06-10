@@ -44,22 +44,19 @@
                                 <div class="col-lg-9 col-md-8"> {{ $admin->department }} </div>
                             </div>
 
-
-                            <div class="row">
-                                <div class="col-lg-3 col-md-4 label">Phone</div>
-                                <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
-                            </div>
-
                             <div class="row">
                                 <div class="col-lg-3 col-md-4 label">Email</div>
                                 <div class="col-lg-9 col-md-8">{{ $admin->email }}</div>
                             </div>
 
                             <div class="row">
-                                <a href="#" class="card-link">Password Reset</a>
+                                <a href="{{ url('admin-reset') }}" class="card-link">Password Reset</a>
                             </div>
                             <div class="row">
-                                <a href="#" class="card-link">Logout</a>
+                                <form action="{{ route('admin.signout') }}" method="POST">
+                                    @csrf
+                                    <button class="btn btn-secondary" type="submit">Log out</button>
+                                  </form>
                             </div>
 
                         </div>

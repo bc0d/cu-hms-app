@@ -56,8 +56,60 @@ class WardenFeeAndPaymentController extends Controller
         return view('admins.warden.fee_update', compact('admin'));
     }
 
+    public function showFeeAdd() {
+        $admin = Auth::guard('admins')->user();
+        return view('admins.warden.fee_add',compact('admin'));
+    }
+
+    public function feeAdd(Request $request) {
+
+        $admin = Auth::guard('admins')->user();
+
+        $formData = $request->validate([
+            'hostel_id' => 'required|string',
+            'room_type' => 'required|string',
+            'fee_item' => 'required|string',
+            'amt' => 'required',
+        ]);
+
+        $fee = new Fee();
+        $fee->hostel_id = $formData['hostel_id'];
+        $fee->room_type = $formData['room_type'];
+        $fee->fee_name = $formData['fee_item'];
+        $fee->amount = $formData['amt'];
+        $fee->updatedby = $admin->admin_id; // default status
+        $fee->save();
+
+        return redirect()->back()->with('message', 'Fee added successfully');
+    }
 
 
+    public function showFeeEdit($id) {
+
+        $admin = Auth::guard('admins')->user();
+        $fee = Fee::findOrFail($id);
+
+        return view('admins.warden.fee_edit', compact('admin', 'fee'));
+    }
+
+    public function feeEdit(Request $request) {
+
+        $admin = Auth::guard('admins')->user();
+        $data = $request->validate([
+            'id' => 'required',
+            'newrate' => 'required',
+        ]);
+
+        $fee = Fee::findOrFail($data['id'])->first();
+        $fee->amount = $data['newrate'];
+        $fee->updatedby = $admin->admin_id;
+        $fee->save();
+
+        return redirect()->back()->with('message', 'Amount updated');
+    }
+
+
+//bills
     public function showBills() {
         $admin = Auth::guard('admins')->user();
         return view('admins.warden.bills_card', compact('admin'));

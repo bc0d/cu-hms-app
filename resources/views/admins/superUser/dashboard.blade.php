@@ -203,6 +203,23 @@
           </div>
         </div>
         <!-- End Complaints Card -->
+        <!-- Requests Card -->
+        <div class="col-xxl-6 col-md-6">
+          <div class="card info-card req-warn-card">
+            <div class="card-body">
+              <h5 class="card-title">Tickets</h5>
+              <a class="d-flex align-items-center" href={{ url('super-user/tickets') }}>
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-person-exclamation"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>view</h6>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- End Requests Card -->
       </div>
     </div>
     <!-- End Left side columns -->

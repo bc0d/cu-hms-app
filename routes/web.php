@@ -27,6 +27,7 @@ use App\Http\Controllers\SuperUser\ComplaintsAdminController;
 use App\Http\Controllers\SuperUser\FeeAndPaymentAdminController;
 use App\Http\Controllers\SuperUser\RuleAndNoticeAdminController;
 use App\Http\Controllers\SuperUser\AdminManageController;
+use App\Http\Controllers\SuperUser\AdminTicket;
 
 
 use App\Http\Controllers\Registrar\RegistrarDashboardController;
@@ -59,6 +60,7 @@ use App\Http\Controllers\Office\RoomDetailsController;
 use App\Http\Controllers\Office\ComplaintsController;
 use App\Http\Controllers\Office\FeeAndPaymentController;
 use App\Http\Controllers\Office\RuleAndNoticeController;
+use App\Http\Controllers\Office\OfficeRequestAdminController;
 
 /*mess controllers */
 
@@ -72,6 +74,7 @@ use App\Http\Controllers\Warden\WardenFeeAndPaymentController;
 use App\Http\Controllers\Warden\WardenRoomDetailsController;
 use App\Http\Controllers\Warden\WardenRuleAndNoticeController;
 use App\Http\Controllers\Warden\ComplaintsWardenController;
+use App\Http\Controllers\Warden\WardenRequestAdminController;
 
 use App\Http\Controllers\Hod\HostelAdmissionHodController;
 use App\Http\Controllers\Hod\HostelVacateHodController;
@@ -79,6 +82,7 @@ use App\Http\Controllers\Hod\StudentDetailsHodController;
 use App\Http\Controllers\Hod\HodDashboardController;
 use App\Http\Controllers\Hod\HodProfileController;
 use App\Http\Controllers\Hod\HodFeeAndPaymentController;
+use App\Http\Controllers\Hod\HodRequestAdminController;
 
 
 // use App\Http\Controllers\Mess\DashboardMessController;
@@ -347,6 +351,12 @@ Route::middleware(['auth:admins'])->prefix('hod')->group(function () {
         Route::get('room-rent', [HodFeeAndPaymentController::class, 'roomRentDetails']);
         Route::get('water-electric', [HodFeeAndPaymentController::class, 'waterElectricBills']);
     });
+
+    //tickets
+    Route::prefix('request-admin')->group(function () {
+        Route::get('/', [HodRequestAdminController::class, 'showRequestForm']);
+        Route::post('/', [HodRequestAdminController::class, 'requestadmin'])->name('hod.admin.request');
+    });
 });
 
 
@@ -472,6 +482,12 @@ Route::middleware(['auth:admins'])->prefix('office')->group(function () {
         Route::post('notice-Add', [RuleAndNoticeController::class, 'addNotice'])->name('office.notice.add');
         Route::post('remove-notice', [RuleAndNoticeController::class, 'removeNotice'])->name('office.notice.remove');
     });
+
+    //tickets
+    Route::prefix('request-admin')->group(function () {
+        Route::get('/', [OfficeRequestAdminController::class, 'showRequestForm']);
+        Route::post('/', [OfficeRequestAdminController::class, 'requestadmin'])->name('office.admin.request');
+    });
 });
 
 
@@ -583,6 +599,12 @@ Route::middleware(['auth:admins'])->prefix('warden')->group(function () {
         Route::post('edit', [ComplaintsWardenController::class, 'complaintEdit'])->name('complaint.action');
         Route::get('solved', [ComplaintsWardenController::class, 'showSolvedComplaints']);
         Route::get('all', [ComplaintsWardenController::class, 'showAllComplaints']);
+    });
+
+    //tickets
+    Route::prefix('request-admin')->group(function () {
+        Route::get('/', [WardenRequestAdminController::class, 'showRequestForm']);
+        Route::post('/', [WardenRequestAdminController::class, 'requestadmin'])->name('warden.admin.request');
     });
 });
 
@@ -853,6 +875,11 @@ Route::middleware(['auth:admins'])->prefix('super-user')->group(function () {
         Route::get('add', [AdminManageController::class, 'viewAdminAdd']);
         Route::post('add', [AdminManageController::class, 'adminAdd'])->name('superuser.admin.add');
         Route::post('remove', [AdminManageController::class, 'removeAdmin'])->name('superuser.admin.remove');
+    });
+
+    //Requests
+    Route::prefix('tickets')->group(function () {
+        Route::get('/', [AdminTicket::class, 'showTickets']);
     });
 });
 

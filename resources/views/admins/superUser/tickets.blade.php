@@ -3,11 +3,11 @@
 @section('content')
 
     <div class="pagetitle">
-    <h1>Registrar</h1>
+    <h1>SuperUser</h1>
         <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href={{ url('registrar/index')}}>Home</a></li>
-            <li class="breadcrumb-item active">Complaints</li>
+            <li class="breadcrumb-item"><a href={{ url('super-user/index')}}>Home</a></li>
+            <li class="breadcrumb-item active">Tickets</li>
         </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -18,29 +18,27 @@
     
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Complaints</h5>
+                <h5 class="card-title">Tickets</h5>
     
                 <!-- Table with stripped rows -->
                 <table class="table datatable table-hover">
                   <thead>
                     <tr>
-                      <th>Complaints ID</th>
-                      <th>Student ID</th>
+                      <th>Title</th>
                       <th>Category</th>
-                      <th>Status</th>
+                      <th>From</th>
                       <th>Date</th>
-                      <th></th>
+                      <th>Request</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($complaints as $complaint)
+                    @foreach ($reqs as $req)
                       <tr>
-                        <td>{{ $complaint->complaint_id }}</td>
-                        <td>{{ $complaint->student_id }}</td>
-                        <td>{{ $complaint->category }}</td>
-                        <td>{{ $complaint->status }}</td>
-                        <td>{{ $complaint->created_at->toDateString() }}</td>
-                        <td><a href={{ url('registrar/complaints/view/' . $complaint->complaint_id) }} class="btn btn-primary btn-sm">view</a></td>
+                        <td>{{ $req->title }}</td>
+                        <td>{{ $req->category }}</td>
+                        <td>{{ $req->admin->name }}</td>
+                        <td>{{ $req->created_at->toDateString() }}</td>
+                        <td>{{ $req->message }}</td>
                       </tr>
                     @endforeach                   
                   </tbody>

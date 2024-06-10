@@ -3,10 +3,10 @@
 @section('content')
 
     <div class="pagetitle">
-        <h1>Registrar</h1>
+        <h1>Office</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('registrar/index') }}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('office/index') }}">Dashboard</a></li>
                 <li class="breadcrumb-item">Request Admin</li>
             </ol>
         </nav>
@@ -25,7 +25,7 @@
                         @endif
                         
                         <!-- Request Admin Form -->
-                        <form class="row g-3" action="{{ route('registrar.admin.request') }}" method="POST">
+                        <form class="row g-3" action="{{ route('office.admin.request') }}" method="POST">
                             @csrf
                             <input type="hidden" name="admin_id" value="{{ $admin->admin_id }}">
                             <div class="col-md-8">
