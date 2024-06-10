@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('admin_id')->references('admin_id')->on('admins')->onDelete('cascade');             
             $table->string('title');
             $table->string('category');
-            $table->text('message'); 
+            $table->string('message'); 
             $table->timestamps();
         });
     }
