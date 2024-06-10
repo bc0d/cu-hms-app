@@ -18,9 +18,9 @@ class RegistrarRequestToAdminController extends Controller
     public function requestadmin(Request $request) {
         // Validate the request data
         $validatedData = $request->validate([
-            'admin_id' => 'required|integer',
-            'title' => 'required|string|max:255',
-            'category' => 'required|integer',
+            'admin_id' => 'required',
+            'title' => 'required',
+            'category' => 'required',
             'message' => 'required|string',
         ]);
 
