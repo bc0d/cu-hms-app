@@ -3,7 +3,7 @@
 @section('content')
    
   <div class="pagetitle">
-    <h1>Fee Maintanance</h1>
+  <h1>Warden</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href={{ url('warden/index')}}>Home</a></li>
@@ -23,58 +23,31 @@
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Fee</th>
-                    <th scope="col">Amount</th>
+                    <th scope="col">Hostel</th>
+                    <th scope='col'>Room_type</th>
+                    <th scope='col'>Fee_item</th>
+                    <th scope='col'>Amount</th>
                     <th data-type="date" data-format="YYYY/DD/MM" scope="col">Update Date</th>
-                    <th scope="col">Actions</th>
+                    <th></th>
                     
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Brandon Jacob</td>
-                    <td>Designer</td>
-                    <td>2009/29/11</td>
-                    <td><a href={{ url('warden/fee/updation') }} class="btn btn-primary btn-sm">Update</a></td>
-                    
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Bridie Kessler</td>
-                    <td>Developer</td>
-                    <td>2009/29/11</td>
-                    <td><a href={{ url('warden/fee/updation') }} class="btn btn-primary btn-sm">Update</a></td>
-                    
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Ashleigh Langosh</td>
-                    <td>Finance</td>
-                    <td>2009/29/11</td>
-                    <td><a href={{ url('warden/fee/updation') }} class="btn btn-primary btn-sm">Update</a></td>
-                    
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Angus Grady</td>
-                    <td>HR</td>
-                    <td>2009/29/11</td>
-                    <td><a href={{ url('warden/fee/updation') }} class="btn btn-primary btn-sm">Update</a></td>
-                    
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td>Raheem Lehner</td>
-                    <td>Dynamic Division Officer</td>
-                    <td>2009/29/11</td>
-                    <td><a href={{ url('warden/fee/updation') }} class="btn btn-primary btn-sm">Update</a></td>
-                    
-                  </tr>
+                  @foreach ($fees as $item)
+                    <tr>
+                      <td>{{$item->hostel->hostel_name}}</td>
+                      <td>{{$item->room_type}}</td>
+                      <td>{{$item->fee_name}}</td>
+                      <td>{{$item->amount}}</td>
+                      <td>{{$item->updated_at->toDateString()}}</td>
+                      <td><a class="btn btn-primary btn-sm" href="{{ url('warden/fee/edit/'.$item->fee_id) }}">Edit</a></td>
+                    </tr>
+                  @endforeach
+                  
                 </tbody>
               </table>
               <!-- End Bordered Table -->
+              <a href={{ url('warden/fee/add') }} class="btn btn-primary btn-sm">Add</a>
 
             </div>
           </div>

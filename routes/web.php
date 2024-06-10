@@ -540,6 +540,11 @@ Route::middleware(['auth:admins'])->prefix('warden')->group(function () {
         //fee maintanance
         Route::get('maintanance', [WardenFeeAndPaymentController::class, 'feeMaintanance']);
         Route::get('updation', [WardenFeeAndPaymentController::class, 'feeUpdate']);
+
+        Route::get('add', [FeeAndPaymentController::class, 'showFeeAdd']);
+        Route::post('add',[FeeAndPaymentController::class,'feeAdd'])->name('warden.fee.add');
+        Route::get('edit/{id}', [FeeAndPaymentController::class, 'showFeeEdit']);
+        Route::post('edit', [FeeAndPaymentController::class, 'feeEdit'])->name('warden.fee.edit');
     });
 
     Route::prefix('bills')->group(function () {

@@ -7,7 +7,7 @@
   <div class="container col-lg-8 hi mt-5  align-items-center py-5">
     <div class="row gy-4 gy-lg-0">
       <div class="col-12">
-        @if(is_Null($bills))
+        @if($bills->isEmpty())
           <p>No data to display</p>
         @else
           <table class="table">
