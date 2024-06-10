@@ -13,20 +13,24 @@
         <h5>The Calicut University Men's and Women's Hostels are vital parts of the campus, meeting diverse student accommodation needs. They provide safe, conducive living environments, evolving alongside the university. With modern amenities, vibrant atmospheres, and a focus on community, they foster academic focus, personal growth, and friendships, enriching campus life.</h5>
       </div>
       <div class="col-lg-6 pt-4 pt-lg-0">
-        <h3 class="text-size pt-3"><strong>Latest Notification</strong></h3>
+        <h3 class="text-size pt-3"><strong>Latest News</strong></h3>
         <hr>
-        <ul style="overflow-y: hidden; ">
-          <li style="overflow: hidden; padding-bottom:0px; margin-bottom:0px;">
-            <a href="j.pdf"><span class="greater-than" style="margin-right: 8px;">&gt;</span>At present, furniture, fan, light etc. that are non-functional or non-existent in the hostel rooms, the hostel executive committee should be informed if the situation arises.</a>
-            <p>20/02/2023</p>
-          </li>
-        </ul>
-
-
+        @if ($notices->isEmpty())
+          <p>No Notices to display</p>        
+        @else
+          <ul style="overflow-y: hidden; ">
+            @foreach ($notices as $notice)
+                <li style="overflow: hidden; padding-bottom:0px; margin-bottom:0px;">
+                  <a href="j.pdf"><span class="greater-than" style="margin-right: 8px;">&gt;</span>{{ $notices->title }}</a>
+                  <p>{{ $notices->created_at->format('d-m-Y') }}</p>
+                </li>
+            @endforeach
+          </ul>
+        @endif
       </div>
       <div class="d-grid m-0 mr-2 mt-1">
         <!--<button class="btn btn-outline-primary" type="button">more profie</button>-->
-        <a href="" class=" d-flex justify-content-end"><span class="arrow  ">&#8594;</span>More</a>
+        <a href="{{ url('user/rules/notice-list') }}" class=" d-flex justify-content-end"><span class="arrow  ">&#8594;</span>More</a>
       </div>
     </div>
 
