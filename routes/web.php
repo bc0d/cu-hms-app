@@ -43,7 +43,7 @@ use App\Http\Controllers\Registrar\FeeAndPaymentRegistrarController;
 use App\Http\Controllers\Registrar\RuleAndNoticeRegistrarController;
 use App\Http\Controllers\Registrar\RegistrarStudentDetailsController;
 use App\Http\Controllers\Registrar\RegistrarAdminManageController;
-use App\Http\Controllers\Registrar\RegistarRequestToAdminController;
+use App\Http\Controllers\Registrar\RegistrarRequestToAdminController;
 
 
 
@@ -703,7 +703,11 @@ Route::middleware(['auth:admins'])->prefix('registrar')->group(function () {
         Route::post('add', [RegistrarAdminManageController::class, 'adminAdd'])->name('registrar.admin.add');
         Route::post('remove', [RegistrarAdminManageController::class, 'removeAdmin'])->name('registrar.admin.remove');
     });
-     Route::post('request-admin', [RegistarRequestToAdminController::class, 'requestadmin'])->name('registrar.admin.request');
+    Route::prefix('request-admin')->group(function () {
+        Route::get('/', [RegistrarRequestToAdminController::class, 'showRequestForm']);
+        Route::post('/', [RegistrarRequestToAdminController::class, 'requestadmin'])->name('registrar.admin.request');
+    });
+     
 });
 
 
