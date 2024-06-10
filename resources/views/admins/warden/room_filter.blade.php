@@ -83,7 +83,7 @@
                 
                 if (hostelId && hostelId !== 'all') {
                     $.ajax({
-                        url: '/office/rooms/hostels/' + hostelId + '/blocks',
+                        url: '/warden/room-details/hostels/' + hostelId + '/blocks',
                         type: 'GET',
                         success: function(data) {
                             $.each(data, function(key, block) {
@@ -93,7 +93,7 @@
                     });
                 } else if (hostelId === 'all') {
                     $.ajax({
-                        url: '/office/rooms/blocks/all',
+                        url: '/warden/room-details/blocks/all',
                         type: 'GET',
                         success: function(data) {
                             $.each(data, function(key, block) {
@@ -115,7 +115,7 @@
                 $('#beds-table-body').html('');
 
                 $.ajax({
-                    url: '/office/rooms/filter-beds',
+                    url: '/warden/room-details/filter-beds',
                     type: 'GET',
                     data: {
                         hostel_id: hostelId,

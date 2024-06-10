@@ -7,6 +7,7 @@ use illuminate\Support\Facades\Auth;
 use App\Models\Department;
 use App\Models\Course;
 use App\Models\Student;
+use App\Models\Block;
 use Illuminate\Http\Request;
 
 class WardenStudentDetailsController extends Controller
@@ -60,5 +61,36 @@ class WardenStudentDetailsController extends Controller
     {
         $admin = Auth::guard('admins')->user();
         return view('admins.warden.student_detail', compact('admin'));
+    }
+
+    public function filterStudents() {
+        
+        $admin = Auth::guard('admins')->user();
+        return view('admins.warden.student_filter', compact('admin'));
+    }
+    
+    public function getBlocks($hostelId)
+    {
+        if ($hostelId === 'all') {
+            return response()->json([]);
+        }
+
+        $blocks = Block::where('hostel_id', $hostelId)->get();
+        return response()->json($blocks);
+    }
+
+    public function getStudents(Request $request)
+    {
+        $blockIds = $request->input('blocks');
+
+
+        if (in_array('all', $blockIds)){
+            $students = Student::with(['bed.room.block.hostel'])->get();
+        } else {
+            $students = Student::whereHas('bed.room.block', function($query) use ($blockIds) {
+                $query->whereIn('block_id', $blockIds);
+            })->with(['bed.room.block.hostel'])->get();
+        }
+        return response()->json($students);
     }
 }
