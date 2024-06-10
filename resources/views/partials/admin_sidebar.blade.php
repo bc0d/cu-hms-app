@@ -148,7 +148,7 @@
           </a>
         </li><!-- End Students Details Nav -->
         <li class="nav-item">
-          <a class="nav-link collapsed" href={{ url('#') }}>
+          <a class="nav-link collapsed" href={{ url('hod/bills/card') }}>
             <i class="bi bi-file-spreadsheet"></i>
             <span>Fee Dues</span>
           </a>

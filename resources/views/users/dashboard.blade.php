@@ -21,7 +21,7 @@
           <ul style="overflow-y: hidden; ">
             @foreach ($notices as $notice)
                 <li style="overflow: hidden; padding-bottom:0px; margin-bottom:0px;">
-                  <a href="j.pdf"><span class="greater-than" style="margin-right: 8px;">&gt;</span>{{ $notice->title }}</a>
+                  <a href="{{ asset($notice->path) }}"><span class="greater-than" style="margin-right: 8px;">&gt;</span>{{ $notice->title }}</a>
                   <p>{{ $notice->created_at->format('d-m-Y') }}</p>
                 </li>
             @endforeach

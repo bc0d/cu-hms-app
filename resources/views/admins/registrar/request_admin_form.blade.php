@@ -38,9 +38,8 @@
                                 <label for="category" class="form-label">Category</label>
                                 <select name="category" id="category" class="form-select">
                                     <option selected disabled>--select--</option>
-                                    <option value="1">Mens Hostel</option>
-                                    <option value="2">Ladies Hostel</option>
-                                    <option value="3">Other</option>
+                                    <option value="existingFeature">Existing Feature</option>
+                                    <option value="newFeature">New Feature</option>
                                 </select>
                             </div>
                             <div class="col-md-8 mb-3">
