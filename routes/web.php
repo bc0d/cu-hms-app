@@ -492,6 +492,11 @@ Route::middleware(['auth:admins'])->prefix('warden')->group(function () {
         Route::get('card', [WardenStudentDetailsController::class, 'showCard']);
         Route::get('all', [WardenStudentDetailsController::class, 'showAllStudentDetails']);
         Route::get('detail/{id}', [WardenStudentDetailsController::class, 'showStudentProfileDetails']);
+
+        //student filtering
+        Route::get('filter', [WardenStudentDetailsController::class, 'filterStudents']);
+        Route::get('blocks/{hostelId}', [WardenStudentDetailsController::class, 'getBlocks']);
+        Route::post('students', [WardenStudentDetailsController::class, 'getStudents']);
     });
 
     //admission card
@@ -515,6 +520,15 @@ Route::middleware(['auth:admins'])->prefix('warden')->group(function () {
 
         Route::get('card', [WardenRoomDetailsController::class, 'showCard']);
         Route::get('list', [WardenRoomDetailsController::class, 'roomDetails']);
+
+         //room fltering
+         Route::get('filter', [WardenRoomDetailsController::class, 'index']);
+
+         Route::get('/hostels/{hostelId}/blocks', [WardenRoomDetailsController::class, 'getBlocks']);
+         Route::get('/blocks/{blockIds}/rooms', [WardenRoomDetailsController::class, 'getRooms']);
+         Route::get('/rooms/{roomIds}/beds', [WardenRoomDetailsController::class, 'getBeds']);
+         Route::get('/filter-beds', [WardenRoomDetailsController::class, 'filterBeds']);
+         Route::get('/blocks/all', [WardenRoomDetailsController::class, 'getAllBlocks']);
     });
 
     //fee card
@@ -526,6 +540,13 @@ Route::middleware(['auth:admins'])->prefix('warden')->group(function () {
         //fee maintanance
         Route::get('maintanance', [WardenFeeAndPaymentController::class, 'feeMaintanance']);
         Route::get('updation', [WardenFeeAndPaymentController::class, 'feeUpdate']);
+    });
+
+    Route::prefix('bills')->group(function () {
+
+        Route::get('/', [WardenFeeAndPaymentController::class, 'showBills']);
+        Route::get('room-rent', [WardenFeeAndPaymentController::class, 'roomRentDetails']);
+        Route::get('water-electric', [WardenFeeAndPaymentController::class, 'waterElectricBills']);
     });
 
     //rules and notice card

@@ -6,7 +6,7 @@
         <h1>Students List</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('office/index') }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('warden/index') }}">Home</a></li>
                 <li class="breadcrumb-item">Students List</li>
             </ol>
         </nav>
@@ -55,7 +55,7 @@
                     return;
                 }
                 $.ajax({
-                    url: '/office/student/blocks/' + hostelId,
+                    url: '/warden/student/blocks/' + hostelId,
                     method: 'GET',
                     success: function(blocks) {
                         $('#blocksContainer').empty();
@@ -97,7 +97,7 @@
                 }
 
                 $.ajax({
-                    url: '/super-user/student/students',
+                    url: '/warden/student/students',
                     method: 'POST',
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -141,7 +141,7 @@
                                 <td>${student.bed.room.block.block_name}</td>
                                 <td>${student.bed.room.room_name}</td>
                                 <td>${student.bed.bed_name}</td>
-                                <td><a href="http://127.0.0.1:8000/office/student/detail/${student.student_id}" class="btn btn-primary btn-sm">view</a></td>
+                                <td><a href="http://127.0.0.1:8000/warden/student/detail/${student.student_id}" class="btn btn-primary btn-sm">view</a></td>
                             `);
                             tbody.append(tr);
                         } else {
