@@ -24,6 +24,7 @@ class UserFeeAndPaymentController extends Controller
 
         $student = Auth::guard('students')->user();
         $rents = RoomRent::where('student_id', $student->student_id)->get();
+
         return view('users.room_rent_status', compact('student','rents'));
     }
 

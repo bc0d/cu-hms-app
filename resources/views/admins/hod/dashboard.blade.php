@@ -86,6 +86,23 @@
           </div>
         </div>
         <!-- End Fee Card -->
+        <!-- Request Card -->
+        <div class="col-xxl-6 col-md-6">
+          <div class="card info-card req-warn-card">
+            <div class="card-body">
+              <h5 class="card-title">Request</h5>
+              <a class="d-flex align-items-center" href={{ url('hod/request-admin') }}>
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-person-exclamation"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>view</h6>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- End Request Card -->
       </div>
     </div>
     <!-- End Left side columns -->

@@ -1,9 +1,8 @@
 <aside id="sidebar" class="sidebar">
   <ul class="sidebar-nav" id="sidebar-nav">
   
-
-     @switch( $admin->designation )
-        @case("staff")
+    @switch( $admin->designation )
+      @case("staff")
         <li class="nav-item">
           <a class="nav-link collapsed"  href={{ url('office/index')}}>
             <i class="bi bi-grid"></i>
@@ -64,8 +63,14 @@
             <span>Rules & Notices</span>
           </a>
         </li><!-- End Fee Maintanance Nav -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href={{ url('office/request-admin') }}>
+            <i class="bi bi-person-exclamation"></i>
+            <span>Request</span>
+          </a>
+        </li><!-- End Request Nav -->
         @break
-        @case("warden")
+      @case("warden")
         <li class="nav-item">
           <a class="nav-link collapsed"  href={{ url('warden/index')}}>
             <i class="bi bi-grid"></i>
@@ -85,19 +90,19 @@
           </a>
         </li><!-- End Vacating Requests Nav -->
         <li class="nav-item">
-          <a class="nav-link collapsed" href={{ url('warden/student/card') }}>
+          <a class="nav-link collapsed" href={{ url('warden/student/filter') }}>
             <i class="bi bi-file-spreadsheet"></i>
             <span>Students Details</span>
           </a>
         </li><!-- End Students Details Nav -->
         <li class="nav-item">
-          <a class="nav-link collapsed" href={{ url('warden/room-details/card') }}>
+          <a class="nav-link collapsed" href={{ url('warden/room-details/filter') }}>
             <i class="bi bi-file-spreadsheet"></i>
             <span>Room Details</span>
           </a>
         </li><!-- End Room Details Nav -->
         <li class="nav-item">
-          <a class="nav-link collapsed" href={{ url('warden/fee/card') }}>
+          <a class="nav-link collapsed" href={{ url('warden/bills') }}>
             <i class="bi bi-file-spreadsheet"></i>
             <span>Bills & Fees</span>
           </a>
@@ -120,9 +125,14 @@
             <span>Complaints</span>
           </a>
         </li><!-- End Complaints Nav -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href={{ url('warden/request-admin') }}>
+            <i class="bi bi-person-exclamation"></i>
+            <span>Request</span>
+          </a>
+        </li><!-- End Request Nav -->
         @break
-        
-        @case("hod")
+      @case("hod")
         <li class="nav-item">
           <a class="nav-link collapsed"  href={{ url('hod/index')}}>
             <i class="bi bi-grid"></i>
@@ -153,8 +163,14 @@
             <span>Fee Dues</span>
           </a>
         </li><!-- End Room Details Nav -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href={{ url('hod/request-admin') }}>
+            <i class="bi bi-person-exclamation"></i>
+            <span>Request</span>
+          </a>
+        </li><!-- End Request Nav -->
         @break
-        @case("registrar")
+      @case("registrar")
         <li class="nav-item">
           <a class="nav-link collapsed"  href={{ url('registrar/index')}}>
             <i class="bi bi-grid"></i>
@@ -210,7 +226,7 @@
           </a>
         </li><!-- End Complaints Nav -->
         @break
-        @case("admin")
+      @case("admin")
         <li class="nav-item">
           <a class="nav-link collapsed"  href={{ url('super-user/index')}}>
             <i class="bi bi-grid"></i>
@@ -285,8 +301,14 @@
             <span>Complaints</span>
           </a>
         </li><!-- End Fee Maintanance Nav -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href={{ url('super-user/tickets') }}>
+            <i class="bi bi-person-exclamation"></i>
+            <span>Tickets</span>
+          </a>
+        </li><!-- End Fee Maintanance Nav -->
         @break
-      @endswitch
+    @endswitch
 
   </ul>    
 </aside>
